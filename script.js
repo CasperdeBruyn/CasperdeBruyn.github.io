@@ -1,26 +1,33 @@
 const projects = [
-    { title: "Generation plastic soup", year: "2025", desc: "Focus on sustainability and circular design." },
-    { title: "Street Fresh", year: "2024", desc: "Urban aesthetics and design research." },
-    { title: "Samen spelen", year: "2024", desc: "Interactive social project." },
-    { title: "Grijpmachine", year: "2024", desc: "Physical installation work." },
-    { title: "Kodak", year: "2024", desc: "Photography and media study." },
-    { title: "Bomby Bird", year: "2024", desc: "Gaming/Interaction project." },
-    { title: "Picknicken met Sophie", year: "2023", desc: "Documentary and social design." },
-    { title: "OSRS Kerst", year: "2023", desc: "Community event organization." },
-    { title: "De Grinch sloopt de kerstboom", year: "2023", desc: "Creative storytelling." },
-    { title: "Vechtclub XL", year: "2023", desc: "Event identity design." },
-    { title: "Hu Begeleidt", year: "2022", desc: "Educational support project." },
-    { title: "Dan maar hier!", year: "2022", desc: "Spatial design exploration." }
+    { title: "Generation plastic soup", year: "2025", img: "assets/home_3.jpg" },
+    { title: "Street Fresh", year: "2024", img: "assets/home_6.jpg" },
+    { title: "Samen spelen", year: "2024", img: "assets/home_9.jpg" },
+    { title: "Grijpmachine", year: "2024", img: "assets/home_12.jpg" },
+    { title: "Kodak", year: "2024", img: "assets/home_15.jpg" },
+    { title: "Bomby Bird", year: "2024", img: "assets/home_18.jpg" },
+    { title: "Picknicken met Sophie", year: "2023", img: "assets/home_21.jpg" },
+    { title: "OSRS Kerst", year: "2023", img: "assets/home_24.jpg" },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "assets/home_27.jpg" },
+    { title: "Vechtclub XL", year: "2023", img: "assets/home_30.jpg" },
+    { title: "Hu Begeleidt", year: "2022", img: "assets/home_33.jpg" },
+    { title: "Dan maar hier!", year: "2022", img: "assets/home_36.jpg" }
 ];
 
-function renderProjects() {
+function initPortfolio() {
     const container = document.getElementById('project-container');
-    container.innerHTML = projects.map(project => `
-        <div class="project-card">
-            <h3>${project.title}</h3>
-            <p>${project.year} • ${project.desc}</p>
-        </div>
-    `).join('');
+    
+    projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+            <img src="${project.img}" alt="${project.title}" loading="lazy">
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.year}</p>
+            </div>
+        `;
+        container.appendChild(card);
+    });
 }
 
 function acceptCookies() {
@@ -33,17 +40,4 @@ function hideCookies() {
     console.log("Cookies refused");
 }
 
-// Initialisatie
-document.addEventListener('DOMContentLoaded', () => {
-    renderProjects();
-});
-
-// Smooth scroll voor nav
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+document.addEventListener('DOMContentLoaded', initPortfolio);

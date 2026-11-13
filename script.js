@@ -1,38 +1,59 @@
-// Project data uit de scrape
+// Project Data
 const projects = [
-    { title: "Generation plastic soup", year: "2025" },
-    { title: "Street Fresh", year: "2024" },
-    { title: "Samen spelen", year: "2024" },
-    { title: "Grijpmachine", year: "2024" },
-    { title: "Kodak", year: "2024" },
-    { title: "Bomby Bird", year: "2024" },
-    { title: "Picknicken met Sophie", year: "2023" },
-    { title: "OSRS Kerst", year: "2023" },
-    { title: "De Grinch sloopt de kerstboom", year: "2023" },
-    { title: "Vechtclub XL", year: "2023" },
-    { title: "Hu Begeleidt", year: "2022" },
-    { title: "Dan maar hier!", year: "2022" }
+    { title: "Generation plastic soup", year: "2025", img: "home_3.jpg" },
+    { title: "Street Fresh", year: "2024", img: "home_4.jpg" },
+    { title: "Samen spelen", year: "2024", img: "home_6.jpg" },
+    { title: "Grijpmachine", year: "2024", img: "home_7.jpg" },
+    { title: "Kodak", year: "2024", img: "home_8.jpg" },
+    { title: "Bomby Bird", year: "2024", img: "home_9.jpg" },
+    { title: "Picknicken met Sophie", year: "2023", img: "home_10.jpg" },
+    { title: "OSRS Kerst", year: "2023", img: "home_11.jpg" },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "home_12.jpg" },
+    { title: "Vechtclub XL", year: "2023", img: "home_13.jpg" },
+    { title: "Hu Begeleidt", year: "2022", img: "home_14.jpg" },
+    { title: "Dan maar hier!", year: "2022", img: "home_15.jpg" }
 ];
 
-function initPortfolio() {
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
+    setupIntersectionObserver();
+});
+
+function renderProjects() {
     const container = document.getElementById('project-container');
-    
-    projects.forEach(project => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        
-        // Dynamische content genereren
-        card.innerHTML = `
-            <img src="assets/placeholder.jpg" alt="${project.title}">
-            <div>
-                <h3>${project.title}</h3>
-                <span>${project.year}</span>
+    container.innerHTML = projects.map(p => `
+        <div class="project-card">
+            <img src="${p.img}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300'">
+            <div class="project-info">
+                <h3>${p.title}</h3>
+                <span>${p.year}</span>
             </div>
-        `;
-        
-        container.appendChild(card);
+        </div>
+    `).join('');
+}
+
+// Scroll Animations
+function setupIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
     });
 }
 
-// Uitvoeren bij laden
-document.addEventListener('DOMContentLoaded', initPortfolio);
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});

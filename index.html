@@ -24,7 +24,7 @@
         <div class="hero-content">
             <h1>Casper de Bruyn</h1>
             <p class="subtitle">Creating immersive experiences where digital meets physical.</p>
-            <div class="scroll-indicator">Scroll down</div>
+            <div class="scroll-indicator">Scroll down <span>&darr;</span></div>
         </div>
     </header>
 
@@ -35,13 +35,13 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>Nederlands</h3>
-                        <p>Hoi! Ik ben Casper ('97), student CMD aan de Hogeschool Utrecht. Ik combineer mijn praktische makers-mindset (houtbewerking, elektra) met digitale creativiteit. Van logo's tot tastbare installaties; ik knutsel overal.</p>
-                        <p>Mijn missie? Mensen uit de realiteit halen met immersieve ervaringen.</p>
+                        <p>Hoi! Ik ben Casper ('97), student CMD aan de Hogeschool Utrecht. Ik combineer mijn praktische makers-mindset (houtbewerking, elektra, tuinbouw) met digitale creativiteit.</p>
+                        <p>Van logo's tot tastbare installaties; ik knutsel net zo graag achter mijn laptop als in de fysieke wereld. Mijn missie? Mensen uit de realiteit halen met immersieve ervaringen.</p>
                     </div>
                     <div class="about-text">
                         <h3>English</h3>
-                        <p>Hi! I'm Casper ('97), a CMD student in Utrecht. I blend my background in physical crafts with digital design. From logos to tangible installations, I love crafting in both worlds.</p>
-                        <p>My mission? Creating immersive experiences that bring stories to life.</p>
+                        <p>Hi! I'm Casper ('97), a CMD student in Utrecht. I blend my background in physical crafts (woodworking, electronics, horticulture) with digital design.</p>
+                        <p>From logos to tangible installations, I love crafting in both worlds. My mission? Creating immersive experiences that bring stories to life and take people out of reality for a moment.</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <div class="container">
                 <h2>Selected Projects</h2>
                 <div class="project-grid" id="project-container">
-                    <!-- JS injecteert hier de projecten -->
+                    <!-- Projecten worden hier ingeladen door script.js -->
                 </div>
             </div>
         </section>
@@ -62,7 +62,8 @@
             <p>&copy; 2025 Casper de Bruyn. Built with passion.</p>
             <div class="cookie-notice" id="cookie-banner">
                 <span>My portfolio likes cookies :]</span>
-                <button onclick="document.getElementById('cookie-banner').style.display='none'">Nomnomnom</button>
+                <button onclick="acceptCookies()">Nomnomnom</button>
+                <button onclick="hideCookies()">Not today</button>
             </div>
         </div>
     </footer>

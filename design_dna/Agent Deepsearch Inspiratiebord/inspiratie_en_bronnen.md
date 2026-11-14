@@ -1,55 +1,4 @@
-n de essentiële storytelling die we nu vertalen naar het Engels.
-*   **Beeldmateriaal:** De `assets/images/` map wordt gesynchroniseerd met de project-matrix om te zorgen dat **Bomby Bird** de juiste game-assets krijgt en de houtbewerking-projecten (`Poul Cadovius`, `French Cleat Bench`) de focus krijgen.
-*   **Logo Fix:** De huidige logo-afbeeldingen worden vervangen door een **inline-SVG** (gebaseerd op je logo-ontwerp) om pixelvorming op hoge resoluties te voorkomen.
----
-### 2. Inspiratie-Matrix: "The Blueprint Terminal"
-Om de balans tussen "Vakmanschap" (Hout) en "Futurisme" (AI/Linux) te vinden, stel ik de volgende interactie-patronen voor:
-*   **Het 'Blueprint' Grid:** De 12 projecten worden gepresenteerd in een grid dat subtiele technische hulplijnen (grid lines) heeft, zoals een CAD-tekening of een snijmat in een workshop.
-*   **Immersieve Modals (De Focus-modus):** Bij het klikken op een project dimmen de lichten van de rest van de site (vignette effect). De pop-up opent als een 'dossier' met een subtiele 'grain' overlay, waarbij afbeeldingen in een carrousel verschijnen.
-*   **De 'Terminal' Sidebar:** Een zwevend element (of subtiele footer) dat live-statistieken toont van je "Linux AI Homelab" (bijv. uptime, of een 'connection established' bericht), wat de scifi-vibe versterkt.
----
-### 3. Concreet 'Inspiratie & Bron-Voorstel'
-*Ik verzoek het team om de volgende elementen direct op te nemen in het `Agent Deepsearch Inspiratiebord`:*
-#### **A. De 12-Projecten Architectuur (Integratie)**
-We koppelen de data van de 16 subpagina's aan deze 12 kaarten:
-1.  **Poul Cadovius System** (Focus: Multiplex textuur)
-2.  **French Cleat Bank** (Focus: Ruimtelijk ontwerp)
-3.  **De Grijpmachine** (Focus: Interactieve elektronica)
-4.  **Vechtclub XL** (Focus: Immersieve sfeer/branding)
-5.  **De Grinch** (Focus: Storytelling & Feestdagen)
-6.  **Custom Zeefdrukken** (Focus: Analoog ambacht)
-7.  **Bomby Bird** (Correctie: Game-sprites & UI screenshots)
-8.  **Plastic Soup** (Focus: Maatschappelijke impact)
-9.  **OSRS Kerstposter** (Focus: Vector/Nostalgie)
-10. **Picknicken met Sophie** (Focus: UX/Service Design)
-11. **HU Begeleidt** (Focus: UX Research)
-12. **Kodak Retro** (Focus: Branding & Typografie)
-#### **B. UI & Social Componenten**
-*   **Vector Icons:** Gebruik van `Lucide` of `Feather` icons voor Instagram en LinkedIn, uitgevoerd in de accentkleur **#C87D4B (Koper)**.
-*   **Contact-Flow:** Een 'Terminal-style' feedback na het versturen van het formulier naar `casper.debruyn@hotmail.com` (bijv: `> MESSAGE TRANSMITTED TO THE WORKSHOP...`).
-*   **Navigatie:** Een 'Terug naar boven' of 'Sluit' knop die aanvoelt als een fysieke schakelaar.
-#### **C. Visuele Afwerking**
-*   Toevoegen van een `mix-blend-mode: multiply` grain-overlay over de achtergrond (`#161412`) om de "The Dark Workshop" sfeer te verdiepen.
----
-### 📋 Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
-**Status:** *Wacht op goedkeuring van het team (>60%)*
-> **Voorstel:** Implementeer de "Blueprint Terminal" hybride-stijl.
-> 1. Herstel de project-matrix naar 12 unieke kaarten met data uit de `scraped_archive`.
-> 2. Vervang logo-images door SVG voor 0% kwaliteitsverlies.
-> 3. Bouw de modal-view met een 'Focus-licht' effect (dimming background).
-> 4. Verwijder Discord en implementeer koperen social icons.
-**Gaan we akkoord om deze structuur in de volgende iteratie van `index.html` en `script.js` door te voeren?**
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 214 (2026-11-14 23:43 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Hier is het rapport en het concrete voorstel van de **DeepSearch Scout (`deepsearch_scout`)**.
-Ik heb de `qa_inspector` audit gecombineerd met een diepe analyse van de `scraped_archive` en de `Project Design DNA`. Mijn doel is om de kloof te dichten tussen de huidige technische staat (die de basis legt) en de gewenste "Immersive Blueprint Terminal" ervaring.
----
-### 🕵️‍♂️ Scout Analyse: De "Missing Link" Audit
-**1. Content Mapping (De 12 Projecten vs. 16 Scraped Pages):**
-De huidige mismatch (7 projecten zichtbaar, 5 missend) komt voort uit een gebrek aan een harde koppeling tussen de `scraped_archive/pages/` en de `index.html` project-sectie.
+aar, 5 missend) komt voort uit een gebrek aan een harde koppeling tussen de `scraped_archive/pages/` en de `index.html` project-sectie.
 *   **Status:** De 16 pagina's bevatten niet alleen 12 projecten, maar ook ondersteunende content (`about-me`, `contact`, `home`).
 *   **Risico:** Als we alleen de 7 huidige projecten behouden, verliest het portfolio zijn narratieve kracht en de "Maker" breedte.
 *   **Oplossing:** De 12-projecten architectuur uit het eerdere voorstel is de *enige* juiste weg om de data uit de 16 pagina's te homogeniseren.
@@ -131,3 +80,50 @@ Om de score van de vorige ronde te overtreffen, stappen we af van het "versimpel
 | :--- | :--- | :--- |
 | **Visual Identity** | **"The Blueprint Workshop"**: `The Dark Workshop` (warm hout/donker) met een `CAD-Grid` overlay (technisch/blauw/wit) via `mix-blend-mode: overlay`. | Synthese van Ambacht & Sci-Fi. |
 | **Navigation** | **"The Dossier Engine"**: Modals met `backdrop-filter: blur(12px)` en unieke URL hashes. | Immersie zonder SEO/U
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (2026-11-15 00:22 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is de resultaten van de deepscan en het concrete voorstel voor het team. Als `deepsearch_scout` heb ik de huidige status van de lokale bestanden vergeleken met de `Project Design DNA` en de gescrapte data om de gaten te dichten.
+### 🔍 1. Audit & Discrepantie Analyse (De "Waar zijn ze?" Check)
+Na analyse van de `scraped_archive/pages/` (16 pagina's) en de huidige `index.html` (die slechts 7 projecten/secties lijkt te tonen), heb ik de volledige lijst gecategoriseerd volgens de **Gelaagde Architectuur** uit het inspiratiebord.
+**De "Missing 9" (De ontbrekende projecten/secties):**
+Om aan de 16 te komen, moeten de volgende pagina's direct worden geïntegreerd in de nieuwe structuur:
+| Project/Pagina | Status | Voorgestelde Tier | Motivering |
+| :--- | :--- | :--- | :--- |
+| **Bomby Bird** | ⚠️ Check nodig | **Tier 1** | Cruciaal project. *Actie: Controleer afbeeldingen tegenover myportfolio.* |
+| **Kodak** | 🆕 Missend | **Tier 1** | Sterke visuele storytelling kans. |
+| **Generation Plastic Soup** | 🆕 Missend | **Tier 1** | Immersieve/Maatschappelijke impact. |
+| **Grijpmachine** | 🆕 Missend | **Tier 1** | Techniek/Fysiek vakmanschap. |
+| **Zeefdrukken** | 🆕 Missend | **Tier 1** | Tactile/Craft aspect. |
+| **Vechtclub-XL** | 🆕 Missend | **Tier 1** | Branding/Design werk. |
+| **Hu-begeleidt** | 🆕 Missend | **Tier 2** | Waarschijnlijk proces/ondersteunend. |
+| **School-projecten** | 🆕 Missend | **Tier 2** | Educatief/Leerproces. |
+| **Picknicken met Sophie** | 🆕 Missend | **Tier 2** | Lifestyle/Lichter project. |
+| **De Grinch...** | 🆕 Missend | **Tier 2** | Creatief/Illustratief. |
+| **OSRS Kerstposter** | 🆕 Missend | **Tier 2** | Digital/Niche craft. |
+| **Samen Spelen** | 🆕 Missend | **Tier 2** | Digital/Community werk. |
+---
+### 💡 2. Inspiratie & Bron-Voorstel (Voor het Inspiratiebord)
+Ik stel voor om de visuele stijl te definiëren als **"The Blueprint Workshop"**. Dit is de synthese tussen de warmte van de houtbewerking (DNA Optie 1) en de precisie van een Sci-Fi/CAD omgeving.
+#### **A. Visuele Synthese (Aesthetic Details)**
+*   **De "Tactile Tech" Overlay:** Gebruik de `The Dark Workshop` kleuren (#161412 basis), maar voeg een subtiele, interactieve **CAD-Grid** toe.
+*   *Implementatie:* Een CSS `background-image` van een fijn grid met `opacity: 0.05` en `mix-blend-mode: overlay`.
+*   *Interactie:* Het grid licht heel licht op (koperen kleur `#C87D4B`) wanneer de cursor over bepaalde secties beweegt (mouse-tracking).
+*   **Texture Layering:** Voeg een zeer fijne `noise/grain` toe aan de achtergrond om het digitale karakter te verzachten en de "workshop" sfeer te versterken.
+#### **B. Navigatie & Interactie (The Dossier Engine)**
+*   **Project Modals (Dossier Stijl):** Geen simpele pop-ups, maar "Project Dossiers".
+*   *UI:* Gebruik `backdrop-filter: blur(12px)` op de modal-achtergrond.
+*   *UX:* Implementeer de `history.pushState` (zoals besproken in de strategie) zodat `casperdebruyn.github.io/#project/bomby-bird` werkt.
+*   *Sluiten:* Een kruisje rechtsboven in koper (`#C87D4B`) én de mogelijkheid om te klikken buiten de modal.
+*   **Header Update:** Het logo (de 3 cdb afbeeldingen) wordt direct linksboven in de header geplaatst als een hoogwaardig vector-achtig element of een scherp, goed geschaald PNG.
+#### **C. Socials & Contact (The Clean Exit)**
+*   **Social Icons:** Gebruik **FontAwesome** of directe **SVG** iconen voor Instagram en LinkedIn (geen pixelige png's).
+*   **Contact Form:**
+*   *Frontend:* Een modern, minimalistisch formulier.
+*   *Backend logic:* De mail naar `casper.debruyn@hotmail.com` wordt via een service (zoals Formspree of een kleine serverless function) verstuurd, zodat het adres niet in de broncode leesbaar is voor bots.
+*   *Feedback:* Directe transitie naar een "Transmission Received. Thank you." bericht na verzending.
+---
+### 🚀 3. Directe Actiepunten voor het Team (Prioriteit tot 10:00)
+1.  **[CODE]** Implementeer de `Work-in-Progress` balk bovenaan de

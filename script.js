@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Content Mapping voor storytelling
     const content = {
         en: {
-            h2: "The Workshop: Crafting from Wood to Bits.",
-            about: "Born in '97 and based in Delft, I bridge the gap between physical craft and digital architecture. Currently studying CMD at the Hogeschool Utrecht, my journey is defined by a 'maker-mindset' that moves seamlessly between the workshop and the IDE. Whether I'm designing custom furniture—like my current Poul Cadovius-inspired shelving in birch plywood—or engineering smart home integrations and maintaining my local Linux AI Homelab, my goal is the same: creating functional, tactile, and meaningful solutions."
+            h2: "The Workshop: Where Physical Craft Meets Digital Architecture.",
+            about: "Born in 1997 and based in Delft, I bridge the gap between tangible craftsmanship and digital complexity. Studying Communication & Multimedia Design at Hogeschool Utrecht, I operate with a 'maker-mindset' that moves fluidly between the workshop and the IDE. My work is a blend of precision and creativity: whether I'm crafting furniture like my Poul Cadovius-inspired shelving system in birch multiplex, installing custom smart home lighting, or maintaining my local Linux AI Homelab that powers my digital life and this very portfolio. I don't just design; I build."
         }
     };
 

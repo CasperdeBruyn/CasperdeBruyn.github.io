@@ -1,26 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Language Switcher
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.lang-content');
+    // Language Toggle
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const langContents = document.querySelectorAll('.lang-content');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
             
-            tab.classList.add('active');
-            document.getElementById(`content-${tab.dataset.lang}`).classList.add('active');
+            const lang = button.getAttribute('data-lang');
+            langContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === `content-${lang}`) {
+                    content.classList.add('active');
+                }
+            });
         });
     });
 
-    // Fade-in effect on scroll
+    // Scroll Observer for Fade-in effects
+    const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('fade-in');
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.fade-in, .project-card').forEach(el => observer.observe(el));
+    document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
 });

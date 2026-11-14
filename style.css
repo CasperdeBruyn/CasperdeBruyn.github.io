@@ -1,39 +1,86 @@
 :root {
-    --bg-color: #fafafa;
-    --text-color: #1a1a1a;
-    --accent-color: #ff3e00;
-    --font-main: 'Inter', sans-serif;
-    --font-heading: 'Space Grotesk', sans-serif;
+    --olive: #556B2F;
+    --burgundy: #800020;
+    --steel: #4682B4;
+    --bg: #FAFAFA;
+    --text: #2D2D2D;
+    --white: #FFFFFF;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.6; }
 
-/* Navigation */
-.navbar { padding: 2rem; display: flex; justify-content: space-between; align-items: center; }
-.logo a { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; text-decoration: none; color: var(--text-color); }
-.nav-links { list-style: none; display: flex; gap: 2rem; }
-.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* Navbar */
+.navbar {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: rgba(250, 250, 250, 0.9);
+    z-index: 1000;
+}
+
+.logo a { font-weight: 700; font-size: 1.5rem; color: var(--olive); text-decoration: none; }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; transition: var(--transition); }
+.nav-links a:hover { color: var(--steel); }
 
 /* Hero */
 .hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-h1 { font-family: var(--font-heading); font-size: 4rem; margin-bottom: 1rem; }
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--burgundy); }
+.subtitle { font-size: 1.2rem; color: var(--steel); }
 
 /* About Section */
-.about-section { padding: 4rem 2rem; }
+.about-section { padding: 5rem 0; }
+.section-title { font-size: 2.5rem; margin-bottom: 2rem; color: var(--olive); }
 .about-tabs { margin-bottom: 2rem; }
-.tab-btn { padding: 0.5rem 1rem; border: 1px solid #ccc; background: transparent; cursor: pointer; transition: 0.3s; }
-.tab-btn.active { background: var(--text-color); color: white; }
-.lang-content { display: none; max-width: 800px; }
-.lang-content.active { display: block; animation: fadeIn 0.5s; }
+.tab-btn {
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: 2px solid var(--olive);
+    color: var(--olive);
+    font-weight: 600;
+    transition: var(--transition);
+    margin-right: 1rem;
+}
+.tab-btn.active { background: var(--olive); color: var(--white); }
+.lang-content { display: none; }
+.lang-content.active { display: block; animation: fadeIn 0.5s ease; }
 
 /* Projects Grid */
-.projects-section { padding: 4rem 2rem; }
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.project-card { position: relative; overflow: hidden; border-radius: 8px; cursor: pointer; }
-.project-card img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease; }
-.project-card:hover img { transform: scale(1.05); }
-.overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0,0,0,0.6); color: white; opacity: 0; transition: 0.3s; }
-.project-card:hover .overlay { opacity: 1; }
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.project-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 12px 20px rgba(0,0,0,0.15); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+.card-info { padding: 1.5rem; }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* Utilities */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 1s ease-out; }

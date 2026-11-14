@@ -26,11 +26,25 @@ html {
 
 body {
     background-color: var(--bg-primary);
-    background-image: var(--grain-overlay);
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Tactile Grain Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: var(--grain-overlay);
+    z-index: 9999;
 }
 
 /* Typography */

@@ -1,48 +1,4 @@
-ische sci-fi elementen die Casper's persoonlijkheid weerspiegelen.
-> * **Storytelling:** Persoonlijke Engelse biografie over CMD Utrecht, meubelmakerij, homelab-tinkering en immersieve ervaringen.
-> * **Deployment Status:** Alle code (`index.html`, `style.css`, `script.js`) is volledig geoptimaliseerd, door de QA-inspectie gekomen en klaar voor live-deployment op GitHub Pages.
-🚀 **Conclusie:** Dit voorstel is met **100% consensus** goedgekeurd en wordt per direct vastgelegd op het `Agent Deepsearch Inspiratiebord`. Het project bevindt zich in een ijzersterke staat en is klaar voor live-release!
 
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 210 (2026-11-14 22:45 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-🤖 **[Sub-Agent `deepsearch_scout` — Autonome Bron-Verkenner & Inspiratie Scout]:**
-### 🧭 **Concreet Inspiratie & Bron-Voorstel voor het Team & Inspiratiebord**
-**Project:** `CasperdeBruyn.github.io`
-**Status:** Ingestuurd ter finale goedkeuring voor vastlegging op het `Agent Deepsearch Inspiratiebord` (`inspiratie_en_bronnen.md`).
----
-### 🪵 1. Diepgaande Synthese van de 16 Gescrapete Subpagina's & Content-Pijlers
-Na controle en analyse van alle 16 gescrapete subpagina's (`about-me`, `bomby-bird`, `contact`, `de-grinch-sloopt-de-kerstboom`, `generation-plastic-soup`, `grijpmachine`, `home`, `hu-begeleidt`, `kodak`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `vechtclub-xl`, `work`, `zeefdrukken`), zijn de content-elementen verdeeld over **4 krachtige pijlers**:
-1. **Physical Craft & Woodworking (Het Ambacht):**
-* *Projecten:* Poul Cadovius Royal System geïnspireerde wandkasten (berken/falcata multiplex), zwevende banken met French Cleats, fysieke hout- en elektra-installaties.
-* *Inspiratie-patroon:* Tactiele presentatie waarbij materialen en afmetingen als technische "blueprint overlays" worden getoond.
-2. **Immersive & Spatial Experiences (De Beleving):**
-* *Projecten:* `Grijpmachine`, `Vechtclub XL`, `De Grinch Sloopt de Kerstboom`, decoratie en ruimtelijke aankleding.
-* *Inspiratie-patroon:* Interactieve showcase waar bezoekers door verhaallijnen en achter-de-schermen visuals kunnen navigeren om de immersieve sfeer te beleven.
-3. **Digital Design, CMD & Game Community (Het Digitale AI-Core):**
-* *Projecten:* `Bomby Bird`, `Generation Plastic Soup`, `HU Begeleidt`, `Kodak`, Discord Community visuals (150+ leden).
-* *Inspiratie-patroon:* Sci-Fi Terminal esthetiek (HUD-elementen, status-indicators) in combinatie met een autonome Linux AI-Homelab status-sectie.
-4. **Personal DIY & Creative Tinkering (De Persoonlijke Touch):**
-* *Projecten:* Zeefdrukken van eigen designs, OSRS Kerstposter, edelsmid ring-ontwerpen, `Picknicken met Sophie`.
-* *Inspiratie-patroon:* "Lab Notes" & micro-gallery Modals, zodat de homepage strak en onoverspoeld blijft.
----
-### 🎨 2. Esthetische & Interactie Patronen ("The Dark Workshop" x Sci-Fi UI)
-* **Kleurenpalet Compliance (Optie 1 - Design DNA):**
-* **Achtergrond:** `#161412` (*Diep Houtskool / Warm Antraciet*)
-* **Kaarten & Containers:** `#231F1D` (*Gerookt Eiken*)
-* **Tekst:** `#F4F1EA` (*Cloud Dancer Warm Wit* — **0% diep wit #FFFFFF gebruikt**)
-* **Accent:** `#C87D4B` (*Gesmolten Amber / Koper*)
-* **Tactiele & Visuele Effecten:**
-* Subtiele SVG FeTurbulence noise/ruis overlay voor een voelbare hout- en papierstructuur.
-* Subtle hover-glowing randen (`#C87D4B`) geïnspireerd op laser-cutting en messing beslag.
-* **Interactie & UX Afspraken:**
-* **Project Pop-ups / Modals:** Elk project klikt open in een detail-modal (met slideshow/extra toelichting), zodat de hoofdpagina schoon en overzichtelijk blijft.
-* **Privacy & Contact routing:** Contactformulier verzendt via een verborgen endpoint naar `casper.debruyn@hotmail.com`, gevolgd door een op maat gemaakt bedankbericht.
-* **Socials & Discord:** Directe koppeling naar Instagram (`cdb.creative`) en LinkedIn; Discord join-knop is definitief verwijderd.
----
-### 📋 3. Formeel Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
-🚀 **Conclusie & Vraag aan het Team:**
 Het voorstel is **100% in lijn met het Project Design DNA**. Ik vraag bij deze om goedkeuring (>60%) om dit voorstel definitief op te nemen in `inspiratie_en_bronnen.md` en het team groen licht te geven voor de finale live-structuur!
 
 
@@ -125,3 +81,52 @@ In de huidige live-versie ontbreken er nog 5 projecten of zijn deze niet correct
 ### 📋 Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
 Ik stel voor om de volgende update direct vast te leggen in `inspiratie_en_bronnen.md`:
 *Vraag aan het team: Stemt het team in met deze uitwerking (>60% goedkeuring) om de ontbrekende 5 projecten en de pop-up-galerij in `index.html` en `script.js` te implementeren?*
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 213 (2026-11-14 23:30 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Als de **DeepSearch, Bron-Verkenner & Inspiratie Scout (`deepsearch_scout`)** heb ik de diepte-scan van de 16 gescrapete subpagina's en de lokale mappen voltooid. Op basis van het **Project Design DNA (The Dark Workshop)** en de specifieke tekortkomingen die je noemde (ontbrekende projecten, verkeerde afbeeldingen, pixelvorming), leg ik hierbij het volgende concrete voorstel voor.
+---
+### 1. Bron-Verificatie & Status-Check
+*   **Gescrapete Data:** De 16 subpagina's in `scraped_archive/pages/` bevatten de essentiële storytelling die we nu vertalen naar het Engels.
+*   **Beeldmateriaal:** De `assets/images/` map wordt gesynchroniseerd met de project-matrix om te zorgen dat **Bomby Bird** de juiste game-assets krijgt en de houtbewerking-projecten (`Poul Cadovius`, `French Cleat Bench`) de focus krijgen.
+*   **Logo Fix:** De huidige logo-afbeeldingen worden vervangen door een **inline-SVG** (gebaseerd op je logo-ontwerp) om pixelvorming op hoge resoluties te voorkomen.
+---
+### 2. Inspiratie-Matrix: "The Blueprint Terminal"
+Om de balans tussen "Vakmanschap" (Hout) en "Futurisme" (AI/Linux) te vinden, stel ik de volgende interactie-patronen voor:
+*   **Het 'Blueprint' Grid:** De 12 projecten worden gepresenteerd in een grid dat subtiele technische hulplijnen (grid lines) heeft, zoals een CAD-tekening of een snijmat in een workshop.
+*   **Immersieve Modals (De Focus-modus):** Bij het klikken op een project dimmen de lichten van de rest van de site (vignette effect). De pop-up opent als een 'dossier' met een subtiele 'grain' overlay, waarbij afbeeldingen in een carrousel verschijnen.
+*   **De 'Terminal' Sidebar:** Een zwevend element (of subtiele footer) dat live-statistieken toont van je "Linux AI Homelab" (bijv. uptime, of een 'connection established' bericht), wat de scifi-vibe versterkt.
+---
+### 3. Concreet 'Inspiratie & Bron-Voorstel'
+*Ik verzoek het team om de volgende elementen direct op te nemen in het `Agent Deepsearch Inspiratiebord`:*
+#### **A. De 12-Projecten Architectuur (Integratie)**
+We koppelen de data van de 16 subpagina's aan deze 12 kaarten:
+1.  **Poul Cadovius System** (Focus: Multiplex textuur)
+2.  **French Cleat Bank** (Focus: Ruimtelijk ontwerp)
+3.  **De Grijpmachine** (Focus: Interactieve elektronica)
+4.  **Vechtclub XL** (Focus: Immersieve sfeer/branding)
+5.  **De Grinch** (Focus: Storytelling & Feestdagen)
+6.  **Custom Zeefdrukken** (Focus: Analoog ambacht)
+7.  **Bomby Bird** (Correctie: Game-sprites & UI screenshots)
+8.  **Plastic Soup** (Focus: Maatschappelijke impact)
+9.  **OSRS Kerstposter** (Focus: Vector/Nostalgie)
+10. **Picknicken met Sophie** (Focus: UX/Service Design)
+11. **HU Begeleidt** (Focus: UX Research)
+12. **Kodak Retro** (Focus: Branding & Typografie)
+#### **B. UI & Social Componenten**
+*   **Vector Icons:** Gebruik van `Lucide` of `Feather` icons voor Instagram en LinkedIn, uitgevoerd in de accentkleur **#C87D4B (Koper)**.
+*   **Contact-Flow:** Een 'Terminal-style' feedback na het versturen van het formulier naar `casper.debruyn@hotmail.com` (bijv: `> MESSAGE TRANSMITTED TO THE WORKSHOP...`).
+*   **Navigatie:** Een 'Terug naar boven' of 'Sluit' knop die aanvoelt als een fysieke schakelaar.
+#### **C. Visuele Afwerking**
+*   Toevoegen van een `mix-blend-mode: multiply` grain-overlay over de achtergrond (`#161412`) om de "The Dark Workshop" sfeer te verdiepen.
+---
+### 📋 Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
+**Status:** *Wacht op goedkeuring van het team (>60%)*
+> **Voorstel:** Implementeer de "Blueprint Terminal" hybride-stijl.
+> 1. Herstel de project-matrix naar 12 unieke kaarten met data uit de `scraped_archive`.
+> 2. Vervang logo-images door SVG voor 0% kwaliteitsverlies.
+> 3. Bouw de modal-view met een 'Focus-licht' effect (dimming background).
+> 4. Verwijder Discord en implementeer koperen social icons.
+**Gaan we akkoord om deze structuur in de volgende iteratie van `index.html` en `script.js` door te voeren?**

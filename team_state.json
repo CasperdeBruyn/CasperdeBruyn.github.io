@@ -1,7 +1,7 @@
 {
-  "iteration": 156,
+  "iteration": 157,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n### QA Inspection Rapport — Iteratie 155\n**Project:** `CasperdeBruyn.github.io`\n**Inspector:** Live Webpage & DOM QA-Inspector Sub-Agent\n---\n### 📊 QA Score: 8.8 / 10\n---\n### 🧐 Beoordeling op basis van Audit Rapport & Design DNA\n1. **Visuele Stijl & Kleurenpalet (10/10):**\n* **\"The Dark Workshop\"** esthetiek is perfect geïmplementeerd volgens de DNA-richtlijnen:\n* Achtergrond (`--bg-primary`): `#161412` (Diep Houtskool).\n* Kaarten/Oppervlakken (`--bg-card`): `#231F1D` (Gerookt Eiken).\n* Tekst (`--text-primary`): `#F4F1EA` (Warm Wit / Cloud Dancer — geen fel wit).\n* Accentkleur (`--accent-maker`): `#C87D4B` (Koper / Amber).\n* **Textuur & Sfeer:** SVG grain-overlay en koperen gloei-effecten zorgen voor de juiste balans tussen ambachtelijk en modern.\n2. **Tech",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n### QA-Inspector Evaluatie & Beoordeling\n**Score: 9/10**\n**Toelichting:**\nDe huidige iteratie sluit nagenoeg feilloos aan bij het *Project Design DNA*. Het kleurenpalet van **\"The Dark Workshop\"** (`--bg-primary: #161412`, `--accent-maker: #C87D4B`, etc.) is exact doorgevoerd in de CSS-variabelen. De persoonlijke storytelling (\"From sawdust to pixels\", houtbewerking naar CMD, Linux AI Homelab en fysiek vakmanschap) is sterk en authentiek verwerkt. Alle 12 afbeeldingen zijn correct gekoppeld en aanwezig op schijf, en de technische basis (`index.html`, `style.css`, `script.js`) staat als een huis.\n---\n### 3 concrete verbeterpunten voor de volgende iteratie:\n1. **Micro-interacties op projectkaarten (`The Workbench`):** Voeg een subtiele 3D tilt-effect of verf",
   "completed_changes": [],
-  "last_updated": "2026-11-14 17:01:38"
+  "last_updated": "2026-11-14 17:07:01"
 }

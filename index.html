@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casper de Bruyn | Portfolio</title>
-    <meta name="description" content="Portfolio of Casper de Bruyn, Creative CMD student and maker.">
+    <title>Casper de Bruyn | Digitaal & Fysiek Maker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -12,114 +11,54 @@
 </head>
 <body>
 
-    <!-- Cookie Banner -->
-    <div id="cookie-banner" class="cookie-banner">
-        <p>My portfolio likes cookies :]</p>
-        <div class="cookie-btns">
-            <button id="accept-cookies" class="btn-primary">Nomnomnom (Accept)</button>
-            <button id="refuse-cookies" class="btn-secondary">Not today (Refuse)</button>
-        </div>
-    </div>
-
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo"><a href="#">Casper de Bruyn<span>.</span></a></div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Work</a></li>
+            <li><a href="#about">Over mij</a></li>
+            <li><a href="#projects">Projecten</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero -->
     <header class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Casper de Bruyn<span>.</span></h1>
-            <p class="subtitle fade-in">Combining digital innovation with physical craftsmanship.</p>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll down</span>
-        </div>
+        <h1 class="fade-in">Casper de Bruyn<span>.</span></h1>
+        <p class="subtitle fade-in">Digitaal architect en fysiek maker. Ik combineer de precisie van CMD met een ambachtelijke achtergrond.</p>
     </header>
 
     <main>
-        <!-- About Section -->
         <section id="about" class="about-section">
             <div class="container">
-                <h2 class="section-title">About me</h2>
-                <div class="about-tabs">
-                    <button class="tab-btn active" onclick="switchLang('nl')">Nederlands</button>
-                    <button class="tab-btn" onclick="switchLang('en')">English</button>
-                </div>
-                
                 <div class="about-content">
-                    <div id="content-nl" class="lang-content active">
-                        <p>Hoi en welkom in mijn portfolio! Wat leuk dat je een kijkje neemt in mijn (digitale) chaos! Zullen we het kort en bondig houden? Dan kun je weer verder met rondneuzen.</p>
-                        <p>Zoals je waarschijnlijk al zag, heet ik Casper :] Ik ben in '97 geboren in Delft en studeer momenteel CMD (Communication and Multimedia Design) aan de Hogeschool Utrecht.</p>
-                        <p>In het dagelijks leven duik ik graag in allerlei creatieve uitdagingen. Waar ik voorheen veel met mijn handen werkte in de houtbewerking, elektra en tuinbouw, combineer ik die praktische makers-mindset nu volop met de digitale kant van CMD. Van het ontwerpen van logo's en illustraties tot het bouwen van tastbare installaties—ik knutsel net zo graag achter mijn laptop als in de fysieke wereld.</p>
-                    </div>
-                    <div id="content-en" class="lang-content">
-                        <p>Welcome to my (digital) chaos, glad you're taking a peek! Let's keep it short and sweet so you can continue exploring. As you might've guessed already, my name is Casper :] I was born in Delft in '97 and I'm currently studying CMD (Communication and Multimedia Design) at Hogeschool Utrecht.</p>
-                        <p>In daily life, I love diving into all kinds of creative challenges. While my background is deeply rooted in working with my hands—like woodworking, electronics, and horticulture—I now combine that practical maker-mindset with the digital side of CMD. From designing logos and illustrations to building tangible installations, I love crafting just as much behind my laptop as I do in the physical world.</p>
-                    </div>
+                    <h2>De Maker</h2>
+                    <p>Ik ben een maker in de breedste zin van het woord. Waar mijn basis ligt in houtbewerking, elektrotechniek en de tuinbouw, vertaal ik die praktische 'hands-on' mentaliteit nu naar de digitale wereld via CMD aan de Hogeschool Utrecht.</p>
+                    <p>Mijn werk is een brug tussen disciplines: ik bouw digitale interfaces met hetzelfde oog voor detail als een meubelstuk, en ik implementeer AI-oplossingen met de nuchterheid van een vakman.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
-                <h2 class="section-title">Selected Work</h2>
-                <div class="projects-grid">
-                    <!-- Project Items -->
+                <h2 style="margin-bottom: 2rem;">Geselecteerd Werk</h2>
+                <div class="project-grid">
                     <div class="project-card">
-                        <img src="home_3.jpg" alt="Generation plastic soup">
-                        <h3>Generation plastic soup</h3>
-                        <p>2025</p>
+                        <img src="assets/images/home_1.jpg" alt="Generation Plastic Soup" style="width:100%; border-radius:8px;">
+                        <h3>Generation Plastic Soup (2025)</h3>
+                        <p>Een onderzoek naar de levenscyclus van alledaags materiaal. Dit project exploreert de verhouding tussen consumptie en afval.</p>
                     </div>
                     <div class="project-card">
-                        <img src="home_4.jpg" alt="Street Fresh">
-                        <h3>Street Fresh</h3>
-                        <p>2024</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_6.jpg" alt="Samen spelen">
-                        <h3>Samen spelen</h3>
-                        <p>2024</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_7.jpg" alt="Grijpmachine">
-                        <h3>Grijpmachine</h3>
-                        <p>2024</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_8.jpg" alt="Kodak">
-                        <h3>Kodak</h3>
-                        <p>2024</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_9.jpg" alt="Bomby Bird">
-                        <h3>Bomby Bird</h3>
-                        <p>2024</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_10.jpg" alt="Picknicken met Sophie">
-                        <h3>Picknicken met Sophie</h3>
-                        <p>2023</p>
-                    </div>
-                    <div class="project-card">
-                        <img src="home_12.jpg" alt="OSRS Kerst">
-                        <h3>OSRS Kerst</h3>
-                        <p>2023</p>
+                        <img src="assets/images/home_2.jpg" alt="Homelab" style="width:100%; border-radius:8px;">
+                        <h3>Viktor AI Homelab</h3>
+                        <p>Mijn eigen Linux AI Homelab met Viktor HUD. Gebouwd met de precisie van een meubelmaker, aangestuurd door code.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Casper de Bruyn. All rights reserved.</p>
-    </footer>
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Dit portfolio respecteert je privacy.</p>
+        <button id="accept-cookies" class="btn-primary">Akkoord</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

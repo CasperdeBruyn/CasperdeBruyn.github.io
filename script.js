@@ -1,47 +1,46 @@
 /**
  * Casper de Bruyn Portfolio - Logic Builder
- * Handle dynamische project rendering en UI interacties.
+ * Handle dynamische project rendering, animaties en interactieve componenten.
  */
 
-const projects = [
-    { title: "Bomby Bird", desc: "Interactive game architecture and character design.", img: "assets/images/bomby-bird_1.jpg" },
-    { title: "The Grinch", desc: "Rapid prototyping of a physical game mechanism.", img: "assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" },
-    { title: "Plastic Soup", desc: "Data visualization for environmental awareness.", img: "assets/images/generation-plastic-soup_1.jpg" }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dynamische Project Loader
-    const grid = document.querySelector('.projects-grid');
-    if (grid) {
-        projects.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'project-card fade-in';
-            card.innerHTML = `
-                <img class="project-image" src="${p.img}" alt="${p.title}" loading="lazy">
-                <h3>${p.title}</h3>
-                <p>${p.desc}</p>
-            `;
-            grid.appendChild(card);
-        });
-    }
+    // 1. Intersection Observer voor fade-in animaties
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-    // 2. Intersection Observer voor animaties
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.project-card, .about-content').forEach(el => {
+    document.querySelectorAll('.project-card, .about-card, .about-content, .homelab-content, .hobbies-box').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    // 3. Toegankelijkheid: Skip link en focus management
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('focus', () => link.style.outline = '2px solid var(--accent-maker)');
-        link.addEventListener('blur', () => link.style.outline = 'none');
+    // 2. Toegankelijkheid & Focus Management
+    document.querySelectorAll('a, button').forEach(element => {
+        element.addEventListener('focus', () => {
+            element.style.outline = '2px solid var(--accent-maker)';
+            element.style.outlineOffset = '3px';
+        });
+        element.addEventListener('blur', () => {
+            element.style.outline = 'none';
+        });
     });
+
+    // 3. Dynamische Status Check simulatie voor de Linux AI Homelab
+    const statusIndicator = document.querySelector('.status-indicator');
+    if (statusIndicator) {
+        setInterval(() => {
+            // Subtiele animatie of pulse op de online status om "live" aan te duiden
+            statusIndicator.style.opacity = statusIndicator.style.opacity === '0.6' ? '1' : '0.6';
+        }, 2000);
+    }
 });

@@ -1,27 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Tab switching for About Me
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const langContents = document.querySelectorAll('.lang-content');
+// Language Switcher
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.lang-content');
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            langContents.forEach(c => c.classList.remove('active'));
-            
-            btn.classList.add('active');
-            document.getElementById(`content-${btn.dataset.lang}`).classList.add('active');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        tab.classList.add('active');
+        const lang = tab.getAttribute('data-lang');
+        document.getElementById(`content-${lang}`).classList.add('active');
+    });
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
     });
+});
 
-    // Fade-in animation on scroll
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in, .project-card').forEach(el => observer.observe(el));
+// Simple Scroll Effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+    } else {
+        nav.style.boxShadow = 'none';
+    }
 });

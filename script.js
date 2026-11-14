@@ -1,46 +1,38 @@
 // Language Switcher
 function switchLang(lang) {
-    const nl = document.getElementById('content-nl');
-    const en = document.getElementById('content-en');
-    const btns = document.querySelectorAll('.tab-btn');
-
-    if (lang === 'nl') {
-        nl.classList.add('active');
-        en.classList.remove('active');
-        btns[0].classList.add('active');
-        btns[1].classList.remove('active');
-    } else {
-        en.classList.add('active');
-        nl.classList.remove('active');
-        btns[1].classList.add('active');
-        btns[0].classList.remove('active');
-    }
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(`content-${lang}`).classList.add('active');
+    event.target.classList.add('active');
 }
 
 // Cookie Banner Logic
-const banner = document.getElementById('cookie-banner');
+const cookieBanner = document.getElementById('cookie-banner');
 const acceptBtn = document.getElementById('accept-cookies');
 const refuseBtn = document.getElementById('refuse-cookies');
 
 if (localStorage.getItem('cookiesAccepted')) {
-    banner.style.display = 'none';
+    cookieBanner.style.display = 'none';
 }
 
 acceptBtn.addEventListener('click', () => {
     localStorage.setItem('cookiesAccepted', 'true');
-    banner.style.display = 'none';
+    cookieBanner.style.display = 'none';
 });
 
 refuseBtn.addEventListener('click', () => {
-    banner.style.display = 'none';
+    cookieBanner.style.display = 'none';
 });
 
-// Smooth Scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+// Simple Scroll Animation Observer
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
     });
-});
+}, observerOptions);
+
+document.querySelectorAll('.project-card').forEach(card => observer.observe(card));

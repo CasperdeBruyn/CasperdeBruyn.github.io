@@ -1,20 +1,10 @@
+// Iteratie 123: Basis interactie
 document.addEventListener('DOMContentLoaded', () => {
-    // Cookie banner logic
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
+    console.log("Casper de Bruyn Portfolio - Iteratie 123 Geladen.");
 
-    if (!localStorage.getItem('cookiesAccepted')) {
-        cookieBanner.style.display = 'flex';
-    }
-
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieBanner.style.display = 'none';
-    });
-
-    // Smooth scroll for internal links
+    // Smooth scroll voor interne links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'

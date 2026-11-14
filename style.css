@@ -6,23 +6,24 @@
 }
 
 :root {
-    /* Sophisticated Craft Palet */
-    --bg-primary: #121416;       /* Diep antraciet */
-    --bg-card: #1a1e21;         /* Lichter voor diepte */
-    --text-primary: #E0DFDD;    /* Zacht lichtgrijs */
-    --text-muted: #8a8a8a;      /* Subtiel grijs */
+    /* The Dark Workshop Palet */
+    --bg-primary: #161412;       /* Diep Houtskool */
+    --bg-card: #231F1D;         /* Gerookt Eiken */
+    --text-primary: #F4F1EA;    /* Cloud Dancer (Warm Wit) */
+    --text-muted: #A8A39A;      /* Subtiel grijs */
     
     /* Accenten */
-    --accent-olive: #5C6E58;    /* Natuurlijk/Over mij */
-    --accent-burgundy: #7A3E3E; /* Actie/Hover */
-    --accent-steel: #4A6278;    /* Tech/Homelab */
+    --accent-olive: #5C6E58;    /* Natuur/Duurzaamheid */
+    --accent-burgundy: #7A3E3E; /* Vakmanschap/Passie */
+    --accent-steel: #4A6278;    /* Techniek/Linux Homelab */
+    --accent-copper: #C87D4B;   /* Gesmolten Amber */
     
     /* Typografie */
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
     
     /* Effecten */
-    --grain-overlay: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    --grain-overlay: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.04"/></svg>');
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -46,22 +47,22 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: rgba(18, 20, 22, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(22, 20, 18, 0.9);
+    backdrop-filter: blur(12px);
     z-index: 900;
-    border-bottom: 1px solid var(--accent-olive);
+    border-bottom: 1px solid var(--bg-card);
 }
 
 .logo a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); text-decoration: none; }
-.logo span { color: var(--accent-olive); }
+.logo span { color: var(--accent-copper); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--transition); }
-.nav-links a:hover { color: var(--accent-burgundy); }
+.nav-links a:hover { color: var(--accent-copper); }
 
 /* Hero */
 .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
-.hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 1rem; }
-.hero h1 span { color: var(--accent-olive); }
+.hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 1rem; color: var(--text-primary); }
+.hero h1 span { color: var(--accent-copper); }
 .subtitle { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; }
 
 /* Sections */
@@ -70,14 +71,14 @@ main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
 
 .project-card {
     background-color: var(--bg-card);
-    border: 1px solid #2d3237;
+    border: 1px solid #332d2a;
     border-radius: 12px;
     padding: 1.5rem;
     transition: var(--transition);
 }
 
 .project-card:hover {
-    border-color: var(--accent-burgundy);
+    border-color: var(--accent-copper);
     transform: translateY(-5px);
 }
 
@@ -90,4 +91,4 @@ main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
     gap: 2rem;
 }
 
-footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid #2d3237; }
+footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--bg-card); }

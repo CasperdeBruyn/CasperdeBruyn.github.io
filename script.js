@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Observer for fade-in animations
+    // Fade-in observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
     }, { threshold: 0.1 });
 
@@ -13,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Dynamic Filter Logic using data-category
+    // Filter Logic
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -25,12 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const filterValue = button.getAttribute('data-filter');
 
             projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'flex';
-                    setTimeout(() => card.classList.add('is-visible'), 50);
-                } else {
-                    card.style.display = 'none';
-                }
+                const category = card.getAttribute('data-category');
+                card.style.display = (filterValue === 'all' || category === filterValue) ? 'flex' : 'none';
             });
         });
     });

@@ -1,7 +1,7 @@
 {
-  "iteration": 169,
+  "iteration": 170,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Live Webpage & DOM QA-Inspector** heb ik de audit van de huidige iteratie (168) vergeleken met het vastgestelde `Project Design DNA`.\n### **Audit Rapport: Score 9/10**\n**Oordeel:**\nDe implementatie van \"The Dark Workshop\" palet is uitmuntend uitgevoerd. De CSS-variabelen zijn 1-op-1 overgenomen, wat zorgt voor een visuele eenheid die perfect aansluit bij de ambachtelijke, donkere esthetiek die gevraagd werd. De storytelling in de `about`-sectie is persoonlijk, overtuigend en weerspiegelt de hybride identiteit (CMD + Houtbewerking + Homelab) uitstekend. Het gebruik van `clamp()` voor typografie en de `grain-overlay` geeft de pagina een luxe, tactiele \"premium\" feel die je zelden op standaard portfolio's ziet.\n---\n### **3 Concrete verbeterpunten voor d",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n**QA-INSPECTOR AUDIT RAPPORT**\n- **Score:** 9/10\n- **Evaluatie:** De webpagina sluit uitstekend aan bij het *Project Design DNA* (\"The Dark Workshop\" kleurenpalet is exact doorgevoerd met `#161412` achtergrond en `#C87D4B` koperaccenten). Alle 12 afbeeldingen werken correct en de persoonlijke storytelling over houtbewerking, CMD en het AI homelab is prachtig verwerkt.\n### 3 concrete technische/visuele verbeterpunten voor de volgende iteratie:\n1. **Taal-toggle toevoegen:** Implementeer een subtiele, nette NL/EN taal-toggle in de navigatie om de mix van Nederlandse sectiekoppen en de gewenste Engelse storytelling flexibel en gebruiksvriendelijk op te lossen.\n2. **Scroll-animaties (Intersection Observer):** Voeg in `script.js` subtiele fade-in of slide-up ani",
   "completed_changes": [],
-  "last_updated": "2026-11-14 18:10:33"
+  "last_updated": "2026-11-14 18:15:49"
 }

@@ -45,9 +45,13 @@ body::before {
     z-index: 9999;
 }
 
-h1, h2 { font-family: 'Playfair Display', serif; line-height: var(--line-height-tight); }
-h1 { font-size: var(--fs-h1); letter-spacing: -0.02em; font-weight: 300; }
-h2 { font-size: var(--fs-h2); font-weight: 600; margin-bottom: 2rem; letter-spacing: 0.05rem; }
+h1, h2 { 
+    font-family: 'Playfair Display', serif; 
+    line-height: var(--line-height-tight);
+    letter-spacing: 0.02em; 
+}
+h1 { font-size: var(--fs-h1); font-weight: 300; }
+h2 { font-size: var(--fs-h2); font-weight: 600; margin-bottom: 2rem; }
 
 p { color: var(--text-muted); font-size: var(--fs-body); margin-bottom: 1.5rem; }
 
@@ -57,14 +61,15 @@ p { color: var(--text-muted); font-size: var(--fs-body); margin-bottom: 1.5rem; 
     background-color: var(--bg-card);
     border-radius: 8px;
     padding: 2rem;
-    transition: var(--transition);
-    border-left: 4px solid var(--accent-maker);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    border-bottom: 2px solid transparent;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .project-card:hover {
     transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 15px rgba(200, 125, 75, 0.1);
+    border-bottom: 2px solid var(--accent-maker);
+    box-shadow: 0 4px 15px rgba(200, 125, 75, 0.1), 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .btn-primary {

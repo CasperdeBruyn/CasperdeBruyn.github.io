@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Observer voor subtiele fade-in animaties
+    // Intersection Observer voor subtiele fade-in animaties
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Filter Functionaliteit
+    // Filter Functionaliteit met vloeiende transitie
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 

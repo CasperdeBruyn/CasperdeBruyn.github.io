@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Intersection Observer for scroll animations
-    const observerOptions = { threshold: 0.1 };
+    const observerOptions = { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -22,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initial state for fade-in elements
+    // Fade-in initialization for project cards
     document.querySelectorAll('.project-card').forEach(card => {
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
-        card.style.transition = "all 0.6s ease-out";
+        card.style.transition = "all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)";
         observer.observe(card);
     });
 });

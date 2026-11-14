@@ -12,15 +12,17 @@
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
     
-    /* Accenten */
-    --accent-olive: #5C6E58;    /* Woodworking/Nature */
-    --accent-burgundy: #7A3E3E; /* Highlights/Emphasis */
-    --accent-steel: #4A6278;    /* Tech/Homelab */
-    --accent-copper: #C87D4B;   /* Primary Actions */
+    /* Gecureerde Accent-hiërarchie */
+    --accent-amber: #C87D4B;    /* CTA's & Ambachtelijke accenten */
+    --accent-olive: #5C6E58;    /* Academisch & Erfgoed */
+    --accent-burgundy: #7A3E3E; /* High-impact passieprojecten */
+    --accent-steel: #4A6278;    /* Tech, AI & Homelab */
     
+    /* Typografie */
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
     
+    /* Texture & Effects */
     --grain-overlay: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.04"/></svg>');
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -54,7 +56,7 @@ section {
 }
 
 .logo a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); text-decoration: none; }
-.logo span { color: var(--accent-copper); }
+.logo span { color: var(--accent-amber); }
 
 /* Hero */
 .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
@@ -69,7 +71,7 @@ section {
     transition: var(--transition);
 }
 
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
+.project-card:hover { border-color: var(--accent-amber); transform: translateY(-5px); }
 
 .tag {
     display: inline-block;
@@ -82,7 +84,8 @@ section {
 
 .tag-wood { background: var(--accent-olive); }
 .tag-tech { background: var(--accent-steel); }
+.tag-personal { background: var(--accent-burgundy); }
 
 .highlight { border-bottom: 2px solid var(--accent-burgundy); }
 
-footer { text-align: center; padding: 3rem; color: var(--text-muted); border-top: 1px solid var(--bg-card); }
+footer { text-align: center; padding: 3rem; color: var(--text-muted); border-top: 1px solid #332d2a; }

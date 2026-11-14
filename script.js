@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer voor subtiele fade-in animaties
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    // Geoptimaliseerde Intersection Observer voor fade-in effecten
+    const observerOptions = { 
+        threshold: 0.15, 
+        rootMargin: '0px 0px -50px 0px' 
+    };
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -10,12 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.project-card, .section-title, .about-grid').forEach(el => {
+    // Initialiseer animatie-targets
+    const animatedElements = document.querySelectorAll('.project-card, .section-title, .about-grid');
+    animatedElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    // Filter Functionaliteit met vloeiende transitie
+    // Filter Functionaliteit met vloeiende UX
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -33,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     requestAnimationFrame(() => card.style.opacity = '1');
                 } else {
                     card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 400);
+                    setTimeout(() => {
+                        if (card.style.opacity === '0') card.style.display = 'none';
+                    }, 300);
                 }
             });
         });

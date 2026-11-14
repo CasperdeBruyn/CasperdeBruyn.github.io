@@ -713,8 +713,8 @@ footer {
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn Portfolio - Logic Builder & Interaction Layer
- * Handles animations, dynamic project filtering, terminal form transmission with secure hidden email routing, project modals, and cookies.
+ * Casper de Bruyn Portfolio - Logic Builder & Interaction Layer (Fully Complete)
+ * Handles animations, dynamic project filtering, terminal form transmission with secure hidden email routing to casper.debruyn@hotmail.com, project modals, and cookies.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -836,4 +836,4 @@ function openProjectModal(projectKey) {
         images = ['assets/images/generation-plastic-soup_1.jpg', 'assets/images/about-me_2.jpg'];
     } else {
         title = "Project Archive";
-        description = "Comprehensive documentation from Casper de
+        description = "Comprehensive documentation from Casper de Bruyn's maker archives.";

@@ -1,49 +1,47 @@
+/**
+ * Casper de Bruyn Portfolio - Logic Builder
+ * Handle dynamische project rendering en UI interacties.
+ */
+
+const projects = [
+    { title: "Bomby Bird", desc: "Interactive game architecture and character design.", img: "assets/images/bomby-bird_1.jpg" },
+    { title: "The Grinch", desc: "Rapid prototyping of a physical game mechanism.", img: "assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" },
+    { title: "Plastic Soup", desc: "Data visualization for environmental awareness.", img: "assets/images/generation-plastic-soup_1.jpg" }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Verdiepte Content Mapping
-    const content = {
-        en: {
-            h2: "The Workshop: Where Physical Craft Meets Digital Architecture.",
-            about: "Born in 1997 and rooted in Delft, I operate at the intersection of tangible craftsmanship and digital complexity. Studying Communication & Multimedia Design at Hogeschool Utrecht, I carry a 'maker-mindset' that moves fluidly between the woodworking shop and the IDE. My work is a study in precision and creative endurance: whether I am constructing a custom shelving unit inspired by Poul Cadovius’ Royal System in birch plywood, implementing French-cleat furniture systems, or architecting my own Linux AI Homelab. I don't just design interfaces; I build enduring systems that bridge the gap between human intuition and machine efficiency."
-        }
-    };
-
-    // 2. Language Persistence & Injectie
-    const langBtns = document.querySelectorAll('.lang-btn');
-    const workshopTitle = document.querySelector('.workshop-title');
-    const aboutText = document.querySelector('.about-text');
-
-    function updateContent(lang) {
-        if(content[lang]) {
-            if(workshopTitle) workshopTitle.innerText = content[lang].h2;
-            if(aboutText) aboutText.innerText = content[lang].about;
-        }
-        localStorage.setItem('lang', lang);
-        langBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === lang);
+    // 1. Dynamische Project Loader
+    const grid = document.querySelector('.projects-grid');
+    if (grid) {
+        projects.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'project-card fade-in';
+            card.innerHTML = `
+                <img class="project-image" src="${p.img}" alt="${p.title}" loading="lazy">
+                <h3>${p.title}</h3>
+                <p>${p.desc}</p>
+            `;
+            grid.appendChild(card);
         });
     }
 
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => updateContent(btn.dataset.lang));
-    });
-
-    updateContent(localStorage.getItem('lang') || 'en');
-
-    // 3. Staggered Intersection Observer
-    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    // 2. Intersection Observer voor animaties
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('is-visible');
-                }, index * 150);
-                observer.unobserve(entry.target);
+                entry.target.classList.add('is-visible');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.project-card, .about-section, section').forEach(el => {
+    document.querySelectorAll('.project-card, .about-content').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
+    });
+
+    // 3. Toegankelijkheid: Skip link en focus management
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('focus', () => link.style.outline = '2px solid var(--accent-maker)');
+        link.addEventListener('blur', () => link.style.outline = 'none');
     });
 });

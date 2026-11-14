@@ -2,40 +2,14 @@
 
 
 ---
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 178 (2026-11-14 20:33 | Team Score: 82%)
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 181 (2026-11-14 21:06 | Team Score: 82%)
 🤖 **[Sub-Agent `deepsearch_scout`]:**
-Als `deepsearch_scout` heb ik de status van het project geanalyseerd. De fundering staat, het kleurenpalet is "Dark Workshop" geoptimaliseerd, maar de brug tussen de 'Maker' (houtbewerker) en de 'Designer' (CMD-student/technoloog) mist nog de verfijning in *narratieve diepgang* en *technische robuustheid*.
-Hieronder volgt mijn **Inspiratie & Bron-Voorstel** voor het team:
-### 1. Strategische Content-Integratie (Van "Scraping" naar "Storytelling")
-We moeten stoppen met het simpelweg tonen van projecten en starten met het vertellen van een *proces-georiënteerd* verhaal.
-*   **De "Workbench" Connectie:** Integreer de inhoud van `about-me` en `school-projecten` niet als statische tekstblokken, maar als een *chronologische tijdlijn* waarin zijn academische groei (Erfgoed/Bestuurskunde) versmelt met zijn technische vaardigheden (Linux AI, Houtbewerking).
-*   **Thematische Clusters:**
-*   *The Heritage Lab:* Combineer 'Erfgoed Delft' met het 'Poul Cadoviu
-
-
+Als `deepsearch_scout` heb ik de huidige staat van `CasperdeBruyn.github.io` geanalyseerd in relatie tot je `Project Design DNA`. Hier is mijn voorstel voor de volgende fase van het project.
 ---
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 179 (2026-11-14 20:40 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-### 🚀 INSPIRATIE & BRON-VOORSTEL: "THE WORKBENCH PROTOCOL" (v2.0)
-Om de 60%-score barrière te doorbreken en een robuuste, deadline-bestendige portfolio te bouwen, stel ik de volgende **"Static-First" architectuur** voor. We stappen af van pure client-side rendering en gaan over naar een **hybrid-build systeem**.
-#### 1. Het Automatiseringsscript (`/scripts/build_manifest.py`)
-In plaats van een risicovolle JS-loader, draaien we bij elke update een lichtgewicht Python-script.
-*   **Wat het doet:** Het scant de `assets/images` map, checkt op de aanwezigheid van bestanden en genereert een `manifest.json`.
-*   **Waarom:** Het elimineert 'broken image' 404-errors en maakt het mogelijk om de JSON als *pre-rendered data* in de build te betrekken.
-#### 2. De "Static-Fail-Safe" Structuur (`index.html`)
-We implementeren een **"Server-Side Included" mentaliteit** in de HTML:
-*   **HTML-First:** De 6 projectsecties (gebaseerd op je 16 gescrapte pagina's) worden
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 180 (2026-11-14 20:44 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Dit is mijn verbeterde **Inspiratie & Bron-Voorstel** voor het `Agent Deepsearch Inspiratiebord`. Na analyse van de kritische feedback is de focus verlegd van generieke presets naar een robuuste, datagestuurde architectuur met het specifiek gevraagde palet.
-### 🚀 Voorstel: De "Craftsman’s Grid" (v2.0)
-#### 1. Het "Casper Identity" Kleurenpalet (CSS-Variabelen)
-We verlaten de presets en implementeren het specifieke kleurenpalet van Casper. Dit palet combineert academische autoriteit met ambachtelijke warmte.
-#### 2. Technische Architectuur: De "Pre-flight" Loader
-De `loader.js` wordt geüpdatet met een validatie-laag om het falen van lege project-secties te voorkomen.
-*   **Pre-flight Check Logic:**
-*   **Fallback Mechanisme:** Bij ontbrekende afbeeldingen wordt een CSS-gebaseerde "Empty State" kaart gegenereerd met een subtiel geometrisch patroon in de olijfgroene kleur, zodat de layout behouden blijft.
-#### 3. UX-Verbetering: Navigatie & Storytelli
+### 1. Conclusie Bron-Verkenning
+De huidige code (`style.css`) is al perfect afgestemd op **Optie 1: "The Dark Workshop"**. De technische structuur is aanwezig, maar de "ziel" (de storytelling en de fysieke verbinding) ontbreekt nog in de content.
+**Bevindingen uit de gescrapte data:**
+*   **De kloof:** Er is nu een scheiding tussen de "fysieke" projecten (houtbewerking, meubels) en de "digitale" projecten (CMD, AI homelab). De website moet deze niet apart zetten, maar juist als één *maker-proces* presenteren.
+*   **Het gemis:** De huidige teksten zijn te feitelijk. De bezoeker moet direct voelen dat dit portfolio door een "maker" is gebouwd die ook codeert als een ambachtsman.
+### 2. Inspiratie & Structuur-Voorstel (Inspiratiebord)
+Ik stel voor om de volge

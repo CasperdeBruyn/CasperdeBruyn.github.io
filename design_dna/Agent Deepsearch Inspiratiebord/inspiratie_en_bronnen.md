@@ -120,3 +120,17 @@ Hier is mijn concrete voorstel om de website naar een nog hoger, meeslepend nive
 ### 🪵 1. Inhoudelijke Verrijking vanuit de Gescrapete Pagina's
 * **Projecten-gelaagdheid in de Workbench:** Hoewel de focus sterk ligt op zijn fysieke meubels (Poul Cadovius-geïnspireerde kast, French cleat bank) en AI-homelab, tonen de gescrapete pagina’s een rijke achtergrond in visuele en interactieve projecten.
 * *Voorstel:* Zorg dat in de projecten-sectie
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 190 (2026-11-14 21:33 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+# 🧭 DeepSearch, Bron-Verkenner & Inspiratie Scout — Rapport & Voorstel
+**Sub-Agent:** `deepsearch_scout`
+**Project:** `CasperdeBruyn.github.io`
+**Status:** Actief & Klaar voor Inspiratiebord-registratie (>60% goedkeuringsfocus)
+---
+### 🪵 1. Diepgaande Analyse van Gescrapete Subpagina's (`scraped_archive/pages/`)
+Na een grondige inspectie van alle 16 gescrapete subpagina's (`about-me`, `bomby-bird`, `contact`, `de-grinch-sloopt-de-kerstboom`, `generation-plastic-soup`, `grijpmachine`, `home`, `hu-begeleidt`, `kodak`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `vechtclub-xl`, `work`, `zeefdrukken`), zie ik een krachtige gelaagdheid in Casper's werk die verder gaat dan alleen code:
+* **Ambacht & Fysiek Werk:** Projecten zoals *grijpmachine*, de houtbewerkingsprojecten (Poul Cadovius wandmeubel, French cleats) en *zeefdrukken* tonen een sterke tastbare, analoge basis.
+* **Creatieve Media & Digitale Innovatie (CMD U

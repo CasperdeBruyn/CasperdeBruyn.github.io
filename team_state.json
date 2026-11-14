@@ -1,9 +1,9 @@
 {
-  "iteration": 190,
+  "iteration": 191,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n# 🔍 Finale Bron-Inspectie & Audit (`qa_inspector`)\n**Project:** `CasperdeBruyn.github.io`\n**Datum/Tijd:** Huidige Cyclus (Na Iteratie 189)\n**Status:** Goedgekeurd & Geverifieerd 🟢\nAls **Finale Bron-Inspector** heb ik de uiteindelijke broncode op schijf (`index.html`, `style.css`, `script.js`) grondig gescand en getoetst aan het **Project Design DNA** (Optie 1: *\"The Dark Workshop\"*), de persoonlijke storytelling en de technische eisen.\nHieronder volgt het volledige overzicht van wat er daadwerkelijk is gerealiseerd, hoe het eindresultaat er nu uitziet, en wat het focuspunt wordt voor de volgende cyclus.\n---\n### 🪵 1. Wat is er daadwerkelijk veranderd & gerealiseerd?\n* **Design DNA (\"The Dark Workshop\" Palet 1-op-1 toegepast):**\n* De `:root` variabelen in `style.css` zijn exact ingesteld volgens het goedgekeurde palet:\n* Achtergrond (Diep Houtskool): `--bg-primary: #161412`\n* Secundair oppervlak (Gerookt Eiken): `--bg-card: #231F1D` (met hover naar `#2C2",
+  "last_qa_feedback": "Sub-agent `qa_inspector` fout na retry (timeout=240s): 'list' object has no attribute 'strip'",
   "completed_changes": [],
-  "last_updated": "2026-11-14 21:33:22",
+  "last_updated": "2026-11-14 21:37:00",
   "is_running": true,
-  "current_step": "Iteratie 189 voltooid"
+  "current_step": "Iteratie 190 voltooid"
 }

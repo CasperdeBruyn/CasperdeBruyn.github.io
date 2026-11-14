@@ -1,8 +1,4 @@
-# Agent Deepsearch Inspiratiebord
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 181 (2026-11-14 21:06 | Team Score: 82%)
+t — Iteratie 181 (2026-11-14 21:06 | Team Score: 82%)
 🤖 **[Sub-Agent `deepsearch_scout`]:**
 Als `deepsearch_scout` heb ik de huidige staat van `CasperdeBruyn.github.io` geanalyseerd in relatie tot je `Project Design DNA`. Hier is mijn voorstel voor de volgende fase van het project.
 ---
@@ -134,3 +130,15 @@ Hier is mijn concrete voorstel om de website naar een nog hoger, meeslepend nive
 Na een grondige inspectie van alle 16 gescrapete subpagina's (`about-me`, `bomby-bird`, `contact`, `de-grinch-sloopt-de-kerstboom`, `generation-plastic-soup`, `grijpmachine`, `home`, `hu-begeleidt`, `kodak`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `vechtclub-xl`, `work`, `zeefdrukken`), zie ik een krachtige gelaagdheid in Casper's werk die verder gaat dan alleen code:
 * **Ambacht & Fysiek Werk:** Projecten zoals *grijpmachine*, de houtbewerkingsprojecten (Poul Cadovius wandmeubel, French cleats) en *zeefdrukken* tonen een sterke tastbare, analoge basis.
 * **Creatieve Media & Digitale Innovatie (CMD U
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 191 (2026-11-14 21:37 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Als **DeepSearch, Bron-Verkenner & Inspiratie Scout Sub-Agent (`deepsearch_scout`)** heb ik de 16 gescrapete archiefpagina's (`about-me`, `work`, `school-projecten`, `zeefdrukken`, `bomby-bird`, etc.), de lokale structuur (`index.html`, `style.css`, `script.js`) en het *Project Design DNA* ("The Dark Workshop") grondig doorgelicht.
+Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor het team en het `Agent Deepsearch Inspiratiebord`:
+---
+# 📋 AGENT DEEPSEARCH INSPIRATIEBORD — VOORSTEL
+### 1. Kernpatronen uit de Gescrapete Archieven (16 pagina's)
+* **De Ambachtelijke Diversiteit:** Uit pagina's zoals *zeefdrukken*, *school-projecten* (bijv. *generation-plastic-soup*, *vechtclub-xl*, *osrs-kerstposter*) en fysieke meubelbouw blijkt een brede creatieve baseline. Dit moeten we op de site versterken door fysiek ambacht (hout, drukwerk) direct te koppelen aan digitale media (CMD, AI).
+* **Persoonlijke Touch & Tone of Voice:** De overgang van analoge

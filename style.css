@@ -215,7 +215,7 @@ body::before {
 }
 
 .cta-button.secondary:hover {
-    border-color: var(--accent-primary, #F4F1EA);
+    border-color: var(--text-primary);
     background: var(--text-primary);
     color: var(--bg-primary);
 }
@@ -859,8 +859,3 @@ function handleTransmission(event) {
     
     const form = document.getElementById('contact-form');
     const responseBox = document.getElementById('form-response');
-    const formData = new FormData(form);
-    
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const recipient = formData.get('recipient') || 'casper.debruyn@hotmail.com

@@ -1,26 +1,26 @@
 const projects = [
-    { title: "Generation plastic soup", year: "2025", desc: "Project focused on sustainability and design." },
-    { title: "Street Fresh", year: "2024", desc: "Urban creative project." },
-    { title: "Samen spelen", year: "2024", desc: "Interactive installation concept." },
-    { title: "Grijpmachine", year: "2024", desc: "Tangible physical installation." },
-    { title: "Kodak", year: "2024", desc: "Photography and retro media exploration." },
-    { title: "Bomby Bird", year: "2024", desc: "Digital game design." },
-    { title: "Picknicken met Sophie", year: "2023", desc: "Event documentation." },
-    { title: "OSRS Kerst", year: "2023", desc: "Old School RuneScape themed project." },
-    { title: "De Grinch sloopt de kerstboom", year: "2023", desc: "Installatie art." },
-    { title: "Vechtclub XL", year: "2023", desc: "Design and branding." },
-    { title: "Hu Begeleidt", year: "2022", desc: "Educational project." },
-    { title: "Dan maar hier!", year: "2022", desc: "Creative expression." }
+    { title: "Generation plastic soup", year: "2025", img: "assets/home_3.jpg", desc: "Onderzoek naar plastic vervuiling en visuele representatie." },
+    { title: "Street Fresh", year: "2024", img: "assets/home_4.jpg", desc: "Urban design project gericht op versheid en lokale gemeenschappen." },
+    { title: "Samen spelen", year: "2024", img: "assets/home_6.jpg", desc: "Installatie gericht op interactie tussen kinderen." },
+    { title: "Grijpmachine", year: "2024", img: "assets/home_7.jpg", desc: "Een interactieve grijpmachine installatie." },
+    { title: "Kodak", year: "2024", img: "assets/home_9.jpg", desc: "Analoge fotografie experimenten." },
+    { title: "Bomby Bird", year: "2024", img: "assets/home_10.jpg", desc: "Game dev project: Bomby Bird." },
+    { title: "Picknicken met Sophie", year: "2023", img: "assets/home_12.jpg", desc: "Sociaal ontwerp project." },
+    { title: "OSRS Kerst", year: "2023", img: "assets/home_15.jpg", desc: "Community event visuals voor Old School RuneScape." },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "assets/home_18.jpg", desc: "Visuele storytelling installatie." },
+    { title: "Vechtclub XL", year: "2023", img: "assets/home_21.jpg", desc: "Branding en event organisatie voor Vechtclub XL." },
+    { title: "Hu Begeleidt", year: "2022", img: "assets/home_24.jpg", desc: "Design en begeleidingsconcept voor Hogeschool Utrecht." },
+    { title: "Dan maar hier!", year: "2022", img: "assets/home_27.jpg", desc: "Ruimtelijk ontwerp onderzoek." }
 ];
 
 const container = document.getElementById('project-container');
 
-function initPortfolio() {
+function renderProjects() {
     projects.forEach((proj, index) => {
         const card = document.createElement('div');
-        card.className = 'project-card';
+        card.className = 'project-card fade-in';
         card.innerHTML = `
-            <img src="assets/home_${index + 1}.jpg" alt="${proj.title}" onerror="this.src='https://via.placeholder.com/300x200'">
+            <img src="${proj.img}" alt="${proj.title}" onerror="this.src='https://via.placeholder.com/300'">
             <h3>${proj.title}</h3>
             <p>${proj.year}</p>
         `;
@@ -32,6 +32,7 @@ function initPortfolio() {
 function openModal(proj) {
     document.getElementById('modal-title').innerText = proj.title;
     document.getElementById('modal-year').innerText = proj.year;
+    document.getElementById('modal-image').src = proj.img;
     document.getElementById('modal-description').innerText = proj.desc;
     document.getElementById('project-modal').style.display = 'block';
 }
@@ -41,23 +42,18 @@ function closeModal() {
 }
 
 function acceptCookies() {
-    localStorage.setItem('cookies', 'accepted');
     document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
 }
 
 function refuseCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
 }
 
-// Check cookie consent on load
-window.onload = () => {
-    if (localStorage.getItem('cookies') === 'accepted') {
+// Initialisatie
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
+    if(localStorage.getItem('cookiesAccepted') === 'true') {
         document.getElementById('cookie-banner').style.display = 'none';
     }
-    initPortfolio();
-};
-
-// Close modal when clicking outside
-window.onclick = (event) => {
-    if (event.target == document.getElementById('project-modal')) closeModal();
-};
+});

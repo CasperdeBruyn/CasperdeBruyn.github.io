@@ -37,6 +37,7 @@
     </header>
 
     <main>
+        <!-- About Section -->
         <section id="about" class="about-section">
             <div class="container">
                 <h2 class="section-title">About me</h2>
@@ -62,32 +63,26 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
-                <h2 class="section-title">Work</h2>
-                <div class="projects-grid" id="projects-grid">
-                    <!-- Projecten worden hier via JS geladen of kunnen handmatig worden toegevoegd -->
-                    <div class="project-card" data-title="Generation plastic soup"><img src="assets/home_3.jpg" alt="Project"><h3>Generation plastic soup</h3><p>2025</p></div>
-                    <div class="project-card" data-title="Street Fresh"><img src="assets/home_4.jpg" alt="Project"><h3>Street Fresh</h3><p>2024</p></div>
-                    <div class="project-card" data-title="Samen spelen"><img src="assets/home_6.jpg" alt="Project"><h3>Samen spelen</h3><p>2024</p></div>
-                    <div class="project-card" data-title="Grijpmachine"><img src="assets/home_7.jpg" alt="Project"><h3>Grijpmachine</h3><p>2024</p></div>
-                    <div class="project-card" data-title="Kodak"><img src="assets/home_8.jpg" alt="Project"><h3>Kodak</h3><p>2024</p></div>
-                    <div class="project-card" data-title="Bomby Bird"><img src="assets/home_9.jpg" alt="Project"><h3>Bomby Bird</h3><p>2024</p></div>
-                    <div class="project-card" data-title="Picknicken met Sophie"><img src="assets/home_10.jpg" alt="Project"><h3>Picknicken met Sophie</h3><p>2023</p></div>
-                    <div class="project-card" data-title="OSRS Kerst"><img src="assets/home_11.jpg" alt="Project"><h3>OSRS Kerst</h3><p>2023</p></div>
-                    <div class="project-card" data-title="De Grinch sloopt de kerstboom"><img src="assets/home_12.jpg" alt="Project"><h3>De Grinch sloopt de kerstboom</h3><p>2023</p></div>
-                    <div class="project-card" data-title="Vechtclub XL"><img src="assets/home_13.jpg" alt="Project"><h3>Vechtclub XL</h3><p>2023</p></div>
-                    <div class="project-card" data-title="Hu Begeleidt"><img src="assets/home_14.jpg" alt="Project"><h3>Hu Begeleidt</h3><p>2022</p></div>
-                    <div class="project-card" data-title="Dan maar hier!"><img src="assets/home_15.jpg" alt="Project"><h3>Dan maar hier!</h3><p>2022</p></div>
+                <h2 class="section-title">Selected Work</h2>
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Dynamically populated by script.js -->
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; Casper de Bruyn.</p>
-        <a href="#" class="back-to-top">&uarr; Back to Top</a>
-    </footer>
+        <!-- Footer -->
+        <footer id="contact" class="footer">
+            <div class="container">
+                <p>&copy; Casper de Bruyn. Let's connect.</p>
+                <div class="back-to-top">
+                    <a href="#">&uarr; Back to Top</a>
+                </div>
+            </div>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>

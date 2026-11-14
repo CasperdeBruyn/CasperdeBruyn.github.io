@@ -6,12 +6,16 @@
 }
 
 :root {
-    /* The Dark Workshop Palet */
-    --bg-primary: #161412;        /* Diep Houtskool */
-    --bg-card: #231F1D;          /* Gerookt Eiken */
-    --text-primary: #F4F1EA;      /* Cloud Dancer */
-    --text-muted: #A09D98;        /* Subtiel grijs voor leesbaarheid */
-    --accent-copper: #C87D4B;     /* Gesmolten Amber */
+    /* Sophisticated Craft Palet */
+    --bg-primary: #121416;       /* Diep antraciet */
+    --bg-card: #1a1e21;         /* Lichter voor diepte */
+    --text-primary: #E0DFDD;    /* Zacht lichtgrijs */
+    --text-muted: #8a8a8a;      /* Subtiel grijs */
+    
+    /* Accenten */
+    --accent-olive: #5C6E58;    /* Natuurlijk/Over mij */
+    --accent-burgundy: #7A3E3E; /* Actie/Hover */
+    --accent-steel: #4A6278;    /* Tech/Homelab */
     
     /* Typografie */
     --font-sans: 'Inter', sans-serif;
@@ -25,7 +29,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-primary) !important;
+    background-color: var(--bg-primary);
     background-image: var(--grain-overlay);
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -42,22 +46,22 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: rgba(22, 20, 18, 0.9);
+    background: rgba(18, 20, 22, 0.95);
     backdrop-filter: blur(10px);
     z-index: 900;
-    border-bottom: 1px solid var(--accent-copper);
+    border-bottom: 1px solid var(--accent-olive);
 }
 
 .logo a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); text-decoration: none; }
-.logo span { color: var(--accent-copper); }
+.logo span { color: var(--accent-olive); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--transition); }
-.nav-links a:hover { color: var(--accent-copper); }
+.nav-links a:hover { color: var(--accent-burgundy); }
 
 /* Hero */
 .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
 .hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 1rem; }
-.hero h1 span { color: var(--accent-copper); }
+.hero h1 span { color: var(--accent-olive); }
 .subtitle { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; }
 
 /* Sections */
@@ -65,15 +69,15 @@ main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
 .section-title { margin-bottom: 2rem; text-align: center; font-family: var(--font-serif); color: var(--text-primary); }
 
 .project-card {
-    background-color: var(--bg-card) !important;
-    border: 1px solid #332d2a !important;
+    background-color: var(--bg-card);
+    border: 1px solid #2d3237;
     border-radius: 12px;
     padding: 1.5rem;
     transition: var(--transition);
 }
 
 .project-card:hover {
-    border-color: var(--accent-copper) !important;
+    border-color: var(--accent-burgundy);
     transform: translateY(-5px);
 }
 
@@ -86,4 +90,4 @@ main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
     gap: 2rem;
 }
 
-footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid #332d2a; }
+footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid #2d3237; }

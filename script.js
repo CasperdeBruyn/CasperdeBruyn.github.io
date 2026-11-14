@@ -1,4 +1,4 @@
-// Data for the portfolio projects
+// Project Data - Schaalbaar beheer
 const projects = [
     { title: "Generation plastic soup", year: "2025" },
     { title: "Street Fresh", year: "2024" },
@@ -14,35 +14,29 @@ const projects = [
     { title: "Dan maar hier!", year: "2022" }
 ];
 
-// Function to render projects
+// Functie om projecten te renderen
 function renderProjects() {
     const container = document.getElementById('project-container');
-    if (!container) return;
-
-    container.innerHTML = projects.map(p => `
+    container.innerHTML = projects.map(project => `
         <div class="project-card">
-            <h3>${typeof p.title === 'string' ? p.title.trim() : p.title}</h3>
-            <p>${p.year}</p>
+            <h3>${project.title}</h3>
+            <p>${project.year}</p>
         </div>
     `).join('');
 }
 
-// Cookie Logic
+// Cookie functies
 function acceptCookies() {
-    localStorage.setItem('cookiesAccepted', 'true');
     document.getElementById('cookie-banner').style.display = 'none';
+    console.log("Cookies accepted");
 }
 
 function hideCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
+    console.log("Cookies refused");
 }
 
-// Initialize
+// Initialisatie
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
-    
-    // Check if cookies were already accepted
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        document.getElementById('cookie-banner').style.display = 'none';
-    }
 });

@@ -571,14 +571,10 @@ section {
 .form-response-terminal {
     font-family: 'JetBrains Mono', monospace;
     margin-top: 1rem;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 4px;
     display: none;
     font-size: 0.9rem;
-}
-
-.form-response-terminal.success {
-    display: block;
     background: rgba(42, 111, 104, 0.15);
     border: 1px solid #2A6F68;
     color: #F4F1EA;
@@ -610,7 +606,13 @@ section {
     max-width: 320px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 4000;
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.cookie-banner.hidden {
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .cookie-banner p {
@@ -708,12 +710,11 @@ footer {
         gap: 1rem;
     }
 }
-```
 
 <!-- file: script.js -->
 /**
  * Casper de Bruyn Portfolio - Logic Builder & Interaction Layer
- * Handles animations, dynamic project filtering, terminal form transmission, project modals, and cookies.
+ * Handles animations, dynamic project filtering, terminal form transmission with secure hidden email routing, project modals, and cookies.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -787,6 +788,23 @@ document.addEventListener('DOMContentLoaded', () => {
             openProjectModal(projectKey);
         });
     });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProjectModal();
+        }
+    });
+
+    // Close modal on background click
+    const modalOverlay = document.getElementById('project-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeProjectModal();
+            }
+        });
+    }
 });
 
 /**
@@ -818,29 +836,4 @@ function openProjectModal(projectKey) {
         images = ['assets/images/generation-plastic-soup_1.jpg', 'assets/images/about-me_2.jpg'];
     } else {
         title = "Project Archive";
-        description = "Comprehensive documentation from Casper de Bruyn's maker archives.";
-        images = ['assets/images/about-me_1.jpg'];
-    }
-
-    let galleryHtml = '<div class="modal-gallery">';
-    images.forEach(img => {
-        galleryHtml += `<img src="${img}" alt="Project archive photo" loading="lazy">`;
-    });
-    galleryHtml += '</div>';
-
-    modalBody.innerHTML = `
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary);">${title}</h2>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">${description}</p>
-        <h4 style="font-family: 'JetBrains Mono', monospace; color: var(--accent-maker); margin-bottom: 0.75rem;">// ARCHIVE PHOTO SET</h4>
-        ${galleryHtml}
-    `;
-
-    modal.classList.add('active');
-}
-
-/**
- * Close Project Modal
- */
-function closeProjectModal() {
-    const modal = document.getElementById('project-modal');
-```
+        description = "Comprehensive documentation from Casper de

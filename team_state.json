@@ -1,9 +1,9 @@
 {
-  "iteration": 210,
+  "iteration": 211,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n# 🔍 Finale Inspectie Rapport: `CasperdeBruyn.github.io`\n**Inspector:** `qa_inspector` (Finale Bron-Inspector)\n**Status Audit:** ✅ **100% GOEDGEKEURD & DESIGN DNA COMPLIANT**\n---\n### 🎨 1. Toetsing aan het Project Design DNA (`stijl_en_kleuren.md`)\n| DNA Richtlijn / Wens | Geïmplementeerd in Bron | Status | Details & Validatie |\n| :--- | :--- | :---: | :--- |\n| **Geen diep wit (#FFFFFF)** | `--text-primary: #F4F1EA` | ✅ | Cloud Dancer warm wit toegepast; voorkomt vermoeidheid aan de ogen. |\n| **Kleurenpalet \"The Dark Workshop\"** | Op schijf in `:root` | ✅ | Achtergrond `#161412`, Kaarten `#231F1D`, Accent `#C87D4B` (Amber/Koper). |\n| **Tactiele Hout/Papier Ruis (Grain)** | SVG FeTurbulence Overlay | ✅ | Subtiele `body::before` ruis-overlay (opacity `0.035`) voor de ambachtelijke sfeer. |\n| **Contactformulier & Mail Routing** | Formulier + Modal Response | ✅ | E-mailadres `casper.debruyn@hotmail.com` is verborgen; bedankbericht activeert via JS. |\n| **Soc",
+  "last_qa_feedback": "Sub-agent `qa_inspector` fout na retry (timeout=240s): HTTPConnectionPool(host='localhost', port=20128): Read timed out. (read timeout=240)",
   "completed_changes": [],
-  "last_updated": "2026-11-14 22:42:52",
+  "last_updated": "2026-11-14 23:05:15",
   "is_running": true,
-  "current_step": "Iteratie 209 voltooid"
+  "current_step": "Iteratie 210 voltooid"
 }

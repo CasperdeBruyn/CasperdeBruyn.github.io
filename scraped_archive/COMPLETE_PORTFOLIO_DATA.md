@@ -1,4 +1,21 @@
-# Volledige Deep-Scrape van Bron: https://casperdebruyn.myportfolio.com
+# VOLLEDIG OVERZICHT VAN ALLE 16 GESCRAPETE PAGINA'S & PROJECTEN (VERPLICHT ALLEMAAL VERWERKEN IN INDEX.HTML!)
+
+- **Project/Pagina `about-me`** -> Beschikbare echte foto's in `assets/images/`: ['about-me_1.jpg', 'about-me_2.jpg', 'about-me_3.jpg', 'about-me_38.jpg', 'about-me_39.jpg', 'about-me_40.jpg']
+- **Project/Pagina `bomby-bird`** -> Beschikbare echte foto's in `assets/images/`: ['bomby-bird_1.jpg', 'bomby-bird_10.jpg', 'bomby-bird_11.jpg', 'bomby-bird_12.jpg', 'bomby-bird_13.jpg', 'bomby-bird_14.jpg']
+- **Project/Pagina `contact`** -> Beschikbare echte foto's in `assets/images/`: ['contact_1.jpg', 'contact_2.jpg']
+- **Project/Pagina `de-grinch-sloopt-de-kerstboom`** -> Beschikbare echte foto's in `assets/images/`: ['de-grinch-sloopt-de-kerstboom_1.jpg', 'de-grinch-sloopt-de-kerstboom_10.jpg', 'de-grinch-sloopt-de-kerstboom_11.jpg', 'de-grinch-sloopt-de-kerstboom_12.jpg', 'de-grinch-sloopt-de-kerstboom_13.jpg', 'de-grinch-sloopt-de-kerstboom_14.jpg']
+- **Project/Pagina `generation-plastic-soup`** -> Beschikbare echte foto's in `assets/images/`: ['generation-plastic-soup_1.jpg', 'generation-plastic-soup_10.jpg', 'generation-plastic-soup_11.jpg', 'generation-plastic-soup_12.jpg', 'generation-plastic-soup_13.jpg', 'generation-plastic-soup_14.jpg']
+- **Project/Pagina `grijpmachine`** -> Beschikbare echte foto's in `assets/images/`: ['grijpmachine_1.jpg', 'grijpmachine_10.jpg', 'grijpmachine_11.jpg', 'grijpmachine_12.jpg', 'grijpmachine_13.jpg', 'grijpmachine_14.jpg']
+- **Project/Pagina `home`** -> Beschikbare echte foto's in `assets/images/`: ['home_1.jpg', 'home_2.jpg', 'home_3.jpg', 'home_4.jpg']
+- **Project/Pagina `hu-begeleidt`** -> Beschikbare echte foto's in `assets/images/`: ['hu-begeleidt_1.jpg', 'hu-begeleidt_10.jpg', 'hu-begeleidt_11.jpg', 'hu-begeleidt_12.jpg', 'hu-begeleidt_13.jpg', 'hu-begeleidt_14.jpg']
+- **Project/Pagina `kodak`** -> Beschikbare echte foto's in `assets/images/`: ['kodak_1.jpg', 'kodak_10.jpg', 'kodak_11.jpg', 'kodak_12.jpg', 'kodak_13.jpg', 'kodak_14.jpg']
+- **Project/Pagina `osrs-kerstposter`** -> Beschikbare echte foto's in `assets/images/`: ['osrs-kerstposter_1.jpg', 'osrs-kerstposter_10.jpg', 'osrs-kerstposter_11.jpg', 'osrs-kerstposter_12.jpg', 'osrs-kerstposter_13.jpg', 'osrs-kerstposter_14.jpg']
+- **Project/Pagina `picknicken-met-sophie`** -> Beschikbare echte foto's in `assets/images/`: ['picknicken-met-sophie_1.jpg', 'picknicken-met-sophie_10.jpg', 'picknicken-met-sophie_11.jpg', 'picknicken-met-sophie_12.jpg', 'picknicken-met-sophie_13.jpg', 'picknicken-met-sophie_14.jpg']
+- **Project/Pagina `samen-spelen`** -> Beschikbare echte foto's in `assets/images/`: ['samen-spelen_1.jpg', 'samen-spelen_10.jpg', 'samen-spelen_11.jpg', 'samen-spelen_12.jpg', 'samen-spelen_13.jpg', 'samen-spelen_14.jpg']
+- **Project/Pagina `school-projecten`** -> Beschikbare echte foto's in `assets/images/`: ['school-projecten_1.jpg', 'school-projecten_10.jpg', 'school-projecten_11.jpg', 'school-projecten_12.jpg', 'school-projecten_13.jpg', 'school-projecten_14.jpg']
+- **Project/Pagina `vechtclub-xl`** -> Beschikbare echte foto's in `assets/images/`: ['vechtclub-xl_1.jpg', 'vechtclub-xl_10.jpg', 'vechtclub-xl_11.jpg', 'vechtclub-xl_12.jpg', 'vechtclub-xl_13.jpg', 'vechtclub-xl_14.jpg']
+- **Project/Pagina `work`** -> Beschikbare echte foto's in `assets/images/`: ['work_1.jpg', 'work_10.jpg', 'work_11.jpg', 'work_12.jpg', 'work_13.jpg', 'work_14.jpg']
+- **Project/Pagina `zeefdrukken`** -> Beschikbare echte foto's in `assets/images/`: ['zeefdrukken_1.jpg', 'zeefdrukken_10.jpg', 'zeefdrukken_11.jpg', 'zeefdrukken_12.jpg', 'zeefdrukken_13.jpg', 'zeefdrukken_2.jpg']
 
 
 ---

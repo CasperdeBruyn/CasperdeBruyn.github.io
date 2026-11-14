@@ -15,16 +15,17 @@
             <li><a href="#about">// 01. Manifesto</a></li>
             <li><a href="#projects">// 02. Workbench</a></li>
             <li><a href="#homelab">// 03. AI Core</a></li>
-            <li><a href="#contact">// 04. Connect</a></li>
+            <li><a href="#community">// 04. Community</a></li>
+            <li><a href="#contact">// 05. Connect</a></li>
             <li class="status-indicator">🟢 AI Agent Online</li>
         </ul>
     </nav>
 
     <header class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-badge">[DIGITAL & PHYSICAL CRAFT // DELFT, NL]</div>
+            <div class="hero-badge">[SYSTEM STATUS: ONLINE // AGENT V2.4 ACTIVE]</div>
             <h1>Bridging Physical Wood & Immersive Code.</h1>
-            <p class="subtitle">Welcome to my digital chaos. Born in Delft in '97 and studying Communication and Multimedia Design (CMD) at Hogeschool Utrecht, I operate at the intersection of tangible craftsmanship and immersive digital environments.</p>
+            <p class="subtitle">Welcome to my digital chaos. Born in Delft in '97 and studying Communication and Multimedia Design (CMD) at Hogeschool Utrecht, I merge a deep-rooted hands-on background in woodworking, electronics, and physical craftsmanship with cutting-edge digital interfaces, spatial installations, and autonomous AI agents.</p>
             <div class="terminal-box">
                 <code>> initializing maker_mode...<br>> loaded: [woodworking.exe] + [cmd_design.js] + [linux_ai_homelab.sh]<br>> status: ready to bend reality.</code>
             </div>
@@ -36,28 +37,35 @@
     </header>
 
     <main>
+        <!-- // 01. THE MAKER MANIFESTO -->
         <section id="about">
             <h2 class="section-title">// 01. THE MAKER MANIFESTO</h2>
             <p class="section-subtitle">Welcome to my digital chaos — glad you're taking a peek!</p>
             <div class="about-content">
-                <p>Let's keep it short and sweet so you can continue exploring. As you might've guessed already, my name is Casper :] I was born in Delft in '97 and I'm currently studying <strong>CMD (Communication and Multimedia Design)</strong> at Hogeschool Utrecht.</p>
-                
-                <p>In daily life, I love diving into all kinds of creative challenges. While my background is deeply rooted in working with my hands—like <strong>woodworking, electronics, and horticulture</strong>—I now combine that practical maker-mindset with the digital side of CMD. From designing logos and illustrations to building tangible installations, I love crafting just as much behind my laptop as I do in the physical world. On top of that, I run a Discord gaming community of 150+ members (and previously managed one with over 500 members!), where I organize awesome events and design custom visuals.</p>
-                
+                <div class="about-hero-layout">
+                    <div class="about-text-block">
+                        <p>Let's keep it short and sweet so you can continue exploring. As you might've guessed already, my name is Casper :] I was born in Delft in '97 and I'm currently studying <strong>CMD (Communication and Multimedia Design)</strong> at Hogeschool Utrecht.</p>
+                        <p>In daily life, I love diving into all kinds of creative challenges. While my background is deeply rooted in working with my hands—like woodworking (building custom shelving inspired by the Poul Cadovius Royal System in birch/falcata plywood, or floating benches with French cleats), electronics, and horticulture—I now combine that practical maker-mindset with the digital side of CMD. From designing logos and illustrations to building tangible installations, I love crafting just as much behind my laptop as I do in the physical world.</p>
+                    </div>
+                    <div class="about-image-spotlight">
+                        <img src="assets/images/about-me_1.jpg" alt="Casper working in the workshop" loading="lazy">
+                    </div>
+                </div>
+
                 <div class="about-images-grid">
-                    <img src="assets/images/about-me_1.jpg" alt="Casper working in the workshop" loading="lazy">
                     <img src="assets/images/about-me_2.jpg" alt="Workshop craft detail" loading="lazy">
                     <img src="assets/images/about-me_3.jpg" alt="Creative setup and tools" loading="lazy">
+                    <img src="assets/images/about-me_38.jpg" alt="Analog crafting and design" loading="lazy">
                 </div>
 
                 <div class="about-grid">
                     <div class="about-card">
                         <h3>Tactile Craft & Woodwork</h3>
-                        <p>Currently building a custom shelving unit inspired by the Poul Cadovius Royal System wall unit using birch/falcata plywood, crafting floating benches secured with French cleats, and wiring custom smart-home lighting integrations.</p>
+                        <p>Currently building custom shelving inspired by the Poul Cadovius Royal System wall unit using birch/falcata plywood, crafting floating benches secured with French cleats, and wiring smart-home lighting integrations.</p>
                     </div>
                     <div class="about-card">
                         <h3>Community & Visuals</h3>
-                        <p>Running active Discord communities (150+ to 500+ members), organizing live events, designing custom UI assets, posters, and screen-printing apparel.</p>
+                        <p>Running active Discord gaming communities (150+ to 500+ members), organizing live events, designing custom UI assets, posters, and screen-printing apparel.</p>
                     </div>
                     <div class="about-card">
                         <h3>Autonomous Infrastructure</h3>
@@ -66,69 +74,116 @@
                 </div>
 
                 <div class="hobbies-box">
-                    <h3>My Hobbies & Experiments</h3>
-                    <p>Gaming with friends, listening to music, soaking up culture by traveling, and expanding my skill set. Think: screen-printing my own designs, crafting posters, designing a ring with a goldsmith, or building party decorations!</p>
+                    <h3>The Immersive Mission & Hobbies</h3>
                     <p class="highlight-mission"><strong>Most of all, I love creating immersive experiences.</strong> Why? I absolutely love building installations or decorating spaces to give people a brand-new experience or bring a story to life. If I can take them completely out of reality for even a moment, my mission is 100% accomplished.</p>
-                    <p><em>I'm still exploring what life has to offer. Shall we continue the journey together? Take a look around my portfolio, and feel free to send me a message!</em></p>
+                    <p>Outside of building and coding, you'll find me gaming with friends, listening to music, soaking up culture by traveling, and expanding my skill set. Think: screen-printing my own designs, crafting posters, designing a ring with a goldsmith, or building party decorations!</p>
                 </div>
             </div>
         </section>
 
+        <!-- // 02. THE WORKBENCH / PROJECTS -->
         <section id="projects">
             <h2 class="section-title">// 02. THE WORKBENCH</h2>
             <p class="section-subtitle">Selected works ranging from physical woodwork and spatial design to game physics and digital media.</p>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">[ All ]</button>
+                <button class="filter-btn" data-filter="craft">[ Physical Craft ]</button>
+                <button class="filter-btn" data-filter="digital">[ Digital & Games ]</button>
+                <button class="filter-btn" data-filter="ai">[ AI & Systems ]</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card" data-category="craft">
-                    <img class="project-image" src="assets/images/generation-plastic-soup_1.jpg" alt="Generation Plastic Soup" loading="lazy">
-                    <div class="project-info">
-                        <h3>Generation Plastic Soup</h3>
-                        <p>2025 – Visualizing environmental impact through interactive spatial design and immersive media.</p>
-                    </div>
-                </div>
-                <div class="project-card" data-category="craft">
-                    <img class="project-image" src="assets/images/bomby-bird_1.jpg" alt="Bomby Bird" loading="lazy">
-                    <div class="project-info">
-                        <h3>Bomby Bird</h3>
-                        <p>2024 – Custom game design & physical-digital interaction architecture combining retro arcade mechanics with bespoke 2D/3D art assets.</p>
-                    </div>
-                </div>
                 <div class="project-card" data-category="craft">
                     <img class="project-image" src="assets/images/grijpmachine_1.jpg" alt="Grijpmachine" loading="lazy">
                     <div class="project-info">
-                        <h3>Grijpmachine</h3>
-                        <p>2024 – A nod to arcade nostalgia, translated into modern interactive hardware and custom mechanical engineering.</p>
+                        <h3>Grijpmachine ("Lucky Grapple")</h3>
+                        <p>2024 – Fully functional physical arcade claw machine built with woodworking and syringe-actuated hydraulics to distribute snacks at school.</p>
                     </div>
                 </div>
                 <div class="project-card" data-category="craft">
-                    <img class="project-image" src="assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" alt="The Grinch" loading="lazy">
+                    <img class="project-image" src="assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" alt="De Grinch sloopt de kerstboom" loading="lazy">
                     <div class="project-info">
-                        <h3>The Grinch Spatial</h3>
-                        <p>2023 – Narrative spatial design exploration, set construction, and holiday installation art designed to immerse viewers.</p>
+                        <h3>De Grinch sloopt de kerstboom</h3>
+                        <p>2023 – Rapid tabletop prototype featuring DIY popsicle-stick catapults and a tiered 3D Christmas tree for chaotic holiday fun.</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="digital">
+                    <img class="project-image" src="assets/images/bomby-bird_1.jpg" alt="Bomby Bird" loading="lazy">
+                    <div class="project-info">
+                        <h3>Bomby Bird</h3>
+                        <p>2024 – Custom retro-styled Flappy Bird spin written from scratch with bespoke 2D/3D digital art assets for the main character.</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="digital">
+                    <img class="project-image" src="assets/images/generation-plastic-soup_1.jpg" alt="Generation Plastic Soup" loading="lazy">
+                    <div class="project-info">
+                        <h3>Generation Plastic Soup</h3>
+                        <p>2025 – Game Jam collaborative project (EPIC-WE & Beeld & Geluid) raising awareness about EU values and rising sea levels.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- // 03. AI CORE & HOMELAB -->
         <section id="homelab">
-            <h2 class="section-title">// 03. AI CORE & HOMELAB</h2>
+            <h2 class="section-title">// 03. AI CORE & LINUX HOMELAB</h2>
             <div class="homelab-content">
                 <p>Behind every pixel and piece of code lies a robust physical foundation. My local Linux AI Homelab runs custom autonomous agents, handles local model inference, and manages continuous deployment for projects like this portfolio.</p>
                 <div class="homelab-status-card">
                     <code>
                         [HOST]: casper-homelab-node01<br>
-                        [OS]: Arch/Ubuntu Server Hardened<br>
-                        [AGENTS]: Active (Constructing & Optimizing UI)<br>
+                        [OS]: Ubuntu Server / Docker Swarm (Hardened)<br>
+                        [AGENT_DAEMON]: Active (Analyzing archives & rendering UI)<br>
                         [UPTIME]: 99.9% Workshop Verified
                     </code>
                 </div>
             </div>
         </section>
 
+        <!-- // 04. COMMUNITY & HOBBIES -->
+        <section id="community">
+            <h2 class="section-title">// 04. COMMUNITY & EXTRA-CURRICULAR</h2>
+            <div class="community-grid">
+                <div class="about-card">
+                    <h3>Discord Gaming Communities</h3>
+                    <p>Managing vibrant gaming communities of 150+ to 500+ members. Organizing community events, game nights, and crafting custom visual identities and UI branding.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Analog Crafting & Design</h3>
+                    <p>Pushing creative boundaries beyond the screen — designing custom rings with a professional goldsmith, manual screen-printing apparel, and building immersive party props.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Cultural Exploration</h3>
+                    <p>Traveling to new cities, soaking up architecture, and gathering fresh inspiration for spatial design projects and interactive storytelling.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- // 05. LET'S CONNECT -->
         <section id="contact">
-            <h2 class="section-title">// 04. LET'S CONNECT</h2>
+            <h2 class="section-title">// 05. INITIALIZE TRANSMISSION</h2>
             <p>I'm still exploring what life has to offer. Shall we continue the journey together? Take a look around my portfolio, and feel free to send me a message if you have any questions or want to collaborate!</p>
-            <div class="contact-actions">
-                <a href="mailto:casper@example.com" class="cta-button">[ Send an Email ]</a>
+            
+            <form id="contact-form" class="terminal-form" onsubmit="handleTransmission(event)">
+                <div class="form-group">
+                    <label for="name">Volledige naam *</label>
+                    <input type="text" id="name" name="name" placeholder="[ Enter your full name... ]" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mailadres *</label>
+                    <input type="email" id="email" name="email" placeholder="[ Enter your email address... ]" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Wat kan ik voor je doen? *</label>
+                    <textarea id="message" name="message" rows="4" placeholder="[ Describe your project or inquiry... ]" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">[ Send Transmission ]</button>
+            </form>
+            <div id="form-response" class="form-response-terminal"></div>
+
+            <div class="contact-actions" style="margin-top: 2rem;">
+                <a href="mailto:casper@example.com" class="cta-button secondary">[ Send Direct Email ]</a>
                 <a href="https://discord.com" target="_blank" class="cta-button secondary">[ Join Discord Community ]</a>
             </div>
         </section>

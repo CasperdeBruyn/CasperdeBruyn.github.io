@@ -3,363 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casper de Bruyn — Creative Technologist &amp; Maker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Casper de Bruyn — Creative Technologist & Maker</title>
+    <!-- Fonts: Inter for readability, JetBrains Mono for the technical/terminal feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Grain overlay SVG filter -->
+    <svg style="display:none;">
+        <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.60" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.1" />
+            </feComponentTransfer>
+            <feComposite operator="in" in2="SourceGraphic" />
+        </filter>
+    </svg>
 </head>
-<body>
+<body class="dark-workshop">
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
 
-    <!-- NAV BAR -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="logo">
-            <a href="#home">
-                <!-- Inline SVG Vector Logo to prevent pixelation -->
-                <svg class="logo-svg" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
-                    <path d="M20 20H80V40H40V60H80V80H20V20Z" stroke="#C87D4B" stroke-width="8" stroke-linejoin="round"/>
-                    <circle cx="50" cy="50" r="10" fill="#C87D4B"/>
+            <a href="#home" class="logo-link">
+                <!-- Inline SVG Logo to prevent pixelation - Inspired by cdb creative branding -->
+                <svg class="logo-svg" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="80" height="80" rx="4" stroke="#C87D4B" stroke-width="6"/>
+                    <path d="M30 35H70M30 50H55M30 65H70" stroke="#C87D4B" stroke-width="6" stroke-linecap="round"/>
+                    <circle cx="75" cy="50" r="8" fill="#C87D4B"/>
                 </svg>
-                <span class="logo-text">CDB <span class="dim">// CREATIVE</span></span>
+                <div class="logo-text-group">
+                    <span class="logo-main">CASPER DE BRUYN</span>
+                    <span class="logo-sub">// CREATIVE TECHNOLOGIST</span>
+                </div>
             </a>
         </div>
+        
         <ul class="nav-links">
-            <li><a href="#about">// 01. Manifesto</a></li>
-            <li><a href="#projects">// 02. Workbench</a></li>
-            <li><a href="#homelab">// 03. AI Core</a></li>
-            <li><a href="#community">// 04. Community</a></li>
-            <li><a href="#contact">// 05. Connect</a></li>
-            <li class="status-indicator"><span class="pulse-dot"></span> AI Agent Active</li>
+            <li><a href="#about"><span class="nav-num">// 01.</span> About</a></li>
+            <li><a href="#workbench"><span class="nav-num">// 02.</span> Workbench</a></li>
+            <li><a href="#lab"><span class="nav-num">// 03.</span> AI Lab</a></li>
+            <li><a href="#contact"><span class="nav-num">// 04.</span> Contact</a></li>
         </ul>
-        <div class="nav-socials">
-            <!-- SVG Instagram Icon -->
-            <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" title="Instagram" class="social-svg-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-            </a>
-            <!-- SVG LinkedIn Icon -->
-            <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" title="LinkedIn" class="social-svg-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-            </a>
+
+        <div class="nav-meta">
+            <div class="status-pill">
+                <span class="pulse-dot"></span>
+                <span class="status-text">AI Homelab Node Online</span>
+            </div>
+            <div class="nav-socials">
+                <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="hero" id="home">
-        <div class="hero-content">
-            <span class="terminal-tag">// SYSTEM READY: CASPER_DE_BRUYN_PORTFOLIO_V2.6</span>
-            <h1>Crafting Digital Chaos &amp; Tangible Realities.</h1>
-            <p class="subtitle">Where the smell of freshly sawn oak meets the hum of a Linux AI Homelab. I am Casper de Bruyn — a Communication and Multimedia Design student at Hogeschool Utrecht with a maker’s heart and a builder’s mind.</p>
-            <div class="terminal-box">
-                <code>&gt; initializing maker_mode...<br>&gt; loaded: [woodworking.exe] + [cmd_design.js] + [linux_ai_homelab.sh]<br>&gt; status: active_agent_compiling_archives</code>
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="terminal-header">
+                <span class="terminal-user">casper@homelab:</span><span class="terminal-dir">~</span><span class="terminal-prompt">$</span> run manifesto.sh
             </div>
-            <div class="hero-cta">
-                <a href="#projects" class="cta-button">[ Explore Workbench ]</a>
-                <a href="#contact" class="cta-button secondary">[ Initialize Contact ]</a>
+            <h1 class="hero-title">Crafting Digital Chaos & <span class="accent-text">Tangible Realities.</span></h1>
+            <p class="hero-description">
+                Born in '97, Delft-based maker. Studying Communication and Multimedia Design at HU Utrecht. 
+                I bridge the gap between sawdust-covered workshops and high-performance AI deployments.
+            </p>
+            <div class="hero-actions">
+                <a href="#workbench" class="btn btn-primary">[ View Workbench ]</a>
+                <a href="#contact" class="btn btn-secondary">[ Initialize Transmission ]</a>
             </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
 
-    <main>
-        <!-- // 01. THE MAKER MANIFESTO -->
-        <section id="about">
-            <h2 class="section-title">// 01. THE MAKER MANIFESTO</h2>
-            <p class="section-subtitle">Welcome to my digital workshop and creative chaos!</p>
-            <div class="about-content">
-                <div class="about-hero-layout">
-                    <div class="about-text-block">
-                        <p>Welcome to my (digital) chaos, glad you're taking a peek! I was born in Delft in '97 and I'm currently studying CMD (Communication and Multimedia Design) at Hogeschool Utrecht.</p>
-                        <p>My background is deeply rooted in physical craftsmanship. Before transitioning into design and code, I worked extensively with my hands—woodworking, electrical installations, and horticulture. Today, I combine that tactile "makers-mindset" with digital innovation.</p>
-                        <p>Whether I'm designing vector logos, setting up a custom Linux server, or craft-building a birch/falcata plywood wall unit inspired by Poul Cadovius with integrated smart home lighting and French cleats, I treat every project as an immersive experience.</p>
-                    </div>
-                    <div class="about-image-spotlight">
-                        <img src="assets/images/about-me_1.jpg" alt="Casper's handcrafted furniture and workshop setup" loading="lazy">
+    <!-- SECTION 01: ABOUT -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-label">// 01. SOURCE_CODE & CRAFT</div>
+            <div class="about-layout">
+                <div class="about-text">
+                    <h2 class="section-title">The Maker Manifesto</h2>
+                    <p>My journey didn't start behind a screen, but in the workshop—surrounded by the smell of sawdust and the hum of electronics. With a background in professional woodworking, electrical engineering, and horticulture, I've developed a tactile 'maker-mindset' that defines my digital work.</p>
+                    <p>I don’t just design interfaces; I construct experiences. Whether I’m hand-carving custom cabinets inspired by <strong>Poul Cadovius</strong> or building a <strong>Linux-based AI Homelab</strong> to manage my creative pipeline, I thrive at the intersection of the physical and the digital.</p>
+                    <div class="about-stats">
+                        <div class="stat-item"><span class="stat-num">97</span><span class="stat-label">Model Year</span></div>
+                        <div class="stat-item"><span class="stat-num">150+</span><span class="stat-label">Community Size</span></div>
+                        <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Creative Drive</span></div>
                     </div>
                 </div>
-
-                <div class="about-images-grid">
-                    <img src="assets/images/about-me_2.jpg" alt="Workshop material detail" loading="lazy">
-                    <img src="assets/images/about-me_3.jpg" alt="Woodworking fabrication process" loading="lazy">
-                    <img src="assets/images/about-me_38.jpg" alt="Plywood precision routing" loading="lazy">
-                </div>
-
-                <div class="about-grid">
-                    <div class="about-card">
-                        <h3>Tactile Craft &amp; Woodwork</h3>
-                        <p>Precision woodworking, custom shelving inspired by mid-century modular systems, floating furniture secured with French cleats, and hardware prototyping.</p>
+                <div class="about-visuals">
+                    <div class="image-stack">
+                        <div class="image-frame main-frame">
+                            <img src="assets/images/about-me_1.jpg" alt="Casper in the workshop">
+                        </div>
+                        <div class="image-frame sub-frame">
+                            <img src="assets/images/about-me_2.jpg" alt="Woodwork detail">
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <h3>Community &amp; Visuals</h3>
-                        <p>Managing vibrant gaming communities (150+ to 500+ members), organizing community events, and designing bespoke visual identities, posters, and apparel.</p>
-                    </div>
-                    <div class="about-card">
-                        <h3>Autonomous Infrastructure</h3>
-                        <p>Maintaining a local Linux AI Homelab running autonomous agent pipelines that process workloads and assist in code generation and deployments.</p>
-                    </div>
-                </div>
-
-                <div class="hobbies-box">
-                    <h3>The Immersive Mission &amp; Hobbies</h3>
-                    <p class="highlight-mission"><strong>Most of all, I love creating immersive experiences.</strong> Whether building physical installations or decorating spaces, my goal is to give people a brand-new experience and take them completely out of reality for a moment. If I achieve that, my mission is 100% accomplished.</p>
-                    <p>Outside of building and coding, you'll find me gaming with friends, listening to music, soaking up culture by traveling, and expanding my skill set. Think: screen-printing my own designs, creating posters, designing a ring with a goldsmith, or making party decorations!</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- // 02. THE WORKBENCH / PROJECTS -->
-        <section id="projects">
-            <h2 class="section-title">// 02. THE WORKBENCH</h2>
-            <p class="section-subtitle">Selected works ranging from physical woodwork and spatial design to game physics and digital media. Click any project to inspect full archives and photo sets.</p>
+    <!-- SECTION 02: WORKBENCH -->
+    <section class="section workbench-section" id="workbench">
+        <div class="container">
+            <div class="section-label">// 02. THE WORKBENCH</div>
+            <h2 class="section-title">Selected Masterpieces</h2>
+            <p class="section-intro">A collection of 12 projects spanning physical craftsmanship, immersive installations, and digital design.</p>
             
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">[ All ]</button>
-                <button class="filter-btn" data-filter="craft">[ Physical Craft ]</button>
-                <button class="filter-btn" data-filter="digital">[ Digital &amp; Games ]</button>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project 1: Poul Cadovius Wall Unit & Floating Bench -->
-                <div class="project-card" data-category="craft" data-project="poul-cadovius">
-                    <img class="project-image" src="assets/images/about-me_1.jpg" alt="Poul Cadovius Wall Unit & Floating Bench" loading="lazy">
-                    <div class="project-info">
-                        <h3>Poul Cadovius Wall Unit &amp; Floating Bench</h3>
-                        <p>2024 - Present — A custom modular mid-century inspired shelving system using Birch and Falcata plywood, featuring French Cleats and smart LED automation.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+            <div class="workbench-grid">
+                <!-- Project 1 -->
+                <div class="workbench-card" data-project="poul-cadovius">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_1.jpg" alt="Poul Cadovius Wall System">
+                        <div class="card-category">Craft // Woodworking</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Poul Cadovius Wall System</h3>
+                        <p>Custom modular shelving inspired by mid-century design.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 2: Bomby Bird -->
-                <div class="project-card" data-category="digital" data-project="bomby-bird">
-                    <img class="project-image" src="assets/images/bomby-bird_1.jpg" alt="Bomby Bird gameplay and artwork" loading="lazy">
-                    <div class="project-info">
+                <!-- Project 2 -->
+                <div class="workbench-card" data-project="floating-bench">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_3.jpg" alt="Floating Bench">
+                        <div class="card-category">Craft // Interior</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Floating Bench (French Cleats)</h3>
+                        <p>Spatial efficiency through invisible, rock-solid support systems.</p>
+                        <span class="card-action">[ Access Archive ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="workbench-card" data-project="grijpmachine">
+                    <div class="card-image">
+                        <img src="assets/images/grijpmachine_1.jpg" alt="De Grijpmachine">
+                        <div class="card-category">Immersive // Physical Code</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>De Grijpmachine</h3>
+                        <p>A tangible claw machine built from the ground up with interactive code.</p>
+                        <span class="card-action">[ Access Archive ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="workbench-card" data-project="vechtclub">
+                    <div class="card-image">
+                        <img src="assets/images/contact_1.jpg" alt="Vechtclub XL">
+                        <div class="card-category">Immersive // Scenography</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Vechtclub XL</h3>
+                        <p>Large-scale immersive experience design and storytelling.</p>
+                        <span class="card-action">[ Access Archive ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="workbench-card" data-project="grinch">
+                    <div class="card-image">
+                        <img src="assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" alt="De Grinch">
+                        <div class="card-category">Game Design // Analog</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>De Grinch sloopt de Kerstboom</h3>
+                        <p>A chaotic rapid-prototyped tabletop game with physical catapults.</p>
+                        <span class="card-action">[ Access Archive ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="workbench-card" data-project="zeefdrukken">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_40.jpg" alt="Custom Screen-Printing">
+                        <div class="card-category">Graphic // Analog</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Custom Screen-Printing</h3>
+                        <p>Hand-pulled prints exploring ink textures on physical media.</p>
+                        <span class="card-action">[ Access Archive ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="workbench-card" data-project="bomby-bird">
+                    <div class="card-image">
+                        <img src="assets/images/bomby-bird_1.jpg" alt="Bomby Bird Assets">
+                        <div class="card-category">Code // Digital Art</div>
+                    </div>
+                    <div class="card-content">
                         <h3>Bomby Bird</h3>
-                        <p>2023–2024 — A retro educational game project. Designed with custom 2D/3D character models and flying bomb assets.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                        <p>Deep dive into game logic and custom 3D flying bomb assets.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 3: De Grinch sloopt de kerstboom -->
-                <div class="project-card" data-category="craft" data-project="de-grinch-sloopt-de-kerstboom">
-                    <img class="project-image" src="assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" alt="De Grinch sloopt de kerstboom game setup" loading="lazy">
-                    <div class="project-info">
-                        <h3>De Grinch sloopt de kerstboom</h3>
-                        <p>2023 — Interactive physical tabletop game crafted within 1 week, with popsicle stick catapults and layered cardboard art.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                <!-- Project 8 -->
+                <div class="workbench-card" data-project="plastic-soup">
+                    <div class="card-image">
+                        <img src="assets/images/generation-plastic-soup_1.jpg" alt="Generation Plastic Soup">
+                        <div class="card-category">CMD // UX Campaign</div>
                     </div>
-                </div>
-
-                <!-- Project 4: Generation Plastic Soup -->
-                <div class="project-card" data-category="digital" data-project="generation-plastic-soup">
-                    <img class="project-image" src="assets/images/generation-plastic-soup_1.jpg" alt="Generation Plastic Soup Game Jam cards" loading="lazy">
-                    <div class="project-info">
+                    <div class="card-content">
                         <h3>Generation Plastic Soup</h3>
-                        <p>2025 — Cooperative Game Jam card game exploring marine preservation and corporate generational conflicts.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                        <p>Strategic card game designed during an EPIC-WE Game Jam.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 5: Grijpmachine -->
-                <div class="project-card" data-category="craft" data-project="grijpmachine">
-                    <img class="project-image" src="assets/images/grijpmachine_1.jpg" alt="Grijpmachine physical cabinet" loading="lazy">
-                    <div class="project-info">
-                        <h3>Grijpmachine (The claw machine)</h3>
-                        <p>2024 — Fully functional physical custom claw machine built to explore arcade ergonomics and hardware mechanics.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                <!-- Project 9 -->
+                <div class="workbench-card" data-project="osrs-poster">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_39.jpg" alt="OSRS Kerstposter">
+                        <div class="card-category">Digital Art // Retro</div>
                     </div>
-                </div>
-
-                <!-- Project 6: HU Begeleidt -->
-                <div class="project-card" data-category="digital" data-project="hu-begeleidt">
-                    <img class="project-image" src="assets/images/hu-begeleidt_1.jpg" alt="HU Begeleidt interface prototype" loading="lazy">
-                    <div class="project-info">
-                        <h3>HU Begeleidt</h3>
-                        <p>2022 — Student-first digital platform concept built using Figma and user research to improve academic mentorship matchmaking.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
-                    </div>
-                </div>
-
-                <!-- Project 7: Kodak Heritage Project -->
-                <div class="project-card" data-category="digital" data-project="kodak">
-                    <img class="project-image" src="assets/images/kodak_1.jpg" alt="Kodak Heritage graphic system" loading="lazy">
-                    <div class="project-info">
-                        <h3>Kodak Heritage Campaign</h3>
-                        <p>2024 — Modern retro-branding campaign celebrating and reviving analog film photography layouts for Gen-Z.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
-                    </div>
-                </div>
-
-                <!-- Project 8: OSRS Kerstposter -->
-                <div class="project-card" data-category="digital" data-project="osrs-kerstposter">
-                    <img class="project-image" src="assets/images/osrs-kerstposter_1.jpg" alt="OSRS Kerstposter digital art" loading="lazy">
-                    <div class="project-info">
+                    <div class="card-content">
                         <h3>OSRS Kerstposter</h3>
-                        <p>2023 — Holiday vector illustration created for community engagement, blending RuneScape nostalgic themes.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                        <p>Nostalgic vector art blending retro aesthetics with holiday themes.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 9: Picknicken met Sophie -->
-                <div class="project-card" data-category="craft" data-project="picknicken-met-sophie">
-                    <img class="project-image" src="assets/images/picknicken-met-sophie_1.jpg" alt="Picknicken met Sophie concept packaging" loading="lazy">
-                    <div class="project-info">
+                <!-- Project 10 -->
+                <div class="workbench-card" data-project="sophie">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_2.jpg" alt="Picknicken met Sophie">
+                        <div class="card-category">UX // Storytelling</div>
+                    </div>
+                    <div class="card-content">
                         <h3>Picknicken met Sophie</h3>
-                        <p>2023 — Immersive sensory outdoor storytelling system with custom natural wood case, designed for tactile interaction.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                        <p>An exploration of user experience through narrative flow.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 10: Samen Spelen -->
-                <div class="project-card" data-category="craft" data-project="samen-spelen">
-                    <img class="project-image" src="assets/images/samen-spelen_1.jpg" alt="Samen Spelen educational interface" loading="lazy">
-                    <div class="project-info">
-                        <h3>Samen Spelen</h3>
-                        <p>2024 — Co-operative wooden pulley installation designed to encourage motor coordination and teamwork among children.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                <!-- Project 11 -->
+                <div class="workbench-card" data-project="hu-begeleidt">
+                    <div class="card-image">
+                        <img src="assets/images/about-me_38.jpg" alt="HU Begeleidt">
+                        <div class="card-category">UX Research // Web</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>HU Begeleidt</h3>
+                        <p>Supportive digital platform conceptualized for students at HU.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
 
-                <!-- Project 11: Vechtclub XL -->
-                <div class="project-card" data-category="craft" data-project="vechtclub-xl">
-                    <img class="project-image" src="assets/images/vechtclub-xl_1.jpg" alt="Vechtclub XL immersive space design" loading="lazy">
-                    <div class="project-info">
-                        <h3>Vechtclub XL Space Design</h3>
-                        <p>2023 — High-contrast wooden scenography and customized spatial stage lighting to trigger interaction and creativity.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                <!-- Project 12 -->
+                <div class="workbench-card" data-project="kodak">
+                    <div class="card-image">
+                        <img src="assets/images/contact_2.jpg" alt="Kodak Retro Rebranding">
+                        <div class="card-category">Graphic // Branding</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Kodak Retro Rebranding</h3>
+                        <p>Merging analog heritage with a futuristic digital identity.</p>
+                        <span class="card-action">[ Access Archive ]</span>
                     </div>
                 </div>
-
-                <!-- Project 12: Screen-printing & Posters -->
-                <div class="project-card" data-category="craft" data-project="zeefdrukken">
-                    <img class="project-image" src="assets/images/zeefdrukken_1.jpg" alt="Screen printed poster series" loading="lazy">
-                    <div class="project-info">
-                        <h3>Screen-printing &amp; Posters</h3>
-                        <p>2024 — Hand-pulled silkscreen vector layouts experimenting with custom inks on heavy raw-grain organic papers.</p>
-                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- // 03. AI CORE & HOMELAB -->
-        <section id="homelab">
-            <h2 class="section-title">// 03. AI CORE &amp; LINUX HOMELAB</h2>
-            <div class="homelab-content">
-                <p>Deep inside my technical setup runs a dedicated Linux AI Homelab. This environment hosts experimental local LLMs and autonomous agents (including the agent that engineered and structured this website). It represents the intersection of my technical tinkering, automation passion, and digital design workflow.</p>
-                <div class="homelab-status-card">
-                    <code>
-                        [HOST]: casper-homelab-node01<br>
-                        [OS]: Ubuntu Server / Docker Swarm (Hardened)<br>
-                        [AGENT_DAEMON]: Active (Analyzing archives &amp; rendering UI)<br>
-                        [UPTIME]: 99.9% Workshop Verified
-                    </code>
-                </div>
-            </div>
-        </section>
-
-        <!-- // 04. COMMUNITY & HOBBIES -->
-        <section id="community">
-            <h2 class="section-title">// 04. COMMUNITY &amp; EXTRA-CURRICULAR</h2>
-            <div class="community-grid">
-                <div class="about-card">
-                    <h3>Discord Gaming Communities</h3>
-                    <p>Managing vibrant gaming communities of 150+ to 500+ members. Organizing community events, game nights, and crafting custom visual identities and UI branding.</p>
-                </div>
-                <div class="about-card">
-                    <h3>Analog Crafting &amp; Design</h3>
-                    <p>Pushing creative boundaries beyond the screen — designing custom rings with a professional goldsmith, manual screen-printing apparel, and building immersive party props.</p>
-                </div>
-                <div class="about-card">
-                    <h3>Cultural Exploration</h3>
-                    <p>Traveling to new cities, soaking up architecture, and gathering fresh inspiration for spatial design projects and interactive storytelling.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- // 05. INITIALIZE TRANSMISSION (CONTACT) -->
-        <section id="contact">
-            <h2 class="section-title">// 05. INITIALIZE TRANSMISSION</h2>
-            <p>Have a question, a project proposal, or want to collaborate on an immersive installation? Drop a message below.</p>
-            
-            <div class="contact-form-container">
-                <form id="contact-form" class="terminal-form">
-                    <!-- Hidden recipient email address remains fully hidden from standard scrapers -->
-                    <input type="hidden" name="_to" value="casper.debruyn@hotmail.com">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" placeholder="[ Enter your full name... ]" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="[ Enter your email address... ]" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">How can we collaborate? *</label>
-                        <textarea id="message" name="message" rows="4" placeholder="[ Describe your project or inquiry... ]" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">[ Send Transmission ]</button>
-                </form>
-            </div>
-            <div id="form-response" class="form-response-terminal"></div>
-            <p class="form-notice">I hope to be in touch with you within two working days!</p>
-
-            <div class="contact-actions" style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" class="cta-button secondary">[ Instagram ]</a>
-                <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" class="cta-button secondary">[ LinkedIn ]</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- PROJECT MODAL POPUP CONTAINER -->
-    <div id="project-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
-            <div id="modal-body-content">
-                <!-- Dynamically populated by script.js -->
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- COOKIE BANNER -->
-    <div id="cookie-banner" class="cookie-banner">
-        <p><strong>Digital crumbs?</strong><br>My portfolio likes cookies :] Nomnomnom</p>
-        <div class="cookie-buttons">
-            <button onclick="acceptCookies()">Accept</button>
-            <button onclick="refuseCookies()">Not today</button>
+    <!-- SECTION 03: AI LAB -->
+    <section class="section lab-section" id="lab">
+        <div class="container">
+            <div class="section-label">// 03. SYSTEM_STATUS</div>
+            <div class="lab-layout">
+                <div class="terminal-console">
+                    <div class="console-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="title">casper@homelab: ~ /ai-core</span>
+                    </div>
+                    <div class="console-body" id="lab-logs">
+                        <p class="log-line">[OK] Booting Homelab Node01...</p>
+                        <p class="log-line">[OK] Loading Local LLM Pipelines...</p>
+                        <p class="log-line">[OK] Agent 'Craft-Gen' active.</p>
+                        <p class="log-line text-amber">> System is currently optimizing the synergy between human creativity and AI precision.</p>
+                        <p class="log-cursor">_</p>
+                    </div>
+                </div>
+                <div class="lab-info">
+                    <h2 class="section-title">The Linux AI Homelab</h2>
+                    <p>This portfolio is part of a living ecosystem. Running on my own Linux AI Homelab, this site is engineered with the help of autonomous agents. I believe the future of design lies in the synergy between raw human creativity and the precision of artificial intelligence.</p>
+                    <ul class="tech-list">
+                        <li>[x] Docker Swarm Node</li>
+                        <li>[x] Local LLM Hosting</li>
+                        <li>[x] Automated CI/CD Pipelines</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- SECTION 04: CONTACT -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-label">// 04. CONTACT_LINK</div>
+            <div class="contact-layout">
+                <div class="contact-header">
+                    <h2 class="section-title">Initialize Transmission</h2>
+                    <p>Ready to build something immersive together? Send a transmission or find me in the digital wild.</p>
+                    
+                    <div class="contact-socials">
+                        <a href="https://www.instagram.com/cdb.creative/" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span>@cdb.creative</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" class="social-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span>Casper de Bruyn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <!-- Secure Routing: Email hidden in standard HTML, handled by Formspree or equivalent -->
+                    <form action="https://formspree.io/f/xyyrqbqk" method="POST" id="contact-form">
+                        <div class="input-group">
+                            <label for="name">NAME</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter designation...">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">EMAIL</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter communication channel...">
+                        </div>
+                        <div class="input-group">
+                            <label for="message">MESSAGE</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Transmit your request..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">[ Execute Transmission ]</button>
+                    </form>
+                    <div id="contact-success" class="terminal-success" style="display:none;">
+                        [STATUS: TRANSMISSION SECURED - THANKS CASPER]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Casper de Bruyn. All rights reserved. Built at the intersection of wood and code.</p>
-            <div class="footer-socials" style="margin: 1rem 0; display: flex; justify-content: center; gap: 1.5rem;">
-                <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                    Instagram
-                </a>
-                <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                    LinkedIn
-                </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-main">CDB</span> <span class="logo-dim">// CREATIVE</span>
+                </div>
+                <p>&copy; 2026 Casper de Bruyn. All rights reserved. Built at the intersection of wood and code.</p>
+                <div class="footer-meta">
+                    <span>Model: v2.6.0-stable</span>
+                    <a href="#home" class="back-top">[ Back to Top ]</a>
+                </div>
             </div>
-            <p class="cookie-notice">My portfolio likes cookies :] Nomnomnom</p>
-            <a href="#home" class="back-to-top">&uarr; Back to Top</a>
         </div>
     </footer>
 
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-window">
+            <button class="modal-close" id="modal-close">×</button>
+            <div class="modal-content-area" id="modal-content">
+                <!-- Dynamically populated via script.js -->
+                <div class="modal-loading">Accessing Archives...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

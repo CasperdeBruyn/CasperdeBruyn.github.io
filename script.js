@@ -1,32 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Language Toggle
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const langContents = document.querySelectorAll('.lang-content');
+// Tab Switching logic
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+        
+        btn.classList.add('active');
+        document.getElementById(`content-${btn.dataset.lang}`).classList.add('active');
+    });
+});
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            const lang = button.getAttribute('data-lang');
-            langContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === `content-${lang}`) {
-                    content.classList.add('active');
-                }
-            });
+// Cookie banner functionality
+function acceptCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
+}
+
+function refuseCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+}
+
+// Initial state check
+window.onload = () => {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+};
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
     });
-
-    // Scroll Observer for Fade-in effects
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
 });

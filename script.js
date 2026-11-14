@@ -1,37 +1,30 @@
-// Tab Switching logic
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
-        
-        btn.classList.add('active');
-        document.getElementById(`content-${btn.dataset.lang}`).classList.add('active');
-    });
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // Language Tab Switching
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.lang-content');
 
-// Cookie banner functionality
-function acceptCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
-}
-
-function refuseCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-}
-
-// Initial state check
-window.onload = () => {
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        document.getElementById('cookie-banner').style.display = 'none';
-    }
-};
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(`content-${tab.dataset.lang}`).classList.add('active');
         });
     });
+
+    // Cookie Banner
+    const banner = document.getElementById('cookie-banner');
+    document.getElementById('accept-cookies').addEventListener('click', () => banner.style.display = 'none');
+    document.getElementById('refuse-cookies').addEventListener('click', () => banner.style.display = 'none');
+
+    // Simple Intersection Observer for Fade-in effects
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });

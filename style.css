@@ -121,6 +121,7 @@ body::before {
     margin-bottom: 1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .subtitle {
@@ -190,6 +191,7 @@ section {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .section-subtitle {
@@ -266,6 +268,7 @@ section {
     border-radius: 8px;
     border: 1px solid var(--border-subtle);
     margin-top: 2rem;
+    color: var(--text-muted);
 }
 
 .hobbies-box h3 {
@@ -442,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Dynamische Project Loader & Rendering
     const grid = document.querySelector('.projects-grid');
     if (grid) {
-        grid.innerHTML = ''; // Maak leeg om dubbele items te voorkomen en voeg de volledige set toe
+        grid.innerHTML = ''; 
         portfolioProjects.forEach(p => {
             const card = document.createElement('div');
             card.className = 'project-card fade-in';

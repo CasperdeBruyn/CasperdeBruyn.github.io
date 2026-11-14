@@ -1,9 +1,4 @@
-en tegenover myportfolio.* |
-| **Kodak** | 🆕 Missend | **Tier 1** | Sterke visuele storytelling kans. |
-| **Generation Plastic Soup** | 🆕 Missend | **Tier 1** | Immersieve/Maatschappelijke impact. |
-| **Grijpmachine** | 🆕 Missend | **Tier 1** | Techniek/Fysiek vakmanschap. |
-| **Zeefdrukken** | 🆕 Missend | **Tier 1** | Tactile/Craft aspect. |
-| **Vechtclub-XL** | 🆕 Missend | **Tier 1** | Branding/Design werk. |
+| 🆕 Missend | **Tier 1** | Branding/Design werk. |
 | **Hu-begeleidt** | 🆕 Missend | **Tier 2** | Waarschijnlijk proces/ondersteunend. |
 | **School-projecten** | 🆕 Missend | **Tier 2** | Educatief/Leerproces. |
 | **Picknicken met Sophie** | 🆕 Missend | **Tier 2** | Lifestyle/Lichter project. |
@@ -127,4 +122,9 @@ Ik adviseer de volgende taakverdeling om de deadline te halen:
 
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 220 (2026-11-15 00:46 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 221 (2026-11-15 00:46 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

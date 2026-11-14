@@ -2,13 +2,16 @@
     --bg-primary: #161412;
     --bg-card: #231F1D;
     --bg-card-hover: #2C2623;
+    --bg-modal: rgba(22, 20, 18, 0.95);
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
+    --text-dim: #6E685F;
     --accent-maker: #C87D4B;
+    --accent-hover: #D98E5C;
     --accent-glow: rgba(200, 125, 75, 0.25);
     --border-subtle: rgba(244, 241, 234, 0.08);
     --border-accent: rgba(200, 125, 75, 0.4);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * {
@@ -30,13 +33,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Tactile Grain Overlay */
+/* Tactile Grain & Cyber Grid Overlay */
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
-    opacity: 0.03;
+    opacity: 0.035;
     pointer-events: none;
     z-index: 999;
 }
@@ -148,13 +151,13 @@ body::before {
 }
 
 .hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
     margin-bottom: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    line-height: 1.15;
+    line-height: 1.1;
 }
 
 .subtitle {
@@ -212,7 +215,7 @@ body::before {
 }
 
 .cta-button.secondary:hover {
-    border-color: var(--text-primary);
+    border-color: var(--accent-primary, #F4F1EA);
     background: var(--text-primary);
     color: var(--bg-primary);
 }
@@ -225,10 +228,11 @@ section {
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .section-subtitle {
@@ -256,6 +260,12 @@ section {
     grid-template-columns: 3fr 2fr;
     gap: 3rem;
     align-items: center;
+}
+
+@media (max-width: 900px) {
+    .about-hero-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 .about-text-block {
@@ -323,10 +333,11 @@ section {
 }
 
 .about-card h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', system-ui, sans-serif;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-size: 1.35rem;
+    font-weight: 600;
 }
 
 .hobbies-box {
@@ -339,10 +350,11 @@ section {
 }
 
 .hobbies-box h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', system-ui, sans-serif;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .highlight-mission {
@@ -425,9 +437,10 @@ section {
 }
 
 .project-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.35rem;
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .project-info p {
@@ -446,7 +459,7 @@ section {
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(22, 20, 18, 0.85);
+    background: var(--bg-modal);
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -757,6 +770,22 @@ document.addEventListener('DOMContentLoaded', () => {
             openProjectModal(projectKey);
         });
     });
+
+    // 6. Modal close on outside click or ESC key
+    const modalOverlay = document.getElementById('project-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeProjectModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProjectModal();
+        }
+    });
 });
 
 /**
@@ -786,6 +815,10 @@ function openProjectModal(projectKey) {
         title = "Generation Plastic Soup";
         description = "A 2025 Game Jam collaborative project designed to raise awareness about EU values, environmental sustainability, and rising sea levels.";
         images = ['assets/images/generation-plastic-soup_1.jpg', 'assets/images/about-me_2.jpg'];
+    } else if (projectKey === 'hu-begeleidt') {
+        title = "Hu Begeleidt";
+        description = "A 2022 UX/UI design project focused on student guidance systems and supportive frameworks within Hogeschool Utrecht.";
+        images = ['assets/images/hu-begeleidt_1.jpg', 'assets/images/about-me_1.jpg'];
     } else {
         title = "Project Archive";
         description = "Comprehensive documentation from Casper de Bruyn's maker archives.";
@@ -799,7 +832,7 @@ function openProjectModal(projectKey) {
     galleryHtml += '</div>';
 
     modalBody.innerHTML = `
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary);">${title}</h2>
+        <h2 style="font-family: 'Inter', system-ui, sans-serif; font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 600;">${title}</h2>
         <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">${description}</p>
         <h4 style="font-family: 'JetBrains Mono', monospace; color: var(--accent-maker); margin-bottom: 0.75rem;">// ARCHIVE PHOTO SET</h4>
         ${galleryHtml}
@@ -830,9 +863,4 @@ function handleTransmission(event) {
     
     const name = formData.get('name');
     const email = formData.get('email');
-    const message = formData.get('message');
-    const recipient = formData.get('recipient') || 'casper.debruyn@hotmail.com';
-
-    // Simulated secure transmission to hidden recipient
-    responseBox.style.display = 'block';
-    responseBox.innerHTML = `> encrypting transmission payload...<br>> routing securely to [ ${recipient} ]...<
+    const recipient = formData.get('recipient') || 'casper.debruyn@hotmail.com

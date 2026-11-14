@@ -1,40 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cookie Logic
+    // Cookie Handling
     const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
-    const refuseBtn = document.getElementById('refuse-cookies');
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+        cookieBanner.style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true');
+    });
+    document.getElementById('refuse-cookies').addEventListener('click', () => {
+        cookieBanner.style.display = 'none';
+    });
 
-    if (localStorage.getItem('cookiesAccepted')) {
-        cookieBanner.classList.add('hidden');
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        cookieBanner.style.display = 'none';
     }
 
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieBanner.classList.add('hidden');
-    });
-
-    refuseBtn.addEventListener('click', () => {
-        cookieBanner.classList.add('hidden');
-    });
-
     // Language Tabs
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.lang-content');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const langContents = document.querySelectorAll('.lang-content');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById(`content-${tab.dataset.lang}`).classList.add('active');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const lang = btn.getAttribute('data-lang');
+            langContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === `content-${lang}`) content.classList.add('active');
+            });
         });
     });
 
-    // Simple Fade In Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('fade-in-visible');
-        });
+    // Back to top
+    document.getElementById('back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });

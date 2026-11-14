@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateContent(localStorage.getItem('lang') || 'en');
 
-    // 3. Staggered Intersection Observer
+    // 3. Staggered Intersection Observer voor animaties
     const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -45,23 +45,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-card, .about-section, section').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
-    });
-
-    // 4. Project Filter Functionaliteit
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            const filterValue = button.getAttribute('data-filter');
-            document.querySelectorAll('.project-card').forEach(card => {
-                const isMatch = filterValue === 'all' || card.dataset.category === filterValue;
-                card.style.opacity = isMatch ? '1' : '0';
-                setTimeout(() => {
-                    card.style.display = isMatch ? 'block' : 'none';
-                }, 300);
-            });
-        });
     });
 });

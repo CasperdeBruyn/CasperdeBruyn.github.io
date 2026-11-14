@@ -1,9 +1,9 @@
 {
-  "iteration": 214,
+  "iteration": 215,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls Finale Bron-Inspector (`qa_inspector`) heb ik de actuele toestand van `/home/casper/projects/CasperdeBruyn.github.io` geanalyseerd. Hier is het rapport over de implementatie van het \"Blueprint Terminal\" DNA.\n### 1. Audit van de wijzigingen\n*   **Visuele Identiteit:** De \"The Dark Workshop\" esthetiek is succesvol doorgevoerd. De `CSS`-variabelen (#161412, #C87D4B, #F4F1EA) zijn consistent toegepast. De introductie van de `grain-overlay` (via SVG filter) geeft de gewenste tactiele, analoge textuur.\n*   **Logo:** De vervanging van bitmap-afbeeldingen door een inline-SVG in de header is technisch geslaagd. Dit elimineert de eerder gerapporteerde pixelvorming volledig en biedt een scherpe, schaalbare `CDB`-markering.\n*   **Interactie-laag:** De `cursor-follower` is actief, wat bijdraagt aan de \"immersive\" ervaring. De `navbar` is gefixeerd met een modern `backdrop-filter`, wat aansluit bij de futuristische scifi-ambitie.\n*   **Architectuur:** De structu",
+  "last_qa_feedback": "Sub-agent `qa_inspector` fout na retry (timeout=240s): HTTP 400: {\"error\":{\"message\":\"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b",
   "completed_changes": [],
-  "last_updated": "2026-11-14 23:35:22",
+  "last_updated": "2026-11-14 23:50:32",
   "is_running": true,
-  "current_step": "Iteratie 213 voltooid"
+  "current_step": "Iteratie 214 voltooid"
 }

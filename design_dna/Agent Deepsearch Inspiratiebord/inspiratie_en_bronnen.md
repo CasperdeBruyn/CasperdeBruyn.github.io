@@ -1,50 +1,4 @@
-
-Het voorstel is **100% in lijn met het Project Design DNA**. Ik vraag bij deze om goedkeuring (>60%) om dit voorstel definitief op te nemen in `inspiratie_en_bronnen.md` en het team groen licht te geven voor de finale live-structuur!
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 211 (2026-11-14 23:11 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-## 🧭 **Inspiratie & Bron-Voorstel voor het Agent Deepsearch Inspiratiebord**
-**Project:** `CasperdeBruyn.github.io`
-**Sub-agent:** `deepsearch_scout`
-**Status:** Ingediend ter goedkeuring voor vastlegging in `inspiratie_en_bronnen.md`.
----
-### 🪵 1. Diepgaande Koppeling & Structuur van de Projecten
-Na analyse van de 16 gescrapete subpagina's (`about-me`, `bomby-bird`, `contact`, `de-grinch-sloopt-de-kerstboom`, `generation-plastic-soup`, `grijpmachine`, `home`, `hu-begeleidt`, `kodak`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `vechtclub-xl`, `work`, `zeefdrukken`) en de bronnen op `casperdebruyn.myportfolio.com`, is de content-strategie voor de interactieve elementen als volgt georganiseerd:
-*   **Poul Cadovius Wandmeubel & Zwevende Bank (French Cleats):** Dit vormt de ruggengraat van het "The Dark Workshop" thema. In plaats van statische afbeeldingen, worden deze projecten getoond met een interactieve "blueprint-overlay" of "technical draft" esthetiek.
-*   **Immersieve Fysieke Installaties (`Grijpmachine`, `Vechtclub XL`, `De Grinch`):** Deze projecten krijgen in hun detail-modal een donkere, sfeervolle diashow die de bezoeker direct meeneemt in de fysieke ruimte.
-*   **Grafisch, Digitaal & Community (`OSRS Kerstposter`, `Zeefdrukken`, `Bomby Bird`, `Generation Plastic Soup`):** Presentatie als digitale lab-experimenten binnen een futuristische interface.
----
-### 🎨 2. Design DNA & Sci-Fi "Makers" Esthetiek
-Het visuele ontwerp brengt een unieke synergie tussen **klassiek ambacht (houtbewerking)** en **futuristische technologie (AI Homelab & Linux)**:
-*   **Kleurenpalet (Optie 1: "The Dark Workshop"):**
-*   `--bg-primary`: `#161412` (Diep, warm antraciet-bruin)
-*   `--bg-card`: `#231F1D` (Gerookt eiken)
-*   `--text-primary`: `#F4F1EA` (Cloud Dancer / warm wit — **geen `#FFFFFF`**)
-*   `--accent-amber`: `#C87D4B` (Gesmolten koper / warme gloed)
-*   **Sci-Fi Terminal & Dashboard Details:**
-*   Een subtiele, dynamische terminal-widget die live de (gesimuleerde) status van het "Linux AI Homelab" toont.
-*   Subtiele hover-effecten waarbij omlijningen van kaarten oplichten als warme gloeidraden (`#C87D4B` met een zachte blur).
-*   Gebruik van een flinterdunne ruis/grain filter (`feTurbulence`) in de CSS-achtergrond om de tactiele textuur van onbehandeld papier en houtnerf na te bootsen.
----
-### 🛠️ 3. UX & Technische Interactie Patronen
-Voor een soepele, veilige en onoverspoelde gebruikerservaring worden de volgende patronen vastgelegd:
-1.  **Project Modals (Pop-ups) in plaats van losse pagina's:**
-*   Elke projectkaart op de homepage opent een vloeiende, immersive pop-up (Modal) met een gedetailleerd overzicht, extra afbeeldingen uit `assets/images/` en de bijbehorende project-storytelling. Zo blijft de homepage clean en snel.
-2.  **Contactformulier met Veilige Routing:**
-*   Het e-mailadres `casper.debruyn@hotmail.com` is volledig verborgen in de frontend-code (bijvoorbeeld via een serverless form-handler of versleuteld endpoint).
-*   Na het succesvol verzenden van het formulier verschijnt er direct een interactief, op maat gemaakt "Transmission Received"-bedankscherm in Sci-Fi stijl in plaats van een harde pagina-refresh.
-3.  **Social Links & Community:**
-*   De Discord join-knop is definitief verwijderd om de community privé te houden.
-*   Strakke, minimalistische koperkleurige SVG-iconen voor **Instagram** (`cdb.creative`) en **LinkedIn** zijn toegevoegd aan de footer en het contactgedeelte.
----
-### 📋 4. Formeel Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
-*Vraag aan het team: Stemt het team in met deze opzet (>60% goedkeuring) om de implementatie van start te laten gaan?*
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 212 (2026-11-14 23:22 | Team Score: 82%)
+ratie Vondst — Iteratie 212 (2026-11-14 23:22 | Team Score: 82%)
 🤖 **[Sub-Agent `deepsearch_scout`]:**
 ### 🪵 `deepsearch_scout` — Inspiratie & Bron-Voorstel
 Beste team,
@@ -130,3 +84,49 @@ We koppelen de data van de 16 subpagina's aan deze 12 kaarten:
 > 3. Bouw de modal-view met een 'Focus-licht' effect (dimming background).
 > 4. Verwijder Discord en implementeer koperen social icons.
 **Gaan we akkoord om deze structuur in de volgende iteratie van `index.html` en `script.js` door te voeren?**
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 214 (2026-11-14 23:43 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is het rapport en het concrete voorstel van de **DeepSearch Scout (`deepsearch_scout`)**.
+Ik heb de `qa_inspector` audit gecombineerd met een diepe analyse van de `scraped_archive` en de `Project Design DNA`. Mijn doel is om de kloof te dichten tussen de huidige technische staat (die de basis legt) en de gewenste "Immersive Blueprint Terminal" ervaring.
+---
+### 🕵️‍♂️ Scout Analyse: De "Missing Link" Audit
+**1. Content Mapping (De 12 Projecten vs. 16 Scraped Pages):**
+De huidige mismatch (7 projecten zichtbaar, 5 missend) komt voort uit een gebrek aan een harde koppeling tussen de `scraped_archive/pages/` en de `index.html` project-sectie.
+*   **Status:** De 16 pagina's bevatten niet alleen 12 projecten, maar ook ondersteunende content (`about-me`, `contact`, `home`).
+*   **Risico:** Als we alleen de 7 huidige projecten behouden, verliest het portfolio zijn narratieve kracht en de "Maker" breedte.
+*   **Oplossing:** De 12-projecten architectuur uit het eerdere voorstel is de *enige* juiste weg om de data uit de 16 pagina's te homogeniseren.
+**2. De "Bomby Bird" & Image Quality Crisis:**
+De DNA-instructie is glashelder: *geen pixelvorming*.
+*   **Probleem:** Bomby Bird heeft nu verkeerde assets.
+*   **DeepSearch Inzicht:** De afbeeldingen van `bomby-bird` in de scraped archive moeten direct worden gekoppeld aan de specifieke `assets/images/` map. Indien de kwaliteit daar laag is, moet de UI de nadruk leggen op de *retro/pixel-art* stijl (intentionaliteit) in plaats van slordige resolutie.
+**3. Tactile vs. Digital (De Esthetische Paradox):**
+De gebruiker wil "Sci-Fi" én "Houtbewerking/Ambacht".
+*   **Synthese:** Dit bereiken we niet door een keuze te maken, maar door **UI-layering**.
+*   *Basislaag:* Warme houttexturen en organische vormen (The Dark Workshop).
+*   *Interactielaag:* Een "Digital Overlay" van technische CAD-lijnen, monospace fonts en een terminal-interface (The Blueprint).
+---
+### 📋 Voorstel voor het `Agent Deepsearch Inspiratiebord`
+Ik stel voor om de volgende drie pijlers direct te vergrendelen voor de volgende ontwikkelingsronde.
+#### **I. De "Project Dossier" Modal (UX Engine)**
+In plaats van nieuwe pagina's (die de flow onderbreken), implementeren we een **Immersive Modal System**:
+*   **Trigger:** Klik op projectkaart $\rightarrow$ Overlay met `backdrop-filter: blur(10px)`.
+*   **Content:** Een "Dossier" layout. Links de project-beschrijving (Engelse storytelling uit de scraped data), rechts een interactieve foto-carrousel.
+*   **Interactie:** Gebruik een "X" knop die aanvoelt als een mechanische drukknop en een "Close" actie die de modal met een subtiele 'fade-out' en 'scale-down' sluit.
+*   **Navigatie:** Een subtiele "Back to Workshop" knop onderaan de modal.
+#### **II. De "Terminal" Contact & Socials Integratie**
+*   **Contact Form:** Geen standaard formulier. Een interface die lijkt op een Linux terminal.
+*   *Input:* `user@casper:~$ message --send "..."`
+*   *Feedback:* Na verzenden naar `casper.debruyn@hotmail.com`: Een animatie van een voortgangsbalk die eindigt met: `[SUCCESS] MESSAGE TRANSMITTED TO THE WORKSHOP.`
+*   **Socials:** Vervang de Discord-knop door een minimalistische koperen (`#C87D4B`) social-bar in de footer met `Lucide` vector icons voor Instagram en LinkedIn.
+#### **III. De "Blueprint" Visuele Verfijning**
+*   **Grid Overlay:** Implementeer een subtiele CSS `background-image` met een `repeating-linear-gradient` die fungeert als een technisch CAD-grid over de gehele site.
+*   **Texture Layer:** Een globale `::after` pseudo-element op de `body` met een `noise-texture` (grain) en `mix-blend-mode: overlay` om de "Dark Workshop" tactiele sfeer te borgen.
+*   **Logo:** De inline-SVG moet in de header links worden geplaatst, met een `filter: drop-shadow` voor diepte.
+---
+### 🚀 Concrete Actielijst voor het Team
+| Onderdeel | Taak | Bron/Referentie |
+| :--- | :--- | :--- |
+| **Projecten** | Reconstructie van de 12 kaarten (map scraped data aan de 12 n

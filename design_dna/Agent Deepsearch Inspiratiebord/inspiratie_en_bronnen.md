@@ -79,3 +79,16 @@ Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor het team om direct op 
 ---
 ### 🪵 1. Inspiratie-integratie uit de 16 Gescrapete Subpagina's
 Om te zorgen dat het nieuwe portfolio niet alleen visueel strak is (volgens het *Dark Workshop* palet met `#161412`, `#231F1D` en accent `#C87D4B`), maar ook de volledige diepgang van Casper's archief eert, stellen we voor om deze elementen expliciet te borgen in de projecten-sectie (`// 02. THE WORKBEN
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 187 (2026-11-14 21:24 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+# 🧭 Inspiratie & Bron-Voorstel (`deepsearch_scout`)
+**Project:** `CasperdeBruyn.github.io`
+**Rol:** Autonomous DeepSearch, Bron-Verkenner & Inspiratie Scout Sub-Agent
+**Doel:** Het verrijken van het *Agent Deepsearch Inspiratiebord* op basis van de 16 diep gescrapete subpagina's (`scraped_archive/pages/`) en het "The Dark Workshop" Design DNA.
+---
+### 🪵 1. Bron-Inzichten uit de Gescrapete Archiefpagina's
+Na inspectie van de 16 archiefpagina's (`generation-plastic-soup`, `vechtclub-xl`, `grijpmachine`, `bomby-bird`, `kodak`, `zeefdrukken`, etc.) zien we een sterke combinatie van **fysiek vakmanschap**, **grafisch/multimedia design (CMD)** en **interactieve/technische projecten**. Om de website van Casper nog persoonlijker en diepgaander te maken, stellen we voor om specifieke elementen hieruit subtiel te verweven in de portfolio-secties:
+*   **De Maker-Dualiteit (Fysiek vs. Digitaal):** Projecten zoals de *Poul Cadovius wandmeubel-inspiratie* en de

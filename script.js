@@ -1,37 +1,39 @@
 const projects = [
-    { title: "Generation plastic soup", year: "2025", img: "home_1.jpg", desc: "A deep dive into ecological awareness through creative installations." },
-    { title: "Street Fresh", year: "2024", img: "home_2.jpg", desc: "Urban aesthetics meeting modern design." },
-    { title: "Samen spelen", year: "2024", img: "home_3.jpg", desc: "Social interaction design project." },
-    { title: "Grijpmachine", year: "2024", img: "home_4.jpg", desc: "Interactive installation." },
-    { title: "Kodak", year: "2024", img: "home_5.jpg", desc: "Photography and film exploration." },
-    { title: "Bomby Bird", year: "2024", img: "home_6.jpg", desc: "Game development and visual assets." },
-    { title: "Picknicken met Sophie", year: "2023", img: "home_7.jpg", desc: "Personal project focused on immersive environments." },
-    { title: "OSRS Kerst", year: "2023", img: "home_8.jpg", desc: "Community event management and visuals." },
-    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "home_9.jpg", desc: "Visual storytelling project." },
-    { title: "Vechtclub XL", year: "2023", img: "home_10.jpg", desc: "Identity design for local sports club." },
-    { title: "Hu Begeleidt", year: "2022", img: "home_11.jpg", desc: "UX/UI design for educational support." },
-    { title: "Dan maar hier!", year: "2022", img: "home_12.jpg", desc: "Conceptual spatial design." }
+    { title: "Generation plastic soup", year: "2025", desc: "A creative exploration of waste and materials.", img: "assets/home_3.jpg" },
+    { title: "Street Fresh", year: "2024", desc: "Digital/physical hybrid project.", img: "assets/home_4.jpg" },
+    { title: "Samen spelen", year: "2024", desc: "Interactive installation for public spaces.", img: "assets/home_6.jpg" },
+    { title: "Grijpmachine", year: "2024", desc: "An arcade-inspired maker project.", img: "assets/home_7.jpg" },
+    { title: "Kodak", year: "2024", desc: "Photography and media study.", img: "assets/home_8.jpg" },
+    { title: "Bomby Bird", year: "2024", desc: "Game design experiment.", img: "assets/home_9.jpg" },
+    { title: "Picknicken met Sophie", year: "2023", desc: "Documentary and leisure.", img: "assets/home_10.jpg" },
+    { title: "OSRS Kerst", year: "2023", desc: "Festive digital art.", img: "assets/home_12.jpg" },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", desc: "Stop-motion or installation.", img: "assets/home_13.jpg" },
+    { title: "Vechtclub XL", year: "2023", desc: "Community event visuals.", img: "assets/home_14.jpg" },
+    { title: "Hu Begeleidt", year: "2022", desc: "UX/UI student project.", img: "assets/home_15.jpg" },
+    { title: "Dan maar hier!", year: "2022", desc: "Immersive space exploration.", img: "assets/home_16.jpg" }
 ];
 
-function renderProjects() {
-    const container = document.getElementById('project-container');
-    projects.forEach((proj, index) => {
+const container = document.getElementById('project-container');
+
+function initPortfolio() {
+    projects.forEach((p, index) => {
         const card = document.createElement('div');
         card.className = 'project-card';
         card.innerHTML = `
-            <h3>${proj.title}</h3>
-            <p>${proj.year}</p>
+            <img src="${p.img}" alt="${p.title}">
+            <h3>${p.title}</h3>
+            <p>${p.year}</p>
         `;
-        card.onclick = () => openModal(proj);
+        card.onclick = () => openModal(p);
         container.appendChild(card);
     });
 }
 
-function openModal(proj) {
-    document.getElementById('modal-title').innerText = proj.title;
-    document.getElementById('modal-year').innerText = proj.year;
-    document.getElementById('modal-description').innerText = proj.desc;
-    document.getElementById('modal-image').src = `assets/${proj.img}`;
+function openModal(project) {
+    document.getElementById('modal-title').innerText = project.title;
+    document.getElementById('modal-year').innerText = project.year;
+    document.getElementById('modal-image').src = project.img;
+    document.getElementById('modal-description').innerText = project.desc;
     document.getElementById('project-modal').style.display = 'flex';
 }
 
@@ -40,17 +42,13 @@ function closeModal() {
 }
 
 function acceptCookies() {
-    localStorage.setItem('cookiesAccepted', 'true');
-    hideCookies();
-}
-
-function hideCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderProjects();
-    if(localStorage.getItem('cookiesAccepted') === 'true') {
-        hideCookies();
+window.onload = () => {
+    initPortfolio();
+    if(localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-banner').style.display = 'none';
     }
-});
+};

@@ -1,17 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fade-in observer
+    // Geoptimaliseerde Fade-in observer voor betere performance
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Stop met observeren zodra zichtbaar
+            }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.project-card, .section-title').forEach(el => {
+    // Initialiseer animaties
+    document.querySelectorAll('.project-card, .section-title, .workbench-section').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    // Filter Logic
+    // Filter Functionaliteit
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -24,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             projectCards.forEach(card => {
                 const category = card.getAttribute('data-category');
-                card.style.display = (filterValue === 'all' || category === filterValue) ? 'flex' : 'none';
+                card.style.display = (filterValue === 'all' || category === filterValue) ? 'block' : 'none';
             });
         });
     });

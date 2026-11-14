@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
         });
     }, { threshold: 0.1 });
 

@@ -26,3 +26,15 @@ Hieronder ligt het concrete **Inspiratie- & Bron-Voorstel** voor ter goedkeuring
 ---
 ### 1. Benutting van de 16 Gescrapete Subpagina’s & Oplossing voor Gebroken Afbeeldingen
 De `qa_inspector` constateerde dat er 10 afbeeldingspaden ontbreken op schijf (`assets/images/home_6.jpg`, etc.). Om te voorkomen dat de website lege of gebroken image-iconen toont, stellen wij vanuit de gescrapete subpagina's (`bomby-bird`, `generation-plas
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 183 (2026-11-14 21:12 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Als **DeepSearch, Bron-Verkenner & Inspiratie Scout Sub-Agent (`deepsearch_scout`)** heb ik de huidige staat van het project, de 16 gescrapete subpagina's (`scraped_archive/pages/`) en het **Project Design DNA ("The Dark Workshop")** grondig geanalyseerd.
+Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor de volgende iteratie, klaar voor goedkeuring en opname in het `Agent Deepsearch Inspiratiebord`.
+---
+# 🧭 Inspiratie & Bron-Voorstel: CasperdeBruyn.github.io
+### 1. Benutting van de 16 Gescrapete Subpagina's
+De huidige homepage (`index.html`) staat als een huis met "The Dark Workshop" esthetiek en de rudimentaire secties. Om de diepgang van Casper’s portfolio (`casperdebruyn.myportfolio.com`) volledig te evenaren en te overtreffen, stellen we voor om specifieke projecten uit de archive-map interactief uit te lichten met dedicated modal-views of sub-cards:
+* **Creatief & Digitaal:** Projecten zoals *Bomby Bird*, *Generation Plastic Soup*, en

@@ -29,7 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Tactiele Grain & Accessibility */
+/* Tactile Grain Overlay */
 body::before {
     content: "";
     position: fixed;
@@ -40,7 +40,7 @@ body::before {
     z-index: -1;
 }
 
-/* Navigatie */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -96,7 +96,7 @@ body::before {
     border: 1px solid var(--border-subtle);
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
     min-height: 85vh;
     display: flex;
@@ -109,7 +109,7 @@ body::before {
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     margin-bottom: 1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -135,6 +135,12 @@ body::before {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .cta-button {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
@@ -157,7 +163,6 @@ body::before {
 .cta-button.secondary {
     border-color: var(--text-muted);
     color: var(--text-primary);
-    margin-left: 1rem;
 }
 
 .cta-button.secondary:hover {
@@ -166,7 +171,7 @@ body::before {
     color: var(--bg-primary);
 }
 
-/* Sections algemeen */
+/* Sections */
 section {
     padding: 6rem 5%;
     max-width: 1400px;
@@ -328,6 +333,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    color: var(--text-muted);
 }
 
 .homelab-status-card {
@@ -344,7 +350,7 @@ section {
     line-height: 1.6;
 }
 
-/* Contact actions / Cookie / Extra Elements */
+/* Contact actions & Cookie Banner */
 .contact-actions {
     display: flex;
     gap: 1rem;
@@ -370,7 +376,7 @@ section {
     gap: 1rem;
 }
 
-/* Animatie Classes */
+/* Fade-in Animation Classes */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -393,6 +399,12 @@ section {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .hero-cta {
+        flex-direction: column;
+    }
+    .cta-button.secondary {
+        margin-left: 0;
     }
 }
 

@@ -1,0 +1,2 @@
+UPDATE VOOR HET AI-TEAM:
+Casper heeft zojuist zijn stijl en kleuren aangepast. Graag de website casperdebruyn.github.io hier opnieuw op auditen en de wijzigingen verwerken in de CSS/stijlen.

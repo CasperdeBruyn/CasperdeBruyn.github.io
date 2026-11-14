@@ -45,6 +45,10 @@ body::after {
     opacity: 0.15;
 }
 
+/* Fade-in Animation Utility */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
 h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); line-height: 1.2; }
 p { color: var(--text-muted); }
 
@@ -90,24 +94,28 @@ p { color: var(--text-muted); }
 }
 
 /* Projects & Workbench */
-.project-card, .workbench-section {
+.project-card {
     background-color: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 2rem;
-    transition: var(--transition);
-    position: relative;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    will-change: transform;
     border-left: 4px solid transparent;
 }
 
 .workbench-section {
-    border-left-color: var(--accent-maker);
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2rem;
+    border-left: 4px solid var(--accent-maker);
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(1.02);
     border-left-color: var(--accent-maker);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-maker);
 }
 
 .project-image {
@@ -130,7 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.project-card, .section-title, .workbench-section').forEach(el => {
+    // Target elements for scroll animation
+    const animatedElements = document.querySelectorAll('.project-card, .section-title, .workbench-section');
+    animatedElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });

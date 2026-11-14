@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         langBtns.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
-        // Hier kan logica voor dynamische content swap worden toegevoegd
         console.log(`Language set to: ${lang}`);
     }
 
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.project-card, .about-grid').forEach(el => {
+    document.querySelectorAll('.project-card, .about-grid, section').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });

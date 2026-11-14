@@ -1,10 +1,4 @@
-EO en technische risico's) direct verwerkt in een nieuwe, robuuste architectuur.
----
-# 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (Gecorrigeerd)
-**Status:** 🚀 Voorstel voor Team-Goedkeuring (>60% Target)
-**Focus:** Data-integriteit, High-Res Asset Management & SEO-vriendelijke Immersie.
-## 🛠 De "Integrity & Immersive" Strategie
-Om de score van de vorige ronde te overtreffen, stappen we af van het "versimpelen" van data en gaan we over op een **Gelaagde Architectuur**. We gaan de 16 gescrapte projecten niet reduceren, maar categoriseren.
+de te overtreffen, stappen we af van het "versimpelen" van data en gaan we over op een **Gelaagde Architectuur**. We gaan de 16 gescrapte projecten niet reduceren, maar categoriseren.
 ### **I. Data-Architectuur: De "16-Project Unified Archive"**
 *In plaats van 12 projecten te kiezen en 4 te verliezen (zoals Tester 4 kritiseerde), gebruiken we een hiërarchische structuur:*
 1.  **Tier 1: "Signature Dossiers" (12 Projecten):** De kern van het portfolio. Deze krijgen de volledige immersieve behandeling: Diepe storytelling, hoge-resolutie carrousels en de "Dossier Modal".
@@ -123,3 +117,8 @@ Ik verdeel de taken direct onder de gespecialiseerde agents:
 **2. [Frontend & Interaction Agent] - *De Immersie-ronde***
 *   [ ] **CAD-Grid Implementatie:** Voeg de CSS voor het interactieve grid toe aan `style.css`.
 *   [ ] **Dossier System:** Bouw de modal-structuur in `index.html` en implementeer de `clo
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 218 (2026-11-15 00:33 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

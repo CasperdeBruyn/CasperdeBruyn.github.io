@@ -66,7 +66,7 @@
                     </div>
                     <div class="about-card">
                         <h3>Community &amp; Visuals</h3>
-                        <p>Managing vibrant Discord gaming communities (150+ to 500+ members), organizing events, and designing custom branding, posters, and apparel.</p>
+                        <p>Managing vibrant gaming communities (150+ to 500+ members), organizing events, and designing custom branding, posters, and apparel.</p>
                     </div>
                     <div class="about-card">
                         <h3>Autonomous Infrastructure</h3>
@@ -85,42 +85,62 @@
         <!-- // 02. THE WORKBENCH / PROJECTS -->
         <section id="projects">
             <h2 class="section-title">// 02. THE WORKBENCH</h2>
-            <p class="section-subtitle">Selected works ranging from physical woodwork and spatial design to game physics and digital media.</p>
+            <p class="section-subtitle">Selected works ranging from physical woodwork and spatial design to game physics and digital media. Click any project to inspect full archives.</p>
             
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">[ All ]</button>
                 <button class="filter-btn" data-filter="craft">[ Physical Craft ]</button>
                 <button class="filter-btn" data-filter="digital">[ Digital &amp; Games ]</button>
-                <button class="filter-btn" data-filter="ai">[ AI &amp; Systems ]</button>
             </div>
 
             <div class="projects-grid">
-                <div class="project-card" data-category="craft">
+                <!-- Project 1: Grijpmachine -->
+                <div class="project-card" data-category="craft" data-project="grijpmachine">
                     <img class="project-image" src="assets/images/grijpmachine_1.jpg" alt="Grijpmachine" loading="lazy">
                     <div class="project-info">
                         <h3>Grijpmachine ("Lucky Grapple")</h3>
-                        <p>2024 – Fully functional physical arcade claw machine built with woodworking and custom pneumatic syringe controls to distribute snacks at exhibitions.</p>
+                        <p>2024 – Fully functional physical arcade claw machine built with woodworking and custom pneumatic syringe controls.</p>
+                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
                     </div>
                 </div>
-                <div class="project-card" data-category="craft">
+
+                <!-- Project 2: De Grinch sloopt de kerstboom -->
+                <div class="project-card" data-category="craft" data-project="de-grinch-sloopt-de-kerstboom">
                     <img class="project-image" src="assets/images/de-grinch-sloopt-de-kerstboom_1.jpg" alt="De Grinch sloopt de kerstboom" loading="lazy">
                     <div class="project-info">
                         <h3>De Grinch sloopt de kerstboom</h3>
-                        <p>2023 – Rapid tabletop prototype featuring DIY popsicle-stick catapults and a tiered 3D Christmas tree for chaotic holiday fun.</p>
+                        <p>2023 – Rapid tabletop prototype featuring DIY popsicle-stick catapults and a tiered 3D Christmas tree.</p>
+                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
                     </div>
                 </div>
-                <div class="project-card" data-category="digital">
+
+                <!-- Project 3: Bomby Bird -->
+                <div class="project-card" data-category="digital" data-project="bomby-bird">
                     <img class="project-image" src="assets/images/bomby-bird_1.jpg" alt="Bomby Bird" loading="lazy">
                     <div class="project-info">
                         <h3>Bomby Bird</h3>
-                        <p>2024 – Custom retro-styled Flappy Bird spin written from scratch with bespoke 2D/3D digital art assets for the main character.</p>
+                        <p>2024 – Custom retro-styled Flappy Bird spin written from scratch with bespoke 2D/3D digital art assets.</p>
+                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
                     </div>
                 </div>
-                <div class="project-card" data-category="digital">
+
+                <!-- Project 4: Generation Plastic Soup -->
+                <div class="project-card" data-category="digital" data-project="generation-plastic-soup">
                     <img class="project-image" src="assets/images/generation-plastic-soup_1.jpg" alt="Generation Plastic Soup" loading="lazy">
                     <div class="project-info">
                         <h3>Generation Plastic Soup</h3>
-                        <p>2025 – Game Jam collaborative project (EPIC-WE &amp; Beeld &amp; Geluid) raising awareness about EU values and rising sea levels.</p>
+                        <p>2025 – Game Jam collaborative project raising awareness about EU values and rising sea levels.</p>
+                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Hu Begeleidt -->
+                <div class="project-card" data-category="digital" data-project="hu-begeleidt">
+                    <img class="project-image" src="assets/images/hu-begeleidt_1.jpg" alt="Hu Begeleidt" loading="lazy">
+                    <div class="project-info">
+                        <h3>Hu Begeleidt</h3>
+                        <p>2022 – UX/UI project focused on improving guidance and support structures for students at Hogeschool Utrecht.</p>
+                        <span class="project-link-hint">[ Open Project Archive &rarr; ]</span>
                     </div>
                 </div>
             </div>
@@ -184,12 +204,23 @@
             <div id="form-response" class="form-response-terminal"></div>
             <p class="form-notice">I hope to be in touch with you within two working days!</p>
 
-            <div class="contact-actions" style="margin-top: 2rem;">
-                <a href="mailto:casper@example.com" class="cta-button secondary">[ Send Direct Email ]</a>
-                <a href="https://discord.com" target="_blank" class="cta-button secondary">[ Join Discord Community ]</a>
+            <div class="contact-actions" style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:casper.debruyn@hotmail.com" class="cta-button secondary">[ Direct Email ]</a>
+                <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" class="cta-button secondary">[ Instagram ]</a>
+                <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" class="cta-button secondary">[ LinkedIn ]</a>
             </div>
         </section>
     </main>
+
+    <!-- PROJECT MODAL POPUP CONTAINER -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div id="modal-body-content">
+                <!-- Dynamically populated by script.js -->
+            </div>
+        </div>
+    </div>
 
     <div id="cookie-banner" class="cookie-banner">
         <p><strong>Digital crumbs?</strong><br>My portfolio likes cookies :] Nomnomnom</p>
@@ -202,6 +233,10 @@
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 Casper de Bruyn. All rights reserved. Built at the intersection of wood and code.</p>
+            <div class="footer-socials" style="margin: 1rem 0;">
+                <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener">Instagram</a> &bull; 
+                <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
             <p class="cookie-notice">My portfolio likes cookies :] Nomnomnom</p>
             <a href="#home" class="back-to-top">&uarr; Back to Top</a>
         </div>

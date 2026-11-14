@@ -26,7 +26,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Custom cursor implementation */
+    cursor: auto; /* Custom cursor implementation */
 }
 
 @media (hover: none) {

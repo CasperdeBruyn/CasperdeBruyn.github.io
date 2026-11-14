@@ -1,45 +1,4 @@
-html` en het **Project Design DNA**.
-Hier is de gedetailleerde blauwdruk om de ontbrekende schakels te smeden, de projecten uit te breiden naar de volledige **12 opdrachten**, en de visuele hiërarchie in lijn te brengen met de "The Dark Workshop"-esthetiek.
----
-### 🎨 1. De Volledige Project-Matrix (De 12 Meesterwerken)
-In de huidige live-versie ontbreken er nog 5 projecten of zijn deze niet correct gekoppeld. Om de volledige breedte van Casper's portfolio te weerspiegelen, stellen we voor om **12 specifieke projectkaarten** in de interactieve Workbench te integreren, opgedeeld in drie overzichtelijke categorieën (ambacht, digitaal, immersief):
-1. **Poul Cadovius Wandmeubel** (Houtbewerking / Berken & Falcata Multiplex)
-2. **Zwevende Bank met French Cleats** (Houtbewerking / Ruimtelijk Ontwerp)
-3. **De Grijpmachine** (Interactieve, fysieke installatie)
-4. **Vechtclub XL** (Grootschalige, immersieve evenementen-ervaring)
-5. **De Grinch sloopt de Kerstboom** (Interactief kerst-project)
-6. **Zeefdrukken (Custom Designs)** (Fysiek analoog ambacht)
-7. **Bomby Bird** (Interactieve game - *let op: afbeeldingen corrigeren naar game assets!*)
-8. **Generation Plastic Soup** (Digitale & maatschappelijke CMD-campagne)
-9. **OSRS Kerstposter** (Nostalgisch grafisch ontwerp / vector-art)
-10. **Picknicken met Sophie** (User experience & storytelling)
-11. **HU Begeleidt** (Digitaal platform / UX-onderzoek)
-12. **Kodak Retro Rebranding** (Conceptueel grafisch & UX-werk)
----
-### 🛠️ 2. UX- & Interactiepatronen (The "Workshop-Terminal" Fusion)
-*   **De Header-Logo Correctie:** De 3 logo-afbeeldingen van Casper (`cdb` logo's) die nu soms abusievelijk in de body-secties zweven, verplaatsen we definitief naar een haarscherpe, inline vector-SVG linksboven in de vaste header. Dit voorkomt pixelvorming en creëert rust.
-*   **De Modals / Detail Pop-ups:** Elk van de 12 projecten krijgt een interactieve `.workbench-card` die bij een klik een fullscreen of gecentreerd modalvenster opent.
-*   *Sluit-interactie:* Sluiten kan intuïtief door op de `[X]` knop te klikken, op de `ESC`-toets te drukken, of simpelweg buiten het modal-oppervlak te klikken.
-*   *Rijke Content:* Binnen de modal tonen we een fotogalerij (diashow) met afbeeldingen die specifiek horen bij die subpagina, plus de gedetailleerde storytelling (CMD Utrecht, geboortejaar '97, de passie voor immersieve sferen).
-*   **Het Contactformulier & Veilige Routing:**
-*   Het e-mailadres `casper.debruyn@hotmail.com` blijft in de frontend gemaskeerd. We configureren de formulieractie via een veilige endpoint-versleuteling (bijvoorbeeld Formspree of een soortgelijke handler).
-*   Bij het indienen wordt de pagina niet herladen, maar verschijnt er een gestileerd terminal-schermpje: `[STATUS: TRANSMISSION SECURED - THANKS CASPER]`.
-*   **Socials Integration:** De Discord join-knop wordt volledig verwijderd. In plaats daarvan plaatsen we in de footer en contactsectie subtiele, koperkleurige SVG-iconen voor:
-*   **Instagram:** `https://www.instagram.com/cdb.creative/`
-*   **LinkedIn:** `https://www.linkedin.com/in/casper-de-bruyn-0191561a0/`
----
-### 📋 Voorstel voor het Agent Inspiratiebord (`inspiratie_en_bronnen.md`)
-Ik stel voor om de volgende update direct vast te leggen in `inspiratie_en_bronnen.md`:
-*Vraag aan het team: Stemt het team in met deze uitwerking (>60% goedkeuring) om de ontbrekende 5 projecten en de pop-up-galerij in `index.html` en `script.js` te implementeren?*
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 213 (2026-11-14 23:30 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Als de **DeepSearch, Bron-Verkenner & Inspiratie Scout (`deepsearch_scout`)** heb ik de diepte-scan van de 16 gescrapete subpagina's en de lokale mappen voltooid. Op basis van het **Project Design DNA (The Dark Workshop)** en de specifieke tekortkomingen die je noemde (ontbrekende projecten, verkeerde afbeeldingen, pixelvorming), leg ik hierbij het volgende concrete voorstel voor.
----
-### 1. Bron-Verificatie & Status-Check
-*   **Gescrapete Data:** De 16 subpagina's in `scraped_archive/pages/` bevatten de essentiële storytelling die we nu vertalen naar het Engels.
+n de essentiële storytelling die we nu vertalen naar het Engels.
 *   **Beeldmateriaal:** De `assets/images/` map wordt gesynchroniseerd met de project-matrix om te zorgen dat **Bomby Bird** de juiste game-assets krijgt en de houtbewerking-projecten (`Poul Cadovius`, `French Cleat Bench`) de focus krijgen.
 *   **Logo Fix:** De huidige logo-afbeeldingen worden vervangen door een **inline-SVG** (gebaseerd op je logo-ontwerp) om pixelvorming op hoge resoluties te voorkomen.
 ---
@@ -131,3 +90,44 @@ In plaats van nieuwe pagina's (die de flow onderbreken), implementeren we een **
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 215 (2026-11-14 23:50 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (2026-11-15 00:00 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is mijn verbeterde voorstel voor het `Agent Deepsearch Inspiratiebord`. Ik heb de kritiek van de 5 testers (dataverlies, kwaliteit, UX-barrières, SEO en technische risico's) direct verwerkt in een nieuwe, robuuste architectuur.
+---
+# 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (Gecorrigeerd)
+**Status:** 🚀 Voorstel voor Team-Goedkeuring (>60% Target)
+**Focus:** Data-integriteit, High-Res Asset Management & SEO-vriendelijke Immersie.
+## 🛠 De "Integrity & Immersive" Strategie
+Om de score van de vorige ronde te overtreffen, stappen we af van het "versimpelen" van data en gaan we over op een **Gelaagde Architectuur**. We gaan de 16 gescrapte projecten niet reduceren, maar categoriseren.
+### **I. Data-Architectuur: De "16-Project Unified Archive"**
+*In plaats van 12 projecten te kiezen en 4 te verliezen (zoals Tester 4 kritiseerde), gebruiken we een hiërarchische structuur:*
+1.  **Tier 1: "Signature Dossiers" (12 Projecten):** De kern van het portfolio. Deze krijgen de volledige immersieve behandeling: Diepe storytelling, hoge-resolutie carrousels en de "Dossier Modal".
+2.  **Tier 2: "The Maker's Lab" (4 Projecten):** Voor de resterende 4 projecten (bijv. snellere schetsen of experimenten). Deze worden gepresenteerd in een compacte, technische "Grid View" die minder zwaar is voor de performance, maar wel de volledige breedte van Casper's vaardigheden toont.
+*   **Resultaat:** 100% data-behoud van de `scraped_archive/pages/`.
+### **II. Asset Quality Protocol (Anti-Pixelatie Garantie)**
+*In plaats van lage kwaliteit te maskeren met een retro-stijl (zoals Tester 1 opmerkte), implementeren we een strikte bron-audit:*
+1.  **Cross-Reference Scan:** De developers moeten elke afbeelding uit `assets/images/` vergelijken met de bron-URL's op `casperdebruyn.myportfolio.com`.
+2.  **High-Res Fallback:** Als een afbeelding in de lokale map lage resolutie heeft, wordt deze **niet** gebruikt. De agent moet de instructie krijgen om de directe image-link van de Adobe Portfolio-site te extraheren en te downloaden voor de `assets/` map.
+3.  **Contextual Styling:** Alleen als een project (zoals *Bomby Bird*) inherent een "digital/retro" karakter heeft, wordt een subtiele `CSS grain` of `scanline` overlay gebruikt om de kwaliteit te *ondersteunen*, niet om een fout te *verbergen*.
+### **III. UX & Accessibility: De "Hybrid Interface"**
+*Om de recruiter-barrière te doorbreken (zoals Tester 2 opmerkte), maken we de Terminal-stijl optioneel/complementair, niet exclusief:*
+1.  **Contact Form:** Een "Dual-Layer" formulier.
+*   *Basis:* Een helder, modern, leesbaar formulier (Input: Naam, Email, Bericht).
+*   *Aesthetic:* Een subtiele "Terminal Skin" (monospace fonts, koperen randen, een knipperende cursor in de tekstbox) die de stijl geeft zonder de bruikbaarheid te hinderen.
+2.  **The "Quick-Link" Contact:** Voor recruiters die geen zin hebben in een terminal-interface: een directe `mailto:` knop in de footer in koper (`#C87D4B`).
+### **IV. Technische Structuur: SEO & Deep-Linking**
+*Om de SEO-kritiek van Tester 5 weg te nemen, implementeren we de Modals met URL-routing:*
+1.  **Hash-based Routing:** Elke project-modal krijgt een unieke URL-hash: `casperdebruyn.github.io/#project/bomby-bird`.
+2.  **Functionality:**
+*   Gebruikers kunnen een specifiek project direct delen via de URL.
+*   De "Terug"-knop van de browser werkt correct om de modal te sluiten.
+*   Implementeer `history.pushState` bij het openen van een modal voor een naadloze ervaring.
+---
+## 📋 Conceptueel Voorstel voor het `Agent Deepsearch Inspiratiebord`
+| Pijler | Implementatie Detail | Doel |
+| :--- | :--- | :--- |
+| **Visual Identity** | **"The Blueprint Workshop"**: `The Dark Workshop` (warm hout/donker) met een `CAD-Grid` overlay (technisch/blauw/wit) via `mix-blend-mode: overlay`. | Synthese van Ambacht & Sci-Fi. |
+| **Navigation** | **"The Dossier Engine"**: Modals met `backdrop-filter: blur(12px)` en unieke URL hashes. | Immersie zonder SEO/U

@@ -1,8 +1,4 @@
-| 🆕 Missend | **Tier 1** | Branding/Design werk. |
-| **Hu-begeleidt** | 🆕 Missend | **Tier 2** | Waarschijnlijk proces/ondersteunend. |
-| **School-projecten** | 🆕 Missend | **Tier 2** | Educatief/Leerproces. |
-| **Picknicken met Sophie** | 🆕 Missend | **Tier 2** | Lifestyle/Lichter project. |
-| **De Grinch...** | 🆕 Missend | **Tier 2** | Creatief/Illustratief. |
+
 | **OSRS Kerstposter** | 🆕 Missend | **Tier 2** | Digital/Niche craft. |
 | **Samen Spelen** | 🆕 Missend | **Tier 2** | Digital/Community werk. |
 ---
@@ -127,4 +123,9 @@ Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"
 
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 221 (2026-11-15 00:46 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 222 (2026-11-15 00:58 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

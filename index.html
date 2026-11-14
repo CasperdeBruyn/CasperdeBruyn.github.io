@@ -6,14 +6,18 @@
     <title>Casper de Bruyn | Portfolio</title>
     <meta name="description" content="Portfolio van Casper de Bruyn - Maker, Designer & CMD student.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap">
 </head>
 <body>
 
     <!-- Cookie Consent -->
-    <div id="cookie-banner" class="cookie-banner">
+    <div id="cookie-banner" class="cookie-banner hidden">
         <p>My portfolio likes cookies :]</p>
-        <button id="accept-cookies" class="btn">Nomnomnom (Accept)</button>
-        <button id="refuse-cookies" class="btn secondary">Not today (Refuse)</button>
+        <div class="cookie-btns">
+            <button id="accept-cookies" class="btn">Nomnomnom (Accept)</button>
+            <button id="refuse-cookies" class="btn secondary">Not today (Refuse)</button>
+        </div>
     </div>
 
     <nav class="navbar">
@@ -66,23 +70,18 @@
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
-                <h2 class="section-title">Selected Work</h2>
+                <h2 class="section-title">Selected Projects</h2>
                 <div id="projects-grid" class="projects-grid">
-                    <!-- Dynamically populated by script.js -->
+                    <!-- Projects injected via script.js -->
                 </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer id="contact" class="footer">
-            <div class="container">
-                <p>&copy; Casper de Bruyn. Let's connect.</p>
-                <div class="back-to-top">
-                    <a href="#">&uarr; Back to Top</a>
-                </div>
-            </div>
-        </footer>
     </main>
+
+    <footer id="contact">
+        <p>&copy; 2025 Casper de Bruyn.</p>
+        <button id="back-to-top">↑ Back to Top</button>
+    </footer>
 
     <script src="script.js"></script>
 </body>

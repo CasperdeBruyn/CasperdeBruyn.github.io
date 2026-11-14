@@ -38,3 +38,18 @@ Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor de volgende iteratie, 
 ### 1. Benutting van de 16 Gescrapete Subpagina's
 De huidige homepage (`index.html`) staat als een huis met "The Dark Workshop" esthetiek en de rudimentaire secties. Om de diepgang van Casper’s portfolio (`casperdebruyn.myportfolio.com`) volledig te evenaren en te overtreffen, stellen we voor om specifieke projecten uit de archive-map interactief uit te lichten met dedicated modal-views of sub-cards:
 * **Creatief & Digitaal:** Projecten zoals *Bomby Bird*, *Generation Plastic Soup*, en
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 184 (2026-11-14 21:15 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+# 🧭 Inspiratie & Bron-Voorstel (`deepsearch_scout`)
+**Project:** `CasperdeBruyn.github.io`
+**Sub-Agent:** `deepsearch_scout` (Autonomous DeepSearch, Bron-Verkenner & Inspiratie Scout)
+**Status:** Klaar voor registratie in het *Agent Deepsearch Inspiratiebord* (>60% goedkeuring vereist)
+---
+## 📋 Concrete Inspiratie & Bron-Voorstel voor het Team
+Na een diepgaande analyse van de **16 gescrapete subpagina's** uit de archieven (`scraped_archive/pages/`), het **Project Design DNA ("The Dark Workshop")** en de huidige technische staat van de codebase (`index.html`, `style.css`, `script.js`), leg ik hierbij het volgende verrijkingsvoorstel voor.
+### 1. Inhoudelijke Verrijking vanuit Gescrapete Subpagina's
+De volgende projecten uit Casper's archief moeten expliciet naar voren komen in de projecten-sectie (`The Workbench & Projects`) om de hybride identiteit (digitaal CMD-ontwerp + fysiek vakmanschap) kracht bij te zetten:
+*   **Fysieke & Maker Projecten:**

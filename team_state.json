@@ -1,7 +1,7 @@
 {
-  "iteration": 170,
+  "iteration": 171,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n**QA-INSPECTOR AUDIT RAPPORT**\n- **Score:** 9/10\n- **Evaluatie:** De webpagina sluit uitstekend aan bij het *Project Design DNA* (\"The Dark Workshop\" kleurenpalet is exact doorgevoerd met `#161412` achtergrond en `#C87D4B` koperaccenten). Alle 12 afbeeldingen werken correct en de persoonlijke storytelling over houtbewerking, CMD en het AI homelab is prachtig verwerkt.\n### 3 concrete technische/visuele verbeterpunten voor de volgende iteratie:\n1. **Taal-toggle toevoegen:** Implementeer een subtiele, nette NL/EN taal-toggle in de navigatie om de mix van Nederlandse sectiekoppen en de gewenste Engelse storytelling flexibel en gebruiksvriendelijk op te lossen.\n2. **Scroll-animaties (Intersection Observer):** Voeg in `script.js` subtiele fade-in of slide-up ani",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Live Webpage & DOM QA-Inspector** heb ik de huidige staat van `CasperdeBruyn.github.io` getoetst aan het `Project Design DNA`.\n### **QA-Inspectie Rapport**\n**Score: 9/10**\nDe visuele vertaling van \"The Dark Workshop\" (Optie 1) is uitstekend uitgevoerd. Het kleurenpalet is consistent doorgevoerd in de CSS-variabelen, en de typografie en layoutkeuzes sluiten naadloos aan bij de gewenste ambachtelijke, doch high-tech esthetiek. De `grain-overlay` geeft de pagina de nodige tactiele diepte die in het DNA-document werd geëist. De overstap naar Engelse storytelling is inhoudelijk sterk en voelt persoonlijk aan.\n---\n### **3 Concrete verbeterpunten voor de volgende iteratie:**\n1.  **Functionele Persistentie voor Taalschakelaar:**\nHoewel de structuur voor de N",
   "completed_changes": [],
-  "last_updated": "2026-11-14 18:15:49"
+  "last_updated": "2026-11-14 18:22:16"
 }

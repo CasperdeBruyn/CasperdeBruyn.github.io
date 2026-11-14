@@ -39,10 +39,24 @@ body::before {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: var(--grain-overlay);
-    opacity: 0.05; 
+    opacity: 0.03; 
     mix-blend-mode: overlay;
     pointer-events: none;
     z-index: 9999;
+}
+
+/* Navigatie & Taal Toggle */
+.nav-lang { position: fixed; top: 2rem; right: 2rem; z-index: 10000; display: flex; gap: 1rem; }
+.lang-btn {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.lang-btn.active {
+    color: var(--accent-maker);
+    border-bottom: 1px solid var(--accent-maker);
 }
 
 h1, h2 { 
@@ -91,9 +105,75 @@ p { color: var(--text-muted); font-size: var(--fs-body); margin-bottom: 1.5rem; 
     transform: scale(1.05);
 }
 
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease, transform 0.8s ease; 
+}
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr; }
 }
+
+<!-- file: script.js -->
+document.addEventListener('DOMContentLoaded', () => {
+    // Staggered fade-in animatie
+    const observerOptions = { 
+        threshold: 0.15, 
+        rootMargin: '0px 0px -50px 0px' 
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Staggered delay van 150ms
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, index * 150);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.project-card, .section-title, .about-grid');
+    animatedElements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+
+    // Taal Toggle Logica
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            langBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            // Hier kan toekomstige taal-switch logica komen
+        });
+    });
+
+    // Filter Functionaliteit
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    card.style.display = 'block';
+                    requestAnimationFrame(() => card.style.opacity = '1');
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        if (card.style.opacity === '0') card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+});

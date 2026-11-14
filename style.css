@@ -1,14 +1,25 @@
 :root {
     --bg-primary: #161412;
     --bg-card: #231F1D;
+    --bg-card-hover: #2C2623;
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
     --accent-maker: #C87D4B;
+    --accent-glow: rgba(200, 125, 75, 0.25);
+    --border-subtle: rgba(244, 241, 234, 0.08);
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
 
 body {
     background-color: var(--bg-primary);
@@ -30,36 +41,433 @@ body::before {
 }
 
 /* Navigatie */
-.navbar { display: flex; justify-content: space-between; padding: 2rem 5%; align-items: center; }
-.nav-links { display: flex; list-style: none; gap: 2rem; }
-.nav-links a { color: var(--text-primary); text-decoration: none; font-weight: 500; transition: var(--transition); }
-.nav-links a:hover, .nav-links a:focus { color: var(--accent-maker); outline: none; }
-
-/* Hero */
-.hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; }
-.hero h1 { font-family: 'IBM Plex Serif', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 1rem; }
-.cta-button { 
-    display: inline-block; padding: 1rem 2rem; border: 2px solid var(--accent-maker);
-    color: var(--accent-maker); text-decoration: none; margin-top: 2rem; transition: var(--transition);
-}
-.cta-button:hover { background: var(--accent-maker); color: var(--bg-primary); }
-
-/* Projects Grid - Responsief */
-.projects-grid { 
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 2rem; padding: 2rem 5%; 
-}
-.project-card { 
-    background: var(--bg-card); padding: 1.5rem; border-radius: 8px;
-    border-bottom: 4px solid transparent; transition: var(--transition);
-}
-.project-card:hover { border-bottom-color: var(--accent-maker); transform: translateY(-10px); }
-.project-image { 
-    width: 100%; height: 200px; object-fit: cover; border-radius: 4px;
-    background: #333; /* Loading placeholder */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(22, 20, 18, 0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Toegankelijkheid */
+.logo a {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--accent-maker);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a:focus {
+    color: var(--accent-maker);
+    outline: none;
+}
+
+.status-indicator {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-maker);
+    background: var(--bg-card);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-subtle);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.terminal-box {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    max-width: 750px;
+    margin-bottom: 2rem;
+    color: var(--accent-maker);
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 1rem 2rem;
+    border: 2px solid var(--accent-maker);
+    color: var(--accent-maker);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.cta-button:hover, .cta-button:focus {
+    background: var(--accent-maker);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
+    outline: none;
+}
+
+.cta-button.secondary {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+    margin-left: 1rem;
+}
+
+.cta-button.secondary:hover {
+    border-color: var(--text-primary);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+/* Sections algemeen */
+section {
+    padding: 6rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.about-content strong {
+    color: var(--text-primary);
+}
+
+.about-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.about-images-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+}
+
+.about-images-grid img:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-maker);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.about-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+}
+
+.about-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-maker);
+    transform: translateY(-5px);
+}
+
+.about-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+}
+
+.hobbies-box {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    margin-top: 2rem;
+}
+
+.hobbies-box h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.highlight-mission {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(200, 125, 75, 0.08);
+    border-left: 4px solid var(--accent-maker);
+    border-radius: 0 6px 6px 0;
+    color: var(--text-primary);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    border-color: var(--accent-maker);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.project-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: #201C1A;
+}
+
+.project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+.project-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Homelab Section */
+.homelab-content {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.homelab-status-card {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-maker);
+}
+
+.homelab-status-card code {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-maker);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Contact actions / Cookie / Extra Elements */
+.contact-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-subtle);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Animatie Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 5%;
+    }
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
+
+<!-- file: script.js -->
+/**
+ * Casper de Bruyn Portfolio - Logic Builder
+ * Handle dynamische project rendering, interactieve elementen en toegankelijkheid.
+ */
+
+const dynamicProjects = [
+    { title: "Poul Cadovius Inspired Cabinet", desc: "Crafted out of birch and falcata plywood, combining traditional woodworking with modular storage.", img: "assets/images/about-me_2.jpg", category: "craft" },
+    { title: "Smart Home Custom Lighting", desc: "Bridging hardware automation with custom logic for immersive room ambiance.", img: "assets/images/about-me_3.jpg", category: "systems" }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Dynamische Project Loader & Enhancements
+    const grid = document.querySelector('.projects-grid');
+    if (grid) {
+        dynamicProjects.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'project-card fade-in';
+            card.setAttribute('data-category', p.category);
+            card.innerHTML = `
+                <img class="project-image" src="${p.img}" alt="${p.title}" loading="lazy">
+                <div class="project-info">
+                    <h3>${p.title}</h3>
+                    <p>${p.desc}</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // 2. Intersection Observer voor Fade-In animaties
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, .about-content, .about-card, .hobbies-box, .homelab-content').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+
+    // 3. Toegankelijkheid: Focus management en interactieve feedback
+    document.querySelectorAll('a, button').forEach(interactiveElement => {
+        interactiveElement.addEventListener('focus', () => {
+            interactiveElement.style.outline = '2px solid var(--accent-maker)';
+            interactiveElement.style.outlineOffset = '3px';
+        });
+        interactiveElement.addEventListener('blur', () => {
+            interactiveElement.style.outline = 'none';
+        });
+    });
+
+    // 4. Console log easter egg voor de tech-savvy bezoeker
+    console.log(
+        "%c[C://DE_BRUYN]%c AI Agent & Workshop Active. Welcome to the digital chaos!",
+        "color: #C87D4B; font-weight: bold; font-family: monospace; font-size: 14px;",
+        "color: #F4F1EA; font-family: monospace;"
+    );
+});

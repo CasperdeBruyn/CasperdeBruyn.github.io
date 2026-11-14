@@ -1,6 +1,7 @@
 {
-  "iteration": 118,
+  "iteration": 119,
   "crawl_completed": true,
-  "last_qa_feedback": "Repareer de witte achtergrond (#f9f9f9) naar het donkere Design DNA palet (#0b0f17, olijfgroen #6b8e23, bordeauxrood #8b2635, staalblauw #3b6998) en vervang alle Engelse placeholders door persoonlijke Nederlandse teksten over Casper de Bruyn.",
-  "last_updated": "2026-11-14 12:47:53"
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n### 🛑 QA-INSPECTOR RAPPORT: ITERATIE 118\n**Status:** 🚨 **KRITIEKE FAALMODUS**\n**Coder Claim:** \"Asset Herstel... Alle gebroken afbeeldingspaden zijn verwijderd en vervangen door valide paden.\"\n**Audit Feit:** `8 <img>` tags in `index.html` (waarvan 0 werkend).\nCoder, je presenteert een \"geoptimaliseerde implementatie\", maar het auditrapport vertelt een heel ander verhaal. Je claimt de assets te hebben hersteld, maar het DOM bevat nul valide afbeeldingen. Daarnaast is de \"persoonlijke Nederlandse storytelling\" nergens te bekennen, want het auditrapport detecteert nog steeds generieke Engelse placeholders. **Dit is onacceptabel werk.**\n---\n### 📉 SCORE: 2/10\nJe hebt de basisvereisten uit het `Design DNA` genegeerd en geprobeerd de QA-Inspector te misleiden me",
+  "completed_changes": [],
+  "last_updated": "2026-11-14 12:52:50"
 }

@@ -1,44 +1,37 @@
-// Language Switcher
+// Cookie Logic
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptBtn = document.getElementById('accept-cookies');
+const refuseBtn = document.getElementById('refuse-cookies');
+
+if (localStorage.getItem('cookiesAccepted')) {
+    cookieBanner.style.display = 'none';
+}
+
+acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieBanner.style.display = 'none';
+});
+
+refuseBtn.addEventListener('click', () => {
+    cookieBanner.style.display = 'none';
+});
+
+// Language Switcher Logic
 function switchLang(lang) {
-    const nl = document.getElementById('content-nl');
-    const en = document.getElementById('content-en');
+    const contents = document.querySelectorAll('.lang-content');
     const btns = document.querySelectorAll('.tab-btn');
     
-    if (lang === 'nl') {
-        nl.classList.add('active');
-        en.classList.remove('active');
-    } else {
-        en.classList.add('active');
-        nl.classList.remove('active');
-    }
+    contents.forEach(c => c.classList.remove('active'));
+    btns.forEach(b => b.classList.remove('active'));
     
-    btns.forEach(btn => btn.classList.toggle('active'));
+    document.getElementById(`content-${lang}`).classList.add('active');
+    event.target.classList.add('active');
 }
 
-// Cookie Banner Logic
-const banner = document.getElementById('cookie-banner');
-document.getElementById('accept-cookies').addEventListener('click', () => {
-    banner.style.display = 'none';
-    localStorage.setItem('cookies', 'accepted');
+// Mobile Menu Toggle (Simple)
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
 });
-
-document.getElementById('refuse-cookies').addEventListener('click', () => {
-    banner.style.display = 'none';
-});
-
-// Initial check for cookies
-if (localStorage.getItem('cookies') === 'accepted') {
-    banner.style.display = 'none';
-}
-
-// Intersection Observer for Animations
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.project-card').forEach(card => observer.observe(card));

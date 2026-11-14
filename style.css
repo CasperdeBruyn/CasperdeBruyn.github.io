@@ -6,58 +6,30 @@
 }
 
 :root {
-    --bg-primary: #0b0f17;
-    --bg-card: #131b26;
-    --accent-olive: #6b8e23;
-    --accent-bordeaux: #8b2635;
-    --accent-steel: #3b6998;
-    --text-primary: #f0eee9;
-    --text-muted: #9ba8b8;
-    --border-color: rgba(107, 142, 35, 0.28);
-    --glass-bg: rgba(19, 27, 38, 0.75);
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* The Dark Workshop Palet */
+    --bg-primary: #161412;        /* Diep Houtskool */
+    --bg-card: #231F1D;          /* Gerookt Eiken */
+    --text-primary: #F4F1EA;      /* Cloud Dancer */
+    --text-muted: #A09D98;        /* Subtiel grijs voor leesbaarheid */
+    --accent-copper: #C87D4B;     /* Gesmolten Amber */
+    
+    /* Typografie */
+    --font-sans: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
+    
+    /* Effecten */
+    --grain-overlay: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 html { scroll-behavior: smooth; }
 
-/* --- FORCEER HET DESIGN DNA --- */
 body {
     background-color: var(--bg-primary) !important;
-    color: var(--text-primary) !important;
+    background-image: var(--grain-overlay);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
-}
-
-.card, .project-card, section {
-    background-color: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--text-primary) !important;
-}
-
-/* Zorg dat afbeeldingen niet breken en passen binnen glassmorphism */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    background: var(--bg-primary);
-}
-
-/* --- DESIGN DNA: GLASSMORPHISM & HOVER STATES --- */
-.project-card {
-    backdrop-filter: blur(15px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
-    border-radius: 16px !important;
-    padding: 2rem !important;
-    transition: var(--transition);
-}
-
-.project-card:hover {
-    border-color: var(--accent-olive) !important;
-    transform: translateY(-5px);
 }
 
 /* Navbar */
@@ -70,28 +42,43 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background-color: rgba(11, 15, 23, 0.9);
+    background: rgba(22, 20, 18, 0.9);
     backdrop-filter: blur(10px);
     z-index: 900;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--accent-copper);
 }
 
 .logo a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); text-decoration: none; }
-.logo span { color: var(--accent-bordeaux); }
+.logo span { color: var(--accent-copper); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { font-weight: 500; color: var(--text-muted); text-decoration: none; }
-.nav-links a:hover { color: var(--accent-olive); }
+.nav-links a { font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-copper); }
 
 /* Hero */
 .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
 .hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 1rem; }
-.hero h1 span { color: var(--accent-bordeaux); }
-.subtitle { font-size: 1.5rem; color: var(--accent-olive); margin-bottom: 1rem; }
+.hero h1 span { color: var(--accent-copper); }
+.subtitle { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; }
 
-/* Sections General */
+/* Sections */
 main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-section { margin-bottom: 4rem; border-radius: 20px; padding: 2rem; }
-.section-title { margin-bottom: 2rem; text-align: center; font-family: var(--font-serif); }
+.section-title { margin-bottom: 2rem; text-align: center; font-family: var(--font-serif); color: var(--text-primary); }
+
+.project-card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid #332d2a !important;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    border-color: var(--accent-copper) !important;
+    transform: translateY(-5px);
+}
+
+.project-card img { border-radius: 8px; margin-bottom: 1rem; }
+.project-card h3 { color: var(--text-primary); }
 
 .projects-grid {
     display: grid;
@@ -99,5 +86,4 @@ section { margin-bottom: 4rem; border-radius: 20px; padding: 2rem; }
     gap: 2rem;
 }
 
-/* Footer */
-footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--border-color); }
+footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid #332d2a; }

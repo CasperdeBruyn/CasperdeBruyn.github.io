@@ -1,39 +1,26 @@
 // Language Switching
 function switchLang(lang) {
-    const contents = document.querySelectorAll('.lang-content');
-    const buttons = document.querySelectorAll('.tab-btn');
-    
-    contents.forEach(c => c.classList.remove('active'));
-    buttons.forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     
     document.getElementById(`content-${lang}`).classList.add('active');
     event.target.classList.add('active');
 }
 
 // Cookie Banner Logic
-const cookieBanner = document.getElementById('cookie-banner');
-const acceptBtn = document.getElementById('accept-cookies');
-const refuseBtn = document.getElementById('refuse-cookies');
+const banner = document.getElementById('cookie-banner');
+const accept = document.getElementById('accept-cookies');
+const refuse = document.getElementById('refuse-cookies');
 
-if (!localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.classList.add('show');
+if (localStorage.getItem('cookiesAccepted')) {
+    banner.style.display = 'none';
 }
 
-acceptBtn.addEventListener('click', () => {
+accept.addEventListener('click', () => {
     localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.classList.remove('show');
+    banner.style.display = 'none';
 });
 
-refuseBtn.addEventListener('click', () => {
-    cookieBanner.classList.remove('show');
-});
-
-// Smooth Scroll for Nav
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+refuse.addEventListener('click', () => {
+    banner.style.display = 'none';
 });

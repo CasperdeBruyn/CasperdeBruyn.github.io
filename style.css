@@ -5,11 +5,11 @@
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
     
-    /* Gecureerde Accent-hiërarchie */
-    --accent-amber: #C87D4B;    /* Maker / Technical */
-    --accent-olive: #5C6E58;    /* Personal Branding */
-    --accent-burgundy: #7A3E3E; /* Call-to-Action */
-    --accent-steel: #4A6278;    /* Academic / Research */
+    /* Functionele Accent-hiërarchie */
+    --accent-maker: #C87D4B;     /* Amber: Hout/Vakmanschap */
+    --accent-acad: #7A3E3E;      /* Bordeaux: Onderzoek/Erfgoed */
+    --accent-tech: #4A6278;      /* Staalblauw: AI/Tech/Homelab */
+    --accent-bio: #5C6E58;       /* Olijfgroen: Natuur/Duurzaam */
     
     /* Typografie & Effects */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -29,7 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Dynamische Accent-classes voor projecten */
+/* Project Cards */
 .project-card {
     background-color: var(--bg-card);
     border: 1px solid #332d2a;
@@ -38,14 +38,15 @@ body {
     transition: var(--transition);
 }
 
-.project-card.maker { border-top: 4px solid var(--accent-amber); }
-.project-card.acad { border-top: 4px solid var(--accent-steel); }
-.project-card.personal { border-top: 4px solid var(--accent-olive); }
-.project-card.cta { border-top: 4px solid var(--accent-burgundy); }
+.project-card.maker { border-left: 4px solid var(--accent-maker); }
+.project-card.acad { border-left: 4px solid var(--accent-acad); }
+.project-card.tech { border-left: 4px solid var(--accent-tech); }
+.project-card.bio { border-left: 4px solid var(--accent-bio); }
 
 .project-card:hover { 
     transform: translateY(-8px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: #2a2624;
 }
 
 /* Navbar */
@@ -61,7 +62,7 @@ body {
 }
 
 .logo a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary); text-decoration: none; }
-.logo span { color: var(--accent-amber); }
+.logo span { color: var(--accent-maker); }
 
 /* Utility */
 .fade-in { 
@@ -74,37 +75,3 @@ body {
     opacity: 1; 
     transform: translateY(0); 
 }
-
-<!-- file: script.js -->
-// Casper de Bruyn Portfolio - Core Logic
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("System initialized: Dark Workshop theme active.");
-
-    // Geoptimaliseerde Scroll Animatie Observer
-    const observerOptions = { 
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, observerOptions);
-
-    // Initialiseer elementen voor fade-in
-    document.querySelectorAll('.project-card, .section-content, .hero').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-
-    // Event listener voor cookies (indien aanwezig)
-    const cookieBanner = document.getElementById('cookie-banner');
-    if (cookieBanner) {
-        document.getElementById('accept-cookies')?.addEventListener('click', () => {
-            cookieBanner.style.display = 'none';
-        });
-    }
-});

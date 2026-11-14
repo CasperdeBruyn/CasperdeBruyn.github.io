@@ -1,45 +1,37 @@
 const projects = [
-    { title: "Generation plastic soup", year: "2025", img: "assets/home_3.jpg" },
-    { title: "Street Fresh", year: "2024", img: "assets/home_4.jpg" },
-    { title: "Samen spelen", year: "2024", img: "assets/home_6.jpg" },
-    { title: "Grijpmachine", year: "2024", img: "assets/home_7.jpg" },
-    { title: "Kodak", year: "2024", img: "assets/home_9.jpg" },
-    { title: "Bomby Bird", year: "2024", img: "assets/home_10.jpg" },
-    { title: "Picknicken met Sophie", year: "2023", img: "assets/home_12.jpg" },
-    { title: "OSRS Kerst", year: "2023", img: "assets/home_13.jpg" },
-    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "assets/home_15.jpg" },
-    { title: "Vechtclub XL", year: "2023", img: "assets/home_18.jpg" },
-    { title: "Hu Begeleidt", year: "2022", img: "assets/home_21.jpg" },
-    { title: "Dan maar hier!", year: "2022", img: "assets/home_24.jpg" }
+    { title: "Generation plastic soup", year: "2025", img: "assets/home_1.jpg" },
+    { title: "Street Fresh", year: "2024", img: "assets/home_3.jpg" },
+    { title: "Samen spelen", year: "2024", img: "assets/home_4.jpg" },
+    { title: "Grijpmachine", year: "2024", img: "assets/home_6.jpg" },
+    { title: "Kodak", year: "2024", img: "assets/home_7.jpg" },
+    { title: "Bomby Bird", year: "2024", img: "assets/home_8.jpg" },
+    { title: "Picknicken met Sophie", year: "2023", img: "assets/home_9.jpg" },
+    { title: "OSRS Kerst", year: "2023", img: "assets/home_10.jpg" },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "assets/home_12.jpg" },
+    { title: "Vechtclub XL", year: "2023", img: "assets/home_13.jpg" },
+    { title: "Hu Begeleidt", year: "2022", img: "assets/home_15.jpg" },
+    { title: "Dan maar hier!", year: "2022", img: "assets/home_16.jpg" }
 ];
 
-function initProjects() {
+function renderProjects() {
     const container = document.getElementById('project-container');
     projects.forEach(project => {
         const card = document.createElement('div');
         card.className = 'project-card fade-in';
         card.innerHTML = `
-            <img src="${project.img}" alt="${project.title}">
-            <h3>${project.title}</h3>
-            <p>${project.year}</p>
+            <img src="${project.img}" alt="${project.title}" class="project-image">
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.year}</p>
+            </div>
         `;
         container.appendChild(card);
     });
 }
 
-// Animaties bij scrollen
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-});
-
-// Cookie functies
 function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
-    console.log("Cookies accepted");
+    localStorage.setItem('cookiesAccepted', 'true');
 }
 
 function hideCookies() {
@@ -47,6 +39,8 @@ function hideCookies() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initProjects();
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    renderProjects();
+    if(localStorage.getItem('cookiesAccepted') === 'true') {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
 });

@@ -1,9 +1,4 @@
-het inspiratiebord.
-**De "Missing 9" (De ontbrekende projecten/secties):**
-Om aan de 16 te komen, moeten de volgende pagina's direct worden geïntegreerd in de nieuwe structuur:
-| Project/Pagina | Status | Voorgestelde Tier | Motivering |
-| :--- | :--- | :--- | :--- |
-| **Bomby Bird** | ⚠️ Check nodig | **Tier 1** | Cruciaal project. *Actie: Controleer afbeeldingen tegenover myportfolio.* |
+en tegenover myportfolio.* |
 | **Kodak** | 🆕 Missend | **Tier 1** | Sterke visuele storytelling kans. |
 | **Generation Plastic Soup** | 🆕 Missend | **Tier 1** | Immersieve/Maatschappelijke impact. |
 | **Grijpmachine** | 🆕 Missend | **Tier 1** | Techniek/Fysiek vakmanschap. |
@@ -128,3 +123,8 @@ Ik adviseer de volgende taakverdeling om de deadline te halen:
 **3. [Backend/Logic Agent] $\rightarrow$ De "Secure Connector"**
 *   **Taak:** Configureer het contactformulier.
 *   Routeer mail
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 220 (2026-11-15 00:46 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

@@ -22,25 +22,40 @@
 
 html { scroll-behavior: smooth; }
 
+/* --- FORCEER HET DESIGN DNA --- */
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-sans);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.card, .project-card, section {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Zorg dat afbeeldingen niet breken en passen binnen glassmorphism */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: var(--bg-primary);
 }
 
 /* --- DESIGN DNA: GLASSMORPHISM & HOVER STATES --- */
-.project-card, .card {
-    background: var(--glass-bg) !important;
+.project-card {
     backdrop-filter: blur(15px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
-    border: 1px solid var(--border-color) !important;
     border-radius: 16px !important;
     padding: 2rem !important;
     transition: var(--transition);
 }
 
-.project-card:hover, .card:hover {
+.project-card:hover {
     border-color: var(--accent-olive) !important;
     transform: translateY(-5px);
 }
@@ -75,10 +90,10 @@ body {
 
 /* Sections General */
 main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-section { margin-bottom: 4rem; }
+section { margin-bottom: 4rem; border-radius: 20px; padding: 2rem; }
 .section-title { margin-bottom: 2rem; text-align: center; font-family: var(--font-serif); }
 
-.project-grid {
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;

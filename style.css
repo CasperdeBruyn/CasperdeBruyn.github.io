@@ -1,87 +1,115 @@
 :root {
-    /* The Dark Workshop Palet */
+    /* The Dark Workshop Base */
     --bg-primary: #161412;
     --bg-card: #231F1D;
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
-    
-    /* Functionele Accent-hiërarchie */
-    --accent-maker: #C87D4B;
-    --accent-maker-hover: #E09A6B;
-    --meta-color: rgba(200, 125, 75, 0.8);
+
+    /* Geïntegreerde Accent-hiërarchie */
+    --accent-maker: #C87D4B;     /* Koper/Amber (Primary Action) */
+    --accent-craft: #7A2828;     /* Bordeaux (Academic/Craft) */
+    --accent-tech: #3D5A80;      /* Staalblauw (Linux/AI Lab) */
     
     /* Typografie */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
     --fs-h1: clamp(2.5rem, 8vw, 5rem);
     --fs-h2: clamp(1.75rem, 5vw, 3rem);
-    --fs-body: 1.1rem;
-    --line-height-tight: 1.1;
-    --line-height-relaxed: 1.7; /* Verhoogd voor luxere leeservaring */
     
-    /* Grain & Transitions */
-    --grain-overlay: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-sans); }
 
-body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: var(--line-height-relaxed);
-    overflow-x: hidden;
-}
-
-/* Tactiele Grain Laag */
+/* Grain Overlay */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--grain-overlay);
-    opacity: 0.03; 
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: 9999;
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+    opacity: 0.03; pointer-events: none; z-index: 9999;
 }
 
-h1, h2 { 
-    font-family: 'Playfair Display', serif; 
-    line-height: var(--line-height-tight); 
-    letter-spacing: 0.02em; 
-    position: relative;
+.navbar { padding: 2rem; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-serif); font-size: 1.5rem; }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+
+.hero { min-height: 80vh; display: flex; align-items: center; padding: 0 10%; }
+.hero-content h1 { font-family: var(--font-serif); font-size: var(--fs-h1); margin-bottom: 1.5rem; }
+
+/* Grid Layouts */
+.about-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 10%; }
+
+.layer-card { 
+    background: var(--bg-card); padding: 2rem; border-top: 4px solid transparent; transition: var(--transition);
 }
+.layer-card.academic { border-color: var(--accent-craft); }
+.layer-card.craft { border-color: var(--accent-maker); }
+.layer-card.tech { border-color: var(--accent-tech); }
 
-/* Accent onderlijning voor sectiekoppen */
-h2::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--accent-maker);
-    margin-top: 1rem;
+.project-card { 
+    background: var(--bg-card); cursor: pointer; transition: var(--transition); overflow: hidden; border-radius: 4px;
 }
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
 
-h1 { font-size: var(--fs-h1); font-weight: 300; margin-bottom: 2rem; }
-h2 { font-size: var(--fs-h2); font-weight: 600; margin-bottom: 2rem; }
-
-p { color: var(--text-muted); font-size: var(--fs-body); margin-bottom: 1.5rem; max-width: 800px; }
-
-.project-card {
-    background-color: var(--bg-card);
-    border-radius: 4px;
-    padding: 2rem;
-    transition: var(--transition);
-    border-left: 4px solid transparent; 
-    cursor: pointer;
-    position: relative;
+.cta-button { 
+    padding: 1rem 2rem; background: var(--accent-maker); color: #fff; text-decoration: none; display: inline-block;
+    transition: var(--transition); border-radius: 2px;
 }
+.cta-button.secondary { background: transparent; border: 1px solid var(--accent-maker); }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    border-left: 4px solid var(--accent-maker);
-    background-color: #2b2624;
-}
-
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+<!-- file: script.js -->
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Dynamic Project Loader (Simulator voor scraping data)
+    const projectContainer = document.getElementById('project-container');
+    
+    // In een echte productie-omgeving fetch je hier 'assets/data/projects.json'
+    const portfolioData = [
+        { title: "Linux AI Homelab", category: "Tech", desc: "Custom build infrastructure for local AI agents." },
+        { title: "Poul Cadovius Replica", category: "Craft", desc: "Modular birch-plywood furniture system." },
+        { title: "Heritage Interaction", category: "Academic", desc: "Data visualization for cultural artifacts." }
+    ];
+
+    function renderProjects() {
+        if (!projectContainer) return;
+        projectContainer.innerHTML = ''; // Clear fallback
+        portfolioData.forEach(p => {
+            const card = document.createElement('article');
+            card.className = 'project-card fade-in';
+            card.innerHTML = `
+                <div class="card-image-placeholder" style="background:var(--accent-${p.category.toLowerCase()}); height:150px;"></div>
+                <div style="padding:1.5rem;">
+                    <h3 style="color:var(--accent-${p.category.toLowerCase()})">${p.title}</h3>
+                    <p>${p.desc}</p>
+                </div>
+            `;
+            projectContainer.appendChild(card);
+        });
+    }
+
+    renderProjects();
+
+    // 2. Intersection Observer voor animaties
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('is-visible'), i * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project-card, .layer-card, .section-title').forEach(el => {
+        observer.observe(el);
+    });
+
+    // 3. Smooth Scroll Enhancement
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});

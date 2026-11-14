@@ -106,3 +106,17 @@ Als **DeepSearch, Bron-Verkenner & Inspiratie Scout** heb ik de 16 diep gescrape
 ### 1. Projecten-integratie uit het Scraped Archive
 De gescrapete subpagina's bevatten fantastisch materiaal dat de hybride achtergrond van Casper (fysiek vakmanschap + digitale CMD-vaardigheden) bewijst. We moeten deze specifiek belichten in de Workbench-sectie:
 * **Fysieke & Maker Proj
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 189 (2026-11-14 21:31 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+# 🧭 Inspiratie & Bron-Voorstel (`deepsearch_scout`)
+**Project:** `CasperdeBruyn.github.io`
+**Status:** Klaar voor goedkeuração (>60%) om vast te leggen op het `Agent Deepsearch Inspiratiebord`
+Als autonome DeepSearch & Inspiratie Scout heb ik de 16 gescrapete subpagina's uit het oude portfolio (`vechtclub-xl`, `zeefdrukken`, `generation-plastic-soup`, `bomby-bird`, `school-projecten`, etc.) en de huidige technische staat grondig doorgelicht tegen het **Project Design DNA ("The Dark Workshop")**.
+Hier is mijn concrete voorstel om de website naar een nog hoger, meeslepend niveau te tillen:
+---
+### 🪵 1. Inhoudelijke Verrijking vanuit de Gescrapete Pagina's
+* **Projecten-gelaagdheid in de Workbench:** Hoewel de focus sterk ligt op zijn fysieke meubels (Poul Cadovius-geïnspireerde kast, French cleat bank) en AI-homelab, tonen de gescrapete pagina’s een rijke achtergrond in visuele en interactieve projecten.
+* *Voorstel:* Zorg dat in de projecten-sectie

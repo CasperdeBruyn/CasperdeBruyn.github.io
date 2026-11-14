@@ -62,7 +62,7 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modal-body">
                 <h2 id="modal-title"></h2>
-                <p id="modal-year"></p>
+                <p id="modal-year" class="year-tag"></p>
                 <img id="modal-image" src="" alt="Project">
                 <p id="modal-description"></p>
             </div>
@@ -72,11 +72,11 @@
     <footer id="contact">
         <div class="container">
             <p>&copy; 2025 Casper de Bruyn. Built with passion & precision.</p>
-            <div class="cookie-notice" id="cookie-banner">
-                <span>My portfolio likes cookies :]</span>
-                <button class="btn-accept" onclick="acceptCookies()">Nomnomnom</button>
-                <button class="btn-refuse" onclick="hideCookies()">Not today</button>
-            </div>
+        </div>
+        <div class="cookie-notice" id="cookie-banner">
+            <span>My portfolio likes cookies :]</span>
+            <button class="btn-accept" onclick="acceptCookies()">Nomnomnom</button>
+            <button class="btn-refuse" onclick="refuseCookies()">Not today</button>
         </div>
     </footer>
 

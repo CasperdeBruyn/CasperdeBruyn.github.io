@@ -1,57 +1,54 @@
 const projects = [
-    { title: "Generation plastic soup", year: "2025", img: "home_3.jpg", desc: "A deep dive into plastic pollution and creative solutions." },
-    { title: "Street Fresh", year: "2024", img: "home_4.jpg", desc: "Redefining urban spaces with fresh design interventions." },
-    { title: "Samen spelen", year: "2024", img: "home_6.jpg", desc: "An interactive project focusing on social connection through play." },
-    { title: "Grijpmachine", year: "2024", img: "home_7.jpg", desc: "Building a mechanical claw machine installation." },
-    { title: "Kodak", year: "2024", img: "home_9.jpg", desc: "Photography series and creative branding." },
-    { title: "Bomby Bird", year: "2024", img: "home_10.jpg", desc: "Digital game development project." },
-    { title: "Picknicken met Sophie", year: "2023", img: "home_12.jpg", desc: "Experimental social design project." },
-    { title: "OSRS Kerst", year: "2023", img: "home_13.jpg", desc: "Old School RuneScape themed holiday design." },
-    { title: "De Grinch sloopt de kerstboom", year: "2023", img: "home_14.jpg", desc: "Creative installation art for the holidays." },
-    { title: "Vechtclub XL", year: "2023", img: "home_15.jpg", desc: "Visual branding and event identity." },
-    { title: "Hu Begeleidt", year: "2022", img: "home_16.jpg", desc: "Educational design initiative at HU." },
-    { title: "Dan maar hier!", year: "2022", img: "home_18.jpg", desc: "Local community driven design project." }
+    { title: "Generation plastic soup", year: "2025", desc: "A creative initiative tackling environmental issues through design.", img: "assets/home_1.jpg" },
+    { title: "Street Fresh", year: "2024", desc: "Digital and physical branding project.", img: "assets/home_6.jpg" },
+    { title: "Samen spelen", year: "2024", desc: "Social design concept.", img: "assets/home_12.jpg" },
+    { title: "Grijpmachine", year: "2024", desc: "Interactive installation.", img: "assets/home_21.jpg" },
+    { title: "Kodak", year: "2024", desc: "Photography and media study.", img: "assets/home_24.jpg" },
+    { title: "Bomby Bird", year: "2024", desc: "Game design project.", img: "assets/home_27.jpg" },
+    { title: "Picknicken met Sophie", year: "2023", desc: "Experience design.", img: "assets/home_33.jpg" },
+    { title: "OSRS Kerst", year: "2023", desc: "Themed digital event creation.", img: "assets/home_34.jpg" },
+    { title: "De Grinch sloopt de kerstboom", year: "2023", desc: "Visual storytelling.", img: "assets/home_36.jpg" },
+    { title: "Vechtclub XL", year: "2023", desc: "Community visual identity.", img: "assets/home_37.jpg" },
+    { title: "Hu Begeleidt", year: "2022", desc: "Academic support project.", img: "assets/home_30.jpg" },
+    { title: "Dan maar hier!", year: "2022", desc: "Exhibition design.", img: "assets/home_28.jpg" }
 ];
 
+const container = document.getElementById('project-container');
+const modal = document.getElementById('project-modal');
+
 function renderProjects() {
-    const container = document.getElementById('project-container');
-    projects.forEach((proj, index) => {
-        const div = document.createElement('div');
-        div.className = 'project-card';
-        div.onclick = () => openModal(proj);
-        div.innerHTML = `
-            <img src="${proj.img}" alt="${proj.title}" onerror="this.src='https://via.placeholder.com/300'">
-            <h3>${proj.title}</h3>
-            <p style="padding: 0 1rem 1rem;">${proj.year}</p>
-        `;
-        container.appendChild(div);
-    });
+    container.innerHTML = projects.map((p, index) => `
+        <div class="project-card" onclick="openModal(${index})">
+            <img src="${p.img}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300'">
+            <h3>${p.title}</h3>
+            <p>${p.year}</p>
+        </div>
+    `).join('');
 }
 
-function openModal(proj) {
-    document.getElementById('modal-title').innerText = proj.title;
-    document.getElementById('modal-year').innerText = proj.year;
-    document.getElementById('modal-image').src = proj.img;
-    document.getElementById('modal-description').innerText = proj.desc;
-    document.getElementById('project-modal').style.display = 'block';
+function openModal(index) {
+    const p = projects[index];
+    document.getElementById('modal-title').innerText = p.title;
+    document.getElementById('modal-year').innerText = p.year;
+    document.getElementById('modal-image').src = p.img;
+    document.getElementById('modal-description').innerText = p.desc;
+    modal.style.display = 'block';
 }
 
 function closeModal() {
-    document.getElementById('project-modal').style.display = 'none';
+    modal.style.display = 'none';
 }
 
 function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
-    console.log("Cookies accepted.");
+    console.log("Cookies accepted");
 }
 
-function hideCookies() {
+function refuseCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
+    console.log("Cookies refused");
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById('project-modal');
-    if (event.target == modal) closeModal();
-}
-
-document.addEventListener('DOMContentLoaded', renderProjects);
+// Init
+window.onclick = (event) => { if (event.target == modal) closeModal(); };
+renderProjects();

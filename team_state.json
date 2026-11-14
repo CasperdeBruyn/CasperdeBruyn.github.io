@@ -1,7 +1,7 @@
 {
-  "iteration": 121,
+  "iteration": 122,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n### 🔍 QA-Inspector Rapport: CasperdeBruyn.github.io\n**Datum:** Audit Iteratie 120\n**Status:** Inhoudelijk tekortschietend, visueel conform.\n---\n### 🧐 Inspectie-oordeel\nIk heb het auditrapport naast het Design DNA gelegd. Laten we niet doen alsof we klaar zijn: de CSS-architectuur staat als een huis (variabelen zijn correct, hex-codes kloppen, assets laden), maar de **inhoudelijke diepgang** is non-existent.\n**De cijfers spreken voor zich:**\n*   **CSS & Design:** 9/10. De variabelen voor `--bg-primary` en de accentkleuren (`--accent-olive`, `--accent-bordeaux`) zijn correct in de `:root` geïmplementeerd. Geen sporen van verboden witte achtergronden.\n*   **Technisch:** 8/10. Geen errors in DOM of CSS-selectors.\n*   **Inhoud (Storytelling):** 3/10. Een `index",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n**QA-INSPECTOR RAPPORT: ITERATIE 121**\n**Status:** Kritische evaluatie van Audit Rapport & Bestandsintegriteit.\nIk heb het auditrapport geanalyseerd. De Coder beweert dat de \"digitale vitrine\" staat, maar als QA-Inspector kijk ik dwars door de abstracte claims heen.\n**Mijn bevindingen:**\n1.  **CSS-variabelen:** De variabelen in `style.css` zijn exact conform het Design DNA. Het risico op \"witruimte-uitbraak\" (lichte achtergronden) is hiermee technisch afgedekt in de root.\n2.  **Asset-dichtheid:** Het auditrapport meldt slechts **2 `<img>` tags**. Dit is voor een portfolio met zowel \"Cultureel Erfgoed\" als \"Fysiek Vakmanschap\" en \"Linux AI Homelab\" **volstrekt onvoldoende**. Eén foto voor het hele portfolio is geen \"vitrine\", maar een tekortkoming in visuel",
   "completed_changes": [],
-  "last_updated": "2026-11-14 13:03:11"
+  "last_updated": "2026-11-14 13:08:19"
 }

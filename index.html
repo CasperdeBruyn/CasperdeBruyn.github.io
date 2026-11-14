@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casper de Bruyn | Maker & CMD Designer</title>
     <meta name="description" content="Portfolio van Casper de Bruyn - Maker, Designer & CMD student. Combining digital innovation with physical craftsmanship.">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cookie Consent -->
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <p>My portfolio likes cookies :]</p>
         <div class="cookie-btns">
-            <button id="accept-cookies" class="btn primary">Nomnomnom (Accept)</button>
-            <button id="refuse-cookies" class="btn secondary">Not today (Refuse)</button>
+            <button id="accept-cookies" class="btn-primary">Nomnomnom (Accept)</button>
+            <button id="refuse-cookies" class="btn-secondary">Not today (Refuse)</button>
         </div>
     </div>
 
@@ -52,18 +55,20 @@
             <div class="container">
                 <h2 class="section-title">About me</h2>
                 <div class="about-tabs">
-                    <button class="tab-btn active" data-lang="nl">Nederlands</button>
-                    <button class="tab-btn" data-lang="en">English</button>
+                    <button class="tab-btn active" onclick="switchLang('nl')">Nederlands</button>
+                    <button class="tab-btn" onclick="switchLang('en')">English</button>
                 </div>
                 
                 <div class="about-content">
                     <div id="content-nl" class="lang-content active">
-                        <p>Hoi en welkom in mijn portfolio! Wat leuk dat je een kijkje neemt in mijn (digitale) chaos! Zoals je waarschijnlijk al zag, heet ik Casper :] Ik ben in '97 geboren in Delft en studeer momenteel CMD aan de Hogeschool Utrecht.</p>
+                        <p>Hoi en welkom in mijn portfolio! Wat leuk dat je een kijkje neemt in mijn (digitale) chaos! Zoals je waarschijnlijk al zag, heet ik Casper :] Ik ben in '97 geboren in Delft en studeer momenteel CMD (Communication and Multimedia Design) aan de Hogeschool Utrecht.</p>
                         <p>Waar ik voorheen veel met mijn handen werkte in de houtbewerking en elektra, combineer ik die praktische makers-mindset nu volop met de digitale kant van CMD. Van logo's tot installaties—ik knutsel net zo graag achter mijn laptop als in de fysieke wereld.</p>
+                        <p>Ik hou me het allerliefste bezig met het creëren van immersieve ervaringen. Mijn missie is geslaagd als ik mensen even helemaal uit de realiteit kan halen.</p>
                     </div>
                     <div id="content-en" class="lang-content">
-                        <p>Welcome to my (digital) chaos, glad you're taking a peek! As you might've guessed, my name is Casper :] I was born in Delft in '97 and I'm currently studying CMD at Hogeschool Utrecht.</p>
-                        <p>While my background is rooted in woodworking and electronics, I now combine that practical maker-mindset with the digital side of CMD. From designing logos to building installations, I love crafting behind my laptop just as much as in the physical world.</p>
+                        <p>Welcome to my (digital) chaos, glad you're taking a peek! As you might've guessed, my name is Casper :] I was born in Delft in '97 and I'm currently studying CMD (Communication and Multimedia Design) at Hogeschool Utrecht.</p>
+                        <p>While my background is deeply rooted in woodworking and electronics, I now combine that practical maker-mindset with the digital side of CMD. From designing logos to building tangible installations, I love crafting just as much behind my laptop as I do in the physical world.</p>
+                        <p>Most of all, I love creating immersive experiences. If I can take people completely out of reality for a moment, my mission is 100% accomplished.</p>
                     </div>
                 </div>
             </div>
@@ -73,28 +78,28 @@
         <section id="projects" class="projects-section">
             <div class="container">
                 <h2 class="section-title">Selected Work</h2>
-                <div class="projects-grid">
-                    <!-- Projectenlijst -->
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Generation plastic soup</h3><p>2025</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Street Fresh</h3><p>2024</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Samen spelen</h3><p>2024</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Grijpmachine</h3><p>2024</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Kodak</h3><p>2024</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Bomby Bird</h3><p>2024</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Picknicken met Sophie</h3><p>2023</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>OSRS Kerst</h3><p>2023</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>De Grinch sloopt de kerstboom</h3><p>2023</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Vechtclub XL</h3><p>2023</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Hu Begeleidt</h3><p>2022</p></article>
-                    <article class="project-card"><div class="img-placeholder"></div><h3>Dan maar hier!</h3><p>2022</p></article>
+                <div class="project-grid">
+                    <!-- Project Items -->
+                    <div class="project-card"><img src="assets/home_3.jpg" alt="Generation plastic soup"><h3>Generation plastic soup</h3><span>2025</span></div>
+                    <div class="project-card"><img src="assets/home_4.jpg" alt="Street Fresh"><h3>Street Fresh</h3><span>2024</span></div>
+                    <div class="project-card"><img src="assets/home_6.jpg" alt="Samen spelen"><h3>Samen spelen</h3><span>2024</span></div>
+                    <div class="project-card"><img src="assets/home_7.jpg" alt="Grijpmachine"><h3>Grijpmachine</h3><span>2024</span></div>
+                    <div class="project-card"><img src="assets/home_9.jpg" alt="Kodak"><h3>Kodak</h3><span>2024</span></div>
+                    <div class="project-card"><img src="assets/home_10.jpg" alt="Bomby Bird"><h3>Bomby Bird</h3><span>2024</span></div>
+                    <div class="project-card"><img src="assets/home_12.jpg" alt="Picknicken met Sophie"><h3>Picknicken met Sophie</h3><span>2023</span></div>
+                    <div class="project-card"><img src="assets/home_18.jpg" alt="OSRS Kerst"><h3>OSRS Kerst</h3><span>2023</span></div>
+                    <div class="project-card"><img src="assets/home_21.jpg" alt="De Grinch sloopt de kerstboom"><h3>De Grinch sloopt de kerstboom</h3><span>2023</span></div>
+                    <div class="project-card"><img src="assets/home_24.jpg" alt="Vechtclub XL"><h3>Vechtclub XL</h3><span>2023</span></div>
+                    <div class="project-card"><img src="assets/home_27.jpg" alt="Hu Begeleidt"><h3>Hu Begeleidt</h3><span>2022</span></div>
+                    <div class="project-card"><img src="assets/home_33.jpg" alt="Dan maar hier!"><h3>Dan maar hier!</h3><span>2022</span></div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; Casper de Bruyn. All rights reserved.</p>
-        <button id="back-to-top" class="btn-link">&uarr; Back to Top</button>
+        <p>&copy; 2025 Casper de Bruyn.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top &uarr;</button>
     </footer>
 
     <script src="script.js"></script>

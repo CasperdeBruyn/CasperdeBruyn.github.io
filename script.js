@@ -1,37 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Cookie Handling
-    const cookieBanner = document.getElementById('cookie-banner');
-    document.getElementById('accept-cookies').addEventListener('click', () => {
-        cookieBanner.style.display = 'none';
-        localStorage.setItem('cookiesAccepted', 'true');
-    });
-    document.getElementById('refuse-cookies').addEventListener('click', () => {
-        cookieBanner.style.display = 'none';
-    });
-
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieBanner.style.display = 'none';
+// Language Switcher
+function switchLang(lang) {
+    const nl = document.getElementById('content-nl');
+    const en = document.getElementById('content-en');
+    const btns = document.querySelectorAll('.tab-btn');
+    
+    if (lang === 'nl') {
+        nl.classList.add('active');
+        en.classList.remove('active');
+    } else {
+        en.classList.add('active');
+        nl.classList.remove('active');
     }
+    
+    btns.forEach(btn => btn.classList.toggle('active'));
+}
 
-    // Language Tabs
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const langContents = document.querySelectorAll('.lang-content');
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const lang = btn.getAttribute('data-lang');
-            langContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === `content-${lang}`) content.classList.add('active');
-            });
-        });
-    });
-
-    // Back to top
-    document.getElementById('back-to-top').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+// Cookie Banner Logic
+const banner = document.getElementById('cookie-banner');
+document.getElementById('accept-cookies').addEventListener('click', () => {
+    banner.style.display = 'none';
+    localStorage.setItem('cookies', 'accepted');
 });
+
+document.getElementById('refuse-cookies').addEventListener('click', () => {
+    banner.style.display = 'none';
+});
+
+// Initial check for cookies
+if (localStorage.getItem('cookies') === 'accepted') {
+    banner.style.display = 'none';
+}
+
+// Intersection Observer for Animations
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.project-card').forEach(card => observer.observe(card));

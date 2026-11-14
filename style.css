@@ -425,23 +425,28 @@ section {
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn Portfolio - Logic Builder
- * Handle dynamische project rendering, interactieve elementen en toegankelijkheid.
+ * Casper de Bruyn Portfolio - Logic Builder & Interaction Handler
+ * Handelt dynamische project rendering, intersection observers, toegankelijkheid en homelab status simulatie.
  */
 
-const dynamicProjects = [
+const portfolioProjects = [
     { title: "Poul Cadovius Inspired Cabinet", desc: "Crafted out of birch and falcata plywood, combining traditional woodworking with modular storage.", img: "assets/images/about-me_2.jpg", category: "craft" },
-    { title: "Smart Home Custom Lighting", desc: "Bridging hardware automation with custom logic for immersive room ambiance.", img: "assets/images/about-me_3.jpg", category: "systems" }
+    { title: "Smart Home Custom Lighting", desc: "Bridging hardware automation with custom logic for immersive room ambiance.", img: "assets/images/about-me_3.jpg", category: "systems" },
+    { title: "Bomby Bird", desc: "Interactive game architecture and character design.", img: "assets/images/bomby-bird_1.jpg", category: "digital" },
+    { title: "The Grinch Spatial", desc: "Rapid prototyping of a physical game mechanism and set construction.", img: "assets/images/de-grinch-sloopt-de-kerstboom_1.jpg", category: "craft" },
+    { title: "Generation Plastic Soup", desc: "Data visualization for environmental awareness through immersive media.", img: "assets/images/generation-plastic-soup_1.jpg", category: "digital" },
+    { title: "Grijpmachine", desc: "A nod to arcade nostalgia, translated into modern interactive hardware.", img: "assets/images/grijpmachine_1.jpg", category: "craft" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dynamische Project Loader & Enhancements
+    // 1. Dynamische Project Loader & Rendering
     const grid = document.querySelector('.projects-grid');
     if (grid) {
-        dynamicProjects.forEach(p => {
+        grid.innerHTML = ''; // Maak leeg om dubbele items te voorkomen en voeg de volledige set toe
+        portfolioProjects.forEach(p => {
             const card = document.createElement('div');
             card.className = 'project-card fade-in';
-            card.setAttribute('data-category', p.category);
+            card.setAttribute('data-category', p.category || 'craft');
             card.innerHTML = `
                 <img class="project-image" src="${p.img}" alt="${p.title}" loading="lazy">
                 <div class="project-info">
@@ -459,11 +464,11 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, observerInstance) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+                observerInstance.unobserve(entry.target);
             }
         });
     }, observerOptions);

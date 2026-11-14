@@ -1,4 +1,16 @@
-// Cookie Logic
+// Language Switcher
+function switchLang(lang) {
+    // Buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Content
+    document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+    document.getElementById(`content-${lang}`).classList.add('active');
+}
+
+// Cookie Banner Logic
 const cookieBanner = document.getElementById('cookie-banner');
 const acceptBtn = document.getElementById('accept-cookies');
 const refuseBtn = document.getElementById('refuse-cookies');
@@ -16,22 +28,12 @@ refuseBtn.addEventListener('click', () => {
     cookieBanner.style.display = 'none';
 });
 
-// Language Switcher Logic
-function switchLang(lang) {
-    const contents = document.querySelectorAll('.lang-content');
-    const btns = document.querySelectorAll('.tab-btn');
-    
-    contents.forEach(c => c.classList.remove('active'));
-    btns.forEach(b => b.classList.remove('active'));
-    
-    document.getElementById(`content-${lang}`).classList.add('active');
-    event.target.classList.add('active');
-}
-
-// Mobile Menu Toggle (Simple)
-const burger = document.getElementById('burger');
-const navLinks = document.querySelector('.nav-links');
-
-burger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
+// Simple Scroll Effect
+window.addEventListener('scroll', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.style.opacity = 1;
+        }
+    });
 });

@@ -1,115 +1,121 @@
 :root {
-    /* The Dark Workshop Base */
+    /* The Dark Workshop Base (Optimized for Contrast/A11y) */
     --bg-primary: #161412;
     --bg-card: #231F1D;
     --text-primary: #F4F1EA;
-    --text-muted: #A8A39A;
+    --text-muted: #D1CEC6; /* Verhoogd contrast voor A11y */
 
-    /* Geïntegreerde Accent-hiërarchie */
-    --accent-maker: #C87D4B;     /* Koper/Amber (Primary Action) */
-    --accent-craft: #7A2828;     /* Bordeaux (Academic/Craft) */
-    --accent-tech: #3D5A80;      /* Staalblauw (Linux/AI Lab) */
+    /* Accent-hiërarchie */
+    --accent-maker: #C87D4B;
+    --accent-academic: #7A2828;
+    --accent-tech: #3D5A80;
     
-    /* Typografie */
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', system-ui, sans-serif;
-    --fs-h1: clamp(2.5rem, 8vw, 5rem);
-    --fs-h2: clamp(1.75rem, 5vw, 3rem);
-    
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-sans); }
+body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
 
-/* Grain Overlay */
+/* Grain Overlay (Performance-geoptimaliseerd) */
 body::before {
     content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
-    opacity: 0.03; pointer-events: none; z-index: 9999;
+    opacity: 0.04; pointer-events: none; z-index: 100;
 }
 
-.navbar { padding: 2rem; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: var(--font-serif); font-size: 1.5rem; }
+/* Layout Components */
+.navbar { padding: 2rem 10%; display: flex; justify-content: space-between; align-items: center; }
+.logo a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary); text-decoration: none; }
 .nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent-maker); }
 
 .hero { min-height: 80vh; display: flex; align-items: center; padding: 0 10%; }
-.hero-content h1 { font-family: var(--font-serif); font-size: var(--fs-h1); margin-bottom: 1.5rem; }
+.hero-content h1 { font-family: var(--font-serif); font-size: 5rem; margin-bottom: 1.5rem; }
+.hero-quote { font-style: italic; border-left: 3px solid var(--accent-maker); padding-left: 1rem; margin: 2rem 0; color: var(--text-muted); }
 
-/* Grid Layouts */
-.about-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 10%; }
+/* Grid & Cards */
+.projects-grid, .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; padding: 2rem 10%; }
 
-.layer-card { 
-    background: var(--bg-card); padding: 2rem; border-top: 4px solid transparent; transition: var(--transition);
+.project-card, .about-card { 
+    background: var(--bg-card); 
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.3); /* French Cleat feel */
+    transition: var(--transition);
 }
-.layer-card.academic { border-color: var(--accent-craft); }
-.layer-card.craft { border-color: var(--accent-maker); }
-.layer-card.tech { border-color: var(--accent-tech); }
 
-.project-card { 
-    background: var(--bg-card); cursor: pointer; transition: var(--transition); overflow: hidden; border-radius: 4px;
-}
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
+.project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.project-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 2px; margin-bottom: 1rem; }
 
 .cta-button { 
     padding: 1rem 2rem; background: var(--accent-maker); color: #fff; text-decoration: none; display: inline-block;
-    transition: var(--transition); border-radius: 2px;
+    transition: var(--transition); font-weight: 600; border: none; cursor: pointer;
 }
-.cta-button.secondary { background: transparent; border: 1px solid var(--accent-maker); }
 
-.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
 <!-- file: script.js -->
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dynamic Project Loader (Simulator voor scraping data)
-    const projectContainer = document.getElementById('project-container');
-    
-    // In een echte productie-omgeving fetch je hier 'assets/data/projects.json'
-    const portfolioData = [
-        { title: "Linux AI Homelab", category: "Tech", desc: "Custom build infrastructure for local AI agents." },
-        { title: "Poul Cadovius Replica", category: "Craft", desc: "Modular birch-plywood furniture system." },
-        { title: "Heritage Interaction", category: "Academic", desc: "Data visualization for cultural artifacts." }
-    ];
+    // 1. Robuuste Data Fetcher
+    const fetchData = async () => {
+        try {
+            // Simulatie van fetch vanuit een backend/manifest
+            // In productie: await fetch('data/manifest.json')
+            return [
+                { title: "Linux AI Homelab", category: "Tech", desc: "Local LLM management.", img: "homelab.jpg" },
+                { title: "Poul Cadovius System", category: "Craft", desc: "Modular woodworking.", img: "wood.jpg" }
+            ];
+        } catch (e) {
+            console.error("Manifest load failed", e);
+            return [];
+        }
+    };
 
-    function renderProjects() {
-        if (!projectContainer) return;
-        projectContainer.innerHTML = ''; // Clear fallback
-        portfolioData.forEach(p => {
-            const card = document.createElement('article');
+    // 2. Rendering met Error Handling
+    const renderProjects = async () => {
+        const grid = document.querySelector('.projects-grid');
+        const data = await fetchData();
+        grid.innerHTML = ''; 
+
+        data.forEach(p => {
+            const card = document.createElement('div');
             card.className = 'project-card fade-in';
             card.innerHTML = `
-                <div class="card-image-placeholder" style="background:var(--accent-${p.category.toLowerCase()}); height:150px;"></div>
-                <div style="padding:1.5rem;">
-                    <h3 style="color:var(--accent-${p.category.toLowerCase()})">${p.title}</h3>
-                    <p>${p.desc}</p>
-                </div>
+                <img src="assets/images/${p.img}" alt="${p.title}" onerror="this.src='assets/placeholder.jpg'; this.onerror=null;">
+                <h3 style="color:var(--accent-${p.category.toLowerCase()})">${p.title}</h3>
+                <p>${p.desc}</p>
             `;
-            projectContainer.appendChild(card);
+            grid.appendChild(card);
+            // Trigger animatie
+            setTimeout(() => card.classList.add('is-visible'), 100);
         });
-    }
+    };
 
-    renderProjects();
-
-    // 2. Intersection Observer voor animaties
+    // 3. Intersection Observer (Performance)
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('is-visible'), i * 100);
+                entry.target.classList.add('is-visible');
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.project-card, .layer-card, .section-title').forEach(el => {
+    document.querySelectorAll('section, .about-card').forEach(el => {
+        el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    // 3. Smooth Scroll Enhancement
+    renderProjects();
+
+    // 4. Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', (e) => {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         });
     });
 });

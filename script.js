@@ -1,7 +1,10 @@
-// Language Switcher
+// Language Switching
 function switchLang(lang) {
-    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    const contents = document.querySelectorAll('.lang-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    
+    contents.forEach(c => c.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('active'));
     
     document.getElementById(`content-${lang}`).classList.add('active');
     event.target.classList.add('active');
@@ -12,27 +15,25 @@ const cookieBanner = document.getElementById('cookie-banner');
 const acceptBtn = document.getElementById('accept-cookies');
 const refuseBtn = document.getElementById('refuse-cookies');
 
-if (localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.style.display = 'none';
+if (!localStorage.getItem('cookiesAccepted')) {
+    cookieBanner.classList.add('show');
 }
 
 acceptBtn.addEventListener('click', () => {
     localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.style.display = 'none';
+    cookieBanner.classList.remove('show');
 });
 
 refuseBtn.addEventListener('click', () => {
-    cookieBanner.style.display = 'none';
+    cookieBanner.classList.remove('show');
 });
 
-// Simple Scroll Animation Observer
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
+// Smooth Scroll for Nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-}, observerOptions);
-
-document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+});

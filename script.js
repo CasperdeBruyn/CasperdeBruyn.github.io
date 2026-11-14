@@ -1,46 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cookie Banner Logic
+    // Cookie Logic
     const cookieBanner = document.getElementById('cookie-banner');
-    if (!localStorage.getItem('cookiesAccepted')) {
-        cookieBanner.classList.remove('hidden');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const refuseBtn = document.getElementById('refuse-cookies');
+
+    if (localStorage.getItem('cookiesAccepted')) {
+        cookieBanner.classList.add('hidden');
     }
 
-    document.getElementById('accept-cookies').addEventListener('click', () => {
+    acceptBtn.addEventListener('click', () => {
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.classList.add('hidden');
     });
 
-    document.getElementById('refuse-cookies').addEventListener('click', () => {
+    refuseBtn.addEventListener('click', () => {
         cookieBanner.classList.add('hidden');
     });
 
-    // Language Tab Logic
+    // Language Tabs
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.lang-content');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
             tab.classList.add('active');
-            
-            const lang = tab.getAttribute('data-lang');
-            contents.forEach(c => {
-                c.classList.remove('active');
-                if(c.id === `content-${lang}`) c.classList.add('active');
-            });
+            document.getElementById(`content-${tab.dataset.lang}`).classList.add('active');
         });
     });
 
-    // Scroll Animations
+    // Simple Fade In Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('fade-in-visible');
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.project-card').forEach(card => {
-        observer.observe(card);
     });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });

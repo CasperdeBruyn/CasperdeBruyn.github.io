@@ -1,50 +1,4 @@
-aar, 5 missend) komt voort uit een gebrek aan een harde koppeling tussen de `scraped_archive/pages/` en de `index.html` project-sectie.
-*   **Status:** De 16 pagina's bevatten niet alleen 12 projecten, maar ook ondersteunende content (`about-me`, `contact`, `home`).
-*   **Risico:** Als we alleen de 7 huidige projecten behouden, verliest het portfolio zijn narratieve kracht en de "Maker" breedte.
-*   **Oplossing:** De 12-projecten architectuur uit het eerdere voorstel is de *enige* juiste weg om de data uit de 16 pagina's te homogeniseren.
-**2. De "Bomby Bird" & Image Quality Crisis:**
-De DNA-instructie is glashelder: *geen pixelvorming*.
-*   **Probleem:** Bomby Bird heeft nu verkeerde assets.
-*   **DeepSearch Inzicht:** De afbeeldingen van `bomby-bird` in de scraped archive moeten direct worden gekoppeld aan de specifieke `assets/images/` map. Indien de kwaliteit daar laag is, moet de UI de nadruk leggen op de *retro/pixel-art* stijl (intentionaliteit) in plaats van slordige resolutie.
-**3. Tactile vs. Digital (De Esthetische Paradox):**
-De gebruiker wil "Sci-Fi" én "Houtbewerking/Ambacht".
-*   **Synthese:** Dit bereiken we niet door een keuze te maken, maar door **UI-layering**.
-*   *Basislaag:* Warme houttexturen en organische vormen (The Dark Workshop).
-*   *Interactielaag:* Een "Digital Overlay" van technische CAD-lijnen, monospace fonts en een terminal-interface (The Blueprint).
----
-### 📋 Voorstel voor het `Agent Deepsearch Inspiratiebord`
-Ik stel voor om de volgende drie pijlers direct te vergrendelen voor de volgende ontwikkelingsronde.
-#### **I. De "Project Dossier" Modal (UX Engine)**
-In plaats van nieuwe pagina's (die de flow onderbreken), implementeren we een **Immersive Modal System**:
-*   **Trigger:** Klik op projectkaart $\rightarrow$ Overlay met `backdrop-filter: blur(10px)`.
-*   **Content:** Een "Dossier" layout. Links de project-beschrijving (Engelse storytelling uit de scraped data), rechts een interactieve foto-carrousel.
-*   **Interactie:** Gebruik een "X" knop die aanvoelt als een mechanische drukknop en een "Close" actie die de modal met een subtiele 'fade-out' en 'scale-down' sluit.
-*   **Navigatie:** Een subtiele "Back to Workshop" knop onderaan de modal.
-#### **II. De "Terminal" Contact & Socials Integratie**
-*   **Contact Form:** Geen standaard formulier. Een interface die lijkt op een Linux terminal.
-*   *Input:* `user@casper:~$ message --send "..."`
-*   *Feedback:* Na verzenden naar `casper.debruyn@hotmail.com`: Een animatie van een voortgangsbalk die eindigt met: `[SUCCESS] MESSAGE TRANSMITTED TO THE WORKSHOP.`
-*   **Socials:** Vervang de Discord-knop door een minimalistische koperen (`#C87D4B`) social-bar in de footer met `Lucide` vector icons voor Instagram en LinkedIn.
-#### **III. De "Blueprint" Visuele Verfijning**
-*   **Grid Overlay:** Implementeer een subtiele CSS `background-image` met een `repeating-linear-gradient` die fungeert als een technisch CAD-grid over de gehele site.
-*   **Texture Layer:** Een globale `::after` pseudo-element op de `body` met een `noise-texture` (grain) en `mix-blend-mode: overlay` om de "Dark Workshop" tactiele sfeer te borgen.
-*   **Logo:** De inline-SVG moet in de header links worden geplaatst, met een `filter: drop-shadow` voor diepte.
----
-### 🚀 Concrete Actielijst voor het Team
-| Onderdeel | Taak | Bron/Referentie |
-| :--- | :--- | :--- |
-| **Projecten** | Reconstructie van de 12 kaarten (map scraped data aan de 12 n
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 215 (2026-11-14 23:50 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (2026-11-15 00:00 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Hier is mijn verbeterde voorstel voor het `Agent Deepsearch Inspiratiebord`. Ik heb de kritiek van de 5 testers (dataverlies, kwaliteit, UX-barrières, SEO en technische risico's) direct verwerkt in een nieuwe, robuuste architectuur.
+EO en technische risico's) direct verwerkt in een nieuwe, robuuste architectuur.
 ---
 # 🧭 DeepSearch & Inspiratie Vondst — Iteratie 216 (Gecorrigeerd)
 **Status:** 🚀 Voorstel voor Team-Goedkeuring (>60% Target)
@@ -127,3 +81,45 @@ Ik stel voor om de visuele stijl te definiëren als **"The Blueprint Workshop"**
 ---
 ### 🚀 3. Directe Actiepunten voor het Team (Prioriteit tot 10:00)
 1.  **[CODE]** Implementeer de `Work-in-Progress` balk bovenaan de
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 217 (2026-11-15 00:29 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is mijn analyse en het concrete voorstel voor de volgende fase van **Project CasperdeBruyn.github.io**. Als `deepsearch_scout` heb ik de huidige status van de code, de gescrapte content en het Design DNA naast elkaar gelegd om de hiaten te identificeren.
+---
+### 🕵️‍♂️ 1. Status Audit & Gap Analysis (De 'Scout' Bevindingen)
+**Wat we hebben (The Foundation):**
+*   **Kleurenpalet:** De `:root` variabelen in `style.css` matchen perfect met **DNA Optie 1: "The Dark Workshop"** (`#161412`, `#C87D4B`, etc.).
+*   **Content Basis:** De `scraped_archive/pages/` bevat 16 pagina's. Dit is de "Source of Truth" voor de storytelling.
+*   **Techniek:** De basisstructuur (`index.html`, `style.css`, `script.js`) is aanwezig en technisch valide.
+**Wat er ontbreekt of cruciaal moet worden gecorrigeerd (The Gaps):**
+1.  **De "Bomby Bird" Fout:** Er is een mismatch tussen de afbeeldingen en de projectbeschrijving. Dit is een prioriteit om de geloofwaardigheid van het portfolio te herstellen.
+2.  **De "Missing 9" Integratie:** De huidige homepage toont slechts 7 projecten. De overige 9 (waaronder *Kodak*, *Grijpmachine*, en *Zeefdrukken*) moeten dynamisch worden ingeladen in de nieuwe "Dossier" structuur.
+3.  **Logo & Header:** De 3 cdb-logo afbeeldingen moeten naar de header (links) en er moet een kwaliteitscheck (anti-pixelatie) plaatsvinden.
+4.  **Interactie-gat:** De huidige site is nog een statische pagina; de "Immersive" belofte (moving elements, CAD-grid, Dossier modals) moet nog worden geprogrammeerd.
+---
+### 💡 2. Conceptueel Voorstel: "The Blueprint Workshop"
+*Voor opname in het `Agent Deepsearch Inspiratiebord`*
+Ik stel voor om de visuele stijl niet alleen "donker" te maken, maar te definiëren als **"Tactile Tech"**. Dit combineert het fysieke (hout, textuur, korrel) met het digitale (CAD-lijnen, grids, interactie).
+#### **A. Visuele Details (UI/UX)**
+*   **De CAD-Overlay:** Een interactief, semi-transparant grid over de gehele achtergrond.
+*   *Effect:* Wanneer de gebruiker scrolt of beweegt, reageert het grid subtiel met een "parallax" of "glow" effect in koper (`#C87D4B`).
+*   **De Dossier-Engine (Project Modals):** In plaats van simpele pop-ups gebruiken we "Project Dossiers".
+*   *Stijl:* Een overlay met `backdrop-filter: blur(12px)` en een zeer fijne witte/koperen rand (0.5px) die lijkt op een technische tekening.
+*   *Navigatie:* Gebruik van `history.pushState` zodat elk project een unieke URL/hash krijgt (`/#project/kodak`).
+*   **Textuur:** Een subtiele `grain` (ruis) laag over de `#161412` achtergrond om het "organische" van de workshop te simuleren.
+#### **B. Content Mapping (De 16 Projecten)**
+We verdelen de 16 gescrapete pagina's in een hiërarchie:
+*   **Tier 1 (Hero Projects):** *Bomby Bird, Kodak, Generation Plastic Soup, Grijpmachine, Zeefdrukken, Vechtclub-XL.* (Deze krijgen de grootste afbeeldingen en meest uitgebreide dossiers).
+*   **Tier 2 (Process & Niche):** *Hu-begeleidt, School-projecten, Picknicken met Sophie, De Grinch, OSRS Kerstposter, Samen Spelen.* (Deze worden getoond in een compacter grid).
+---
+### 🚀 3. Directe Actiepunten voor het Team (Prioriteit tot 10:00)
+Ik verdeel de taken direct onder de gespecialiseerde agents:
+**1. [Content & Asset Agent] - *De Verificatie-ronde***
+*   [ ] **Match Check:** Vergelijk alle afbeeldingen in `assets/images/` met de tekst op `casperdebruyn.myportfolio.com`. Herstel specifiek de **Bomby Bird** koppelingen.
+*   [ ] **Logo Placement:** Selecteer de 3 beste kwaliteit cdb-logo's, schaal ze correct en plaats ze in de `header` links.
+*   [ ] **Socials:** Vervang alle oude social buttons/links door hoogwaardige **SVG iconen** (Instagram & LinkedIn). Verwijder de "Join Discord" knop definitief.
+**2. [Frontend & Interaction Agent] - *De Immersie-ronde***
+*   [ ] **CAD-Grid Implementatie:** Voeg de CSS voor het interactieve grid toe aan `style.css`.
+*   [ ] **Dossier System:** Bouw de modal-structuur in `index.html` en implementeer de `clo

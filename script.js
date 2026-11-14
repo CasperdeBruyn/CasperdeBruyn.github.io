@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         langBtns.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
-        console.log(`Language set to: ${lang}`);
     }
 
     langBtns.forEach(btn => {
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3. Filter Functionaliteit (Geoptimaliseerd)
+    // 3. Filter Functionaliteit
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {

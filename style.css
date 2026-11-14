@@ -1,121 +1,105 @@
 :root {
-    /* The Dark Workshop Base (Optimized for Contrast/A11y) */
-    --bg-primary: #161412;
-    --bg-card: #231F1D;
-    --text-primary: #F4F1EA;
-    --text-muted: #D1CEC6; /* Verhoogd contrast voor A11y */
-
-    /* Accent-hiërarchie */
-    --accent-maker: #C87D4B;
-    --accent-academic: #7A2828;
-    --accent-tech: #3D5A80;
-    
-    --font-serif: 'Playfair Display', serif;
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --bg-deep: #161412;
+    --bg-secondary: #231F1D;
+    --text-main: #F4F1EA;
+    --accent-craft: #803939; /* Bordeaux */
+    --accent-acad: #5C6E58;  /* Olive */
+    --accent-tech: #4A6478;  /* Steel Blue */
+    --copper: #C87D4B;
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
+body { 
+    background-color: var(--bg-deep); 
+    color: var(--text-main); 
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    position: relative;
+}
 
-/* Grain Overlay (Performance-geoptimaliseerd) */
+/* Grain Overlay */
 body::before {
     content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
     opacity: 0.04; pointer-events: none; z-index: 100;
 }
 
-/* Layout Components */
-.navbar { padding: 2rem 10%; display: flex; justify-content: space-between; align-items: center; }
-.logo a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary); text-decoration: none; }
-.nav-links { display: flex; list-style: none; gap: 2rem; }
-.nav-links a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
-.nav-links a:hover { color: var(--accent-maker); }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 0.05em; }
 
-.hero { min-height: 80vh; display: flex; align-items: center; padding: 0 10%; }
-.hero-content h1 { font-family: var(--font-serif); font-size: 5rem; margin-bottom: 1.5rem; }
-.hero-quote { font-style: italic; border-left: 3px solid var(--accent-maker); padding-left: 1rem; margin: 2rem 0; color: var(--text-muted); }
+.hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 1rem; }
 
-/* Grid & Cards */
-.projects-grid, .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; padding: 2rem 10%; }
+.projects-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2.5rem; padding: 4rem 10%; 
+}
 
-.project-card, .about-card { 
-    background: var(--bg-card); 
+.project-card {
+    background: var(--bg-secondary);
+    border-top: 4px solid var(--copper);
     padding: 1.5rem;
-    border-radius: 4px;
-    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.3); /* French Cleat feel */
     transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-.project-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 2px; margin-bottom: 1rem; }
+.project-card[data-type="academic"] { border-top-color: var(--accent-acad); }
+.project-card[data-type="tech"] { border-top-color: var(--accent-tech); }
+.project-card[data-type="craft"] { border-top-color: var(--accent-craft); }
 
-.cta-button { 
-    padding: 1rem 2rem; background: var(--accent-maker); color: #fff; text-decoration: none; display: inline-block;
-    transition: var(--transition); font-weight: 600; border: none; cursor: pointer;
-}
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.project-image { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; display: block; }
 
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
+---
+
 <!-- file: script.js -->
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Robuuste Data Fetcher
-    const fetchData = async () => {
+    /**
+     * Data loader: Haalt projecten op uit een extern manifest. 
+     * In een productieomgeving vervang je 'manifest.json' door het pad naar je data.
+     */
+    const loadProjects = async () => {
         try {
-            // Simulatie van fetch vanuit een backend/manifest
-            // In productie: await fetch('data/manifest.json')
-            return [
-                { title: "Linux AI Homelab", category: "Tech", desc: "Local LLM management.", img: "homelab.jpg" },
-                { title: "Poul Cadovius System", category: "Craft", desc: "Modular woodworking.", img: "wood.jpg" }
-            ];
+            const response = await fetch('projects.json');
+            if (!response.ok) throw new Error('Manifest not found');
+            return await response.json();
         } catch (e) {
-            console.error("Manifest load failed", e);
-            return [];
+            console.warn("Using fallback data due to:", e.message);
+            return [
+                { title: "Erfgoed Ontsluiting", type: "academic", desc: "Digitalizing archival heritage.", img: "heritage_1.jpg" },
+                { title: "Linux AI Homelab", type: "tech", desc: "Infrastructure for AI-automation.", img: "homelab_1.jpg" },
+                { title: "Poul Cadovius Restoration", type: "craft", desc: "Modernizing classic modular systems.", img: "woodwork_1.jpg" }
+            ];
         }
     };
 
-    // 2. Rendering met Error Handling
-    const renderProjects = async () => {
+    const render = async () => {
         const grid = document.querySelector('.projects-grid');
-        const data = await fetchData();
-        grid.innerHTML = ''; 
-
-        data.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'project-card fade-in';
-            card.innerHTML = `
-                <img src="assets/images/${p.img}" alt="${p.title}" onerror="this.src='assets/placeholder.jpg'; this.onerror=null;">
-                <h3 style="color:var(--accent-${p.category.toLowerCase()})">${p.title}</h3>
+        const projects = await loadProjects();
+        
+        grid.innerHTML = projects.map(p => `
+            <article class="project-card fade-in" data-type="${p.type}" aria-label="Project: ${p.title}">
+                <img src="assets/images/${p.img}" class="project-image" alt="Visual representation of ${p.title}">
+                <h3>${p.title}</h3>
                 <p>${p.desc}</p>
-            `;
-            grid.appendChild(card);
-            // Trigger animatie
-            setTimeout(() => card.classList.add('is-visible'), 100);
-        });
+            </article>
+        `).join('');
+
+        // Initialiseer Intersection Observer voor animaties
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(card => observer.observe(card));
     };
 
-    // 3. Intersection Observer (Performance)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section, .about-card').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-
-    renderProjects();
-
-    // 4. Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        });
-    });
+    render();
 });

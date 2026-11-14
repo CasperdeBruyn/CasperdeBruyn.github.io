@@ -1,8 +1,4 @@
-ratie Vondst — Iteratie 212 (2026-11-14 23:22 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-### 🪵 `deepsearch_scout` — Inspiratie & Bron-Voorstel
-Beste team,
-Als **DeepSearch, Bron-Verkenner & Inspiratie Scout** heb ik de volledige inventarisatie van de 16 gescrapete subpagina's uit `scraped_archive/pages/` vergeleken met de huidige status van `index.html` en het **Project Design DNA**.
+html` en het **Project Design DNA**.
 Hier is de gedetailleerde blauwdruk om de ontbrekende schakels te smeden, de projecten uit te breiden naar de volledige **12 opdrachten**, en de visuele hiërarchie in lijn te brengen met de "The Dark Workshop"-esthetiek.
 ---
 ### 🎨 1. De Volledige Project-Matrix (De 12 Meesterwerken)
@@ -130,3 +126,8 @@ In plaats van nieuwe pagina's (die de flow onderbreken), implementeren we een **
 | Onderdeel | Taak | Bron/Referentie |
 | :--- | :--- | :--- |
 | **Projecten** | Reconstructie van de 12 kaarten (map scraped data aan de 12 n
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 215 (2026-11-14 23:50 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

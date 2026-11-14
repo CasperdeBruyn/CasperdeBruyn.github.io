@@ -786,6 +786,12 @@ document.addEventListener('DOMContentLoaded', () => {
             closeProjectModal();
         }
     });
+
+    // 7. Check Cookie State on load
+    if (localStorage.getItem('cookies_accepted') === 'true') {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'none';
+    }
 });
 
 /**
@@ -820,42 +826,4 @@ function openProjectModal(projectKey) {
         description = "A 2022 UX/UI design project focused on student guidance systems and supportive frameworks within Hogeschool Utrecht.";
         images = ['assets/images/hu-begeleidt_1.jpg', 'assets/images/about-me_1.jpg'];
     } else {
-        title = "Project Archive";
-        description = "Comprehensive documentation from Casper de Bruyn's maker archives.";
-        images = ['assets/images/about-me_1.jpg'];
-    }
-
-    let galleryHtml = '<div class="modal-gallery">';
-    images.forEach(img => {
-        galleryHtml += `<img src="${img}" alt="Project archive photo" loading="lazy">`;
-    });
-    galleryHtml += '</div>';
-
-    modalBody.innerHTML = `
-        <h2 style="font-family: 'Inter', system-ui, sans-serif; font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 600;">${title}</h2>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">${description}</p>
-        <h4 style="font-family: 'JetBrains Mono', monospace; color: var(--accent-maker); margin-bottom: 0.75rem;">// ARCHIVE PHOTO SET</h4>
-        ${galleryHtml}
-    `;
-
-    modal.classList.add('active');
-}
-
-/**
- * Close Project Modal
- */
-function closeProjectModal() {
-    const modal = document.getElementById('project-modal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-
-/**
- * Handle Contact Form Transmission securely routed to hidden recipient casper.debruyn@hotmail.com
- */
-function handleTransmission(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById('contact-form');
-    const responseBox = document.getElementById('form-response');
+        title = "

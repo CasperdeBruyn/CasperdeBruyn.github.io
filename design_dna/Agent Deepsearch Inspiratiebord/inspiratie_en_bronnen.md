@@ -1,33 +1,4 @@
-ing (12 Projecten):**
-- Zorg dat alle **12 projecten** uit het archief correct gekoppeld zijn met hun juiste bijbehorende beeldmateriaal (in het bijzonder het rechtzetten van de *Bomby Bird* assets en het herstellen van ontbrekende projecten ten opzichte van het originele portfolio op `casperdebruyn.myportfolio.com`).
-- **Modal Pop-up Systeem:** Elk project opent een diepgaande modale laag met extra foto's en achtergrondverhalen, zodat de homepage overzichtelijk blijft. Sluitbaar via een kruisje, de `Esc`-toets of een klik buiten de modal.
-3. **Logo & Header Integratie:**
-- Plaats de authentieke CDB-logo's uit de assets prominent en in hoge kwaliteit links in de header, volledig vrij van pixelvorming en passend binnen de futuristisch-klassieke designtaal.
-4. **Persoonlijke Storytelling (Engels) & Profiel:**
-- Integreer persoonlijke storytelling over Casper (geboren '97, CMD-student aan de Hogeschool Utrecht, achtergrond in houtbewerking zoals de Poul Cadovius Royal System wandmeubel en French cleats, smart home integraties, en zijn eigen Linux AI Homelab waarop deze AI-agent draait).
-- Benadruk zijn passie voor immersieve ervaringen, evenementen voor Discord-communities (150+/500+ leden), en nevenactiviteiten (zeefdrukken, edelsmeden, posters maken).
-5. **Socials, Privacy & Formulier:**
-- **Socials:** Gebruik strakke vector SVG-iconen voor Instagram (`https://www.instagram.com/cdb.creative/`) en LinkedIn (`https://www.linkedin.com/in/casper-de-bruyn-0191561a0/`).
-- **Verwijdering:** De Discord-invite knop blijft definitief verwijderd op verzoek.
-- **Contact:** Veilige Formspree-integratie met e-mail obfuscatie naar `casper.debruyn@hotmail.com` en een helder bedankt-scherm na verzending.
----
-### 🛑 Actie & Volgende Stap voor het Team
-Geef massaal jullie **"AKKOORD"** (>60% goedkeuring) zodat we:
-1. Dit definitief vastleggen in `inspiratie_en_bronnen.md`.
-2. De laatste code-optimalisaties doorvoeren en pushen naar `main`.
-3. De `gh-pages` deployment activeren voor de vlekkeloze live-gang voor de **18:00 deadline**. 🧭⚙️
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 268 (2026-11-15 15:25 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-🤖 **[Sub-Agent `deepsearch_scout` — Status: Actief & Klaar]**
-Als autonome **DeepSearch, Bron-Verkenner & Inspiratie Scout** heb ik alle beschikbare bronnen — inclusief de 16 diep gescrapete subpagina's in `scraped_archive/pages/`, de lokale upload-mappen, de visueel geharveste moodboards en de actieve DOM/CSS-status van schijf — grondig doorgelicht en getoetst aan het **Project Design DNA**.
-Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor het team en het `Agent Deepsearch Inspiratiebord`:
----
-### 🧭 Concreet Inspiratie- & Bron-Voorstel (`inspiratie_en_bronnen.md`)
-1. **Esthetische Synthese ("The Dark Workshop" x Sci-Fi Craft):**
-- **Kleurenpalet:** Handhaaf compromisloos de geëxtraheerde houtwerkkleuren uit de moodboards via de CSS `:root` variabelen: Diep Houtskool (`#161412`) als organische achtergrond, Gerookt Eiken (`#231F1D`) voor kaarten en modale elementen, Cloud Dancer (`#F4F1EA`) voor zacht, oogvriendelijk contrast (geen hard wit), en Koper/Amber (`#C87D4B`) voor interactieve accenten.
+lementen, Cloud Dancer (`#F4F1EA`) voor zacht, oogvriendelijk contrast (geen hard wit), en Koper/Amber (`#C87D4B`) voor interactieve accenten.
 - **Tactiele Textuur:** Behoud de subtiele film-grain / noise-overlay om de analoge ambachtssfeer (houtbewerking, zeefdrukken, fysieke installaties) naadloos te verbinden met een futuristische, immersieve digitale workflow.
 2. **Content Pariteit & Volledige Projectdekking (12 Projecten):**
 - Zorg dat alle **12 projecten** uit het archief (inclusief correcties voor *Bomby Bird* en herstel van ontbrekende projecten ten opzichte van `casperdebruyn.myportfolio.com`) volledig zijn geïntegreerd.
@@ -113,3 +84,29 @@ Om de link naar je **Linux AI Homelab** en de agent die dit bouwt te versterken:
 ### 🛑 Actie & Volgende Stap voor het Team
 Ik heb de bronnen volledig uitgediept. De focus ligt nu op de **12-projecten grid** en de **modal-logica**.
 **Vraag aan het team:** Geef **"AKKOORD"** op dit voorstel zodat we de code-implementatie kunnen starten en de deadline van 18:00 halen met een volledig functioneel, immersief dossier. 🧭⚙️
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 271 (2026-11-15 15:34 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout` — Autonome Bron-Verkenner & Inspiratie Scout]**
+Na een grondige inspectie van de 16 gescrapete subpagina's in `scraped_archive/pages/`, de huidige code-staat op schijf (`index.html`, `style.css`, `script.js`), en de feedback van de QA-inspector (met name de waarschuwing over gebroken inline SVG-data URIs), leg ik hierbij het definitieve **Inspiratie & Bron-Voorstel** voor aan het team.
+Dit voorstel dient direct te worden vastgelegd in `inspiratie_en_bronnen.md` zodra we **>60% AKKOORD** behalen.
+---
+### 🧭 Concreet Inspiratie- & Bron-Voorstel (`inspiratie_en_bronnen.md`) — Iteratie 271
+#### 1. Oplossing voor Gebroken SVG's & Assetpaden (QA-Fix)
+*   **Probleem:** De HTML bevat momenteel escapende `data:image/svg+xml;utf8,<svg xmlns=\...` attributen die leiden tot console-errors en ontbrekende iconen.
+*   **Oplossing:** We verplaatsen alle inline SVG's van sociale knoppen (Instagram, LinkedIn) en UI-elementen naar propere, schone `<svg>` tags in de DOM of externe lichte SVG-symbolen, volledig gekleurd in Cloud Dancer (`#F4F1EA`) met koperen hover-state (`#C87D4B`). Geen pixelvorming, geen gebroken base64/utf8 strings.
+#### 2. Definitieve Integratie van de 12 Kernprojecten
+Uit de subpagina's (`bomby-bird`, `de-grinch-sloopt-de-kerstboom`, `generation-plastic-soup`, `grijpmachine`, `kodak`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `vechtclub-xl`, `zeefdrukken`, etc.) vullen we de ontbrekende projecten aan in de grid.
+*   Elk project krijgt zijn correcte thumbnail uit de gescrapete assets (`assets/images/`).
+*   De koppeling met de **Blueprint Modal** wordt geactiveerd: een klik op een project opent een immersive dossier-overlay met extra foto's en persoonlijke beschrijvingen in het Engels (passend bij Casper's CMD-achtergrond en houtbewerkingspassie).
+#### 3. Sci-Fi x Craft Atmosfeer & Huisstijl ("The Dark Workshop")
+*   **Kleurenpalet:** Handhaving van `#161412` (Diep Houtskool), `#231F1D` (Gerookt Eiken), `#F4F1EA` (Cloud Dancer tekst) en `#C87D4B` (Koper / Amber accent).
+*   **Subtiele Details:** Een lichte CRT-scanline / grid overlay (`.noise-overlay`) op de achtergrond om de brug te slaan tussen het Linux AI Homelab / Sci-Fi element en het ambachtelijke meubelmaker-gevoel.
+#### 4. Privacy & Contact Routing
+*   Formspree configuratie gericht op `casper.debruyn@hotmail.com` (verborgen voor spambots via form-action endpoint).
+*   Na verzending verschijnt een stijlvolle "TRANSMISSION_RECEIVED // MESSAGE SENT SUCCESSFULLY" melding in `JetBrains Mono` font in plaats van een pagina-refresh.
+---
+### 🛑 Team Actie & Stemming
+Geef jouw **"AKKOORD"** (score >60%) op dit voorstel zodat we de laatste code-aanpassingen (met name het opschonen van de SVG's en het activeren van alle 12 project-modals) kunnen doorvoeren en de site voor de **18:00 deadline** vlekkeloos kunnen klaarmaken voor GitHub Pages (`gh-pages`). 🧭⚙️

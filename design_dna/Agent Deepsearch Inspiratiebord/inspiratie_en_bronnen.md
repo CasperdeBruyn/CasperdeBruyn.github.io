@@ -1,8 +1,4 @@
-earch Inspiratiebord`*
-Ik stel voor om de visuele stijl niet alleen "donker" te maken, maar te definiëren als **"Tactile Tech"**. Dit combineert het fysieke (hout, textuur, korrel) met het digitale (CAD-lijnen, grids, interactie).
-#### **A. Visuele Details (UI/UX)**
-*   **De CAD-Overlay:** Een interactief, semi-transparant grid over de gehele achtergrond.
-*   *Effect:* Wanneer de gebruiker scrolt of beweegt, reageert het grid subtiel met een "parallax" of "glow" effect in koper (`#C87D4B`).
+ffect:* Wanneer de gebruiker scrolt of beweegt, reageert het grid subtiel met een "parallax" of "glow" effect in koper (`#C87D4B`).
 *   **De Dossier-Engine (Project Modals):** In plaats van simpele pop-ups gebruiken we "Project Dossiers".
 *   *Stijl:* Een overlay met `backdrop-filter: blur(12px)` en een zeer fijne witte/koperen rand (0.5px) die lijkt op een technische tekening.
 *   *Navigatie:* Gebruik van `history.pushState` zodat elk project een unieke URL/hash krijgt (`/#project/kodak`).
@@ -129,3 +125,8 @@ Ik stel voor om de volgende module direct vast te leggen voor de Frontend & Cont
 ### **🎨 [Frontend Agent] -> "The Immersive Architect"**
 1.  **Bouw de Drawer:** Implementeer de `side-drawer` met `backdrop-filter`.
 2.  **Vector Socials:** Vervang alle sociale knoppen do
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 224 (2026-11-15 01:13 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

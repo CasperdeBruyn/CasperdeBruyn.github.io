@@ -1,9 +1,10 @@
 :root {
     --bg-primary: #161412;
     --bg-secondary: #231F1D;
-    --accent-copper: #C87D4B;
+    --bg-glass: rgba(35, 31, 29, 0.95);
     --text-primary: #F4F1EA;
     --text-muted: #A8A39A;
+    --accent-copper: #C87D4B;
     --status-green: #5C6E58;
 }
 
@@ -11,95 +12,96 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
-    position: relative;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 /* Grain Overlay */
-body::before {
-    content: "";
+.grain-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: url('assets/textures/grain.png') repeat;
-    opacity: 0.04;
+    background: url('assets/textures/grain.png'); /* Zorg dat deze file in assets staat */
+    opacity: 0.03;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 1000;
 }
 
-/* Navbar */
-.navbar { padding: 1.5rem 0; background: rgba(22, 20, 18, 0.95); border-bottom: 1px solid var(--accent-copper); }
-.nav-logo-container { display: flex; gap: 10px; align-items: center; image-rendering: crisp-edges; }
-.nav-socials { display: flex; gap: 1rem; }
-.nav-socials svg { width: 24px; height: 24px; fill: var(--text-primary); transition: 0.3s; }
-.nav-socials svg:hover { fill: var(--accent-copper); }
+/* Header & Logo Logica */
+.navbar { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
+.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+.logo-container a { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-primary); }
+.logo-brand { display: flex; flex-direction: column; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; }
+.logo-svg { border: 1px solid var(--accent-copper); padding: 5px; }
 
-/* Project Grid & Drawer */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+/* Project Grid */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 3rem; }
+.project-card { background: var(--bg-secondary); padding: 1rem; transition: 0.4s ease; border: 1px solid transparent; }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+
+/* Drawer Immersive UI */
 .drawer {
-    position: fixed; top: 0; right: 0; width: 400px; height: 100%;
-    background: rgba(23, 20, 18, 0.98);
-    border-left: 2px dashed var(--accent-copper);
-    backdrop-filter: blur(15px);
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: 10000;
+    position: fixed; top: 0; right: -100%; width: 100%; max-width: 600px; height: 100%;
+    background: var(--bg-glass); z-index: 2000; padding: 4rem; border-left: 2px solid var(--accent-copper);
+    transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.drawer.hidden { transform: translateX(100%); }
-.close-drawer { cursor: pointer; color: var(--accent-copper); font-size: 2rem; border: none; background: none; margin: 1rem; }
+.drawer.active { right: 0; }
+.close-drawer { position: absolute; top: 2rem; right: 2rem; background: none; border: 1px solid var(--accent-copper); color: var(--accent-copper); cursor: pointer; padding: 10px 20px; }
 
 /* Contact Form */
-#success-message { padding: 2rem; border: 1px solid var(--status-green); color: var(--status-green); display: none; }
+#transmission-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
+input, textarea { background: var(--bg-secondary); border: 1px solid #444; color: white; padding: 1rem; }
+.btn-primary { background: var(--accent-copper); color: white; border: none; padding: 1rem 2rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1rem; }
 
 <!-- file: script.js -->
 /**
  * Casper de Bruyn — Creative Technologist
- * Logic Builder: Full 12-project mapping, Drawer Interaction & Mail Security
+ * Logic: 12-project mapping, Immersive Drawer & Secure Form Handling
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const projectData = {
-        "poul-cadovius": { title: "Poul Cadovius System", desc: "Modular wall unit study.", img: "assets/images/poul-cadovius.jpg" },
-        "french-cleat": { title: "French Cleat Bench", desc: "Invisible joinery floating bench.", img: "assets/images/french-cleat.jpg" },
-        "claw-machine": { title: "The Claw Machine", desc: "Interactive installation.", img: "assets/images/claw-machine.jpg" },
-        "vechtclub": { title: "Vechtclub XL", desc: "Atmospheric branding hub.", img: "assets/images/vechtclub.jpg" },
-        "grinch": { title: "The Grinch", desc: "Rapid tabletop prototyping.", img: "assets/images/grinch.jpg" },
-        "screen-printing": { title: "Screen Printing", desc: "Analogue production flow.", img: "assets/images/printing.jpg" },
-        "bomby-bird": { title: "Bomby Bird", desc: "Retro-futuristic game dev.", img: "assets/images/bomby-bird.jpg" },
-        "plastic-soup": { title: "Plastic Soup", desc: "Environmental strategy game.", img: "assets/images/soup.jpg" },
-        "osrs-poster": { title: "OSRS Poster", desc: "Modern vector illustration.", img: "assets/images/osrs.jpg" },
-        "sophie": { title: "Picnicking with Sophie", desc: "UX Service design.", img: "assets/images/sophie.jpg" },
-        "hu-begeleidt": { title: "HU Begeleidt", desc: "Student guidance platform.", img: "assets/images/hu.jpg" },
-        "kodak-retro": { title: "Kodak Retro", desc: "Brand heritage re-imagined.", img: "assets/images/kodak.jpg" }
-    };
+const PROJECT_DATA = {
+    "poul-cadovius": { title: "Poul Cadovius System", desc: "Modular wall unit study in birch multiplex.", img: "assets/images/poul-cadovius.jpg" },
+    "french-cleat": { title: "French Cleat Bench", desc: "Invisible joinery floating bench.", img: "assets/images/french-cleat.jpg" },
+    "claw-machine": { title: "The Claw Machine", desc: "Interactive physical installation.", img: "assets/images/claw-machine.jpg" },
+    "vechtclub": { title: "Vechtclub XL", desc: "Atmospheric branding and identity.", img: "assets/images/vechtclub.jpg" },
+    "grinch": { title: "The Grinch", desc: "Rapid tabletop prototyping.", img: "assets/images/grinch.jpg" },
+    "screen-printing": { title: "Screen Printing", desc: "Analogue production workflows.", img: "assets/images/printing.jpg" },
+    "bomby-bird": { title: "Bomby Bird", desc: "Retro-futuristic arcade game development.", img: "assets/images/bomby-bird.jpg" },
+    "plastic-soup": { title: "Plastic Soup", desc: "Environmental strategy gaming.", img: "assets/images/soup.jpg" },
+    "osrs-poster": { title: "OSRS Poster", desc: "Vector study of classic nostalgia.", img: "assets/images/osrs.jpg" },
+    "sophie": { title: "Picnicking with Sophie", desc: "Service design and UX mapping.", img: "assets/images/sophie.jpg" },
+    "hu-begeleidt": { title: "HU Begeleidt", desc: "Educational guidance platform.", img: "assets/images/hu.jpg" },
+    "kodak-retro": { title: "Kodak Retro", desc: "Brand heritage re-imagined.", img: "assets/images/kodak.jpg" }
+};
 
-    // Populate Grid
-    const container = document.getElementById('project-container');
-    Object.keys(projectData).forEach(id => {
-        const p = projectData[id];
-        container.innerHTML += `
-            <div class="project-card" data-project="${id}">
-                <img src="${p.img}" alt="${p.title}" style="aspect-ratio: 16/9; object-fit: cover;">
-                <h3>${p.title}</h3>
-            </div>
-        `;
-    });
-
-    // Drawer Logic
+function openDrawer(id) {
+    const data = PROJECT_DATA[id];
     const drawer = document.getElementById('project-drawer');
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const data = projectData[card.dataset.project];
-            document.getElementById('drawer-title').innerText = data.title;
-            document.getElementById('drawer-desc').innerText = data.desc;
-            drawer.classList.remove('hidden');
-        });
-    });
+    const content = document.getElementById('drawer-content');
+    
+    content.innerHTML = `
+        <h2>${data.title}</h2>
+        <img src="${data.img}" style="width:100%; margin: 1rem 0;">
+        <p>${data.desc}</p>
+        <p>Personalized storytelling regarding the build process and technical challenges goes here...</p>
+    `;
+    drawer.classList.add('active');
+}
 
-    document.querySelector('.close-drawer').addEventListener('click', () => drawer.classList.add('hidden'));
+function closeDrawer() {
+    document.getElementById('project-drawer').classList.remove('active');
+}
 
-    // Secure Mail Handler
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        contactForm.style.display = 'none';
-        document.getElementById('success-message').style.display = 'block';
-    });
+// Formspree security / handling
+document.getElementById('transmission-form').addEventListener('submit', function(e) {
+    // Form is handled by Formspree, success modal logic:
+    setTimeout(() => {
+        document.getElementById('success-modal').classList.remove('hidden');
+        this.reset();
+    }, 1000);
+});
+
+// Escape key to close drawer
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeDrawer();
 });

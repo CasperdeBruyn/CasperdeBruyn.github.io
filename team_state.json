@@ -1,9 +1,9 @@
 {
-  "iteration": 237,
+  "iteration": 238,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Finale Bron-Inspector (`qa_inspector`)** heb ik de uiteindelijke broncode op schijf na Iteratie 236 grondig gescand en getoetst aan het **Project Design DNA** en de specifieke wensen van Casper.\nHier is het volledige overzicht van de transformatie, de huidige staat van de codebase en de aanbevelingen voor de volgende cyclus.\n---\n### 1. Wat is er daadwerkelijk veranderd? (Change Log)\n*   **Visuele Identiteit & DNA (\"The Dark Workshop\"):**\n*   `style.css` is volledig ingericht volgens de gekozen stijloptie (\"The Dark Workshop\"). De root-variabelen gebruiken nu strak de diepe houtskool achtergrond (`#161412`), gerookt eiken (`#231F1D`), warm wit (`#F4F1EA`) en koperen accenten (`#C87D4B`).\n*   Een subtiele `.noise-overlay` (`data:image/png;base64...`) is toegevoegd over de hele pagina voor de analoge ambacht-meets-digital textuur.\n*   **Header & Logo Cluster (Fix):**\n*   In `index.html` en `style.css` is een 1:2:1 grid-container (`.logo-cluster`) ge",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de volledige repository `/home/casper/projects/CasperdeBruyn.github.io` gescand en getoetst aan het vastgelegde **Project Design DNA (Optie 1: \"The Dark Workshop\")**.\nHier is de audit van de huidige status:\n### 1. Wat is er daadwerkelijk veranderd?\n*   **Visuele Transformatie:** De volledige CSS-architectuur is omgezet naar het \"Dark Workshop\" palet (`#161412` basis, `#C87D4B` accent). De toevoeging van de `noise-overlay` creëert de gevraagde tactiele/ambachtelijke sfeer.\n*   **Project Dossier Systeem:** De homepage is bevrijd van \"content-overflow\" door de introductie van een `Drawer Modal`-architectuur. Alle 12 projecten zijn nu dynamisch gekoppeld via `PROJECT_DATA` in `script.js`.\n*   **Header & Branding:** Het \"Logo-Cluster\" is geoptimaliseerd (1:2:1 grid) met `drop-shadow` voor een premium, niet-gepixelde uitstraling.\n*   **Socials & Security:** Discord is verwijderd. De gevraagde Instagram- en LinkedIn-vectoren zijn geï",
   "completed_changes": [],
-  "last_updated": "2026-11-15 13:29:03",
+  "last_updated": "2026-11-15 13:34:10",
   "is_running": true,
-  "current_step": "Iteratie 236 voltooid"
+  "current_step": "Iteratie 237 voltooid"
 }

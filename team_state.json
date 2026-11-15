@@ -1,9 +1,9 @@
 {
-  "iteration": 258,
+  "iteration": 259,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de huidige staat van `/home/casper/projects/CasperdeBruyn.github.io` geanalyseerd. Hier is de audit van de huidige implementatie ten opzichte van de gestelde Design DNA-eisen.\n### 🔍 Statusrapportage: Finale Bron-Inspectie\n#### 1. Wat is er daadwerkelijk veranderd?\n*   **Visuele Identiteit:** De \"Dark Workshop\" stijl (Optie 1) is succesvol geïmplementeerd via CSS-variabelen (`--bg-primary: #161412`, etc.). De `noise-overlay` is toegevoegd voor een tactiele, ambachtelijke afwerking.\n*   **Architectuur:** De site is gestructureerd rondom een `index.html` die gebruikmaakt van een moderne 'Spatial' benadering. Er is een `drawer-overlay` systeem gebouwd voor projectdetails (voorkomt \"flooding\" van de homepage).\n*   **Functionaliteit:** Formspree is geïntegreerd voor professionele mail-afhandeling (beveiligd en met feedback-venster). Discord-links zijn verwijderd en vervangen door professionele social iconen (Instagram/LinkedIn).\n*  ",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de huidige staat van `/home/casper/projects/CasperdeBruyn.github.io` gescand. Hier is de audit van de huidige implementatie:\n### 🔍 Statusoverzicht: Wat is er veranderd?\nDe transformatie naar de **\"Dark Workshop\"**-esthetiek is technisch verankerd.\n1.  **Visuele Identiteit:** De CSS-variabelen (`--bg-primary: #161412`, `--accent-copper: #C87D4B`) staan correct ingesteld en passen naadloos bij het gevraagde design-DNA. Er is een `noise-overlay` geïmplementeerd voor die authentieke, tactiele 'workshop'-ervaring.\n2.  **Architectuur:** De structuur is veranderd van een statische pagina naar een dynamisch grid-systeem (12 projecten), ondersteund door een `drawer-overlay` die de homepage overzichtelijk houdt—precies zoals verzocht.\n3.  **Content-Mapping:** Alle 12 projecten zijn nu geladen in de `script.js` logica, inclusief de voorbereiding voor de detail-weergave.\n4.  **Socials:** De externe Discord-invitatie is verwijderd en verva",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:52:30",
+  "last_updated": "2026-11-15 14:56:57",
   "is_running": true,
-  "current_step": "Iteratie 257 voltooid"
+  "current_step": "Iteratie 258 voltooid"
 }

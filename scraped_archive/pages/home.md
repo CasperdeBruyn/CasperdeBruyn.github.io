@@ -1,18 +1,7 @@
+# Casper de Bruyn
+URL: https://casperdebruyn.myportfolio.com/
 
----
-## SUBPAGINA / PROJECT: Casper de Bruyn (`/home`)
-- **Bron-URL:** https://casperdebruyn.myportfolio.com
-- **Gedownloade Hoge-Resolutie Foto's van deze pagina:** ['home_1.jpg', 'home_2.jpg', 'home_3.jpg']
-### Koppen op deze pagina:
-- Casper de Bruyn.
-- Casper de Bruyn.
-### Volledige Tekst & Details op deze pagina:
-Home
-About me
-Contact
-Home
-About me
-Contact
+Casper de Bruyn
 Casper de Bruyn.
 Scroll down to see more.
 Casper de Bruyn.
@@ -41,9 +30,8 @@ Hu Begeleidt
 2022
 Dan maar hier!
 2022
-&uarr;
+↑
 Back to Top
-© Casper de Bruyn.
 My portfolio likes cookies :]
 Nomnomnom (Accept)
 Not today (Refuse)

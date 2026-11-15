@@ -1,19 +1,7 @@
+# Casper de Bruyn - About me
+URL: https://casperdebruyn.myportfolio.com/about-me
 
----
-## SUBPAGINA / PROJECT: Casper de Bruyn - About me (`/about-me`)
-- **Bron-URL:** https://casperdebruyn.myportfolio.com/about-me
-- **Gedownloade Hoge-Resolutie Foto's van deze pagina:** ['about-me_1.jpg', 'about-me_2.jpg', 'about-me_3.jpg']
-### Koppen op deze pagina:
-- About me
-### Volledige Tekst & Details op deze pagina:
-Home
-About me
-Contact
-Home
-About me
-Contact
-About me
-Hoi en welkom in mijn portfolio! Scroll down for english ⬇️
+Casper de Bruyn - About me
 Wat leuk dat je een kijkje neemt in mijn (digitale) chaos!
 Zullen we het kort en bondig houden? Dan kun je weer verder met rondneuzen. Zoals je waarschijnlijk al zag, heet ik Casper :] Ik ben in '97 geboren in Delft en studeer momenteel CMD (Communication and Multimedia Design) aan de Hogeschool Utrecht.
 In het dagelijks leven duik ik graag in allerlei creatieve uitdagingen. Waar ik voorheen veel met mijn handen werkte in de houtbewerking, elektra en tuinbouw, combineer ik die praktische makers-mindset nu volop met de digitale kant van CMD. Van het ontwerpen van logo's en illustraties tot het bouwen van tastbare installaties—ik knutsel net zo graag achter mijn laptop als in de fysieke wereld. Daarnaast run ik een Discord gaming-community van 150+ leden (en hiervoor zelfs eentje met 500+ leden!), waarvoor ik toffe evenementen organiseer en de visuals maak.
@@ -27,9 +15,8 @@ In daily life, I love diving into all kinds of creative challenges. While my bac
 My hobbies? Gaming with friends, listening to music, soaking up culture by traveling to cool places, and trying out new activities to broaden my skills. Think: screen-printing my own designs, creating posters, crafting a ring with a goldsmith, or making decorations for parties!
 Most of all, I love creating immersive experiences. Why? I absolutely love building installations or decorating spaces to give people a brand-new experience or bring a story to life. If I can take them completely out of reality for a moment, my mission is 100% accomplished.
 I'm still exploring what life has to offer. Shall we continue the journey together? Take a look around my portfolio, and feel free to send me a message if you have any questions or want to collaborate!
-&uarr;
+↑
 Back to Top
-© Casper de Bruyn.
 My portfolio likes cookies :]
 Nomnomnom (Accept)
 Not today (Refuse)

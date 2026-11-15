@@ -1,127 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casper de Bruyn — Creative Technologist & Maker</title>
-    <meta name="description" content="Portfolio of Casper de Bruyn: Bridging the gap between physical woodworking and digital AI innovation.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casper de Bruyn — Immersive Digital & Physical Design</title>
+  <meta name="description" content="Portfolio of Casper de Bruyn: CMD Designer, Woodworker, and AI Enthusiast based in Delft. Bridging the gap between physical craft and digital innovation.">
+  
+  <!-- Fonts: Inter for UI, JetBrains Mono for technical accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-workshop">
-    <div class="grain-overlay"></div>
 
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo-container">
-                <a href="#home" class="logo-link">
-                    <svg class="logo-svg" width="40" height="40" viewBox="0 0 100 100"><rect x="5" y="5" width="90" height="90" rx="2" stroke="#C87D4B" stroke-width="4"/><path d="M25 30H75V40H25V30Z" fill="#C87D4B"/><path d="M25 45H60V55H25V45Z" fill="#C87D4B"/><path d="M25 60H75V70H25V60Z" fill="#C87D4B"/></svg>
-                    <div class="logo-brand"><span>CASPER DE BRUYN</span><span>// CREATIVE TECHNOLOGIST</span></div>
-                </a>
-            </div>
-            <nav><ul class="nav-links">
-                <li><a href="#about">01 About</a></li>
-                <li><a href="#workbench">02 Workbench</a></li>
-                <li><a href="#archive">03 Archive</a></li>
-                <li><a href="#contact">04 Contact</a></li>
-            </ul></nav>
-        </div>
-    </header>
+  <!-- Immersive Texture Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="container">
-                <h1 class="hero-title">Crafting Digital Chaos & <span class="accent">Tangible Realities.</span></h1>
-                <p class="hero-lead">Delft-based maker. CMD student. Bridge between sawdust-covered workshops and AI-driven innovation.</p>
-                <a href="#workbench" class="btn btn-primary">Enter Workshop</a>
-            </div>
-        </section>
+  <!-- Header with 1:2:1 Logo Cluster & Socials -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo-cluster" aria-label="Casper de Bruyn Brand Logos">
+        <img src="assets/images/site_header_logo-01.jpg" alt="" class="logo-side" onerror="this.style.display='none'">
+        <img src="assets/images/site_header_logo-01.jpg" alt="Casper de Bruyn Logo" class="logo-main" onerror="this.src='https://via.placeholder.com/48x48?text=CDB'">
+        <img src="assets/images/site_header_logo-01.jpg" alt="" class="logo-side" onerror="this.style.display='none'">
+      </div>
 
-        <section class="section workbench" id="workbench">
-            <div class="container">
-                <h2 class="section-title">// 02 The Portfolio Dossier</h2>
-                <div class="project-grid">
-                    <!-- Dynamic project loading via data.js -->
-                    <article class="project-card" data-id="bomby-bird">
-                        <img src="assets/images/bomby-bird_01_hero.jpg" alt="Bomby Bird" loading="lazy">
-                        <h3>Bomby Bird</h3>
-                        <button class="project-trigger" onclick="openDrawer('bomby-bird')">[ View Dossier ]</button>
-                    </article>
-                    <article class="project-card" data-id="grinch">
-                        <img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="The Grinch" loading="lazy">
-                        <h3>The Grinch</h3>
-                        <button class="project-trigger" onclick="openDrawer('grinch')">[ View Dossier ]</button>
-                    </article>
-                    <article class="project-card" data-id="plastic-soup">
-                        <img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Plastic Soup" loading="lazy">
-                        <h3>Plastic Soup</h3>
-                        <button class="project-trigger" onclick="openDrawer('plastic-soup')">[ View Dossier ]</button>
-                    </article>
-                    <article class="project-card" data-id="grijpmachine">
-                        <img src="assets/images/grijpmachine_01_hero.jpg" alt="Grijpmachine" loading="lazy">
-                        <h3>Grijpmachine</h3>
-                        <button class="project-trigger" onclick="openDrawer('grijpmachine')">[ View Dossier ]</button>
-                    </article>
-                </div>
-            </div>
-        </section>
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" aria-label="Go to About section">// 01 ABOUT</a></li>
+          <li><a href="#workbench" class="nav-link" aria-label="Go to Portfolio section">// 02 WORKBENCH</a></li>
+          <li><a href="#contact" class="nav-link" aria-label="Go to Contact section">// 03 CONTACT</a></li>
+        </ul>
+      </nav>
 
-        <section class="section archive" id="archive">
-            <div class="container">
-                <h2 class="section-title">// 03 Archive: Historical Fragments</h2>
-                <div class="archive-strip">
-                    <img src="assets/images/hu-begeleidt_01_hero.jpg" alt="HU Begeleidt">
-                    <img src="assets/images/kodak_01_hero.jpg" alt="Kodak">
-                    <img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS">
-                    <img src="assets/images/zeefdrukken_01_hero.jpg" alt="Zeefdrukken">
-                </div>
-            </div>
-        </section>
-
-        <section class="section contact" id="contact">
-            <div class="container">
-                <form id="transmission-form" action="https://formspree.io/f/xyyrqbqk" method="POST">
-                    <label>DESIGNATION</label><input type="text" name="name" required>
-                    <label>CHANNEL (Base64 Encoded Contact)</label>
-                    <input type="email" name="email" id="email-field" placeholder="casper.debruyn@hotmail.com" required>
-                    <button type="submit" class="btn btn-primary">Execute Transmission</button>
-                </form>
-                <div id="success-modal" class="hidden">Transmission Secured.</div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="nav-socials">
-            <a href="https://www.instagram.com/cdb.creative/" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C87D4B" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg></a>
-            <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C87D4B" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg></a>
-        </div>
-    </footer>
-
-    <!-- Project Drawer -->
-    <div id="project-drawer" class="drawer">
-        <button class="close-drawer" onclick="closeDrawer()">X</button>
-        <div id="drawer-content"></div>
+      <div class="social-cluster" aria-label="Social Media Links">
+        <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" class="social-icon" aria-label="Follow me on Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" class="social-icon" aria-label="Connect on LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+      </div>
     </div>
+  </header>
 
-    <script>
-        // Mail obfuscatie handler
-        const encodedEmail = btoa("casper.debruyn@hotmail.com");
-        console.log("Transmission channel secured.");
-        
-        function openDrawer(id) {
-            const drawer = document.getElementById('project-drawer');
-            drawer.classList.add('active');
-        }
-        function closeDrawer() {
-            document.getElementById('project-drawer').classList.remove('active');
-        }
-    </script>
-<!-- AI_LIVE_WORK_BANNER_START -->
-<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 232):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
+  <main>
+    <!-- Section 01: Hero & About -->
+    <section id="about" class="hero-section container">
+      <div class="hero-content">
+        <h1 class="glitch-text" data-text="Crafting Digital Chaos & Tangible Realities.">
+          Crafting Digital Chaos & <span class="accent">Tangible Realities.</span>
+        </h1>
+        <div class="about-bio">
+          <p>
+            I am Casper de Bruyn, a CMD student at Hogeschool Utrecht and a multi-disciplinary maker based in Delft. Born in '97, I bridge the gap between high-precision woodworking and digital AI innovation. 
+          </p>
+          <p>
+            Whether I'm constructing a multiplex wall unit inspired by Poul Cadovius or managing my own Linux AI Homelab, I thrive on the intersection of physical craftsmanship and technical exploration. From immersive installations to custom smart-home integrations, my goal is to pull people out of their reality and into a story.
+          </p>
+          <div class="cta-group">
+            <a href="#workbench" class="btn btn-primary" aria-label="View my work">Explore Workshop</a>
+            <a href="#contact" class="btn btn-secondary" aria-label="Go to contact form">Start a Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: The Workbench (Main Projects) -->
+    <section id="workbench" class="workbench-section container">
+      <h2 class="section-heading">// 02 THE PORTFOLIO DOSSIER</h2>
+      <div class="project-grid">
+        <!-- Project 01: Generation Plastic Soup -->
+        <article class="project-card" data-project-id="plastic-soup" tabindex="0" aria-label="Project: Generation Plastic Soup">
+          <div class="project-image-wrapper">
+            <img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Generation Plastic Soup installation" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Generation+Plastic+Soup'">
+          </div>
+          <div class="project-info">
+            <h3>Generation Plastic Soup</h3>
+            <p>An interactive experience tackling the EU plastic crisis.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 02: Zeefdrukken -->
+        <article class="project-card" data-project-id="zeefdrukken" tabindex="0" aria-label="Project: Zeefdrukken">
+          <div class="project-image-wrapper">
+            <img src="assets/images/zeefdrukken_01_hero.jpg" alt="Screenprinting project" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Zeefdrukken'">
+          </div>
+          <div class="project-info">
+            <h3>Zeefdrukken</h3>
+            <p>Exploring the analog craft of screenprinting and graphic posters.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 03: Samen Spelen -->
+        <article class="project-card" data-project-id="samen-spelen" tabindex="0" aria-label="Project: Samen Spelen">
+          <div class="project-image-wrapper">
+            <img src="assets/images/samen-spelen_01_hero.jpg" alt="Social gaming concept" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Samen Spelen</h3>
+            <p>Visualizing community and social interaction through game design.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 04: Grijpmachine -->
+        <article class="project-card" data-project-id="grijpmachine" tabindex="0" aria-label="Project: Grijpmachine">
+          <div class="project-image-wrapper">
+            <img src="assets/images/grijpmachine_01_hero.jpg" alt="Mechanical claw machine" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Grijpmachine</h3>
+            <p>A physical-digital hybrid installation of a classic arcade machine.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 05: Kodak -->
+        <article class="project-card" data-project-id="kodak" tabindex="0" aria-label="Project: Kodak">
+          <div class="project-image-wrapper">
+            <img src="assets/images/kodak_01_hero.jpg" alt="Kodak branding study" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Kodak</h3>
+            <p>A deep dive into analog aesthetics and visual brand identity.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 06: Bomby Bird -->
+        <article class="project-card" data-project-id="bomby-bird" tabindex="0" aria-label="Project: Bomby Bird">
+          <div class="project-image-wrapper">
+            <img src="assets/images/bomby-bird_01_hero.jpg" alt="Bomby Bird Retro Game" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Bomby Bird</h3>
+            <p>Mastering logic through a custom retro-platformer built from scratch.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 07: Picknicken met Sophie -->
+        <article class="project-card" data-project-id="picknick" tabindex="0" aria-label="Project: Picknicken met Sophie">
+          <div class="project-image-wrapper">
+            <img src="assets/images/picknicken-met-sophie_01_hero.jpg" alt="Atmospheric installation" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Picknicken met Sophie</h3>
+            <p>Crafting immersive memories through environmental design.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 08: OSRS Kerstposter -->
+        <article class="project-card" data-project-id="osrs" tabindex="0" aria-label="Project: OSRS Kerstposter">
+          <div class="project-image-wrapper">
+            <img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS Fan Art Poster" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>OSRS Kerstposter</h3>
+            <p>Combining gaming nostalgia with modern print illustration.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 09: De Grinch -->
+        <article class="project-card" data-project-id="grinch" tabindex="0" aria-label="Project: De Grinch sloopt de kerstboom">
+          <div class="project-image-wrapper">
+            <img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="The Grinch Board Game" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>De Grinch</h3>
+            <p>A fast-paced tabletop game featuring hand-built catapults.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 10: Vechtclub XL -->
+        <article class="project-card" data-project-id="vechtclub" tabindex="0" aria-label="Project: Vechtclub XL">
+          <div class="project-image-wrapper">
+            <img src="assets/images/vechtclub-xl_01_hero.jpg" alt="Local event branding" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Vechtclub XL</h3>
+            <p>Event branding and graphics for local gaming tournaments.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 11: Hu Begeleidt -->
+        <article class="project-card" data-project-id="hu-begeleidt" tabindex="0" aria-label="Project: Hu Begeleidt">
+          <div class="project-image-wrapper">
+            <img src="assets/images/hu-begeleidt_01_hero.jpg" alt="Educational platform design" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>Hu Begeleidt</h3>
+            <p>UX research and interface design for academic support systems.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+
+        <!-- Project 12: School Projecten -->
+        <article class="project-card" data-project-id="school" tabindex="0" aria-label="Project: School Projecten">
+          <div class="project-image-wrapper">
+            <img src="assets/images/school-projecten_01_hero.jpg" alt="CMD School projects collection" loading="lazy">
+          </div>
+          <div class="project-info">
+            <h3>School Projecten</h3>
+            <p>A collection of experimental CMD works from throughout my studies.</p>
+            <span class="view-dossier">[ VIEW DOSSIER ]</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 03: Contact & Secured Email -->
+    <section id="contact" class="contact-section container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <h2 class="section-heading">// 03 THE TRANSMISSION</h2>
+          <p>Ready to discuss a custom build, a digital experience, or just talk shop? Secure your channel below. I usually respond within 48 hours.</p>
+          <div class="contact-meta">
+            <p class="accent">LOCATION: DELFT, NL</p>
+            <p>AVAILABILITY: COLLABORATIONS & COMMISSIONS</p>
+          </div>
+        </div>
+        <form id="contactForm" class="transmission-form" aria-label="Contact Form">
+          <div class="form-group">
+            <label for="name">DESIGNATION</label>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">CHANNEL</label>
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+          </div>
+          <div class="form-group">
+            <label for="message">DATA PACKET</label>
+            <textarea id="message" name="message" rows="5" placeholder="How can we build together?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Execute Transmission</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Section 04: Archive (Historical Fragments) -->
+    <section id="archive" class="archive-section container">
+      <h2 class="section-heading">// 04 HISTORICAL FRAGMENTS</h2>
+      <p class="archive-intro">A glimpse into earlier experiments, sketches, and foundational work.</p>
+      <div class="archive-grid">
+        <!-- These act as smaller references without the full drawer logic for now -->
+        <img src="assets/images/hu-begeleidt_11_item11.jpg" alt="Historical sketch 01" loading="lazy">
+        <img src="assets/images/zeefdrukken_11_item11.jpg" alt="Historical sketch 02" loading="lazy">
+        <img src="assets/images/grijpmachine_03_item03.jpg" alt="Historical sketch 03" loading="lazy">
+        <img src="assets/images/bomby-bird_02_item02.jpg" alt="Historical sketch 04" loading="lazy">
+        <img src="assets/images/de-grinch-sloopt-de-kerstboom_03_item03.jpg" alt="Historical sketch 05" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> CASPER DE BRUYN. ALL CHANNELS SECURED.</p>
+      <div class="footer-links">
+        <span>DELFT</span>
+        <span>|</span>
+        <span>CMD DESIGNER</span>
+        <span>|</span>
+        <span>MAKER</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Immersive Project Drawer (Modal) -->
+  <div id="projectDrawer" class="drawer-overlay" aria-hidden="true" role="dialog">
+    <div class="drawer-container">
+      <button class="drawer-close" aria-label="Close dossier">&times;</button>
+      <div id="drawerContent" class="drawer-inner">
+        <!-- Dynamically filled by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Message Modal -->
+  <div id="successModal" class="success-overlay" aria-hidden="true">
+    <div class="success-content">
+      <h2 class="accent">TRANSMISSION SECURED</h2>
+      <p>Your message has been routed successfully. I hope to be in touch with you within two working days!</p>
+      <button class="btn btn-primary" onclick="closeSuccess()">Acknowledged</button>
+    </div>
+  </div>
+
+  <!-- Main JavaScript with Error Handling and Obfuscation -->
+  <script src="script.js" defer></script>
+  
+  <script>
+    // Critical inline logic for asset fallback and early interactions
+    function closeSuccess() {
+      const modal = document.getElementById('successModal');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('active');
+    }
+
+    // Immediate error handling for images
+    document.querySelectorAll('img').forEach(img => {
+      img.onerror = function() {
+        this.src = 'https://via.placeholder.com/600x400?text=Asset+Loading...';
+        this.style.opacity = '0.5';
+      };
+    });
+  </script>
+
+  <!-- AI_LIVE_WORK_BANNER_START -->
+<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 233):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
 <!-- AI_LIVE_WORK_BANNER_END -->
 </body>
 </html>

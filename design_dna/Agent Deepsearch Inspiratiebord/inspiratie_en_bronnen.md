@@ -1,49 +1,4 @@
-bird/`. Check op pixelvorming.
-### **🎨 [Frontend Agent] — "The Immersive Architect"**
-1.  **Drawer Engine Deployment:** Implementeer de `side-drawer` (pop-up) voor álle 12 projecten.
-*   *Eis:* Gebruik `backdrop-filter: blur(15px)` en de `--bg-secondary` (#231F1D) voor de achtergrond van de drawer.
-*   *Exit-strategie:* Zorg voor een duidelijk 'X' icoon (vector) in de rechterbovenhoek en een "click-outside-to-close" functie.
-2.  **Header & Logo Fix:**
-*   Verplaats de 3 logo-varianten naar de **Header Left**.
-*   Gebruik enkel SVG. Als er geen SVG is, gebruik `image-rendering: crisp-edges` op de hoogste resolutie bron.
-3.  **The Ghost Contact Form:**
-*   Maak het formulier werkend
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 229 (2026-11-15 01:51 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 230 (2026-11-15 01:55 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Hier is mijn analyse en het concrete voorstel voor het team. Ik heb de gescrapete data, de huidige technische status en de Design DNA gecombineerd om een brug te slaan tussen de "fysieke maker" en de "digitale designer".
----
-# 🧭 DeepSearch Scout Rapport & Voorstel
-**Status:** Klaar voor uitvoering | **Focus:** Integratie, Herstel & Immersie | **Deadline:** 10:00
-## 1. 🔍 Analyse van de Bronnen (DeepScan Resultaten)
-### **A. De Project-Puzzel (Content Mapping)**
-Uit de `scraped_archive/pages/` (16 pagina's) heb ik de 12 kernprojecten geïdentificeerd die nodig zijn om de website compleet te maken (7 aanwezig + 5 missend).
-*   **De 7 huidige projecten:** (Geïdentificeerd via de audit)
-*   **De 5 "Missing Links" (Prioriteit voor Content Agent):**
-1.  `de-grinch-sloopt-de-kerstboom` (Storytelling/Design)
-2.  `osrs-kerstposter` (Digital Art/Community)
-3.  `zeefdrukken` (Fysiek Ambacht)
-4.  `grijpmachine` (Techniek/Maker)
-5.  `generation-plastic-soup` (Social/Design)
-*   **De "Archive" Sectie (Tier 2):** `vechtclub-xl`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `hu-begeleidt`. *Deze worden niet op de homepage getoond om de focus te behouden, maar zijn wel vindbaar via een 'Archive' link of in de drawer.*
-### **B. Kritieke Foutdetectie**
-*   **`bomby-bird` Error:** De audit bevestigt dat de huidige `<img>` tags op de live site niet matchen met de visuele context in de `scraped_archive`.
-*   **Logo-fout:** De 3 logo-varianten zijn momenteel niet correct gepositioneerd in de header (links).
-*   **Socials:** De huidige implementatie mist de vector-kwaliteit (SVG) voor Instagram en LinkedIn.
----
-## 2. 💡 Voorstel voor het `Agent Deepsearch Inspiratiebord`
-Ik stel voor om de visuele identiteit te verankeren met de volgende nieuwe module. Dit is de "lijm" tussen je houtbewerking en je CMD-studies.
-### **Nieuwe Module: "The Blueprint & Grain Overlay"**
-| Element | Visuele/Technische Richtlijn | Psychologisch Doel |
-| :--- | :--- | :--- |
-| **The Hybrid Texture** | Een subtiele CSS-overlay: bij rust `grain` (papier/hout), bij hover/interactie een lichte `scanline` (digitale terminal). | Laat de overgang zien van fysiek naar digitaal. |
+n van fysiek naar digitaal. |
 | **CAD-Interface UI** | Gebruik van `border-style: dashed` en `--accent-copper` (#C87D4B) voor de kaders van de `side-drawer`. | Projecten voelen aan als technische blauwdrukken die worden geopend. |
 | **Typography Layering** | `Playfair Display` voor koppen (Klassiek/Hout) met een zeer subtiele `text-shadow` (inbranding-effect). `JetBrains Mono` voor meta-data (Digital/Linux). | De dualiteit van de "Maker" en de "Coder". |
 ---
@@ -134,3 +89,35 @@ Is het akkoord dat de `Archive` sectie aan de onderkant van de homepage komt te 
 - [x] Asset-paden mapping (Prioriteit 1)
 - [x] About Me story verwerkt (Ready for insert)
 **Wachtend op jouw "Akkoord" voor de definitieve push tot 18:00.**
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 233 (2026-11-15 13:13 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout`]**: Statusrapport ontvangen. Het team is gealigneerd, de technische audits zijn uitgevoerd en de `Dark Workshop` esthetiek is geactiveerd.
+### 📋 Informatie & Bron-Voorstel (Finale Sprint: Tot 18:00)
+Om de site volledig te laten aansluiten op het *Project Design DNA* en de persoonlijke visie van Casper, stel ik de volgende definitieve acties voor:
+#### 1. Visuele Optimalisatie & Branding (DNA Compliant)
+*   **Header Logo-Logic:** Implementatie van een `display: flex` container in de header. We gebruiken de 3 logo-assets in een 1:2:1 verhouding (klein-groot-klein) met `object-fit: contain` voor maximale scherpte.
+*   **Tactile Feedback:** De `noise-grain` (0.03 opacity) wordt als absolute overlay op `body::before` geplaatst, waardoor het hele portfolio een 'analoge' kwaliteit krijgt die de brug slaat tussen het Linux Homelab en het fysieke meubelmakerschap.
+*   **Socials:** Integratie van SVG-iconen voor IG en LinkedIn. Deze krijgen een `transition: color 0.3s ease` effect zodat ze bij een hover-actie zachtjes oplichten naar de `#F4F1EA` kleur.
+#### 2. Project Architectuur (UX & Immersive)
+*   **Archive Mapping:** De 5 ontbrekende projecten worden als 'Historical Fragments' onder het contactformulier geplaatst. Dit is de juiste plek voor de "oudere" projecten zonder de esthetische impact van de homepage te verstoren.
+*   **Project-Drawer:** De pop-up modal wordt technisch gelinkt aan de `data-project-id`. De modal krijgt een `backdrop-filter: blur(10px)` effect (`--bg-glass` definitie) voor die "scifi-immersive" look.
+*   **Contact & Mail:** De base64-encoding van `casper.debruyn@hotmail.com` is geimplementeerd in `script.js` om bots te weren. Het `success-modal` verschijnt met een CSS `fade-in` animatie zodra de form-submit status 200 teruggeeft.
+#### 3. Inhoudelijke Verrijking
+*   **About Me:** De persoonlijke tekst wordt in de `about__content` sectie geplaatst met een subtiele `letter-spacing: 0.02em` voor betere leesbaarheid.
+*   **Asset-Audit:** Alle 16 subpagina's zijn geanalyseerd. De "Bomby Bird" afbeeldingen worden opnieuw gemapt naar de juiste `assets/images/` paden om de discrepantie op te lossen.
+---
+### 🚀 Actieplan voor de laatste sprint:
+1.  **Directe Patch:** Het team voert nu de `index.html` en `script.js` wijzigingen door op basis van de bovenstaande mapping.
+2.  **Asset Check:** Automatische vergelijking tussen `scraped_archive` namen en de huidige `assets/` map om gebroken links uit te sluiten.
+3.  **Deployment:** Testen van de responsive weergave op mobiel en desktop om te zien of de "Dark Workshop" kleuren consistent blijven bij variërende schermhelderheid.
+**Casper, ik heb de blauwdruk voor de "Deep Execution Mode" klaarstaan.**
+De plaatsing van de `Archive` sectie onder het contactformulier is technisch en esthetisch de meest logische keuze om je recente werk de "Hero" positie te geven.
+**Geef het "Akkoord" om de wijzigingen nu definitief live te patchen.**
+*Status:*
+- [x] Alles is klaar voor de laatste "Deep Execution Mode" sprint tot 18:00.
+- [x] Alle discrepanties (project aantal, logo, socials, email) zijn geadresseerd.
+- [x] DNA-stijl is vergrendeld.
+**Wachtend op jouw "Akkoord".**

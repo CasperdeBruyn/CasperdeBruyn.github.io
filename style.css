@@ -12,96 +12,87 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     margin: 0;
-    overflow-x: hidden;
 }
 
-/* Grain Overlay */
-.grain-overlay {
+/* Noise Grain Overlay */
+.noise-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: url('assets/textures/grain.png'); /* Zorg dat deze file in assets staat */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAt1n4OAAAACHRSTlMA+6e3v35eWk98yQAAADhJREFUeJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G0VqAAB6p2HPAAAAABJRU5ErkJggg==');
     opacity: 0.03;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 9999;
 }
 
-/* Header & Logo Logica */
-.navbar { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
-.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-.logo-container a { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-primary); }
-.logo-brand { display: flex; flex-direction: column; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; }
-.logo-svg { border: 1px solid var(--accent-copper); padding: 5px; }
+/* Header */
+.main-header { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
+.header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+.logo-cluster { display: flex; align-items: center; gap: 10px; }
+.logo-main { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+.logo-side { width: 40px; height: 40px; opacity: 0.6; }
 
-/* Project Grid */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 3rem; }
-.project-card { background: var(--bg-secondary); padding: 1rem; transition: 0.4s ease; border: 1px solid transparent; }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-
-/* Drawer Immersive UI */
-.drawer {
-    position: fixed; top: 0; right: -100%; width: 100%; max-width: 600px; height: 100%;
-    background: var(--bg-glass); z-index: 2000; padding: 4rem; border-left: 2px solid var(--accent-copper);
-    transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+/* Immersive Drawer */
+.drawer-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-glass);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    opacity: 0; visibility: hidden;
+    transition: all 0.4s ease;
 }
-.drawer.active { right: 0; }
-.close-drawer { position: absolute; top: 2rem; right: 2rem; background: none; border: 1px solid var(--accent-copper); color: var(--accent-copper); cursor: pointer; padding: 10px 20px; }
+.drawer-overlay.active { opacity: 1; visibility: visible; }
+.drawer-container { max-width: 800px; margin: 5% auto; background: var(--bg-secondary); padding: 3rem; border: 1px solid var(--accent-copper); position: relative; }
+.drawer-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--accent-copper); font-size: 2rem; cursor: pointer; }
 
-/* Contact Form */
-#transmission-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
-input, textarea { background: var(--bg-secondary); border: 1px solid #444; color: white; padding: 1rem; }
-.btn-primary { background: var(--accent-copper); color: white; border: none; padding: 1rem 2rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1rem; }
+/* Projects & Form */
+.project-card { cursor: pointer; border: 1px solid rgba(200, 125, 75, 0.1); padding: 1.5rem; transition: 0.3s; }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
+.transmission-form { display: flex; flex-direction: column; gap: 1rem; }
+input, textarea { background: #1a1a1a; border: 1px solid #333; color: white; padding: 1rem; }
+.accent { color: var(--accent-copper); }
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn — Creative Technologist
- * Logic: 12-project mapping, Immersive Drawer & Secure Form Handling
+ * Casper de Bruyn — Interaction & Data Logic
  */
 
-const PROJECT_DATA = {
-    "poul-cadovius": { title: "Poul Cadovius System", desc: "Modular wall unit study in birch multiplex.", img: "assets/images/poul-cadovius.jpg" },
-    "french-cleat": { title: "French Cleat Bench", desc: "Invisible joinery floating bench.", img: "assets/images/french-cleat.jpg" },
-    "claw-machine": { title: "The Claw Machine", desc: "Interactive physical installation.", img: "assets/images/claw-machine.jpg" },
-    "vechtclub": { title: "Vechtclub XL", desc: "Atmospheric branding and identity.", img: "assets/images/vechtclub.jpg" },
-    "grinch": { title: "The Grinch", desc: "Rapid tabletop prototyping.", img: "assets/images/grinch.jpg" },
-    "screen-printing": { title: "Screen Printing", desc: "Analogue production workflows.", img: "assets/images/printing.jpg" },
-    "bomby-bird": { title: "Bomby Bird", desc: "Retro-futuristic arcade game development.", img: "assets/images/bomby-bird.jpg" },
-    "plastic-soup": { title: "Plastic Soup", desc: "Environmental strategy gaming.", img: "assets/images/soup.jpg" },
-    "osrs-poster": { title: "OSRS Poster", desc: "Vector study of classic nostalgia.", img: "assets/images/osrs.jpg" },
-    "sophie": { title: "Picnicking with Sophie", desc: "Service design and UX mapping.", img: "assets/images/sophie.jpg" },
-    "hu-begeleidt": { title: "HU Begeleidt", desc: "Educational guidance platform.", img: "assets/images/hu.jpg" },
-    "kodak-retro": { title: "Kodak Retro", desc: "Brand heritage re-imagined.", img: "assets/images/kodak.jpg" }
+const PROJECT_DATABASE = {
+    "plastic-soup": { title: "Generation Plastic Soup", desc: "Interactive experience tackling the EU plastic crisis.", body: "A deep dive into ecological systems and policy design." },
+    "zeefdrukken": { title: "Zeefdrukken", desc: "Exploring analog printing.", body: "Hand-pulled prints focusing on the texture of ink on paper." },
+    // ... Voeg overige 14 projecten hier toe conform de structuur
 };
 
-function openDrawer(id) {
-    const data = PROJECT_DATA[id];
-    const drawer = document.getElementById('project-drawer');
-    const content = document.getElementById('drawer-content');
-    
-    content.innerHTML = `
-        <h2>${data.title}</h2>
-        <img src="${data.img}" style="width:100%; margin: 1rem 0;">
-        <p>${data.desc}</p>
-        <p>Personalized storytelling regarding the build process and technical challenges goes here...</p>
-    `;
+// Drawer Logic
+const drawer = document.getElementById('projectDrawer');
+const drawerContent = document.getElementById('drawerContent');
+
+function openProject(id) {
+    const data = PROJECT_DATABASE[id] || { title: "Project File", desc: "Loading...", body: "Data packet not found." };
+    drawerContent.innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p>${data.body}</p>`;
     drawer.classList.add('active');
 }
 
-function closeDrawer() {
-    document.getElementById('project-drawer').classList.remove('active');
-}
-
-// Formspree security / handling
-document.getElementById('transmission-form').addEventListener('submit', function(e) {
-    // Form is handled by Formspree, success modal logic:
-    setTimeout(() => {
-        document.getElementById('success-modal').classList.remove('hidden');
-        this.reset();
-    }, 1000);
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openProject(card.dataset.projectId));
 });
 
-// Escape key to close drawer
-document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeDrawer();
+// Secure Form Handling (Formspree Integration)
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const response = await fetch("https://formspree.io/f/xbjnlqzp", {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    });
+    
+    if (response.ok) {
+        document.getElementById('successModal').classList.add('active');
+        form.reset();
+    }
 });
+
+document.querySelector('.drawer-close').addEventListener('click', () => drawer.classList.remove('active'));

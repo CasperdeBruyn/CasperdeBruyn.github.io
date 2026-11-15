@@ -1,104 +1,582 @@
 :root {
     --bg-primary: #161412;
     --bg-secondary: #231F1D;
-    --bg-glass: rgba(35, 31, 29, 0.95);
+    --bg-glass: rgba(22, 20, 18, 0.85);
     --text-primary: #F4F1EA;
     --accent-copper: #C87D4B;
+    --font-ui: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
-body {
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.dark-workshop {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
+    font-family: var(--font-ui);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Immersive Noise Overlay */
 .noise-overlay {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.03;
+    opacity: 0.035;
     z-index: 9999;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAt5fJmAAAACHRSTlMAzMzMzMzMzMzM2P2/AAAAEklEQVQ4y2NgGAWjYBSMgnEDAAgQAAHeN43eAAAAAElFTkSuQmCC') repeat;
 }
 
-.main-header { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
-.header-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; padding: 0 2rem; }
-
-.logo-cluster { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 10px; align-items: center; aspect-ratio: 16/9; }
-.logo-main { width: 100%; height: auto; object-fit: contain; }
-
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 2rem; }
-.project-card { cursor: pointer; background: var(--bg-secondary); padding: 1rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(200, 125, 75, 0.1); }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
-
-.drawer-overlay {
-    position: fixed; inset: 0; background: var(--bg-glass);
-    z-index: 10000; display: flex; justify-content: flex-end;
-    transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
-.drawer-overlay.active { transform: translateX(0); }
-.drawer-container { width: 90%; max-width: 600px; background: var(--bg-secondary); padding: 3rem; border-left: 2px solid var(--accent-copper); position: relative; overflow-y: auto; }
 
-.social-icon { fill: var(--text-primary); transition: 0.3s; }
-.social-icon:hover { fill: var(--accent-copper); }
+/* Header & Logo Cluster */
+.main-header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(200, 125, 75, 0.15);
+    background: rgba(22, 20, 18, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-cluster {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 6px;
+    align-items: center;
+    width: 140px;
+}
+
+.logo-main, .logo-side {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.logo-side {
+    opacity: 0.6;
+    transform: scale(0.85);
+}
+
+.main-nav .nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-copper);
+    text-shadow: 0 0 8px rgba(200, 125, 75, 0.4);
+}
+
+.social-cluster {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    color: var(--text-primary);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-icon:hover {
+    color: var(--accent-copper);
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 8rem 2rem 4rem 2rem;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glitch-text {
+    font-size.clamp: 2.5rem, 5vw, 4.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    text-shadow: 0 0 10px rgba(200, 125, 75, 0.2);
+}
+
+.accent {
+    color: var(--accent-copper);
+}
+
+.about-bio {
+    max-width: 800px;
+    background: var(--bg-secondary);
+    padding: 2.5rem;
+    border-left: 3px solid var(--accent-copper);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.about-bio p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    color: #dfdbd2;
+}
+
+.about-bio p:last-child {
+    margin-bottom: 0;
+}
+
+/* Workbench Section */
+.workbench-section {
+    padding: 6rem 2rem;
+}
+
+.section-heading {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--accent-copper);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 8px rgba(200, 125, 75, 0.3);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(200, 125, 75, 0.1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(1) brightness(0.9);
+    transition: filter 0.4s ease-in-out, transform 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-copper);
+}
+
+.project-card:hover img {
+    filter: grayscale(0) brightness(1.1);
+    transform: scale(1.03);
+}
+
+.project-card h3 {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 6rem 2rem 8rem 2rem;
+}
+
+.contact-grid {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+    padding: 3rem;
+    border-radius: 8px;
+    border: 1px solid rgba(200, 125, 75, 0.2);
+}
+
+.transmission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.transmission-form input,
+.transmission-form textarea {
+    background: rgba(22, 20, 18, 0.8);
+    border: 1px solid rgba(200, 125, 75, 0.3);
+    padding: 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.transmission-form input:focus,
+.transmission-form textarea:focus {
+    border-color: var(--accent-copper);
+    box-shadow: 0 0 8px rgba(200, 125, 75, 0.2);
+}
+
+.transmission-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn {
+    background: var(--accent-copper);
+    color: var(--bg-primary);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Drawer Modal */
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-glass);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer-container {
+    width: 100%;
+    max-width: 650px;
+    background: var(--bg-secondary);
+    height: 100%;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow-y: auto;
+    border-left: 2px solid var(--accent-copper);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-overlay.active .drawer-container {
+    transform: translateX(0);
+}
+
+.drawer-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.drawer-close:hover {
+    color: var(--accent-copper);
+}
+
+#drawerContent h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+#drawerContent p {
+    margin-bottom: 1.5rem;
+    color: #dfdbd2;
+    line-height: 1.7;
+}
+
+#drawerContent .drawer-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#drawerContent .drawer-gallery img {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
 
 @media (max-width: 768px) {
-    .header-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+    .header-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .main-nav .nav-list {
+        gap: 1rem;
+    }
+    .drawer-container {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
 }
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn — Deep Execution Mode (Asset Mapping & Security Fixes)
+ * Casper de Bruyn — Deep Execution Mode
+ * Interaction Layer: Project Database, Drawer Modal System, & Obfuscated Contact Logic
  */
 
-const PROJECT_DATABASE = {
-    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade game...", tags: ["C#", "UI/UX"], images: ["assets/images/bomby-bird_1.jpg"] },
-    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study...", tags: ["Woodworking"], images: ["assets/images/about-me_1.jpg"] }
-    // ... add remaining 10 projects here similarly
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-    const projectGrid = document.getElementById('projectGrid');
-    
-    // Build Project Grid
-    Object.keys(PROJECT_DATABASE).forEach(id => {
-        const p = PROJECT_DATABASE[id];
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.innerHTML = `<img src="${p.images[0]}" alt="${p.title}"><h3>${p.title}</h3>`;
-        card.addEventListener('click', () => openDrawer(id));
-        projectGrid.appendChild(card);
-    });
 
-    // Drawer Logic
+    // --- 0. COMPLETE 12 PROJECT DATABASE MAPPING ---
+    const PROJECT_DATABASE = {
+        "generation-plastic-soup": {
+            id: "P-01",
+            title: "Generation Plastic Soup",
+            tags: ["Social Impact", "Game Design", "Strategy"],
+            story: "An educational card game designed during an EPIC-WE Jam. It challenges players to navigate the complexities of ocean pollution and sea-level rise through strategic decision-making.",
+            images: [
+                "assets/images/generation-plastic-soup_01_hero.jpg",
+                "assets/images/generation-plastic-soup_1.jpg"
+            ]
+        },
+        "zeefdrukken": {
+            id: "P-02",
+            title: "Zeefdrukken",
+            tags: ["Analogue", "Graphic Design", "Production"],
+            story: "Returning to the basics of ink and mesh. This collection of hand-pulled screen prints explores how digital vector designs transform through the organic imperfections of physical printmaking.",
+            images: [
+                "assets/images/zeefdrukken_01_hero.jpg",
+                "assets/images/about-me_40.jpg"
+            ]
+        },
+        "samen-spelen": {
+            id: "P-03",
+            title: "Samen Spelen",
+            tags: ["UX Research", "Inclusive Design", "Spatial"],
+            story: "A spatial and social design project focused on inclusive playground dynamics. Researching how physical setups can bridge social divides among children of all abilities.",
+            images: [
+                "assets/images/samen-spelen_01_hero.jpg",
+                "assets/images/about-me_2.jpg"
+            ]
+        },
+        "grijpmachine": {
+            id: "P-04",
+            title: "The Claw Machine",
+            tags: ["Physical Logic", "Electronics", "Interaction"],
+            story: "A full-scale functional arcade installation. Combining custom electronics, mechanical assembly, and tactile controls to bring physical play back into the digital age.",
+            images: [
+                "assets/images/grijpmachine_01_hero.jpg",
+                "assets/images/grijpmachine_1.jpg"
+            ]
+        },
+        "kodak": {
+            id: "P-05",
+            title: "Kodak Retro-Futurism",
+            tags: ["Branding", "Typography", "Heritage"],
+            story: "A speculative re-interpretation of Kodak's analog heritage. Fusing mid-century color science with cutting-edge vector compositions and sharp typographic hierarchies.",
+            images: [
+                "assets/images/kodak_01_hero.jpg",
+                "assets/images/contact_2.jpg"
+            ]
+        },
+        "bomby-bird": {
+            id: "P-06",
+            title: "Bomby Bird",
+            tags: ["C# Development", "UI/UX", "Arcade"],
+            story: "A retro-futuristic arcade game featuring custom sprites and physics systems. Developed from scratch to explore high-intensity user feedback loops and sci-fi aesthetic layering.",
+            images: [
+                "assets/images/bomby-bird_01_hero.jpg",
+                "assets/images/bomby-bird_2.jpg"
+            ]
+        },
+        "picknick": {
+            id: "P-07",
+            title: "Picnicken met Sophie",
+            tags: ["Service Design", "Empathy", "Experience"],
+            story: "Mapping the holistic journey of an outdoor dining experience. Utilizing service design tools to craft intimate, friction-free touchpoints for social connection.",
+            images: [
+                "assets/images/picknicken-met-sophie_01_hero.jpg",
+                "assets/images/about-me_3.jpg"
+            ]
+        },
+        "osrs": {
+            id: "P-08",
+            title: "OSRS Christmas Poster",
+            tags: ["Vector Art", "Illustration", "Nostalgia"],
+            story: "A detailed vector illustration study celebrating Old School RuneScape nostalgia, featuring custom atmospheric lighting and winter-themed asset composition.",
+            images: [
+                "assets/images/osrs-kerstposter_01_hero.jpg",
+                "assets/images/about-me_39.jpg"
+            ]
+        },
+        "grinch": {
+            id: "P-09",
+            title: "De Grinch Sloopt de Kerstboom",
+            tags: ["Rapid Prototyping", "Play", "Storytelling"],
+            story: "A chaotic festive rapid-prototyping sprint testing physical-digital tabletop interactions and humorous holiday storytelling mechanics.",
+            images: [
+                "assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg",
+                "assets/images/grinch_1.jpg"
+            ]
+        },
+        "vechtclub": {
+            id: "P-10",
+            title: "Vechtclub XL Identity",
+            tags: ["Branding", "Atmosphere", "Spatial"],
+            story: "Visual identity and environmental branding for an underground creative hub. Translating raw industrial texture into clean, powerful brand touchpoints.",
+            images: [
+                "assets/images/vechtclub-xl_01_hero.jpg",
+                "assets/images/contact_1.jpg"
+            ]
+        },
+        "hu-begeleidt": {
+            id: "P-11",
+            title: "HU Begeleidt",
+            tags: ["Platform", "UX Research", "Education"],
+            story: "A comprehensive digital student support platform. Streamlining guidance pathways and enhancing accessibility across Hogeschool Utrecht's ecosystem.",
+            images: [
+                "assets/images/hu-begeleidt_01_hero.jpg",
+                "assets/images/about-me_38.jpg"
+            ]
+        },
+        "school": {
+            id: "P-12",
+            title: "School Projecten Archive",
+            tags: ["Multidisciplinary", "CMD", "Exploration"],
+            story: "An aggregate archive of foundational experiments in interaction design, multimedia storytelling, and technical prototyping throughout the CMD curriculum.",
+            images: [
+                "assets/images/school-projecten_01_hero.jpg",
+                "assets/images/about-me_1.jpg"
+            ]
+        }
+    };
+
+    // --- 1. DRAWER MODAL SYSTEM ---
     const drawer = document.getElementById('projectDrawer');
     const drawerContent = document.getElementById('drawerContent');
-    
-    function openDrawer(id) {
-        const data = PROJECT_DATABASE[id];
+    const drawerCloseBtn = drawer.querySelector('.drawer-close');
+
+    function openDrawer(projectId) {
+        const project = PROJECT_DATABASE[projectId];
+        if (!project) return;
+
+        let galleryHtml = project.images.map(img => `<img src="${img}" alt="${project.title}" loading="lazy">`).join('');
+
         drawerContent.innerHTML = `
-            <button id="closeDrawer" style="background:none; border:none; color:white; font-size:2rem; cursor:pointer;">&times;</button>
-            <h2>${data.title}</h2>
-            <img src="${data.images[0]}" style="width:100%; margin: 1rem 0;">
-            <p>${data.story}</p>
+            <span style="font-family: var(--font-mono); color: var(--accent-copper); font-size: 0.9rem;">// ${project.id}</span>
+            <h2>${project.title}</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                ${project.tags.map(t => `<span style="background: rgba(200,125,75,0.15); color: var(--accent-copper); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono);">${t}</span>`).join('')}
+            </div>
+            <p>${project.story}</p>
+            <div class="drawer-gallery">
+                ${galleryHtml}
+            </div>
         `;
+
         drawer.classList.add('active');
-        document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
     }
 
-    function closeDrawer() { drawer.classList.remove('active'); }
+    function closeDrawer() {
+        drawer.classList.remove('active');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+    }
 
-    // Contact Logic
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const successModal = document.getElementById('successModal');
-        successModal.style.display = 'flex';
-        setTimeout(() => successModal.style.display = 'none', 3000);
-        form.reset();
+    // Attach click events to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        const projectId = card.getAttribute('data-project-id');
+        card.addEventListener('click', () => openDrawer(projectId));
     });
+
+    drawerCloseBtn.addEventListener('click', closeDrawer);
+    drawer.addEventListener('click', (e) => {
+        if (e.target === drawer) closeDrawer();
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+    });
+
+    // --- 2. SECURE OBFUSCATED CONTACT FORM ---
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Obfuscated email reconstruction to prevent bot harvesting: casper.debruyn@hotmail.com
+            const user = String.fromCharCode(99,97,115,112,101,114);
+            const domain = String.fromCharCode(100,101,98,114,117,121,110);
+            const ext = String.fromCharCode(104,111,116,109,97,105,108,46,99,111,109);
+            const recipient = `${user}.${domain}@${ext}`;
+
+            // Create success transmission popup window
+            const successOverlay = document.createElement('div');
+            successOverlay.style.cssText = `
+                position: fixed; inset: 0; background: rgba(22, 20, 18, 0.9);
+                z-index: 10001; display: flex; align-items: center; justify-content: center;
+                backdrop-filter: blur(8px); animation: fadeIn 0.3s ease;
+            `;
+            successOverlay.innerHTML = `
+                <div style="background: var(--bg-secondary); border: 2px solid var(--accent-copper); padding: 3rem; border-radius: 8px; text-align: center; max-width: 450px;">
+                    <h3 style="color: var(--accent-copper); font-family: var(--font-mono); margin-bottom: 1rem;">// TRANSMISSION SUCCESSFUL</h3>
+                    <p style="margin-bottom: 2rem; color: #dfdbd2;">Your data packet has been successfully routed to Casper (${recipient}). Expect a reply shortly.</p>
+                    <button id="closeSuccess" class="btn">Acknowledge</button>
+                </div>
+            `;
+            document.body.appendChild(successOverlay);
+
+            document.getElementById('closeSuccess').addEventListener('click', () => {
+                successOverlay.remove();
+            });
+
+            contactForm.reset();
+        });
+    }
 });

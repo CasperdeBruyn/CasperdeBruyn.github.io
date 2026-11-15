@@ -1,9 +1,9 @@
 {
-  "iteration": 236,
+  "iteration": 237,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de finale broncode en de projectstructuur grondig gescand. Hier is het rapport over de status van `CasperdeBruyn.github.io`.\n### 🔍 Inspectierapport: Finale Status (Iteratie 235)\n#### 1. Wat is er daadwerkelijk veranderd?\n*   **Visuele Identiteit:** De \"Dark Workshop\" kleurstelling (#161412, #231F1D, #C87D4B) is nu hard gecodeerd in de `:root` van `style.css`. De `noise-overlay` is toegevoegd voor die tactiele, analoge 'grain', wat de immersive scifi-vibe direct versterkt.\n*   **Header Architectuur:** Het logo-cluster is nu responsive via een `grid-template-columns: 1fr 2fr 1fr` opstelling, waardoor de 3 logo-assets in balans staan zonder vervorming.\n*   **Portfolio Architectuur:** Het `PROJECT_DATA` object in `script.js` is uitgebreid en bevat nu de ontbrekende projecten. De \"Drawer\"-modal (interactief slide-in systeem) is technisch geïmplementeerd om de homepage clean te houden.\n*   **Social & Contact:** Discord-knoppen zijn ",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Finale Bron-Inspector (`qa_inspector`)** heb ik de uiteindelijke broncode op schijf na Iteratie 236 grondig gescand en getoetst aan het **Project Design DNA** en de specifieke wensen van Casper.\nHier is het volledige overzicht van de transformatie, de huidige staat van de codebase en de aanbevelingen voor de volgende cyclus.\n---\n### 1. Wat is er daadwerkelijk veranderd? (Change Log)\n*   **Visuele Identiteit & DNA (\"The Dark Workshop\"):**\n*   `style.css` is volledig ingericht volgens de gekozen stijloptie (\"The Dark Workshop\"). De root-variabelen gebruiken nu strak de diepe houtskool achtergrond (`#161412`), gerookt eiken (`#231F1D`), warm wit (`#F4F1EA`) en koperen accenten (`#C87D4B`).\n*   Een subtiele `.noise-overlay` (`data:image/png;base64...`) is toegevoegd over de hele pagina voor de analoge ambacht-meets-digital textuur.\n*   **Header & Logo Cluster (Fix):**\n*   In `index.html` en `style.css` is een 1:2:1 grid-container (`.logo-cluster`) ge",
   "completed_changes": [],
-  "last_updated": "2026-11-15 13:25:27",
+  "last_updated": "2026-11-15 13:29:03",
   "is_running": true,
-  "current_step": "Iteratie 235 voltooid"
+  "current_step": "Iteratie 236 voltooid"
 }

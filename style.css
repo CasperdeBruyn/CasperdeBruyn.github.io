@@ -19,69 +19,66 @@ body {
     overflow-x: hidden;
 }
 
-/* Grain Overlay for Immersive Feel */
 .noise-overlay {
     position: fixed; inset: 0; pointer-events: none; z-index: 9999;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.05;
+    opacity: 0.04; mix-blend-mode: overlay;
 }
 
-/* Layout */
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* Header & Nav */
-.main-header { padding: 2rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(15px); background: rgba(22, 20, 18, 0.8); }
+.main-header { padding: 2rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(15px); background: rgba(22, 20, 18, 0.85); border-bottom: 1px solid rgba(200, 125, 75, 0.1); }
 .header-container { display: flex; justify-content: space-between; align-items: center; }
-.logo-cluster { display: flex; gap: 10px; align-items: center; }
-.logo-main { width: 50px; height: 50px; }
-.logo-side { width: 30px; height: 30px; opacity: 0.6; }
 
-.nav-list { display: flex; list-style: none; gap: 2rem; font-family: var(--font-mono); }
-.nav-link { color: var(--text-primary); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+.logo-main { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--accent-copper); }
+
+.nav-list { display: flex; list-style: none; gap: 2.5rem; font-family: var(--font-mono); font-size: 0.85rem; }
+.nav-link { color: var(--text-primary); text-decoration: none; transition: var(--transition); }
 .nav-link:hover { color: var(--accent-copper); }
 
-.social-cluster { display: flex; gap: 1.5rem; }
-.social-icon { color: var(--text-primary); transition: var(--transition); }
-.social-icon:hover { color: var(--accent-copper); transform: translateY(-3px); }
+.social-cluster { display: flex; gap: 1.2rem; }
+.social-icon { color: var(--text-primary); transition: var(--transition); width: 24px; height: 24px; }
+.social-icon:hover { color: var(--accent-copper); transform: scale(1.1); filter: drop-shadow(0 0 5px var(--accent-copper)); }
 
-/* Hero */
 .hero-section { padding: 8rem 0; }
 .glitch-text { font-size: clamp(2.5rem, 6vw, 4rem); font-family: var(--font-mono); margin-bottom: 2rem; }
-.about-bio { max-width: 650px; font-weight: 300; font-size: 1.2rem; }
+.accent { color: var(--accent-copper); }
+.about-bio { max-width: 700px; font-weight: 300; font-size: 1.15rem; }
 
-/* Workbench Grid */
 .workbench-section { padding: 6rem 0; }
-.section-heading { font-family: var(--font-mono); color: var(--accent-copper); margin-bottom: 3rem; }
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.section-heading { font-family: var(--font-mono); color: var(--accent-copper); margin-bottom: 4rem; font-size: 1.2rem; letter-spacing: 2px; }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
 .project-card { 
     background: var(--bg-secondary); padding: 1.5rem; cursor: pointer; 
-    border: 1px solid rgba(255,255,255,0.05); transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); border-radius: 4px;
 }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.project-card img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 1.5rem; filter: grayscale(0.2); }
+.project-card h3 { font-family: var(--font-mono); font-size: 1rem; margin: 0; }
 
-/* Drawer Modal */
 .drawer-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000;
     display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: var(--transition);
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
 .drawer-container { 
     width: 100%; max-width: 600px; height: 100%; background: var(--bg-primary); 
-    padding: 4rem; overflow-y: auto; border-left: 2px solid var(--accent-copper);
+    padding: 3rem; overflow-y: auto; border-left: 1px solid var(--accent-copper);
 }
-.drawer-close { background: none; border: none; color: var(--accent-copper); font-size: 3rem; cursor: pointer; float: right; }
+.drawer-close { background: none; border: none; color: var(--accent-copper); font-size: 2.5rem; cursor: pointer; float: right; }
+.drawer-content h2 { color: var(--accent-copper); font-family: var(--font-mono); }
 
-/* Contact Form */
-.transmission-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; }
-input, textarea { background: var(--bg-secondary); border: 1px solid #333; color: var(--text-primary); padding: 1rem; font-family: var(--font-mono); }
-.btn { background: var(--accent-copper); color: #161412; border: none; padding: 1.2rem; cursor: pointer; font-weight: bold; transition: var(--transition); }
-.btn:hover { background: #fff; }
+.transmission-form { display: flex; flex-direction: column; gap: 1.2rem; max-width: 500px; }
+input, textarea { background: var(--bg-secondary); border: 1px solid #444; color: var(--text-primary); padding: 1rem; font-family: var(--font-mono); }
+.btn { background: var(--accent-copper); color: #161412; border: none; padding: 1rem; cursor: pointer; font-family: var(--font-mono); font-weight: bold; transition: var(--transition); }
+.btn:hover { background: var(--text-primary); }
+.terminal-success { font-family: var(--font-mono); padding: 2rem; border: 1px solid var(--accent-copper); color: var(--accent-copper); margin-top: 2rem; }
 
 <!-- file: script.js -->
 /**
  * Casper de Bruyn — Portfolio Engine V6.0
- * Logic: Project Mapping, Immersive Modal UI & Netlify Form Integration
+ * Logic: Immersive Dossier System & Form Handling
  */
 
 const PROJECT_DATA = {
@@ -91,12 +88,12 @@ const PROJECT_DATA = {
     "grijpmachine": { title: "Grijpmachine", story: "Functional installation combining mechanical craft and UX." },
     "kodak": { title: "Kodak", story: "Futuristic re-interpretation of heritage branding." },
     "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade mechanics coded from scratch." },
-    "picknick": { title: "Picknicken met Sophie", story: "Emotional journey mapping for social experiences." },
-    "osrs": { title: "OSRS Kerstposter", story: "Modern vector design study of nostalgic realms." },
-    "grinch": { title: "De Grinch", story: "Rapid prototype of a chaotic tabletop experience." },
-    "vechtclub": { title: "Vechtclub XL", story: "Developing industrial identity and atmospheric branding." },
+    "picknicken-met-sophie": { title: "Picknicken met Sophie", story: "Emotional journey mapping for social experiences." },
+    "osrs-kerstposter": { title: "OSRS Kerstposter", story: "Modern vector design study of nostalgic realms." },
+    "de-grinch-sloopt-de-kerstboom": { title: "De Grinch", story: "Rapid prototype of a chaotic tabletop experience." },
+    "vechtclub-xl": { title: "Vechtclub XL", story: "Developing industrial identity and atmospheric branding." },
     "hu-begeleidt": { title: "Hu Begeleidt", story: "Digital platform research for student well-being." },
-    "school": { title: "School Projecten", story: "Compilation of academic design challenges." }
+    "school-projecten": { title: "School Projecten", story: "Compilation of academic design challenges." }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -104,33 +101,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const drawerContent = document.getElementById('drawerContent');
     const closeBtn = document.querySelector('.drawer-close');
 
-    // Project Selection Logic
+    // Drawer Logic
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
             const id = card.getAttribute('data-project');
             const data = PROJECT_DATA[id];
             if(data) {
                 drawerContent.innerHTML = `
-                    <h2 style="font-family: var(--font-mono); color: var(--accent-copper);">${data.title}</h2>
-                    <p style="font-size: 1.2rem; margin-top: 2rem;">${data.story}</p>
-                    <img src="${card.querySelector('img').src}" style="width:100%; margin-top:2rem;">
+                    <div class="drawer-content">
+                        <h2>${data.title}</h2>
+                        <p style="margin: 2rem 0;">${data.story}</p>
+                        <img src="${card.querySelector('img').src}" style="width:100%; border-radius:4px;">
+                    </div>
                 `;
                 drawer.classList.add('active');
             }
         });
     });
 
-    // Close Interaction
+    // Close Modals
     const closeModal = () => drawer.classList.remove('active');
     closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', (e) => { if (e.target === drawer) closeModal(); });
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-    // Contact Form Logic
+    // Contact Form & Success Terminal
     const form = document.querySelector('.transmission-form');
-    form.addEventListener('submit', (e) => {
+    const successMsg = document.getElementById('formSuccessMessage');
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const btn = form.querySelector('.btn');
-        btn.innerText = "[TRANSMITTING...]";
-        // Logic for Netlify Forms will trigger automatically via HTML data-netlify="true"
+        btn.innerText = "[ENCRYPTING PACKET...]";
+        
+        // Simuleer verzending
+        await new Promise(r => setTimeout(r, 1500));
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
     });
 });

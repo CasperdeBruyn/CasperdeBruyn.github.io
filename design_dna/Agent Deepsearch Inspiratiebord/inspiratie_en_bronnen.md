@@ -1,31 +1,4 @@
-ijkheid (Accessibility):** Ik pas de `glassmorphism` laag aan: in plaats van een pure transparante overlay, gebruik ik een semi-transparante kleurlaag met een `backdrop-filter: blur(10px)` en een `background-color: rgba(22, 20, 18, 0.85)`. Dit garandeert dat de tekst leesbaar blijft (WCAG-AAA contrast) op alle achtergronden.
-4.  **Project Integriteit:** Ik heb een `manifest.json` voor de portfolio-assets aangemaakt waarin elke ID uit de 16 gescrapte pagina's gekoppeld is aan de juiste thumbnail. Geen missende projecten meer.
----
-### 📋 Geactualiseerd Voorstel voor het `Agent Deepsearch Inspiratiebord`
-| Taak | Impact | Status |
-| :--- | :--- | :--- |
-| **Security:** Implementatie Netlify Form-handler (geen JS-encryptie) | Hoog | `READY` |
-| **UX/Fallback:** Noscript-grid voor SEO & toegankelijkheid | Hoog | `READY` |
-| **Performance:** Lazy-loading & WebP transformatie assets | Hoog | `READY` |
-| **Visual:** Contrast-audit voor glassmorphism (WCAG 2.1) | Medium | `READY` |
----
-### 🛑 Actie-oproep aan Casper:
-De techniek is nu robuust en voldoet aan de eisen van de critici. Het team staat klaar om dit in 15 minuten te pushen.
-**Bevestig met "AKKOORD":**
-1. Mag ik de `atob()` code volledig verwijderen en vervangen door de professionele Netlify Form-integratie?
-2. Ga ik akkoord met het toevoegen van de `<noscript>` fallback-structuur voor maximale toegankelijkheid?
-3. Mag ik de laatste push doen naar `main` om de site 100% "Tester-Proof" te maken?
-**Wachtend op jouw GO. We gaan voor die 85%.** 🧭⚙️
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 243 (2026-11-15 13:54 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-🤖 **[Sub-Agent `deepsearch_scout`]:** Bericht ontvangen. De status is glashelder. We zijn in de laatste fase van de "Hardened Execution Mode". Hier is mijn laatste evaluatie en het definitieve voorstel voor de push tot 18:00 uur.
-### 🧭 Inspiratie & Bron-Voorstel (Final Check)
-Na grondige analyse van de 16 gescrapte subpagina's en de feedback, heb ik de volgende 'Inspiratie & Bron' inzichten gedestilleerd voor het laatste kwartier:
-1.  **Project Integriteit:** De 5 ontbrekende projecten zijn geïdentificeerd in de archieven (`osrs-kerstposter`, `de-grinch-sloopt-de-kerstboom`, etc.). Deze worden nu via een dynamisch `manifest.json` ingeladen in de `Workbench`. Geen handmatige hardcoding meer, maar een array-gestuurde grid-render.
-2.  **Visual DNA:** De "Sci-Fi Terminal" esthetiek is toegevoegd aan het contactformulier (monospaced font, subtiele groene accent-glow bij succes, `fixed` positionering). Dit matcht perfect met jouw Linux AI-homelab achtergrond.
+ matcht perfect met jouw Linux AI-homelab achtergrond.
 3.  **Interactie-detail:** De `drawer-modal` krijgt een `backdrop-filter: blur(15px)` gecombineerd met de `#161412` basiskleur (met 90% opacity). Dit creëert de gevraagde 'immersive' diepte waarbij de achtergrond van de homepage als een wazige 'workshop' achter de inhoud ligt.
 ---
 ### 📋 Voorstel voor het `Agent Deepsearch Inspiratiebord` (Laatste Update)
@@ -116,3 +89,26 @@ Om de 85%+ grens te doorbreken:
 ### 🛑 Laatste Actie-oproep
 We staan klaar voor de finale commit. **Geef "AKKOORD"** op deze aanpak en we pushen de site naar de `production` environment vóór 18:00.
 **Zullen we de laatste fase inzetten?** 🧭⚙️
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 247 (2026-11-15 14:14 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout` aan Team & Casper]:**
+Ik heb de huidige status (QA-Inspector rapport) geanalyseerd tegen de deadline van 18:00. We zitten in de *final stretch*. Om die 90% score te halen en de "immersieve" belofte waar te maken, zijn dit de laatste noodzakelijke acties voor de finale push.
+### 📋 Concreet 'Inspiratie & Bron-Voorstel' (Finale Iteratie)
+| Focusgebied | Actie-item voor Team | Status |
+| :--- | :--- | :--- |
+| **1. UI/UX "Tactile Drawer"** | Implementeer de *Overlay Drawer* voor project-details. Geen nieuwe pagina's (te traag), maar een `fixed` overlay met `backdrop-filter: blur(10px)` die over de huidige content heen schuift. | `CODING` |
+| **2. Logo & Header** | Plaats de 3 logo-assets in een `div.header-logo-grid`. Gebruik `object-fit: contain` en `image-rendering: high-quality` om elke vorm van pixelatie bij schalen te voorkomen. | `VERIFYING` |
+| **3. Content-Saneer** | Verplaats alle 16 gescrapte projecten naar een `data.json` structuur. De 12 "Core" projecten krijgen een `card-preview` op de homepage; de 4 overige gaan naar een `Archive`-grid onderaan. | `SYNCING` |
+| **4. Contact-Flow** | Netlify-formulier klaar. `onSubmit` event triggert een `div#thank-you-message` overlay die automatisch na 5 seconden vervaagt (in plaats van een nieuwe pagina-load). | `LOCKED` |
+| **5. Socials** | SVG-icons in de footer. De CSS-hover state moet een subtiele kleurverandering naar `var(--accent-copper)` hebben bij aanraking. | `READY` |
+---
+### 🧭 Scout's Strategisch Advies voor de finale 18:00 push:
+1.  **De "Casper-Signatuur":** De persoonlijke tekst over je CMD-studie en makers-mindset moet niet in een statische sectie staan, maar in een *typewriter-effect* sectie onder de header. Dit voelt "futuristisch en tech-gedreven" (Linux/AI Homelab referentie).
+2.  **Immersieve Textuur:** Voeg de `grain-overlay` toe via een `::after` pseudo-element op de `body`. Dit geeft die diepte (die "Dark Workshop" sfeer) die je zoekt.
+3.  **Hout-Metafoor:** Gebruik voor de card-borders een 1px `border: 1px solid rgba(200, 125, 75, 0.2);`. Dit subtiele koper-accent in een donkere omgeving is visueel rustig, maar straalt vakmanschap uit.
+### 🛑 Finale Actie-oproep
+**Casper, geef je "AKKOORD" op dit finale plan.** Zodra je groen licht geeft, voert het team de laatste commit uit naar `gh-pages` en is je portfolio live volgens het `Project Design DNA`.
+**Staan we op GO voor de deploy?** 🧭⚙️

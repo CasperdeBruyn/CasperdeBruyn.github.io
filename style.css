@@ -3,7 +3,7 @@
   --bg-primary: #161412;        /* Deep Charcoal / Warm Antraciet */
   --bg-secondary: #231F1D;      /* Smoked Oak / Gerookt Eiken (Cards & Surfaces) */
   --bg-tertiary: #2A2421;       /* Dark Timber (Hover states) */
-  --bg-modal-backdrop: rgba(18, 16, 14, 0.88);
+  --bg-modal-backdrop: rgba(18, 16, 14, 0.90);
   
   /* Typography Colors (Cloud Dancer Warm White) */
   --text-main: #F4F1EA;         
@@ -25,6 +25,7 @@
 
   /* Motion & Shadows */
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   --shadow-deep: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(200, 125, 75, 0.1);
 }
 
@@ -81,14 +82,14 @@ body.dark-workshop {
 
 .header-logo-group { display: flex; align-items: center; }
 .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-.logo-img { 
-  width: 42px; height: 42px; border-radius: 4px; object-fit: contain; mix-blend-mode: screen;
-  border: 1px solid var(--accent-copper);
-  image-rendering: high-quality;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.site-logo { 
+  width: 46px; height: 46px; border-radius: 0px !important; object-fit: contain; 
+  border: 1px solid var(--accent-copper); background: transparent;
+  transition: var(--transition-bounce);
 }
-.logo-wrapper:hover .logo-img {
-  transform: rotate(360deg) scale(1.05);
+.logo-wrapper:hover .site-logo {
+  transform: rotate(360deg) scale(1.08);
+  filter: drop-shadow(0 0 10px var(--accent-copper));
 }
 
 .brand-name { 
@@ -172,8 +173,9 @@ body.dark-workshop {
 
 .project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); box-shadow: var(--shadow-deep); }
 
-.card-image { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.card-image { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--bg-secondary); }
 .card-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); filter: grayscale(15%); }
+.card-image img.contain-fit { object-fit: contain !important; padding: 10px; }
 .project-card:hover .card-image img { transform: scale(1.04); filter: grayscale(0%); }
 
 .card-overlay {
@@ -283,112 +285,142 @@ body.dark-workshop {
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED WITH MULTI-IMAGE ARRAYS)
-    const PROJECT_DATA = {
+    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED WITH MULTI-IMAGE ARRAYS & QR CODE ROUTING)
+    const CASPER_PROJECTS = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
-            category: "GAME DESIGN",
+            category: "GAME DESIGN & AWARENESS",
             year: "2025",
-            description: "A battle for our oceans. This project was developed during a Game Jam to highlight environmental issues through interactive storytelling and dark aesthetic mechanics.",
-            images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02.jpg"]
+            description: "A battle for our oceans. This project highlights environmental issues through interactive storytelling and dark aesthetic mechanics. The cover features the iconic plastic bag.",
+            images: [
+                "assets/images/generation-plastic-soup_01_hero.jpg",
+                "assets/images/generation-plastic-soup_02_item02.jpg",
+                "assets/images/generation-plastic-soup_03_item03.jpg",
+                "assets/images/generation-plastic-soup_04_item04.jpg"
+            ]
         },
         'zeefdrukken': {
             title: "Zeefdrukken",
             category: "PHYSICAL CRAFT",
             year: "2024",
-            description: "Traditional screen-printing techniques applied to modern graphic designs. Exploring the textures and imperfections of
+            description: "Traditional screen-printing techniques applied to modern graphic designs. Exploring the textures, organic ink bleed, and imperfections of analog printing.",
+            images: [
+                "assets/images/zeefdrukken_01_hero.jpg",
+                "assets/images/zeefdrukken_02_item02.jpg",
+                "assets/images/zeefdrukken_03_item03.jpg",
+                "assets/images/zeefdrukken_04_item04.jpg"
+            ]
+        },
+        'samen-spelen': {
+            title: "Samen Spelen",
+            category: "INTERACTIVE DESIGN",
+            year: "2024",
+            description: "Social interaction through play. Designing inclusive physical installations that bring people together and spark spontaneous interaction.",
+            images: [
+                "assets/images/samen-spelen_01_hero.jpg",
+                "assets/images/samen-spelen_02_item02.jpg",
+                "assets/images/samen-spelen_03_item03.jpg"
+            ]
+        },
+        'grijpmachine': {
+            title: "Grijpmachine",
+            category: "ENGINEERING & FABRICATION",
+            year: "2025",
+            description: "Custom built operational arcade claw machine. Complete woodworking, structural mechanics, custom electronics, and wiring built from scratch in the workshop.",
+            images: [
+                "assets/images/grijpmachine_11_item11.jpg",
+                "assets/images/grijpmachine_01_hero.jpg",
+                "assets/images/grijpmachine_02_item02.jpg",
+                "assets/images/grijpmachine_03_item03.jpg"
+            ]
+        },
+        'kodak': {
+            title: "Kodak",
+            category: "BRAND IDENTITY",
+            year: "2024",
+            description: "Visual identity homage to analog film culture. Framed with precision to preserve typography and poster integrity without cropping artifacts.",
+            images: [
+                "assets/images/kodak_01_hero.jpg",
+                "assets/images/kodak_02_item02.jpg",
+                "assets/images/kodak_03_item03.jpg"
+            ]
+        },
+        'bomby-bird': {
+            title: "Bomby Bird",
+            category: "GAME DEV",
+            year: "2025",
+            description: "Retro-inspired arcade action and game physics. Character design, level mechanics, and fast-paced gameplay loops.",
+            images: [
+                "assets/images/bomby-bird_01_hero.jpg",
+                "assets/images/bomby-bird_02_item02.jpg",
+                "assets/images/bomby-bird_03_item03.jpg"
+            ]
+        },
+        'picknicken-met-sophie': {
+            title: "Picknicken met Sophie",
+            category: "SPATIAL DESIGN",
+            year: "2024",
+            description: "Storytelling through immersive atmosphere and spatial arrangements, creating a cozy narrative experience.",
+            images: [
+                "assets/images/picknicken-met-sophie_01_hero.jpg",
+                "assets/images/picknicken-met-sophie_02_item02.jpg"
+            ]
+        },
+        'osrs-kerstposter': {
+            title: "OSRS Kerstposter",
+            category: "ILLUSTRATION",
+            year: "2024",
+            description: "Digital painting and festive artwork created specifically for gaming communities and seasonal events.",
+            images: [
+                "assets/images/osrs-kerstposter_01_hero.jpg",
+                "assets/images/osrs-kerstposter_02_item02.jpg"
+            ]
+        },
+        'de-grinch-sloopt-de-kerstboom': {
+            title: "De Grinch sloopt de kerstboom",
+            category: "PROTOTYPING",
+            year: "2024",
+            description: "Rapid physical tabletop chaos and sculptural setup celebrating holiday mischief.",
+            images: [
+                "assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg",
+                "assets/images/de-grinch-sloopt-de-kerstboom_02_item02.jpg"
+            ]
+        },
+        'vechtclub-xl': {
+            title: "Vechtclub XL",
+            category: "IDENTITY",
+            year: "2024",
+            description: "Bold branding and spatial identity design for a local sports and training community.",
+            images: [
+                "assets/images/vechtclub-xl_01_hero.jpg",
+                "assets/images/vechtclub-xl_02_item02.jpg"
+            ]
+        },
+        'hu-begeleidt': {
+            title: "HU Begeleidt",
+            category: "UX/UI",
+            year: "2025",
+            description: "Educational support workflows, user journey mapping, and interface design for students at Hogeschool Utrecht.",
+            images: [
+                "assets/images/hu-begeleidt_01_hero.jpg",
+                "assets/images/hu-begeleidt_02_item02.jpg"
+            ]
+        },
+        'dan-maar-hier': {
+            title: "Dan maar hier!",
+            category: "ARCHIVE & INSTALLATION",
+            year: "2025",
+            description: "Curated multidisciplinary CMD explorations and spatial concepts. Scan the booking QR-code below to schedule a direct session or review the installation.",
+            images: [
+                "https://calendar.app.google/QrZs8qdb745L4mEF8",
+                "assets/images/school-projecten_02_item02.jpg",
+                "assets/images/school-projecten_01_hero.jpg"
+            ]
+        }
+    };
 
-/* === CASPER FEEDBACK FIXES (HEADER LOGO ROTATIE, KODAK CONTAIN, KLIKBARE CARDS) === */
-.brand-logo, .logo-img, header img, .nav-brand img, .site-logo img {
-    border-radius: 4px !important;
-    clip-path: none !important;
-    object-fit: contain !important;
-    width: 46px !important;
-    height: 46px !important;
-    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease !important;
-    cursor: pointer;
-}
-.brand-logo:hover, .logo-img:hover, header a:hover img, .nav-brand:hover img, .site-logo:hover img {
-    transform: rotate(360deg) scale(1.08) !important;
-    filter: drop-shadow(0 0 10px rgba(200, 125, 75, 0.65)) !important;
-}
-.project-card, [data-project], [data-project-id] {
-    cursor: pointer !important;
-    position: relative;
-}
-.project-card * {
-    pointer-events: auto;
-}
-.project-card[data-project="kodak"] img,
-.project-card[data-project-id="kodak"] img,
-img[src*="kodak"] {
-    object-fit: contain !important;
-    background-color: #161412 !important;
-    padding: 6px;
-}
-/* Universele Modal Pop-up Styling */
-#casper-universal-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: rgba(14, 12, 10, 0.88);
-    backdrop-filter: blur(10px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-}
-#casper-universal-modal.is-open {
-    display: flex !important;
-    opacity: 1 !important;
-}
-.cum-dialog {
-    background: #231F1D;
-    border: 1px solid rgba(200, 125, 75, 0.35);
-    border-radius: 12px;
-    max-width: 1050px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 2.2rem;
-    color: #F4F1EA;
-    position: relative;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
-}
-.cum-close {
-    position: sticky;
-    top: 0;
-    float: right;
-    background: #161412;
-    color: #F4F1EA;
-    border: 1px solid #C87D4B;
-    border-radius: 6px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: background 0.2s, transform 0.2s;
-}
-.cum-close:hover {
-    background: #C87D4B;
-    color: #161412;
-    transform: rotate(90deg);
-}
-.cum-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
-    margin-top: 1.5rem;
-}
-.cum-gallery img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    background: #161412;
-    border-radius: 8px;
-    border: 1px solid rgba(244, 241, 234, 0.08);
-    padding: 4px;
-}
+    // Alias mapping for flexible matching
+    const PROJECT_ALIASES = {
+        "dan-maar-hier": "dan-maar-hier",
+        "dan maar hier!": "dan-maar-hier",
+        "school-

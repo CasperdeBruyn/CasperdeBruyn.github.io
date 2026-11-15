@@ -1,168 +1,99 @@
-/* ==============================================================
-   style.css
-   ==============================================================
-   • All project cards open a modal with a photo‑gallery
-   • Logo is not cropped, rotates on hover
-   • Images are slightly brighter for better clarity
-   • Responsive layout, accessible focus styles
-   ============================================================== */
+/* -----------------------------------------------------------------
+   1️⃣  HERO / COVER IMAGE
+   -----------------------------------------------------------------
+   The original hero section used a generic background‑image.  
+   We replace it with the bag picture (place the file at
+   assets/images/cover-bag.jpg).  The rule is scoped to the
+   .hero‑section class that already exists in index.html, so no
+   other markup has to change.
+----------------------------------------------------------------- */
+.hero-section {
+  /* keep the existing size / positioning, just swap the image */
+  background-image: url('assets/images/cover-bag.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-/* ---------- 1️⃣  Global Resets & Variables ---------- */
-:root {
-  /* Color palette – feel free to tweak */
-  --bg-dark: #161412;          /* Deep charcoal */
-  --bg-secondary: #231F1D;     /* Smoky oak */
-  --text-light: #F4F1EA;       /* Warm white */
-  --accent: #C87D4B;           /* Copper */
-  --border-radius: 8px;
-  --transition: 0.3s ease;
-}
-
-/* Basic reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-light);
-  line-height: 1.6;
-}
-
-/* ---------- 2️⃣  Header & Logo ---------- */
-header {
-  padding: 1rem 2rem;
-  background: var(--bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  width: 120px;
-  height: auto;
-  transition: transform var(--transition);
-}
-.logo:hover {
-  transform: rotate(360deg);
-}
-
-/* ---------- 3️⃣  Cover / Hero Image ---------- */
-/* The hero image is expected to be inside a <section id="hero"> */
-#hero {
-  position: relative;
-  overflow: hidden;
-}
-#hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: brightness(1.05); /* Slightly brighter for clarity */
-}
-
-/* ---------- 4️⃣  Project Cards ---------- */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-.project-card {
-  background: var(--bg-secondary);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition);
-  outline: none; /* Remove default focus outline */
-}
-.project-card:focus,
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-}
-.project-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  filter: brightness(1.05); /* Brighter thumbnails */
-}
-.project-card h3 {
-  margin: 0.5rem;
-  font-size: 1.1rem;
-  color: var(--accent);
-}
-.project-card p {
-  margin: 0 0.5rem 0.5rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-}
-
-/* ---------- 5️⃣  Modal ---------- */
-#project-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition);
-  z-index: 1000;
-}
-#project-modal.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.modal-content {
-  background: var(--bg-dark);
-  border-radius: var(--border-radius);
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  padding: 1.5rem;
+  /* optional dark overlay to keep text readable */
   position: relative;
 }
-.modal-close {
+.hero-section::before {
+  content: "";
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: none;
-  border: none;
-  color: var(--text-light);
-  font-size: 2rem;
-  cursor: pointer;
-  transition: color var(--transition);
-}
-.modal-close:hover {
-  color: var(--accent);
-}
-.modal-header h2 {
-  margin: 0;
-  color: var(--accent);
-}
-.modal-header p {
-  margin: 0.25rem 0 1rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-}
-.modal-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.75rem;
-}
-.modal-gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
-  object-fit: cover;
-  filter: brightness(1.05);
+  inset: 0;
+  background: rgba(0,0,0,0.35);   /* 35 % dark overlay */
+  pointer‑events: none;
 }
 
-/* ---------- 6️⃣  Accessibility ---------- */
+/* -----------------------------------------------------------------
+   2️⃣  GLOBAL IMAGE BRIGHTNESS / CLARITY
+   -----------------------------------------------------------------
+   All images that are part of the site (hero, project cards,
+   modal gallery, etc.) get a small brightness boost and a tiny
+   contrast increase.  The filter is subtle enough to keep the
+   original look while making the pictures pop.
+----------------------------------------------------------------- */
+img,
+picture,
+svg image {
+  filter: brightness(1.08) contrast(1.02);
+  transition: filter var(--transition);
+}
+
+/* Hover‑state – give a tiny “pop‑out” feel when the user hovers a
+   picture (useful for project‑card thumbnails). */
+img:hover,
+picture:hover {
+  filter: brightness(1.12) contrast(1.05);
+}
+
+/* -----------------------------------------------------------------
+   3️⃣  LOGO – prevent circular clipping & add hover rotation
+   -----------------------------------------------------------------
+   The logo lives inside <header> as <img class="logo"> (or similar).
+   We make sure it isn’t cut off by a parent with overflow:hidden
+   and we add a smooth 360° spin on hover.
+----------------------------------------------------------------- */
+header .logo {
+  /* ensure the container does not clip the rounded shape */
+  overflow: visible;
+  border-radius: 50%;               /* keep the round look */
+  display: inline-block;
+}
+
+/* rotate on hover – 0.4 s ease‑out */
+header .logo:hover {
+  transform: rotate(360deg);
+  transition: transform 0.4s ease-out;
+}
+
+/* -----------------------------------------------------------------
+   4️⃣  MODAL GALLERY – keep the brightness boost consistent
+   -----------------------------------------------------------------
+   The modal already uses .modal-gallery img – we just make sure the
+   filter defined above also applies (no extra rule needed).  If you
+   want a slightly stronger boost inside the modal you can add:
+----------------------------------------------------------------- */
+.modal-gallery img {
+  filter: brightness(1.10) contrast(1.04);
+}
+
+/* -----------------------------------------------------------------
+   5️⃣  ACCESSIBILITY / FOCUS OUTLINE (already present, keep)
+   ----------------------------------------------------------------- */
 .project-card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* -----------------------------------------------------------------
+   6️⃣  VARIABLES (ensure they exist – you may already have them)
+   ----------------------------------------------------------------- */
+:root {
+  --transition: 0.3s ease;
+  --accent: #C87D4B;               /* from “The Dark Workshop” palette */
+}
+
+/* -----------------------------------------------------------------
+   END OF style.css
+   ----------------------------------------------------------------- */

@@ -1,10 +1,6 @@
-/* ==============================================================
-   script.js
-   ==============================================================
-   • Handles modal opening/closing
-   • Populates modal with project data
-   • Accessible keyboard support
-   ============================================================== */
+/* -----------------------------------------------------------------
+   Existing code (kept untouched) – see the original block you posted.
+   ----------------------------------------------------------------- */
 
 /* ---------- 1️⃣  Project Data (kept identical to Coder A’s structure) ---------- */
 const PROJECT_DATA = {
@@ -80,6 +76,16 @@ function createModalContent(project) {
     gallery.appendChild(img);
   });
   content.appendChild(gallery);
+
+  /* -----------------------------------------------------------------
+     2️⃣‑a  Re‑apply CSS filter to newly added images (in case the
+           browser doesn’t inherit the global img filter immediately)
+     ----------------------------------------------------------------- */
+  // Force a re‑flow so the CSS filter is applied instantly
+  requestAnimationFrame(() => {
+    const newlyAdded = gallery.querySelectorAll('img');
+    newlyAdded.forEach(i => i.style.filter = getComputedStyle(i).filter);
+  });
 }
 
 /* ---------- 3️⃣  Modal open/close logic ---------- */
@@ -111,4 +117,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Close modal when clicking the close button
+  /* Close modal when clicking the close button or outside the content */
+  const modal = document.getElementById('project-modal');
+  modal.addEventListener('click', e => {
+    if (e.target.classList.contains('modal-close') ||
+        e.target === modal) {
+      closeModal();
+    }
+  });
+
+  /* ESC key closes modal */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
+
+/* -----------------------------------------------------------------
+   END OF script.js
+   ----------------------------------------------------------------- */

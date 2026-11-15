@@ -1,11 +1,11 @@
 /**
  * Casper de Bruyn Portfolio Logic
- * Handles Immersive Interactions, Modal Projects, and Form Submission
+ * Handles Immersive Interactions, Dossier Modal Projects, and Form Submission
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS)
+    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED)
     const PROJECT_DATA = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 2. MODAL LOGIC
+    // 2. MODAL LOGIC (Dossier View)
     const modal = document.getElementById('project-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalCat = document.getElementById('modal-category');
@@ -111,17 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
         modalYear.innerText = data.year;
         modalDesc.innerHTML = `<p>${data.description}</p>`;
         
-        // Build Gallery
+        // Build Gallery safely with fallbacks
         modalGallery.innerHTML = '';
         data.images.forEach(imgSrc => {
             const img = document.createElement('img');
             img.src = imgSrc;
             img.alt = data.title;
+            img.onerror = () => {
+                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23C87D4B" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
+            };
             modalGallery.appendChild(img);
         });
 
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     };
 
     const closeModal = () => {
@@ -137,19 +140,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    closeBtn.addEventListener('click', closeModal);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
     
-    // Close on click outside container
+    // Close on click outside modal container
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
     });
 
-    // 3. CONTACT FORM LOGIC (Formspree + Success Message)
+    // 3. CONTACT FORM LOGIC (Formspree + Robust Error Handling)
     const contactForm = document.getElementById('transmission-form');
     const successMsg = document.getElementById('form-success');
 
@@ -159,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = contactForm.querySelector('.submit-btn');
             const originalText = btn.innerText;
             
-            btn.innerText = "TRANSMITTING...";
+            btn.innerText = "// TRANSMITTING...";
             btn.disabled = true;
 
             const formData = new FormData(contactForm);
@@ -173,27 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     contactForm.style.display = 'none';
-                    successMsg.style.display = 'block';
+                    if (successMsg) successMsg.style.display = 'block';
                 } else {
                     throw new Error('Transmission Failed');
                 }
             } catch (err) {
-                btn.innerText = "RETRY TRANSMISSION";
+                btn.innerText = "// TRANSMISSION FAILED. RETRY";
                 btn.disabled = false;
-                alert("There was a connection error. Please check your data packet.");
+                console.error(err);
             }
         });
     }
 
     // 4. SMOOTH SCROLL FOR NAV LINKS
-    document.querySelectorAll('.nav-link, .cta-btn').forEach(anchor => {
+    document.querySelectorAll('.nav-link, .cta-btn, .back-top').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetEl = document.querySelector(href);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });

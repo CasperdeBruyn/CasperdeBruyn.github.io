@@ -1,6 +1,4 @@
-ffect:* Wanneer de gebruiker scrolt of beweegt, reageert het grid subtiel met een "parallax" of "glow" effect in koper (`#C87D4B`).
-*   **De Dossier-Engine (Project Modals):** In plaats van simpele pop-ups gebruiken we "Project Dossiers".
-*   *Stijl:* Een overlay met `backdrop-filter: blur(12px)` en een zeer fijne witte/koperen rand (0.5px) die lijkt op een technische tekening.
+nische tekening.
 *   *Navigatie:* Gebruik van `history.pushState` zodat elk project een unieke URL/hash krijgt (`/#project/kodak`).
 *   **Textuur:** Een subtiele `grain` (ruis) laag over de `#161412` achtergrond om het "organische" van de workshop te simuleren.
 #### **B. Content Mapping (De 16 Projecten)**
@@ -129,4 +127,9 @@ Ik stel voor om de volgende module direct vast te leggen voor de Frontend & Cont
 
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 224 (2026-11-15 01:13 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 225 (2026-11-15 01:18 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

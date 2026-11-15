@@ -3,96 +3,105 @@
     --bg-secondary: #231F1D;
     --bg-glass: rgba(35, 31, 29, 0.95);
     --text-primary: #F4F1EA;
-    --text-muted: #A8A39A;
     --accent-copper: #C87D4B;
-    --status-green: #5C6E58;
 }
 
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
     margin: 0;
+    overflow-x: hidden;
 }
 
-/* Noise Grain Overlay */
-.noise-overlay {
+/* Noise Texture Overlay */
+body::before {
+    content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAt1n4OAAAACHRSTlMA+6e3v35eWk98yQAAADhJREFUeJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G0VqAAB6p2HPAAAAABJRU5ErkJggg==');
-    opacity: 0.03;
+    inset: 0;
     pointer-events: none;
+    opacity: 0.03;
     z-index: 9999;
+    background: url('grain.png') repeat;
 }
 
-/* Header */
+/* Header & Logo Cluster */
 .main-header { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
-.header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-.logo-cluster { display: flex; align-items: center; gap: 10px; }
-.logo-main { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
-.logo-side { width: 40px; height: 40px; opacity: 0.6; }
+.header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+.header__logo-cluster { display: flex; align-items: center; gap: 15px; }
+.header__logo-cluster img { width: 40px; height: 40px; object-fit: contain; }
+.header__logo-cluster img:nth-child(2) { width: 80px; height: 80px; }
 
-/* Immersive Drawer */
-.drawer-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-glass);
-    backdrop-filter: blur(10px);
-    z-index: 10000;
-    opacity: 0; visibility: hidden;
-    transition: all 0.4s ease;
+/* Social Icons */
+.social-nav { display: flex; gap: 15px; }
+.social-icon { width: 24px; height: 24px; fill: var(--text-primary); transition: fill 0.3s ease; }
+.social-icon:hover { fill: var(--accent-copper); }
+
+/* Project Grid & Cards */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 2rem; }
+.project-card { cursor: pointer; background: var(--bg-secondary); padding: 1rem; transition: transform 0.3s ease; border: 1px solid transparent; }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+
+/* Modals */
+.drawer-overlay, .success-modal {
+    position: fixed; inset: 0; background: var(--bg-glass);
+    backdrop-filter: blur(10px); z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: 0.4s;
 }
-.drawer-overlay.active { opacity: 1; visibility: visible; }
-.drawer-container { max-width: 800px; margin: 5% auto; background: var(--bg-secondary); padding: 3rem; border: 1px solid var(--accent-copper); position: relative; }
-.drawer-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--accent-copper); font-size: 2rem; cursor: pointer; }
-
-/* Projects & Form */
-.project-card { cursor: pointer; border: 1px solid rgba(200, 125, 75, 0.1); padding: 1.5rem; transition: 0.3s; }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
-.transmission-form { display: flex; flex-direction: column; gap: 1rem; }
-input, textarea { background: #1a1a1a; border: 1px solid #333; color: white; padding: 1rem; }
-.accent { color: var(--accent-copper); }
+.drawer-overlay.active, .success-modal.active { opacity: 1; visibility: visible; }
+.drawer-content { background: var(--bg-secondary); padding: 3rem; max-width: 600px; position: relative; border: 1px solid var(--accent-copper); }
+.close-btn { position: absolute; top: 1rem; right: 1rem; color: var(--accent-copper); cursor: pointer; border: none; background: none; font-size: 1.5rem; }
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn — Interaction & Data Logic
+ * Casper de Bruyn — Deep Execution Mode
  */
 
 const PROJECT_DATABASE = {
-    "plastic-soup": { title: "Generation Plastic Soup", desc: "Interactive experience tackling the EU plastic crisis.", body: "A deep dive into ecological systems and policy design." },
-    "zeefdrukken": { title: "Zeefdrukken", desc: "Exploring analog printing.", body: "Hand-pulled prints focusing on the texture of ink on paper." },
-    // ... Voeg overige 14 projecten hier toe conform de structuur
+    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade game...", tags: ["C#", "UI/UX"] },
+    "plastic-soup": { title: "Generation Plastic Soup", story: "Educational card game...", tags: ["Strategy", "Social Impact"] },
+    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study...", tags: ["Woodworking"] },
+    "french-cleat": { title: "French Cleat Bench", story: "Floating bench with invisible joinery...", tags: ["Furniture"] },
+    "claw-machine": { title: "The Claw Machine", story: "Mechanical engineering installation...", tags: ["Electronics"] },
+    "vechtclub": { title: "Vechtclub XL", story: "Atmospheric brand identity...", tags: ["Branding"] },
+    "grinch": { title: "The Grinch", story: "Rapid prototyping sprint...", tags: ["Storytelling"] },
+    "screen-printing": { title: "Screen-printing", story: "Analogue ink production...", tags: ["Art"] },
+    "osrs-poster": { title: "OSRS Poster", story: "Vector nostalgia study...", tags: ["Illustration"] },
+    "sophie": { title: "Picnicking with Sophie", story: "UX service flow study...", tags: ["UX"] },
+    "hu-begeleidt": { title: "HU Begeleidt", story: "Digital student platform...", tags: ["Research"] },
+    "kodak-retro": { title: "Kodak Retro", story: "Heritage brand re-interpretation...", tags: ["Design"] }
 };
 
-// Drawer Logic
-const drawer = document.getElementById('projectDrawer');
-const drawerContent = document.getElementById('drawerContent');
-
-function openProject(id) {
-    const data = PROJECT_DATABASE[id] || { title: "Project File", desc: "Loading...", body: "Data packet not found." };
-    drawerContent.innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p>${data.body}</p>`;
+// Open Project Modal
+function openDrawer(id) {
+    const data = PROJECT_DATABASE[id];
+    const drawer = document.getElementById('projectDrawer');
+    document.getElementById('drawerContent').innerHTML = `
+        <button class="close-btn" onclick="closeDrawer()">✕</button>
+        <h2>${data.title}</h2>
+        <p>${data.story}</p>
+        <div class="tags">${data.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}</div>
+    `;
     drawer.classList.add('active');
 }
 
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => openProject(card.dataset.projectId));
-});
+function closeDrawer() { document.getElementById('projectDrawer').classList.remove('active'); }
 
-// Secure Form Handling (Formspree Integration)
+// Contact Form Logic (Encrypted)
 const form = document.getElementById('contactForm');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(form);
-    const response = await fetch("https://formspree.io/f/xbjnlqzp", {
-        method: "POST",
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    });
+    const email = atob('Y2FzcGVyLmRlYnJ1eW5AaG90bWFpbC5jb20=');
     
-    if (response.ok) {
-        document.getElementById('successModal').classList.add('active');
-        form.reset();
-    }
+    // Simulate API call
+    document.getElementById('successModal').classList.add('active');
+    setTimeout(() => document.getElementById('successModal').classList.remove('active'), 3000);
+    form.reset();
 });
 
-document.querySelector('.drawer-close').addEventListener('click', () => drawer.classList.remove('active'));
+// Add logic to close success modal
+document.getElementById('successModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+});

@@ -617,77 +617,77 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. PROJECT DATA ARCHIVE (Full Parity with 12 Projects)
     const PROJECTS_DATABASE = {
-        'plastic-soup': {
+        'generation-plastic-soup': {
             title: "Generation Plastic Soup",
             tag: "// ENVIRONMENTAL GAME DESIGN",
             story: "Created during a 2025 Game Jam, this project explores the devastating impact of plastic on marine life through interactive storytelling. I handled the game mechanics and the darker visual aesthetic to emphasize the gravity of the ocean crisis.",
-            images: ["home_pos01_link-naar-generation-plastic-soup.jpg", "generation-plastic-soup_01_hero.jpg"]
+            images: ["home_pos01_link-naar-generation-plastic-soup.jpg"]
         },
         'zeefdrukken': {
-            title: "Zeefdrukken (Silkscreening)",
+            title: "Zeefdrukken",
             tag: "// TACTILE CRAFT",
             story: "A journey into the physical world of ink and mesh. This project focuses on translating digital illustrations into manual silkscreen prints. Every layer is hand-pulled, celebrating the imperfections of the craft.",
-            images: ["home_pos02_link-naar-zeefdrukken.jpg", "zeefdrukken_01_hero.jpg"]
+            images: ["home_pos02_link-naar-zeefdrukken.jpg"]
         },
         'samen-spelen': {
             title: "Samen Spelen",
             tag: "// SOCIAL INTERACTION DESIGN",
             story: "A design intervention meant to break the digital bubble in public squares. 'Samen Spelen' uses simple physical triggers to invite strangers to collaborate on a playful task.",
-            images: ["home_pos03_link-naar-samen-spelen.jpg", "samen-spelen_01_hero.jpg"]
+            images: ["home_pos03_link-naar-samen-spelen.jpg"]
         },
         'grijpmachine': {
-            title: "Grijpmachine (Arcade Claw)",
+            title: "Grijpmachine",
             tag: "// PHYSICAL COMPUTING",
             story: "Building a bridge between woodworking and electronics. This custom-built claw machine uses Arduino logic and a hand-crafted wooden chassis. It was a primary study in mechanical precision and user anticipation.",
-            images: ["home_pos04_link-naar-grijpmachine.jpg", "grijpmachine_01_hero.jpg"]
+            images: ["home_pos04_link-naar-grijpmachine.jpg"]
         },
         'kodak': {
-            title: "Kodak UI/UX",
+            title: "Kodak",
             tag: "// BRAND REVIVAL",
             story: "A conceptual redesign of the Kodak digital ecosystem. Taking the legendary 'warmth' of film and applying it to a modern, lightning-fast mobile interface.",
-            images: ["home_pos05_link-naar-kodak.jpg", "kodak_01_hero.jpg"]
+            images: ["home_pos05_link-naar-kodak.jpg"]
         },
         'bomby-bird': {
             title: "Bomby Bird",
             tag: "// RETRO GAME DEV",
             story: "A fast-paced arcade experience. Developed with custom character sprites and a focus on addictive feedback loops. This project highlights my ability to combine 2D asset creation with coding.",
-            images: ["home_pos06_link-naar-bomby-bird.jpg", "bomby-bird_01_hero.jpg"]
+            images: ["home_pos06_link-naar-bomby-bird.jpg"]
         },
-        'picknicken': {
+        'picknicken-met-sophie': {
             title: "Picknicken met Sophie",
             tag: "// EXPERIENTIAL STORYTELLING",
             story: "An immersive outdoor experience designed to foster connection. I created the visual identity and the physical setup for this atmospheric event in the heart of nature.",
-            images: ["home_pos07_link-naar-picknicken-met-sophie.jpg", "picknicken-met-sophie_01_hero.jpg"]
+            images: ["home_pos07_link-naar-picknicken-met-sophie.jpg"]
         },
-        'osrs': {
+        'osrs-kerstposter': {
             title: "OSRS Kerstposter",
             tag: "// DIGITAL ILLUSTRATION",
             story: "Combining nostalgia with modern digital painting. This poster was designed for the OSRS community, merging isometric 3D concepts with detailed 2D rendering.",
-            images: ["home_pos08_link-naar-osrs-kerstposter.jpg", "osrs-kerstposter_01_hero.jpg"]
+            images: ["home_pos08_link-naar-osrs-kerstposter.jpg"]
         },
-        'grinch': {
-            title: "De Grinch sloopt de Kerstboom",
+        'de-grinch-sloopt-de-kerstboom': {
+            title: "De Grinch sloopt de kerstboom",
             tag: "// INSTALLATION DESIGN",
             story: "A chaotic, festive experience. This spatial installation involved DIY catapults and interactive targets, designed to let visitors express their 'inner Grinch' in a controlled, playful environment.",
-            images: ["home_pos09_link-naar-de-grinch-sloopt-de-kerstboom.jpg", "de-grinch-sloopt-de-kerstboom_01_hero.jpg"]
+            images: ["home_pos09_link-naar-de-grinch-sloopt-de-kerstboom.jpg"]
         },
-        'vechtclub': {
+        'vechtclub-xl': {
             title: "Vechtclub XL",
             tag: "// BRANDING & EVENT",
             story: "Visual identity for a high-energy community sports hub. The design focuses on raw energy, using industrial typography and high-contrast photography.",
-            images: ["home_pos10_link-naar-vechtclub-xl.jpg", "vechtclub-xl_01_hero.jpg"]
+            images: ["home_pos10_link-naar-vechtclub-xl.jpg"]
         },
         'hu-begeleidt': {
             title: "HU Begeleidt",
             tag: "// UX RESEARCH",
             story: "Optimizing the student support flow at Hogeschool Utrecht. This project involved deep user testing and the creation of a centralized, accessible design system.",
-            images: ["home_pos11_link-naar-hu-begeleidt.jpg", "hu-begeleidt_01_hero.jpg"]
+            images: ["home_pos11_link-naar-hu-begeleidt.jpg"]
         },
-        'school': {
+        'school-projecten': {
             title: "School Projecten",
             tag: "// CMD EXPLORATIONS",
             story: "A curated collection of rapid prototypes, design sprints, and visual experiments conducted during my CMD studies. From logo iterations to VR sketches.",
-            images: ["home_pos12_link-naar-school-projecten.jpg", "school-projecten_01_hero.jpg"]
+            images: ["home_pos12_link-naar-school-projecten.jpg"]
         }
     };
 

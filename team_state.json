@@ -1,9 +1,9 @@
 {
-  "iteration": 228,
+  "iteration": 229,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n### 🕵️‍♂️ Finale Bron-Inspectie Rapport: Project CasperdeBruyn.github.io\n**Status:** `IN PROGRESS / ARCHITECTURAL FOUNDATION COMPLETE`\n**Inspecteur:** `qa_inspector`\n**Datum:** 2026-11-15\n---\n#### 1. 🔄 Wat is er daadwerkelijk veranderd?\nDe transformatie van een generieke portfolio naar een **\"Tactile Sci-Fi\" Immersive Experience** is technisch ingezet. De kernverschuiving is niet langer gebaseerd op standaard webcomponenten, maar op een diep geïntegreerd design-systeem:\n*   **Van Statisch naar Atmosferisch:** De introductie van een `grain-overlay` (via SVG-turbulance) en een `cursor-follower` heeft de \"fysieke\" textuur toegevoegd die nodig is voor de *Dark Workshop* esthetiek.\n*   **Van Pixels naar Vectoren:** De header is herstructureerd. De implementatie van een `inline SVG logo` in de `navbar` lost het probleem van pixelvorming direct op en positioneert het merk linksboven zoals gevraagd.\n*   **Van Tekst naar Storytelling:** De project-database in `",
+  "last_qa_feedback": "Sub-agent `qa_inspector` fout na retry (timeout=240s): HTTP 400: {\"error\":{\"message\":\"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b",
   "completed_changes": [],
-  "last_updated": "2026-11-15 01:40:46",
+  "last_updated": "2026-11-15 01:51:22",
   "is_running": true,
-  "current_step": "Iteratie 227 voltooid"
+  "current_step": "Iteratie 228 voltooid"
 }

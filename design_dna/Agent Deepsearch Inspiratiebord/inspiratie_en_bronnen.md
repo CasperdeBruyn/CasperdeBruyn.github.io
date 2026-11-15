@@ -1,54 +1,4 @@
-nimatie openschuift, waardoor de homepage op de achtergrond vervaagt (`blur(10px)`).
-*   **Navigatie-Logica:** Implementatie van `URL-hashes` (bijv. `casperdebruyn.github.io/#project/bomby-bird`). Dit maakt het mogelijk om direct naar een specifiek project te linken via socials.
-*   **Asset-Mapping Matrix:**
-*   **Tier 1 (Immersive):** *Bomby Bird, Kodak, Generation Plastic Soup, Grijpmachine, Zeefdrukken, Vechtclub-XL*. $\rightarrow$ Volledige Dossier met gallery + procestekst.
-*   **Tier 2 (Archive):** *Hu-begeleidt, School-projecten, Picknicken met Sophie, etc*. $\rightarrow$ Compact Dossier met focus op resultaat.
----
-### 🚀 Directe Actiepunten voor de Agents (Priority 10:00)
-Ik adviseer de volgende taakverdeling om de deadline te halen:
-**1. [Content Agent] $\rightarrow$ De "Match-Fixer"**
-*   **Taak:** Loop door alle 16 `scraped_archive/pages/`. Koppel elke pagina aan de juiste afbeeldingen in `assets/images/`.
-*   **Correctie:** Fix de **Bomby Bird** mismatch direct.
-*   **Logo:** Implementeer de 3 logo's in de header links; pas `image-rendering: crisp-edges` of SVG-conversie toe om pixelvorming te voorkomen.
-**2. [Frontend Agent] $\rightarrow$ De "Immersive Architect"**
-*   **Taak:** Bouw de **Dossier-Engine**.
-*   Maak een herbruikbare modal/drawer structuur.
-*   Voeg de `CAD-Grid` achtergrond toe met een subtiele parallax-beweging op basis van muisbeweging.
-*   Vervang social buttons door minimalistische **SVG-iconen** (Instagram/LinkedIn) in de kleur `#C87D4B`.
-**3. [Backend/Logic Agent] $\rightarrow$ De "Secure Connector"**
-*   **Taak:** Configureer het contactformulier.
-*   Routeer mail
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 220 (2026-11-15 00:46 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 221 (2026-11-15 00:46 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 222 (2026-11-15 00:58 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 223 (2026-11-15 01:04 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Hier is mijn analyse en het concrete voorstel voor het team. Als `deepsearch_scout` heb ik de huidige status van de bronnen (scraped pages, CSS/HTML audit) afgezet tegen de harde eisen van het **Project Design DNA**.
----
-# 🧭 DeepSearch Rapport & Voorstel: Project CasperdeBruyn.github.io
-**Status:** 🟡 *In Progress (Focus op Content-Reconciliatie & Interactie-Architectuur)*
-**Deadline Focus:** 10:00 uur
-**Agent:** `deepsearch_scout`
-## 1. 🔍 De "Gap Analysis" (Wat ontbreekt er?)
-Na het scannen van de `scraped_archive/pages/` en de huidige `index.html` heb ik de volgende kritieke discrepanties gevonden die direct aangepakt moeten worden:
-*   **De "Missing 5" Projecten:** De homepage toont momenteel slechts 7 projecten. De scrape heeft 16 subpagina's opgeleverd. De ontbrekende 5 (naast de core projecten) moeten worden geïdentificeerd uit de lijst: `de-grinch-sloopt-de-kerstboom`, `osrs-kerstposter`, `picknicken-met-sophie`, `samen-spelen`, en `hu-begeleidt` (of vergelijkbare archiefstukken).
-*   **De Bomby Bird Mismatch:** De afbeeldingen in `assets/images/` voor dit project komen niet overeen met de visuele storytelling op de originele portfolio.
-*   **Logo & Hiërarchie:** De 3 logo-varianten staan momenteel niet in de header. Er is een risico op pixelvorming als we niet overstappen op SVG of `image-rendering: crisp-edges`.
+ is een risico op pixelvorming als we niet overstappen op SVG of `image-rendering: crisp-edges`.
 ## 2. 💡 Inspiratie & Design Strategie: "The Tactile Sci-Fi"
 Om de gevraagde combinatie van **Futuristisch (Sci-Fi)** en **Klassiek (Craft)** te bereiken, stel ik de volgende visuele synthese voor:
 *   **Concept:** *The Digital Blueprint.* De website moet aanvoelen als een interactief technisch dossier van een meubelmaker uit de toekomst.
@@ -136,3 +86,50 @@ Ik stel voor om de volgende module direct te laten verankeren om de "Futuristisc
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 227 (2026-11-15 01:25 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 228 (2026-11-15 01:42 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is mijn analyse en het concrete voorstel voor het team. Ik heb de gescrapete subpagina's, de huidige technische status en de visuele moodboards naast elkaar gelegd om de "missing links" te identificeren.
+---
+# 🧭 DeepSearch Scout Rapport: Project CasperdeBruyn.github.io
+**Status:** `INSPIRATIE & BRON-MATCHING VOLTOOID`
+**Focus:** De brug slaan tussen de 16 gescrapete data-punten en de "Tactile Sci-Fi" visie.
+## 1. 🔍 De "Missing Project" Audit (Data Reconciliation)
+Uit de scan van `scraped_archive/pages/` (16 items) en de vergelijking met de huidige `index.html` (7 projecten zichtbaar), heb ik de ontbrekende schakels gevonden.
+**De 5 "Verloren" Projecten (Identificatie):**
+Op basis van de scrape zijn dit de projecten die momenteel waarschijnlijk ontbreken in de homepage-grid maar wel in de data zitten:
+1.  `de-grinch-sloopt-de-kerstboom` (Storytelling/Design)
+2.  `generation-plastic-soup` (Social/Design)
+3.  `grijpmachine` (Techniek/Maker)
+4.  `osrs-kerstposter` (Digital Art/Community)
+5.  `zeefdrukken` (Fysiek Ambacht/Craft)
+*(Andere kandidaten: `vechtclub-xl` of `picknicken-met-sophie` – deze moeten als 'Tier 2' of 'Archive' worden ingedeeld om de homepage niet te overladen).*
+**Kritieke Fix:**
+*   **`bomby-bird` Error:** De huidige afbeeldingen op de site matchen niet. De `scraped_archive` bevat de juiste visuele context van MyPortfolio. De Frontend Agent moet de assets uit de scrape direct mappen naar de `assets/images/bomby-bird/` map.
+## 2. 💡 Voorstel voor het `Agent Deepsearch Inspiratiebord`
+Ik stel voor om de volgende visuele laag toe te voegen om de "Futuristische Klassieke" stijl te verankeren.
+### **Nieuwe Module: "The Materiality & Blueprint Overlay"**
+| Element | Visuele/Technische Richtlijn | Doel |
+| :--- | :--- | :--- |
+| **The Hybrid Texture** | Een overlay die wisselt tussen `grain` (papier/hout) en `scanlines` (digitale terminal) tijdens interactie. | De dualiteit tussen de houtbewerker en de CMD-student benadrukken. |
+| **CAD-Interface UI** | Gebruik van `border-style: dashed` en `accent-copper` (Koper) voor de kaders van de `side-drawer`. | Projecten voelen aan als 'blueprints' die worden geopend. |
+| **Micro-Interaction** | Wanneer een project wordt geopend: een korte "flicker" of "draw-in" animatie (als een CAD-tekening die getekend wordt). | Maakt de overgang naar de diepte (drawer) immersief en high-tech. |
+| **Typography Layering** | `Playfair Display` voor de titels van de projecten, maar met een subtiele `text-shadow` die lijkt op een inbranding in hout. | Verbindt het klassieke design met het fysieke ambacht. |
+---
+## 🚀 Directe Actie-instructies voor het Team (Prioriteit tot 10:00)
+### **🤖 [Content Agent] — "The Data Architect"**
+1.  **Project Re-Integration:** Voeg de 5 geïdentificeerde ontbrekende projecten toe aan de `project-grid`. Gebruik een "Archive" sectie voor de minder centrale projecten (`vechtclub-xl`, etc.) om de focus op de kern te houden.
+2.  **The Maker Manifesto (English):** Schrijf voor elk van de 12 projecten een korte, krachtige Engelse tekst.
+*   *Focus:* "How did I build this?" (The Maker aspect) + "What was the design intent?" (The CMD aspect).
+3.  **Asset Mapping:** Forceer de koppeling: `scraped_archive/pages/bomby-bird/` $\rightarrow$ `assets/images/bomby-bird/`. Check op pixelvorming.
+### **🎨 [Frontend Agent] — "The Immersive Architect"**
+1.  **Drawer Engine Deployment:** Implementeer de `side-drawer` (pop-up) voor álle 12 projecten.
+*   *Eis:* Gebruik `backdrop-filter: blur(15px)` en de `--bg-secondary` (#231F1D) voor de achtergrond van de drawer.
+*   *Exit-strategie:* Zorg voor een duidelijk 'X' icoon (vector) in de rechterbovenhoek en een "click-outside-to-close" functie.
+2.  **Header & Logo Fix:**
+*   Verplaats de 3 logo-varianten naar de **Header Left**.
+*   Gebruik enkel SVG. Als er geen SVG is, gebruik `image-rendering: crisp-edges` op de hoogste resolutie bron.
+3.  **The Ghost Contact Form:**
+*   Maak het formulier werkend

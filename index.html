@@ -4,106 +4,370 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casper de Bruyn — Immersive Digital & Physical Design</title>
-  <meta name="description" content="Portfolio of Casper de Bruyn: CMD Student, Maker, and AI Homelab Architect. Bridging physical craft and digital innovation.">
+  <meta name="description" content="Portfolio of Casper de Bruyn: CMD Student, Maker, and Linux AI Homelab Architect. Bridging physical craft and digital innovation.">
   
+  <!-- Fonts: Inter for UI, JetBrains Mono for Technical details -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon placeholder (CDB Logo 01) -->
+  <link rel="icon" type="image/jpeg" href="assets/images/site_header_logo-01.jpg">
 </head>
 <body class="dark-workshop">
 
+  <!-- Immersive Background Layer -->
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <header class="main-header">
     <div class="header-container">
-      <div class="header-logo-grid" aria-label="Casper de Bruyn Logo Variants">
-        <img src="assets/images/site_header_logo-01.jpg" alt="Logo Strak" class="logo-item" title="Minimalist Concept">
-        <img src="assets/images/site_header_logo-02.jpg" alt="Logo Vol" class="logo-item" title="Full Brand Identity">
-        <img src="assets/images/site_header_logo-03.jpg" alt="Logo Icoon" class="logo-item" title="Craft Symbol">
+      <div class="header-logo-group" aria-label="Casper de Bruyn Brand Identity">
+        <div class="logo-wrapper">
+          <!-- Logo 01: Concept/Small -->
+          <img src="assets/images/site_header_logo-01.jpg" alt="CDB Icon" class="logo-small">
+          <!-- Branding Text -->
+          <span class="brand-name">CASPER DE BRUYN</span>
+        </div>
       </div>
 
       <nav class="main-nav">
         <ul class="nav-list">
-          <li><a href="#about">// 01 ABOUT</a></li>
-          <li><a href="#workbench">// 02 WORKBENCH</a></li>
-          <li><a href="#contact">// 03 TRANSMISSION</a></li>
+          <li><a href="#about" class="nav-link"><span class="nav-num">// 01</span> ABOUT</a></li>
+          <li><a href="#workbench" class="nav-link"><span class="nav-num">// 02</span> WORKBENCH</a></li>
+          <li><a href="#contact" class="nav-link"><span class="nav-num">// 03</span> TRANSMISSION</a></li>
         </ul>
       </nav>
 
       <div class="social-cluster">
-        <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg class="social-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <a href="https://www.instagram.com/cdb.creative/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
-        <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg class="social-svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <a href="https://www.linkedin.com/in/casper-de-bruyn-0191561a0/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         </a>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Section 01: Hero & Personality -->
     <section id="about" class="hero-section container">
-      <div class="hero-content">
-        <h1>Casper de Bruyn</h1>
-        <div class="typewriter-container">// <span id="typewriter">CMD Student / Maker / Linux AI Homelab Architect</span></div>
-        <div class="about-bio">
-          <p>Welcome to my digital workshop. Born in Delft ('97) and currently shaping the intersection of physical craft and digital systems at the Hogeschool Utrecht. My work is a constant dialogue between the warmth of the workshop and the cold precision of code.</p>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="status-badge"><span class="pulse"></span> LIVE: SYSTEM ACTIVE</div>
+          <h1 class="glitch-text" data-text="CASPER DE BRUYN">CASPER DE BRUYN</h1>
+          <div class="typewriter-container">
+            <span class="prompt">></span> <span id="typewriter">CMD Student | Maker | Linux Homelab Architect</span>
+          </div>
+          
+          <div class="about-bio">
+            <p>Welcome to my digital workshop. My name is <strong>Casper (Delft, '97)</strong>. I bridge the gap between atoms and bits.</p>
+            <p>Rooted in woodworking and physical craft—from building custom cabinets inspired by <em>Poul Cadovius</em> to floating benches with French cleats—I now fuse this maker-mindset with the digital landscape of Communication and Multimedia Design (CMD).</p>
+            <p>Whether I'm architecting a private <strong>Linux AI Homelab</strong>, organizing gaming communities, or designing immersive spatial installations, my goal is simple: to pull you out of reality and into a story.</p>
+          </div>
+          
+          <div class="tech-stack-ribbon">
+            <span class="tech-tag">WOODWORKING</span>
+            <span class="tech-tag">CMD</span>
+            <span class="tech-tag">LINUX</span>
+            <span class="tech-tag">AI HOMELAB</span>
+            <span class="tech-tag">UI/UX</span>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="image-frame">
+            <img src="assets/images/about-me_01_hero.jpg" alt="Casper de Bruyn - Maker Profile" class="hero-img">
+            <div class="frame-decor top-right"></div>
+            <div class="frame-decor bottom-left"></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Section 02: Portfolio Grid -->
     <section id="workbench" class="workbench-section container">
-      <h2 class="section-heading">// 02 THE PORTFOLIO DOSSIER</h2>
-      <div class="project-grid">
-        <!-- Grid: 12 Projects -->
-        <article class="project-card" data-project="generation-plastic-soup"><img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Generation Plastic Soup"><h3>Generation Plastic Soup</h3></article>
-        <article class="project-card" data-project="zeefdrukken"><img src="assets/images/zeefdrukken_01_hero.jpg" alt="Zeefdrukken"><h3>Zeefdrukken</h3></article>
-        <article class="project-card" data-project="samen-spelen"><img src="assets/images/samen-spelen_01_hero.jpg" alt="Samen Spelen"><h3>Samen Spelen</h3></article>
-        <article class="project-card" data-project="grijpmachine"><img src="assets/images/grijpmachine_01_hero.jpg" alt="Grijpmachine"><h3>Grijpmachine</h3></article>
-        <article class="project-card" data-project="kodak"><img src="assets/images/kodak_01_hero.jpg" alt="Kodak"><h3>Kodak</h3></article>
-        <article class="project-card" data-project="bomby-bird"><img src="assets/images/bomby-bird_01_hero.jpg" alt="Bomby Bird"><h3>Bomby Bird</h3></article>
-        <article class="project-card" data-project="picknicken-met-sophie"><img src="assets/images/picknicken-met-sophie_01_hero.jpg" alt="Picknicken met Sophie"><h3>Picknicken met Sophie</h3></article>
-        <article class="project-card" data-project="osrs-kerstposter"><img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS Kerstposter"><h3>OSRS Kerstposter</h3></article>
-        <article class="project-card" data-project="de-grinch-sloopt-de-kerstboom"><img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="De Grinch"><h3>De Grinch</h3></article>
-        <article class="project-card" data-project="vechtclub-xl"><img src="assets/images/vechtclub-xl_01_hero.jpg" alt="Vechtclub XL"><h3>Vechtclub XL</h3></article>
-        <article class="project-card" data-project="hu-begeleidt"><img src="assets/images/hu-begeleidt_01_hero.jpg" alt="Hu Begeleidt"><h3>Hu Begeleidt</h3></article>
-        <article class="project-card" data-project="school-projecten"><img src="assets/images/school-projecten_01_hero.jpg" alt="School Projecten"><h3>School Projecten</h3></article>
+      <div class="section-header">
+        <h2 class="section-title"><span class="accent">// 02</span> THE PORTFOLIO DOSSIER</h2>
+        <p class="section-subtitle">A collection of physical artifacts and digital logic.</p>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <!-- All 12 Core Projects mapped from catalog -->
+        
+        <article class="project-card" data-project="generation-plastic-soup">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Generation Plastic Soup" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">GAME DESIGN</span>
+              <h3>Generation Plastic Soup</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="zeefdrukken">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/zeefdrukken_01_hero.jpg" alt="Zeefdrukken" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">ANALOG CRAFT</span>
+              <h3>Zeefdrukken</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="grijpmachine">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/grijpmachine_01_hero.jpg" alt="Grijpmachine" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">ENGINEERING</span>
+              <h3>Grijpmachine</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="bomby-bird">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/bomby-bird_01_hero.jpg" alt="Bomby Bird" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">CODING</span>
+              <h3>Bomby Bird</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="kodak">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/kodak_01_hero.jpg" alt="Kodak Branding" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">BRANDING</span>
+              <h3>Kodak Identity</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="de-grinch-sloopt-de-kerstboom">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="The Grinch Project" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">PROTOTYPING</span>
+              <h3>The Grinch</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="osrs-kerstposter">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS Poster" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">ILLUSTRATION</span>
+              <h3>OSRS Kerstposter</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="hu-begeleidt">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/hu-begeleidt_01_hero.jpg" alt="HU Begeleidt" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">UI/UX</span>
+              <h3>HU Begeleidt</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="samen-spelen">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/samen-spelen_01_hero.jpg" alt="Samen Spelen" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">SOCIAL DESIGN</span>
+              <h3>Samen Spelen</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="picknicken-met-sophie">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/picknicken-met-sophie_01_hero.jpg" alt="Picknicken met Sophie" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">STORYTELLING</span>
+              <h3>Sophie's Picnic</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="vechtclub-xl">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/vechtclub-xl_01_hero.jpg" alt="Vechtclub XL" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">EVENT BRANDING</span>
+              <h3>Vechtclub XL</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="school-projecten">
+          <div class="card-inner">
+            <div class="card-image">
+              <img src="assets/images/school-projecten_01_hero.jpg" alt="School Archive" loading="lazy">
+            </div>
+            <div class="card-content">
+              <span class="card-category">ARCHIVE</span>
+              <h3>Foundational Work</h3>
+              <button class="view-btn">EXPLORE DATA</button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
+    <!-- Section 03: Contact & Encryption -->
     <section id="contact" class="contact-section container">
-      <h2 class="section-heading">// 03 TRANSMISSION</h2>
-      <form name="contact" method="POST" data-netlify="true" class="transmission-form">
-        <input type="hidden" name="form-name" value="contact">
-        <input type="text" name="name" placeholder="YOUR NAME" required>
-        <input type="email" name="email" placeholder="YOUR EMAIL CHANNEL" required>
-        <textarea name="message" placeholder="DATA PACKET" required></textarea>
-        <button type="submit" class="btn">EXECUTE TRANSMISSION</button>
-      </form>
-      <!-- Obfuscated contact helper -->
-      <div id="obf-link" class="obf-contact"></div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title"><span class="accent">// 03</span> TRANSMISSION</h2>
+          <p>Ready to bridge a new project? Send an encrypted message or reach out via the provided channels.</p>
+          
+          <div class="connection-status">
+            <div class="stat-row"><span>LOCATION:</span> <span>DELFT, NL</span></div>
+            <div class="stat-row"><span>STATUS:</span> <span class="accent">AVAILABLE FOR COLLAB</span></div>
+            <div class="stat-row"><span>PROTOCOL:</span> <span>ENCRYPTED_MAILTO</span></div>
+          </div>
+          
+          <div id="obf-link-container" class="secure-link">
+            <!-- Mail will be injected here via JS -->
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contactForm" name="contact" method="POST" data-netlify="true" class="transmission-form">
+            <input type="hidden" name="form-name" value="contact">
+            <div class="form-group">
+              <label for="name">IDENTIFIER</label>
+              <input type="text" id="name" name="name" placeholder="Name / Organization" required>
+            </div>
+            <div class="form-group">
+              <label for="email">RETURN CHANNEL</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">DATA PACKET</label>
+              <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+            </div>
+            <button type="submit" class="execute-btn">EXECUTE TRANSMISSION</button>
+          </form>
+          
+          <div id="formFeedback" class="form-success-window hidden">
+            <div class="success-content">
+              <div class="success-icon">✓</div>
+              <h3>TRANSMISSION SUCCESSFUL</h3>
+              <p>Data received. I'll get back to you within 48 hours.</p>
+              <button onclick="resetForm()" class="reset-btn">SEND ANOTHER</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Project Drawer -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <p class="copyright">&copy; <span id="currentYear"></span> CASPER DE BRUYN. DESIGNED BY AI HOMELAB AGENT.</p>
+      <div class="footer-logos">
+        <img src="assets/images/site_header_logo-02.jpg" alt="Logo Variant" class="footer-logo">
+        <img src="assets/images/site_header_logo-03.jpg" alt="Icon Variant" class="footer-logo">
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Drawer (Science-Fiction Terminal Style) -->
   <div id="projectDrawer" class="drawer-overlay" aria-hidden="true">
+    <div class="drawer-backdrop"></div>
     <div class="drawer-container">
-      <button class="drawer-close" aria-label="Close">&times;</button>
-      <div id="drawerContent"></div>
+      <header class="drawer-header">
+        <div class="drawer-controls">
+          <div class="status-indicator">PROJECT_LOG_v2.0</div>
+          <button class="drawer-close" aria-label="Close dossier">&times; CLOSE</button>
+        </div>
+        <h2 id="drawerTitle">PROJECT_TITLE</h2>
+      </header>
+      
+      <div class="drawer-body" id="drawerContent">
+        <!-- Content injected via script.js -->
+        <div class="loading-state">FETCHING DATA...</div>
+      </div>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
-    // Email Obfuscation
+    // 1. Current Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 2. Email Obfuscation (casper.debruyn@hotmail.com)
+    // [99, 97, 115, 112, 101, 114, 46, 100, 101, 98, 114, 117, 121, 110, 64, 104, 111, 116, 109, 97, 105, 108, 46, 99, 111, 109]
     const addr = [99, 97, 115, 112, 101, 114, 46, 100, 101, 98, 114, 117, 121, 110, 64, 104, 111, 116, 109, 97, 105, 108, 46, 99, 111, 109];
     const email = String.fromCharCode(...addr);
-    document.getElementById('obf-link').innerHTML = `Direct link: <a href="mailto:${email}">${email}</a>`;
+    const obfContainer = document.getElementById('obf-link-container');
+    if(obfContainer) {
+      obfContainer.innerHTML = `<a href="mailto:${email}" class="email-secure-btn">
+        <svg class="icon-mail" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        ESTABLISH DIRECT LINK
+      </a>`;
+    }
+
+    // 3. Form Handling (Mocking for GH Pages, works with Netlify)
+    function resetForm() {
+      document.getElementById('contactForm').classList.remove('hidden');
+      document.getElementById('formFeedback').classList.add('hidden');
+    }
   </script>
+  
+  <!-- Main Logic & Animation -->
   <script src="script.js" defer></script>
+
+  <!-- AI Live Status Banner -->
+  <div id="ai-live-work-banner">
+    <span class="banner-dot"></span>
+    <span>🛠️ <strong>AI-Team Live Active:</strong> Final build push in progress...</span>
+  </div>
+
 <!-- AI_LIVE_WORK_BANNER_START -->
-<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 252):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
+<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 253):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
 <!-- AI_LIVE_WORK_BANNER_END -->
 </body>
 </html>

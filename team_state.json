@@ -1,9 +1,9 @@
 {
-  "iteration": 243,
+  "iteration": 244,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Finale Bron-Inspector (`qa_inspector`)** heb ik een volledige scan uitgevoerd van de huidige `main` branch van `CasperdeBruyn.github.io`. Hieronder volgt het audit-rapport.\n---\n### 1. Status van de Wijzigingen (Audit-Rapport)\nDe codebase is succesvol gemigreerd van een basisstructuur naar een **\"Dark Workshop\"** immersieve interface.\n*   **Design DNA Implementatie:** Het kleurenpalet (`#161412`, `#231F1D`, `#F4F1EA`, `#C87D4B`) is volledig doorgevoerd in de CSS-variabelen. De `noise-overlay` zorgt voor de gewenste fysieke textuur (carbon fibre).\n*   **Structuur:** De header bevat nu de gevraagde `1:2:1` logo-cluster. Navigatie is gestroomlijnd naar de drie kerndomeinen (About, Workbench, Contact).\n*   **Project Dossier (Workbench):** De \"overspoelde homepage\" is opgelost. De projecten worden nu getoond via een grid-systeem waarbij elk item een `drawer-modal` activeert. Dit voldoet aan de eis om de homepage clean te houden.\n*   **Security & Tech:*",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de volledige broncode op schijf gescand en getoetst aan het `Project Design DNA`. Hieronder volgt het finale inspectierapport.\n### 🔍 Inspectierapport: CasperdeBruyn.github.io (Iteratie 243)\n#### 1. Wat is daadwerkelijk veranderd?\n*   **Design Systeem:** Het kleurenpalet \"The Dark Workshop\" (Optie 1) is nu de harde standaard in `:root`. De achtergrond (`#161412`), secundaire vlakken (`#231F1D`) en accenten (`#C87D4B`) zijn correct geconfigureerd.\n*   **Architectuur:** De site is gemigreerd naar een datagedreven model. In plaats van hardcoded HTML, wordt de `project-grid` nu dynamisch gevuld vanuit een `PROJECT_DATA` object in `script.js`.\n*   **UX & Immersive Layer:** Er is een `noise-overlay` (carbon fiber patroon) toegevoegd aan de `body` voor tactiele diepte. De navigatie is strakgetrokken met een monospaced font (`JetBrains Mono`) voor de tech-look.\n*   **Formulier-beveiliging:** De `atob()` encoding is verwijderd en vervan",
   "completed_changes": [],
-  "last_updated": "2026-11-15 13:53:05",
+  "last_updated": "2026-11-15 13:56:01",
   "is_running": true,
-  "current_step": "Iteratie 242 voltooid"
+  "current_step": "Iteratie 243 voltooid"
 }

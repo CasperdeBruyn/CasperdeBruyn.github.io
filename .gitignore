@@ -1,0 +1,10 @@
+# Lokale AI-Team & Werkmappen (NIET publiek op GitHub)
+design_dna/
+portfolio content (nog te uploaden)/
+scraped_archive/
+IMAGE_MANIFEST.md
+TEAM_INSTRUCTIONS.txt
+team_state.json
+*.bak
+.DS_Store
+__pycache__/

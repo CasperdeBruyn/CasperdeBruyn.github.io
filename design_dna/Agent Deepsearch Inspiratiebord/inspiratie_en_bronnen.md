@@ -1,54 +1,4 @@
-s een interactief technisch dossier van een meubelmaker uit de toekomst.
-*   **Interactie-model (The Dossier Drawer):** In plaats van standaard pop-ups, gebruiken we een **Side-Drawer (Drawer Engine)**.
-*   *Effect:* Wanneer een project wordt aangeklikt, schuift er een paneel in vanaf de rechterzijde met een subtiele mechanische 'click' (audio-visueel). De rest van de site krijgt een `backdrop-filter: blur(12px)` en een donkere overlay.
-*   *Navigatie:* Gebruik `URL-hashes` (`#project/bomby-bird`) zodat de gebruiker de 'terug'-knop van de browser kan gebruiken om het dossier te sluiten.
-*   **Visuele Details:**
-*   **Technical Callouts:** Gebruik dunne, koperen (`#C87D4B`) lijnen met kleine tekstlabels die wijzen naar details in foto's (bijv. "Hand-cut joinery" of "Custom LED integration").
-*   **Micro-textures:** Een subtiele `grain` overlay over de gehele site om het "matglas/geschaafd hout" gevoel te versterken.
----
-## 3. 📂 Voorstel voor het `Agent Deepsearch Inspiratiebord`
-Ik stel voor om de volgende module direct vast te leggen voor de Frontend & Content Agents:
-### **Module: "Tactile Tech Interface"**
-| Element | Specificatie | Doel |
-| :--- | :--- | :--- |
-| **Navigation** | Minimalistische SVG Icons (IG/IN) in `#C87D4B` | Geen zware PNG's, behoud van scherpte. |
-| **Project View** | `The Dossier Slide` (Side-drawer) | Voorkomt "overwhelming" homepage; behoudt flow. |
-| **Header** | Triple-Logo Cluster (Left-aligned) | Branding integratie zonder de navigatie te blokkeren. |
-| **Background** | `CAD-Grid` Parallax | Een subtiel grid dat meebeweegt met de muis voor diepte. |
-| **Contact** | "Ghost" Form via API | Mailadres blijft verborgen; alleen een "Success Window" zichtbaar. |
----
-## 🚀 Directe Actie-instructies voor het Team (Priority 10:00)
-### **🤖 [Content Agent] -> "The Match-Fixer"**
-1.  **Map de 16 pagina's:** Match elke scraped pagina aan een specifieke afbeelding in `assets/images/`.
-2.  **Fix Bomby Bird:** Zoek de juiste high-res assets op `casperdebruyn.myportfolio.com` en vervang de mismatch.
-3.  **Project Audit:** Zorg dat de 5 "vergeten" projecten als 'Archive' of 'Tier 2' items op de homepage verschijnen.
-### **🎨 [Frontend Agent] -> "The Immersive Architect"**
-1.  **Bouw de Drawer:** Implementeer de `side-drawer` met `backdrop-filter`.
-2.  **Vector Socials:** Vervang alle sociale knoppen do
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 224 (2026-11-15 01:13 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 225 (2026-11-15 01:18 | Team Score: 82%)
-Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 226 (2026-11-15 01:21 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-Hier is het concrete voorstel van de `deepsearch_scout`. Ik heb de gescrapete data, de technische audit en de Design DNA gecombineerd om een tactisch plan op te stellen voor de komende uren.
----
-# 🧭 DeepSearch Scout Rapport: Strategisch Voorstel
-**Status:** 🚀 Project Start (Prioriteit: High) | **Focus:** Content-Integriteit & Immersieve Transitie
-**Doel:** Van een statische lijst naar een "Digital Blueprint" ervaring.
-## 1. 🔍 Analyse van de "Gaten" (De Quick Fixes)
-Uit de scan van de `scraped_archive/pages/` en de huidige `index.html` blijkt een discrepantie:
-*   **De "Vergeten" 5:** Er zijn 16 subpagina's gescraped, maar de homepage toont er slechts 7. Dit betekent dat 9 projecten/secties momenteel "onzichtbaar" zijn voor de bezoeker.
-*   **De Bomby Bird Error:** De mismatch tussen de huidige `assets/images/` en de inhoud van de `bomby-bird` subpagina moet direct worden opgelost via de MyPortfolio-bron.
+en opgelost via de MyPortfolio-bron.
 *   **Logo/Header Discrepantie:** De 3 logo-varianten moeten van de huidige positie naar de **Header Left** worden verplaatst, met een harde eis voor SVG-gebruik om pixelvorming te voorkomen.
 ## 2. 💡 Voorstel voor het `Agent Deepsearch Inspiratiebord`
 Ik stel voor om de volgende module direct te laten verankeren om de "Futuristische Klassieke" stijl te waarborgen.
@@ -135,3 +85,53 @@ Ik stel voor om de volgende visuele laag toe te voegen om de "Futuristische Klas
 ---
 ## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 229 (2026-11-15 01:51 | Team Score: 82%)
 Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 230 (2026-11-15 01:55 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+Hier is mijn analyse en het concrete voorstel voor het team. Ik heb de gescrapete data, de huidige technische status en de Design DNA gecombineerd om een brug te slaan tussen de "fysieke maker" en de "digitale designer".
+---
+# 🧭 DeepSearch Scout Rapport & Voorstel
+**Status:** Klaar voor uitvoering | **Focus:** Integratie, Herstel & Immersie | **Deadline:** 10:00
+## 1. 🔍 Analyse van de Bronnen (DeepScan Resultaten)
+### **A. De Project-Puzzel (Content Mapping)**
+Uit de `scraped_archive/pages/` (16 pagina's) heb ik de 12 kernprojecten geïdentificeerd die nodig zijn om de website compleet te maken (7 aanwezig + 5 missend).
+*   **De 7 huidige projecten:** (Geïdentificeerd via de audit)
+*   **De 5 "Missing Links" (Prioriteit voor Content Agent):**
+1.  `de-grinch-sloopt-de-kerstboom` (Storytelling/Design)
+2.  `osrs-kerstposter` (Digital Art/Community)
+3.  `zeefdrukken` (Fysiek Ambacht)
+4.  `grijpmachine` (Techniek/Maker)
+5.  `generation-plastic-soup` (Social/Design)
+*   **De "Archive" Sectie (Tier 2):** `vechtclub-xl`, `picknicken-met-sophie`, `samen-spelen`, `school-projecten`, `hu-begeleidt`. *Deze worden niet op de homepage getoond om de focus te behouden, maar zijn wel vindbaar via een 'Archive' link of in de drawer.*
+### **B. Kritieke Foutdetectie**
+*   **`bomby-bird` Error:** De audit bevestigt dat de huidige `<img>` tags op de live site niet matchen met de visuele context in de `scraped_archive`.
+*   **Logo-fout:** De 3 logo-varianten zijn momenteel niet correct gepositioneerd in de header (links).
+*   **Socials:** De huidige implementatie mist de vector-kwaliteit (SVG) voor Instagram en LinkedIn.
+---
+## 2. 💡 Voorstel voor het `Agent Deepsearch Inspiratiebord`
+Ik stel voor om de visuele identiteit te verankeren met de volgende nieuwe module. Dit is de "lijm" tussen je houtbewerking en je CMD-studies.
+### **Nieuwe Module: "The Blueprint & Grain Overlay"**
+| Element | Visuele/Technische Richtlijn | Psychologisch Doel |
+| :--- | :--- | :--- |
+| **The Hybrid Texture** | Een subtiele CSS-overlay: bij rust `grain` (papier/hout), bij hover/interactie een lichte `scanline` (digitale terminal). | Laat de overgang zien van fysiek naar digitaal. |
+| **CAD-Interface UI** | Gebruik van `border-style: dashed` en `--accent-copper` (#C87D4B) voor de kaders van de `side-drawer`. | Projecten voelen aan als technische blauwdrukken die worden geopend. |
+| **Typography Layering** | `Playfair Display` voor koppen (Klassiek/Hout) met een zeer subtiele `text-shadow` (inbranding-effect). `JetBrains Mono` voor meta-data (Digital/Linux). | De dualiteit van de "Maker" en de "Coder". |
+---
+## 3. 🚀 Directe Actie-instructies voor het Team (Prioriteit tot 10:00)
+### **🤖 [Content Agent] — "The Data Architect"**
+1.  **Project Re-Integration:** Voeg de 5 geïdentificeerde missende projecten toe aan de `project-grid`.
+2.  **The Maker Manifesto (English):** Schrijf voor elk van de 12 projecten een korte tekst. *Template: "The Concept" (CMD) + "The Build" (Maker aspect).*
+3.  **Asset Mapping (CRITICAL):** Map `scraped_archive/pages/bomby-bird/` $\rightarrow$ `assets/images/bomby-bird/`. Controleer op pixelvorming (gebruik `image-rendering: crisp-edges` indien nodig).
+### **🎨 [Frontend Agent] — "The Immersive Architect"**
+1.  **Side-Drawer Deployment:** Implementeer de pop-up voor projectdetails.
+*   **Eis:** `backdrop-filter: blur(15px)` met `--bg-secondary` (#231F1D).
+*   **Exit:** 'X' vector icoon + `click-outside-to-close`.
+2.  **Header & Logo Fix:**
+*   Verplaats de 3 logo-varianten naar **Header Left**. Gebruik SVG of hoogste resolutie met `crisp-edges`.
+3.  **Socials & Contact:**
+*   Vervang huidige sociale iconen door **SVG vectors** voor IG en LinkedIn.
+*   Implementeer de **Ghost Contact Form**: Mail naar `casper.debruyn@hotmail.com` (hidden), gevolgd door een "Thank You" overlay/window.
+### **🛠️ [Technical Agent] — "The System Integrator"**
+1.  **Color Enforcement:** Forceer **Optie 1: "The Dark Workshop"** in `style.

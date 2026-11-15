@@ -7,90 +7,127 @@
     --font-mono: 'JetBrains Mono', monospace;
 }
 
-body {
+* { box-sizing: border-box; }
+
+body.dark-workshop {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-ui);
     margin: 0;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Grain Overlay for Tactile Feel */
+/* 1. Tactile Layer (Grain) */
 .noise-overlay {
     position: fixed; inset: 0; z-index: 9999;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA...');
-    opacity: 0.05; pointer-events: none;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.15;
+    pointer-events: none; /* Crucial for interactions */
+    mix-blend-mode: overlay;
 }
 
-.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 40px; }
+/* 2. Layout Elements */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.main-header { padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo-small { width: 50px; height: 50px; border-radius: 50%; }
+.brand-name { font-weight: 700; letter-spacing: 2px; margin-left: 15px; }
+
+.nav-list { list-style: none; display: flex; gap: 30px; font-family: var(--font-mono); }
+.nav-link { color: var(--text-primary); text-decoration: none; font-size: 0.9rem; }
+
+/* 3. Workbench & Grid */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .project-card { 
-    background: var(--bg-secondary); padding: 20px; border: 1px solid rgba(200, 125, 75, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
+    background: var(--bg-secondary); border: 1px solid rgba(200, 125, 75, 0.1);
+    padding: 20px; transition: 0.3s ease; cursor: pointer;
 }
 .project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
+.view-btn { background: var(--accent-copper); color: white; border: none; padding: 10px 20px; cursor: pointer; margin-top: 15px; }
 
-/* Drawer Immersie */
+/* 4. Drawer & Feedback */
 .drawer-overlay {
-    position: fixed; top: 0; right: -100%; width: 40%; height: 100vh;
-    background: rgba(23, 20, 18, 0.95); backdrop-filter: blur(20px);
-    transition: right 0.4s ease-in-out; z-index: 10000; padding: 40px; overflow-y: auto;
+    position: fixed; top: 0; right: -100%; width: 100%; max-width: 600px; height: 100vh;
+    background: var(--bg-primary); z-index: 10000; padding: 40px;
+    transition: right 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5); overflow-y: auto;
 }
 .drawer-overlay.active { right: 0; }
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.drawer-close { background: var(--accent-copper); color: white; border: none; padding: 10px; cursor: pointer; }
 
-/* Contact Form & Socials */
-.contact-container { padding: 40px; border-top: 1px solid var(--accent-copper); }
-.social-icons svg { fill: var(--accent-copper); transition: transform 0.2s, fill 0.2s; cursor: pointer; }
-.social-icons svg:hover { transform: translateY(-3px); fill: white; }
+/* 5. Contact & Socials */
+.social-icon { width: 30px; height: 30px; margin: 0 10px; color: var(--accent-copper); display: inline-block; }
 .hidden { display: none; }
-#formFeedback { padding: 20px; background: var(--bg-secondary); border: 1px solid var(--accent-copper); }
+#formFeedback { padding: 40px; text-align: center; border: 1px solid var(--accent-copper); }
 
 <!-- file: script.js -->
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Project Database met extra media
+    // 1. Dynamic Project Management
     const PROJECTS = [
-        { id: "bomby-bird", title: "Bomby Bird", story: "Retro arcade game built with custom logic.", hero: "assets/images/bomby-bird_01_hero.jpg", gallery: ["b1.jpg", "b2.jpg", "b3.jpg"] },
-        // ... (Verder aan te vullen met de 12 projecten)
+        { id: "bomby-bird", title: "Bomby Bird", story: "Retro arcade engine.", images: ["b1.jpg"] },
+        { id: "generation-plastic-soup", title: "Plastic Soup", story: "Sustainability research.", images: ["p1.jpg"] },
+        { id: "grijpmachine", title: "Grijpmachine", story: "Interactive installation.", images: ["g1.jpg"] },
+        { id: "zeefdrukken", title: "Zeefdrukken", story: "Manual print art.", images: ["z1.jpg"] },
+        { id: "de-grinch", title: "The Grinch", story: "Character design.", images: ["g2.jpg"] },
+        { id: "hu-begeleidt", title: "HU Begeleidt", story: "UX design for education.", images: ["h1.jpg"] },
+        { id: "kodak", title: "Kodak", story: "Visual brand identity.", images: ["k1.jpg"] },
+        { id: "osrs", title: "OSRS", story: "Community poster design.", images: ["o1.jpg"] },
+        { id: "picknicken", title: "Sophie's Picnic", story: "Personal memory project.", images: ["s1.jpg"] },
+        { id: "samen-spelen", title: "Samen Spelen", story: "Playful design research.", images: ["s2.jpg"] },
+        { id: "vechtclub", title: "Vechtclub XL", story: "Event brand identity.", images: ["v1.jpg"] },
+        { id: "school", title: "School Archive", story: "Selected coursework.", images: ["a1.jpg"] }
     ];
 
     // 2. Drawer Logic
     const drawer = document.getElementById('projectDrawer');
     const drawerContent = document.getElementById('drawerContent');
+    const drawerTitle = document.getElementById('drawerTitle');
 
-    window.openDrawer = (project) => {
-        drawerContent.innerHTML = `
-            <button class="drawer-close" onclick="closeDrawer()">× CLOSE</button>
-            <h1>${project.title}</h1>
-            <p>${project.story}</p>
-            <div class="gallery-grid">${project.gallery.map(img => `<img src="assets/images/${img}" style="width:100%">`).join('')}</div>
-        `;
+    const openDrawer = (id) => {
+        const p = PROJECTS.find(x => x.id === id);
+        if (!p) return;
+        drawerTitle.textContent = p.title;
+        drawerContent.innerHTML = `<p>${p.story}</p>`;
         drawer.classList.add('active');
+        document.body.style.overflow = 'hidden';
     };
 
-    // 3. Email Obfuscatie & Form
-    const contactBtn = document.querySelector('[data-contact]');
-    contactBtn.addEventListener('click', () => {
-        const email = atob("Y2FzcGVyLmRlYnJ1eW5AaG90bWFpbC5jb20=");
-        window.location.href = `mailto:${email}`;
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => openDrawer(card.dataset.project));
     });
 
-    const form = document.querySelector('.transmission-form');
-    form.addEventListener('submit', (e) => {
+    document.querySelector('.drawer-close').onclick = () => {
+        drawer.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    // 3. Contact Form Submission (Formspree Integration)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        form.classList.add('hidden');
-        document.getElementById('formFeedback').classList.remove('hidden');
+        const response = await fetch('https://formspree.io/f/casper.debruyn@hotmail.com', {
+            method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}
+        });
+        if (response.ok) {
+            form.classList.add('hidden');
+            document.getElementById('formFeedback').classList.remove('hidden');
+            setTimeout(() => {
+                form.classList.remove('hidden');
+                document.getElementById('formFeedback').classList.add('hidden');
+                form.reset();
+            }, 3000);
+        }
     });
 
-    // 4. Close Listeners
-    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
-    window.closeDrawer = () => drawer.classList.remove('active');
+    // 4. Typewriter Effect
+    const typewriter = document.getElementById('typewriter');
+    const phrases = ["CMD Student", "Maker", "Linux Homelab Architect", "Immersive Experience Designer"];
+    let i = 0;
+    setInterval(() => {
+        typewriter.textContent = phrases[i % phrases.length];
+        i++;
+    }, 3000);
 });
-
-// Helper: Typewriter
-const typewriter = document.getElementById('typewriter');
-const phrases = ["CMD Student", "Maker", "Linux Homelab Architect", "Immersive Designer"];
-let i = 0;
-setInterval(() => {
-    typewriter.textContent = phrases[i % phrases.length];
-    i++;
-}, 2500);

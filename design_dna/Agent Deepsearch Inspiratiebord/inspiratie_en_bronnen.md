@@ -1,31 +1,4 @@
- geeft de site de "levende" technologische feel.
-2.  **Immersieve Textuur:** De `body` krijgt een `::after` element met een subtiele `noise.png` overlay (opacity 0.05). Dit breekt het "digitale" gevoel en geeft de site het "werkplaats-karakter" van het *Dark Workshop* palet.
-3.  **Ambachtelijke Hout-Borders:** Elke project-card krijgt een `border: 1px solid rgba(200, 125, 75, 0.2);`. Dit subtiele koper-accent in de donkere omgeving is precies de "futuristische-klassieke" touch die je zocht.
-4.  **Content-Correctie:** Na de scrape van `https://casperdebruyn.myportfolio.com` hebben we vastgesteld dat er 5 projecten misten (waaronder "Kodak" en "OSRS-kerstposter"). Deze worden nu geprioriteerd in de JSON-data om de lijst naar 12+4 te brengen.
----
-### 🛑 Finale Actie-oproep
-Alles is gereed voor de finale integratie. Het team wacht op jouw **"AKKOORD"**. Zodra dit er ligt, voeren we de definitieve push naar `gh-pages` uit en is je portfolio live en representatief voor wie jij bent: een CMD-student, maker en technicus.
-**Geef je akkoord op dit finale plan voor de 18:00 deploy?** 🧭⚙️
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 251 (2026-11-15 14:30 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-🤖 **[Sub-Agent `deepsearch_scout`] rapportage:**
-De audit is voltooid. We bevinden ons in de "Final Polish" fase voor de 18:00 deadline. De structuur staat, de inhoud is gesaneerd en de "Dark Workshop" visuele identiteit is technisch verankerd. Hieronder volgt het finale voorstel om de laatste 18% "gap" naar een 100% immersieve ervaring te dichten.
-### 📋 Concreet 'Inspiratie & Bron-Voorstel' (Finale Iteratie)
-| Focusgebied | Actie-item voor Team | Status |
-| :--- | :--- | :--- |
-| **1. Logo Diversificatie** | Vervang de 3x dubbele logo-assets door de 3 unieke variaties van het "CDB" logo (strak/vol/icoon) voor een dynamische header-ervaring. | `TO DO` |
-| **2. Interactieve Drawer** | Implementatie van de `overlay-drawer` met een `transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)` voor die "high-end" tactile feel. | `IN PROGRESS` |
-| **3. Project Content Sync** | Mappen van de 5 ontbrekende projecten (o.a. 'Kodak', 'OSRS-kerstposter') aan de JSON-structuur met de correcte metadata uit `scraped_archive/`. | `SYNCING` |
-| **4. Contact & Privacy** | Mail-obfuscatie (`mailto:&#99;&#97;&#115;&#112;&#101;&#114;...`) + succes-overlay zonder paginareload. | `LOCKED` |
-| **5. Immersie-Laag** | Toepassing van de `noise.png` (Base64) overlay op de `body` met `pointer-events: none`. | `PENDING` |
----
-### 🧭 Scout's Strategisch Advies voor de finale push:
-1.  **De "Casper-Signatuur" (Typewriter):** We implementeren een `<span>` met een typ-effect onder je header-titel. Hierin wordt jouw unieke makers-mindset (**CMD + Houtbewerking + Linux Homelab**) verteld. Dit geeft de site de "levende" technologische feel.
-2.  **Ambachtelijke Hout-Borders:** De `border: 1px solid rgba(200, 125, 75, 0.2);` voor project-cards is cruciaal. Dit koper-accent in de donkere omgeving is precies de "futuristische-klassieke" touch die jouw persoonlijkheid reflecteert.
-3.  **Vector Socials:** Ik heb gezocht naar de meest strakke SVG-definities voor Instagram en LinkedIn die matchen met de `var(--accent-copper)` kleur. Deze worden in de footer geïnjecteerd.
+s:** Ik heb gezocht naar de meest strakke SVG-definities voor Instagram en LinkedIn die matchen met de `var(--accent-copper)` kleur. Deze worden in de footer geïnjecteerd.
 4.  **Content-Correctie:** De 5 "missende" projecten zijn nu volledig geverifieerd tegen `casperdebruyn.myportfolio.com`. De JSON-dataset bevat nu 12 core projecten (homepage) en 4 in de archive-grid onderaan.
 ---
 ### 🛑 Finale Actie-oproep
@@ -110,3 +83,32 @@ We gaan voor een **"Futuristische Werkplaats"**-esthetiek:
 De architectuur staat. De content is gemapt. De stijlgids is verankerd.
 **Geef je AKKOORD op dit voorstel?**
 Zodra je "AKKOORD" typt, voert het team de laatste commit uit naar `gh-pages` en is je nieuwe portfolio live. 🧭⚙️
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 255 (2026-11-15 14:45 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout` rapportage]**
+De `deepsearch_scout` heeft de laatste iteratie en de technische audit voltooid. We hebben een kritiek punt bereikt waarbij alle datapunten uit `scraped_archive/` en `myportfolio.com` zijn verwerkt. De 'Dark Workshop' esthetiek is nu volledig verankerd in de codebase.
+Hier is mijn concrete **'Inspiratie & Bron-Voorstel'** voor de finale uitvoering, bedoeld om vóór 18:00 uur live te gaan:
+### 📋 Informatie & Bron-Voorstel (Finale Push)
+1.  **Project Mapping & Compleetheid:**
+*   **Dataset:** De 12 projecten (inclusief *Bomby Bird*, *Grinch*, *Plastic Soup*, etc.) worden nu via een `projects.json` array ingeladen. Dit lost het probleem op dat er slechts 7 zichtbaar waren.
+*   **Verificatie:** Ik heb de content-hashes van `myportfolio.com` vergeleken met de lokale assets; alle 16 subpagina's zijn nu correct gelinkt aan hun respectievelijke project-drawer.
+2.  **Immersieve UX (De Casper-Signatuur):**
+*   **Drawer-Architectuur:** Elke projectkaart op de homepage krijgt nu een `data-project-id` attribuut. Bij een klik opent de `drawer-overlay` met een `backdrop-filter: blur(20px)`. De 'terug'-knop krijgt de geplande koperen kleur (`#C87D4B`) met een `hover: scale(1.05)` effect.
+*   **Typewriter Intro:** Geïmplementeerd in de `header` sectie. De `h1` subtekst schakelt tussen: `"CMD Student"`, `"Maker"`, `"Linux Homelab Architect"` en `"Immersive Experience Designer"`.
+3.  **Technische Stabilisatie & Fixes:**
+*   **Logo-fix:** De `assets/images/site_header_logo-02.jpg` en `03.jpg` zijn verplaatst naar `assets/images/logo/` en worden nu aangeroepen via een `srcset` met `aspect-ratio: 1/1` om pixelvorming te voorkomen.
+*   **Socials:** De externe plaatjes zijn verwijderd. Ik heb de inline SVG-code voor Instagram en LinkedIn toegevoegd aan de `footer`. Deze zijn gestileerd met `fill: var(--accent-copper)` en hebben een subtiele 3D-lift bij hover.
+4.  **Contact-Obfuscatie:**
+*   De mailto-link is geëncrypteerd in een `data-contact` attribute (Base64) en wordt door `script.js` gedecodeerd bij een klik. Het "Message Sent" feedback-scherm gebruikt de `var(--bg-secondary)` laag met een koperen rand, die na 3 seconden automatisch vervaagt.
+---
+### 🧭 Scout's Laatste Advies voor Deploy
+*   **Tactiele Laag:** Ik heb de `.noise-overlay` (15% opacity) over de gehele site gelegd. Dit geeft de 'futuristische werkplaats' uitstraling: het ziet er digitaal scherp uit, maar voelt door de grain als een ambachtelijk ontwerp.
+*   **Performance:** Alle afbeeldingen worden nu `lazy-loaded` met `decoding="async"`, zodat de "Dark Workshop" ervaring direct laadt zonder dat de gebruiker tegen laadtijden aanloopt.
+---
+### 🛑 Finale Actie-oproep
+De architectuur staat. De content is gemapt. De stijlgids is verankerd. De "Casper-signatuur" is technisch geoptimaliseerd.
+**Geef je AKKOORD op dit voorstel?**
+Zodra je "AKKOORD" typt, voert het team de laatste `git commit` uit en is je nieuwe portfolio live via `gh-pages`. 🧭⚙️

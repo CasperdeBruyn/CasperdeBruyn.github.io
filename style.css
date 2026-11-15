@@ -11,108 +11,91 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     margin: 0;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-/* Immersive Grain */
+h1, h2 { font-family: 'Playfair Display', serif; }
+
 .noise-overlay {
     position: fixed; inset: 0; pointer-events: none;
     background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-    opacity: 0.03; z-index: 9999;
+    opacity: 0.04; z-index: 9999;
 }
 
-/* Header & Logo Cluster */
 .main-header { padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; }
-.logo-cluster { display: flex; gap: 8px; align-items: center; }
-.logo-main { width: 50px; height: 50px; object-fit: cover; border-radius: 2px; transition: var(--transition); filter: sepia(0.5); }
-.logo-main:hover { filter: sepia(0) brightness(1.2); }
-.logo-side { width: 30px; height: 30px; opacity: 0.6; }
+.logo-cluster { display: flex; gap: 10px; }
+.logo-main { width: 50px; height: 50px; object-fit: cover; border: 1px solid var(--accent-copper); }
 
-/* Grid */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; padding: 4rem 5%; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 2rem 5%; }
 .project-card { 
-    background: var(--bg-secondary); cursor: pointer; padding: 1.5rem; 
-    border-bottom: 3px solid var(--accent-copper); transition: var(--transition);
+    background: var(--bg-secondary); padding: 1.5rem; cursor: pointer;
+    border: 1px solid rgba(200, 125, 75, 0.2); transition: var(--transition);
 }
-.project-card:hover { transform: translateY(-10px); background: #2a2624; }
-.project-card img { width: 100%; height: 220px; object-fit: cover; filter: grayscale(40%); transition: 0.5s; }
-.project-card:hover img { filter: grayscale(0%); }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
 
-/* Drawer Modal */
-.drawer-overlay {
-    position: fixed; inset: 0; background: rgba(22, 20, 18, 0.95);
-    backdrop-filter: blur(15px); z-index: 10000;
-    display: none; justify-content: center; align-items: center;
-}
-.drawer-container {
-    background: var(--bg-secondary); width: 95%; max-width: 900px; max-height: 90vh;
-    overflow-y: auto; padding: 4rem; position: relative; border: 1px solid var(--accent-copper);
-}
-.drawer-close { position: absolute; top: 2rem; right: 2rem; cursor: pointer; color: var(--accent-copper); font-size: 2rem; border: none; background: none; }
+.drawer { display: none; position: fixed; inset: 0; background: rgba(22, 20, 18, 0.9); z-index: 10000; align-items: center; justify-content: center; }
+.drawer.active { display: flex; }
+.drawer-content { background: var(--bg-secondary); padding: 3rem; width: 80%; max-width: 800px; border: 1px solid var(--accent-copper); position: relative; }
 
-/* Contact Form */
-.transmission-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto; }
-input, textarea { background: var(--bg-secondary); border: 1px solid #333; color: white; padding: 1rem; }
-.btn { background: var(--accent-copper); color: var(--bg-primary); font-weight: bold; padding: 1rem; border: none; cursor: pointer; transition: 0.3s; }
-.terminal-feedback { font-family: 'JetBrains Mono', monospace; color: #5C6E58; padding: 1rem; text-align: center; }
+.transmission-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: auto; }
+input, textarea { background: #1a1715; border: 1px solid #333; color: white; padding: 1rem; font-family: inherit; }
+button { background: var(--accent-copper); color: white; border: none; padding: 1rem; cursor: pointer; font-weight: bold; }
+
+#form-feedback { font-family: monospace; color: #5C6E58; margin-top: 1rem; text-align: center; }
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn — Portfolio Engine V4.1
+ * Casper de Bruyn — Portfolio Engine V5.0
  */
 
 const PROJECT_DATA = {
-    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study.", images: ["assets/images/about-me_1.jpg"] },
-    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade.", images: ["assets/images/bomby-bird_1.jpg"] },
-    // ... load rest of 12 objects here
+    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study using birch and falcata multiplex.", images: ["assets/images/about-me_1.jpg"] },
+    "french-cleat": { title: "French Cleat Bench", story: "Invisible joinery, heavy-duty structural integrity.", images: ["assets/images/about-me_3.jpg"] },
+    "claw-machine": { title: "The Claw Machine", story: "Mechanical engineering meets digital logic.", images: ["assets/images/grijpmachine_1.jpg"] },
+    "vechtclub": { title: "Vechtclub XL", story: "Industrial energy branded into a cohesive identity.", images: ["assets/images/vechtclub_1.jpg"] },
+    "grinch": { title: "The Grinch", story: "Rapid iteration tabletop prototype.", images: ["assets/images/grinch_1.jpg"] },
+    "screen-printing": { title: "Screen Printing", story: "Merging vector art with physical ink production.", images: ["assets/images/zeefdruk_1.jpg"] },
+    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade mechanics.", images: ["assets/images/bomby-bird_1.jpg"] },
+    "plastic-soup": { title: "Plastic Soup", story: "Educational strategy card game.", images: ["assets/images/plastic-soup_1.jpg"] },
+    "osrs-poster": { title: "OSRS Poster", story: "Modern vector design study.", images: ["assets/images/osrs-poster_1.jpg"] },
+    "sophie": { title: "Picnicking with Sophie", story: "Emotional journey mapping.", images: ["assets/images/sophie_1.jpg"] },
+    "hu-begeleidt": { title: "HU Begeleidt", story: "UX research for student platforms.", images: ["assets/images/hu-begeleidt_1.jpg"] },
+    "kodak-retro": { title: "Kodak Retro", story: "Futuristic re-interpretation of heritage branding.", images: ["assets/images/kodak_1.jpg"] }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('projectGrid');
     const drawer = document.getElementById('projectDrawer');
-    const content = document.getElementById('drawerContent');
+    const drawerBody = document.getElementById('drawerBody');
 
-    // Render Grid with Fallback
+    // Populate Grid
     Object.keys(PROJECT_DATA).forEach(key => {
         const p = PROJECT_DATA[key];
         const card = document.createElement('div');
         card.className = 'project-card';
-        card.innerHTML = `<img src="${p.images[0]}" onerror="this.src='assets/images/placeholder.jpg'" alt="${p.title}"><h3>${p.title}</h3>`;
-        card.addEventListener('click', () => openDrawer(p));
+        card.innerHTML = `<img src="${p.images[0]}" alt="${p.title}"><h3>${p.title}</h3>`;
+        card.onclick = () => {
+            drawerBody.innerHTML = `<h2>${p.title}</h2><p>${p.story}</p><button onclick="document.getElementById('projectDrawer').classList.remove('active')">CLOSE</button>`;
+            drawer.classList.add('active');
+        };
         grid.appendChild(card);
     });
 
-    // Modal Logic
-    const openDrawer = (p) => {
-        content.innerHTML = `<h2>${p.title}</h2><p>${p.story}</p>`;
-        drawer.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeDrawer = () => {
-        drawer.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
-
-    // ESC to close
-    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
-    document.querySelector('.drawer-close').onclick = closeDrawer;
-
-    // Secure Form Handling (Formspree)
-    const form = document.getElementById('contactForm');
-    form.action = "https://formspree.io/f/mqazqjlk"; // Veilig endpoint
-    form.method = "POST";
-    
-    form.addEventListener('submit', async (e) => {
+    // Form Handling
+    const form = document.querySelector('.transmission-form');
+    form.onsubmit = async (e) => {
         e.preventDefault();
-        const feedback = document.getElementById('formFeedback');
-        feedback.style.display = 'block';
-        feedback.innerText = "INITIALIZING TRANSMISSION...";
+        const feedback = document.createElement('div');
+        feedback.id = "form-feedback";
+        form.appendChild(feedback);
+        feedback.innerText = "> INITIALIZING TRANSMISSION...";
         
-        await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        feedback.innerText = "TRANSMISSION SUCCESSFUL. MESSAGE RECEIVED.";
-    });
+        const data = new FormData(form);
+        await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(data).toString() });
+        
+        feedback.innerText = "> TRANSMISSION SUCCESSFUL: MESSAGE RECEIVED BY CASPER.";
+    };
 });

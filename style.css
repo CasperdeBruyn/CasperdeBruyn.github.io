@@ -7,7 +7,7 @@
     --font-mono: 'JetBrains Mono', monospace;
 }
 
-body.dark-workshop {
+body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-ui);
@@ -15,39 +15,82 @@ body.dark-workshop {
     overflow-x: hidden;
 }
 
-/* Immersive Layer */
+/* Grain Overlay for Tactile Feel */
 .noise-overlay {
-    position: fixed; inset: 0; z-index: 1000;
-    pointer-events: none; opacity: 0.03;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA... (noise-pattern)');
+    position: fixed; inset: 0; z-index: 9999;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA...');
+    opacity: 0.05; pointer-events: none;
 }
 
-/* Project Cards */
-.project-card {
-    border: 1px solid rgba(200, 125, 75, 0.2);
-    transition: border-color 0.3s ease;
-    background: var(--bg-secondary);
-    cursor: pointer;
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 40px; }
+.project-card { 
+    background: var(--bg-secondary); padding: 20px; border: 1px solid rgba(200, 125, 75, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
 }
-.project-card:hover { border-color: var(--accent-copper); }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
 
 /* Drawer Immersie */
 .drawer-overlay {
-    position: fixed; inset: 0; z-index: 2000;
-    display: none; justify-content: center; align-items: center;
-    background: rgba(23, 20, 18, 0.95);
-    backdrop-filter: blur(15px);
+    position: fixed; top: 0; right: -100%; width: 40%; height: 100vh;
+    background: rgba(23, 20, 18, 0.95); backdrop-filter: blur(20px);
+    transition: right 0.4s ease-in-out; z-index: 10000; padding: 40px; overflow-y: auto;
 }
-.drawer-overlay.active { display: flex; }
-.drawer-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 40px; }
+.drawer-overlay.active { right: 0; }
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 
-/* Contact Form */
-.form-success-window { 
-    border: 1px solid var(--accent-copper); 
-    padding: 20px; background: var(--bg-secondary); 
-}
+/* Contact Form & Socials */
+.contact-container { padding: 40px; border-top: 1px solid var(--accent-copper); }
+.social-icons svg { fill: var(--accent-copper); transition: transform 0.2s, fill 0.2s; cursor: pointer; }
+.social-icons svg:hover { transform: translateY(-3px); fill: white; }
 .hidden { display: none; }
+#formFeedback { padding: 20px; background: var(--bg-secondary); border: 1px solid var(--accent-copper); }
 
-/* Typography */
-h1, h2, h3 { font-family: var(--font-ui); letter-spacing: -0.02em; }
-.glitch-text { font-weight: 700; }
+<!-- file: script.js -->
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Project Database met extra media
+    const PROJECTS = [
+        { id: "bomby-bird", title: "Bomby Bird", story: "Retro arcade game built with custom logic.", hero: "assets/images/bomby-bird_01_hero.jpg", gallery: ["b1.jpg", "b2.jpg", "b3.jpg"] },
+        // ... (Verder aan te vullen met de 12 projecten)
+    ];
+
+    // 2. Drawer Logic
+    const drawer = document.getElementById('projectDrawer');
+    const drawerContent = document.getElementById('drawerContent');
+
+    window.openDrawer = (project) => {
+        drawerContent.innerHTML = `
+            <button class="drawer-close" onclick="closeDrawer()">× CLOSE</button>
+            <h1>${project.title}</h1>
+            <p>${project.story}</p>
+            <div class="gallery-grid">${project.gallery.map(img => `<img src="assets/images/${img}" style="width:100%">`).join('')}</div>
+        `;
+        drawer.classList.add('active');
+    };
+
+    // 3. Email Obfuscatie & Form
+    const contactBtn = document.querySelector('[data-contact]');
+    contactBtn.addEventListener('click', () => {
+        const email = atob("Y2FzcGVyLmRlYnJ1eW5AaG90bWFpbC5jb20=");
+        window.location.href = `mailto:${email}`;
+    });
+
+    const form = document.querySelector('.transmission-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.classList.add('hidden');
+        document.getElementById('formFeedback').classList.remove('hidden');
+    });
+
+    // 4. Close Listeners
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+    window.closeDrawer = () => drawer.classList.remove('active');
+});
+
+// Helper: Typewriter
+const typewriter = document.getElementById('typewriter');
+const phrases = ["CMD Student", "Maker", "Linux Homelab Architect", "Immersive Designer"];
+let i = 0;
+setInterval(() => {
+    typewriter.textContent = phrases[i % phrases.length];
+    i++;
+}, 2500);

@@ -1,9 +1,9 @@
 {
-  "iteration": 260,
+  "iteration": 261,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n🔍 **FINALE BRON-INSPECTOR RAPPORT (`qa_inspector`)**\n*Audit uitgevoerd na Iteratie 259 — Project: `CasperdeBruyn.github.io`*\nAls Finale Bron-Inspector heb ik de volledige codebasis op schijf (`index.html`, `style.css`, `script.js` en asset-koppelingen) grondig gescand en getoetst aan het **Project Design DNA** en de specifieke wensen van Casper.\nHier is het definitieve overzicht van de transformatie, de huidige staat en de laatste acties voor de finish.\n---\n### 🛠️ 1. Wat is er daadwerkelijk veranderd? (Codebase Wijzigingen)\n*   **Design DNA Geïmplementeerd (\"The Dark Workshop\"):** De kleurovereenkomst is 100% doorgevoerd in `style.css` via `:root` variabelen (`--bg-primary: #161412`, `--bg-secondary: #231F1D`, `--text-main: #F4F1EA`, `--accent-copper: #C87D4B`). Diep wit is volledig vermeden.\n*   **Tactiele Textuur:** Er is een subtiele SVG-grain overlay (`.noise-overlay`) toegevoegd voor een immersieve, ambachtelijke sfeer.\n*   **De 12 Projecten Gemap",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n# 🔍 Finale Bron-Inspectie Rapport (`qa_inspector`)\n**Project:** `CasperdeBruyn.github.io`\n**Datum / Tijd:** Laatste scan na Iteratie 260\n**Status:** 🟢 **100% Geverifieerd & Conform Project Design DNA**\nAls **Finale Bron-Inspector** heb ik de definitieve bronbestanden op schijf (`index.html`, `style.css`, `script.js` en assets) grondig gescand en getoetst tegen de richtlijnen, het moodboard en de specifieke wensen van Casper.\nHier is het complete overzicht van wat er is veranderd, hoe het eindresultaat er nu uitziet, en wat het focuspunt is voor de afronding.\n---\n### 1. Wat is er daadwerkelijk veranderd? (Code & Architectuur)\n* **Design DNA \"The Dark Workshop\" doorgevoerd:**\n* De CSS (`style.css`) gebruikt nu exact de gewenste paletkleuren: Achtergrond Diep Houtskool (`#161412`), Gerookt Eiken (`#231F1D` voor kaarten en vlakken), Cloud Dancer Warm Wit (`#F4F1EA` voor typografie, volledig vermijden van hard wit) en Koper/Gesmolten Amber (`#C87D4B` als ac",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:59:15",
+  "last_updated": "2026-11-15 15:02:51",
   "is_running": true,
-  "current_step": "Iteratie 259 voltooid"
+  "current_step": "Iteratie 260 voltooid"
 }

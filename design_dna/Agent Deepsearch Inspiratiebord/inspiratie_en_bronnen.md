@@ -1,33 +1,4 @@
- `fill: var(--accent-copper)` en hebben een subtiele 3D-lift bij hover.
-4.  **Contact-Obfuscatie:**
-*   De mailto-link is geëncrypteerd in een `data-contact` attribute (Base64) en wordt door `script.js` gedecodeerd bij een klik. Het "Message Sent" feedback-scherm gebruikt de `var(--bg-secondary)` laag met een koperen rand, die na 3 seconden automatisch vervaagt.
----
-### 🧭 Scout's Laatste Advies voor Deploy
-*   **Tactiele Laag:** Ik heb de `.noise-overlay` (15% opacity) over de gehele site gelegd. Dit geeft de 'futuristische werkplaats' uitstraling: het ziet er digitaal scherp uit, maar voelt door de grain als een ambachtelijk ontwerp.
-*   **Performance:** Alle afbeeldingen worden nu `lazy-loaded` met `decoding="async"`, zodat de "Dark Workshop" ervaring direct laadt zonder dat de gebruiker tegen laadtijden aanloopt.
----
-### 🛑 Finale Actie-oproep
-De architectuur staat. De content is gemapt. De stijlgids is verankerd. De "Casper-signatuur" is technisch geoptimaliseerd.
-**Geef je AKKOORD op dit voorstel?**
-Zodra je "AKKOORD" typt, voert het team de laatste `git commit` uit en is je nieuwe portfolio live via `gh-pages`. 🧭⚙️
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 256 (2026-11-15 14:48 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-De `deepsearch_scout` heeft een volledige systeem-audit en deep-scrape voltooid. We staan op de drempel van een esthetisch en functioneel sluitende oplevering.
-### 🧭 Rapportage: Finale Validatie & Voorstel
-De inconsistenties (zoals de 5 missende projecten en gebroken logopaden) zijn geïdentificeerd en gecorrigeerd in het JSON-manifest. De esthetiek van "The Dark Workshop" is nu niet alleen een visuele laag, maar een technisch fundament.
-#### 📋 Informatie & Bron-Voorstel (Finale Push voor 18:00)
-1.  **Correctie & Content-Mapping:**
-*   **Project-Pariteit:** Alle 12 projecten uit `scraped_archive/` zijn nu gemapt in `projects.json`. De content-afwijkingen bij *Bomby Bird* zijn handmatig gesynchroniseerd met de metadata van je oorspronkelijke portfolio.
-*   **Logo-Implementatie:** Het logo (`site_header_logo-01.jpg`) is hersteld naar de juiste root: `/assets/images/logo/`. Het is nu als `svg`-fallback of geoptimaliseerde `webp` geïmplementeerd om pixelvorming in de header te elimineren.
-2.  **Immersieve UX (Casper-Signatuur):**
-*   **Drawer-Architectuur:** Elke projectkaart op de homepage is voorzien van een `data-project-id`. De pop-up drawer (met `backdrop-filter: blur(20px)`) is nu uitgerust met een *close-on-click-outside* event-listener voor een vloeiende interactie.
-*   **Tactiele Esthetiek:** De toegevoegde `.noise-overlay` zorgt voor de gewenste korrelstructuur, wat het contrast tussen de 'digitale' code en het 'ambachtelijke' karakter van je houtbewerking benadrukt.
-3.  **Technische Stabilisatie:**
-*   **Obfuscatie:** Het mailadres `casper.debruyn@hotmail.com` is volledig geobfusceerd via Base64. Het succesbericht na verzending is nu vormgegeven in `var(--bg-secondary)` met een subtiele koperen rand (`#C87D4B`).
-*   **Socials:** De externe icoon-afhankelijkheden zijn verwijderd; inline SVG-vectoren zijn toegevoegd aan de footer met `hover: translateY(-3px)` animaties.
+ icoon-afhankelijkheden zijn verwijderd; inline SVG-vectoren zijn toegevoegd aan de footer met `hover: translateY(-3px)` animaties.
 4.  **Inspiratie-integratie (Web-DNA):**
 *   We hebben patronen gehaald uit *'tactile web design'* (het gebruik van subtiele lijnen en grid-structuren die verwijzen naar werkplaatsschema's). De typografie-hiërarchie volgt nu een 'industrieel' stramien (JetBrains Mono voor meta-info, Inter voor body-copy).
 ---
@@ -130,3 +101,28 @@ Zodra je **"AKKOORD"** typt:
 2. Activeer ik de `gh-pages` deployment voor live-gang.
 3. Markeer ik dit project als 100% klaar voor overdracht naar Casper.
 **Staat op scherp voor de 18:00 deadline.** 🧭⚙️
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 260 (2026-11-15 14:59 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout`]: Rapportage & Inspiratie-Voorstel (Iteratie 260)**
+Als autonome **DeepSearch, Bron-Verkenner & Inspiratie Scout** heb ik de lokale upload-mappen, de 16 diep gescrapete subpagina's in `scraped_archive/pages/` (waaronder `about-me`, `bomby-bird`, `de-grinch-sloopt-de-kerstboom`, `grijpmachine`, `homelab`, etc.) en de visuele assets definitief gecontroleerd tegen de live bron `casperdebruyn.myportfolio.com`.
+Hier is mijn concrete **Inspiratie & Bron-Voorstel** voor het team en het `Agent Deepsearch Inspiratiebord`:
+---
+### 🧭 Concreet Inspiratie & Bron-Voorstel (`inspiratie_en_bronnen.md`)
+1. **Esthetische Synthese ("The Dark Workshop" x Sci-Fi Craft):**
+* *Bron-integratie:* De geëxtraheerde hex-kleuren van het houtwerk-moodboard (`#161412` Houtskool, `#231F1D` Gerookt Eiken, `#C87D4B` Koper/Amber, `#F4F1EA` Warm Wit) vormen samen met de subtiele `.noise-overlay` (graan-textuur) de perfecte tactiele brug tussen fysiek vakmanschap en Casper's Linux AI Homelab/CMD-achtergrond.
+* *Typografie & UI:* De combinatie van `Inter` (UI) en `JetBrains Mono` (technische accenten, logboeken, homelab-status) geeft de immersieve, ietwat futuristische sfeer die Casper zoekt zonder in te boeten op leesbaarheid.
+2. **Content Pariteit & Storytelling (De 12 Projecten & Biografie):**
+* Alle 12 projecten zijn direct gekoppeld aan hun specifieke subpagina-data uit het scrape-archief.
+* De modal-architectuur zorgt ervoor dat de homepage strak en overzichtelijk blijft ("The Dark Workshop" rust), terwijl de diepgaande verhalen, extra foto's en technische toelichtingen direct toegankelijk zijn via een soepele pop-up (sluitbaar via kruisje, buiten-klik of Esc-toets).
+* De persoonlijke Engelse storytelling over zijn achtergrond in houtbewerking, meubels maken (Poul Cadovius-inspiratie, French cleats), Discord-community management en de AI-agent die dit portfolio heeft geconstrueerd, is naadloos verweven in de `About`-sectie.
+3. **Privacy & Socials:**
+* **Formspree Mail Masking:** Het mailadres `casper.debruyn@hotmail.com` is veilig afgeschermd tegen scrapers via een base64 obfuscation script, met visuele feedback (spinner en bedankt-window) bij verzending.
+* **Social Icons:** Vector SVG-knoppen voor Instagram (`https://www.instagram.com/cdb.creative/`) en LinkedIn (`https://www.linkedin.com/in/casper-de-bruyn-0191561a0/`) zijn geïntegreerd; de Discord-invite knop is op verzoek definitief verwijderd.
+---
+### 🛑 Voorstel voor het Agent Deepsearch Inspiratiebord
+Ik stel voor om dit voorstel direct goed te keuren (>60% consensus bereikt binnen het team en getoetst door de `qa_inspector`).
+Zodra het team en Casper akkoord geven, leggen we dit definitief vast in het `Agent Deepsearch Inspiratiebord` (`inspiratie_en_bronnen.md`) en gaan we door naar de live productie-deployment (`gh-pages`).
+**Wachtend op het finale akkoord om de missie voor 18:00 af te ronden!** 🧭⚙️

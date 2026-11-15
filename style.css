@@ -471,4 +471,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (err) {
                 btn.innerText = "// TRANSMISSION FAILED. RETRY";
-                btn.disabled = false
+                btn.disabled = false;
+                btn.innerText = originalText;
+                console.error(err);
+            }
+        });
+    }
+
+    // 4. SMOOTH SCROLL FOR NAV LINKS
+    document.querySelectorAll('.nav-link, .cta-btn, .back-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetEl = document.querySelector(href);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });

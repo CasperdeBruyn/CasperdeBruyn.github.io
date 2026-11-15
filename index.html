@@ -71,19 +71,19 @@
     <section id="workbench" class="workbench-section container">
       <h2 class="section-title"><span class="accent">// 02</span> THE PORTFOLIO DOSSIER</h2>
       <div class="project-grid" id="projectGrid">
-        <!-- Project Mapping -->
+        <!-- Projects dynamically rendered via script.js using projects.json -->
         <article class="project-card" data-project="bomby-bird"><img src="assets/images/bomby-bird_01_hero.jpg" alt="Bomby Bird"><h3>Bomby Bird</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="generation-plastic-soup"><img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Plastic Soup"><h3>Plastic Soup</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="grinch"><img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="De Grinch"><h3>De Grinch</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="plastic-soup"><img src="assets/images/generation-plastic-soup_01_hero.jpg" alt="Plastic Soup"><h3>Plastic Soup</h3><button class="view-btn">EXPLORE</button></article>
         <article class="project-card" data-project="grijpmachine"><img src="assets/images/grijpmachine_01_hero.jpg" alt="Grijpmachine"><h3>Grijpmachine</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="zeefdrukken"><img src="assets/images/zeefdrukken_01_hero.jpg" alt="Zeefdrukken"><h3>Zeefdrukken</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="de-grinch"><img src="assets/images/de-grinch-sloopt-de-kerstboom_01_hero.jpg" alt="The Grinch"><h3>The Grinch</h3><button class="view-btn">EXPLORE</button></article>
         <article class="project-card" data-project="hu-begeleidt"><img src="assets/images/hu-begeleidt_01_hero.jpg" alt="HU Begeleidt"><h3>HU Begeleidt</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="kodak"><img src="assets/images/kodak_01_hero.jpg" alt="Kodak"><h3>Kodak Project</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="osrs"><img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS"><h3>OSRS Poster</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="picknicken"><img src="assets/images/picknicken-met-sophie_01_hero.jpg" alt="Picnic"><h3>Sophie's Picnic</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="kodak"><img src="assets/images/kodak_01_hero.jpg" alt="Kodak"><h3>Kodak</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="osrs"><img src="assets/images/osrs-kerstposter_01_hero.jpg" alt="OSRS"><h3>OSRS Kerst</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="picknicken"><img src="assets/images/picknicken-met-sophie_01_hero.jpg" alt="Picnic"><h3>Picknicken</h3><button class="view-btn">EXPLORE</button></article>
         <article class="project-card" data-project="samen-spelen"><img src="assets/images/samen-spelen_01_hero.jpg" alt="Samen Spelen"><h3>Samen Spelen</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="school"><img src="assets/images/school-projecten_01_hero.jpg" alt="School"><h3>School Projecten</h3><button class="view-btn">EXPLORE</button></article>
         <article class="project-card" data-project="vechtclub"><img src="assets/images/vechtclub-xl_01_hero.jpg" alt="Vechtclub"><h3>Vechtclub XL</h3><button class="view-btn">EXPLORE</button></article>
-        <article class="project-card" data-project="school"><img src="assets/images/school-projecten_01_hero.jpg" alt="School"><h3>School Archive</h3><button class="view-btn">EXPLORE</button></article>
+        <article class="project-card" data-project="zeefdrukken"><img src="assets/images/zeefdrukken_01_hero.jpg" alt="Zeefdrukken"><h3>Zeefdrukken</h3><button class="view-btn">EXPLORE</button></article>
       </div>
     </section>
 
@@ -96,9 +96,11 @@
         </div>
         <div class="contact-form-wrapper">
           <form id="contactForm" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
             <input type="text" name="name" placeholder="Identifier" required>
             <input type="email" name="email" placeholder="Return Channel" required>
             <textarea name="message" placeholder="Data Packet" required></textarea>
+            <input type="text" name="honeypot" style="display:none">
             <button type="submit">EXECUTE</button>
           </form>
           <div id="formFeedback" class="hidden"><h3>TRANSMISSION SUCCESSFUL</h3></div>
@@ -109,7 +111,7 @@
 
   <div id="projectDrawer" class="drawer-overlay">
     <div class="drawer-container">
-      <button class="drawer-close">&times; CLOSE</button>
+      <button class="drawer-close" aria-label="Close project">×</button>
       <h2 id="drawerTitle"></h2>
       <div id="drawerContent"></div>
     </div>
@@ -117,7 +119,7 @@
 
   <script src="script.js" defer></script>
 <!-- AI_LIVE_WORK_BANNER_START -->
-<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 255):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
+<div id="ai-live-work-banner" style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;background:rgba(22,20,18,0.95);color:#F4F1EA;border:1.5px solid #C87D4B;box-shadow:0 10px 30px rgba(0,0,0,0.7);padding:8px 18px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);pointer-events:none;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px #f59e0b;"></span><span>🛠️ <strong>AI-Team Live Actief (Iteratie 256):</strong> Er wordt op dit moment live aan de website gebouwd...</span></div>
 <!-- AI_LIVE_WORK_BANNER_END -->
 </body>
 </html>

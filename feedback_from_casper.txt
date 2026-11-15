@@ -1,0 +1,23 @@
+Feedback from Casper (2026-11-15):
+
+1. The 'school archive' heading is incorrect and the associated image is wrong. Replace the image with the QR code provided via the booking link (https://calendar.app.google/QrZs8qdb745L4mEF8).
+
+2. Kodak Project: the current image is cut off and looks bad. Replace with a proper high‑resolution image.
+
+3. Grijpmachine: current image is low quality. Replace with a better version.
+
+4. Generation Plastic Soup: the current image is not a cover photo but an internal project‑map image. Use the 'plastic bag' image as the cover.
+
+5. Header logo (top‑left): currently cropped in a vague round shape. Use a clean, uncropped version and retain the hover‑animation that rotates the logo.
+
+6. Project links are not opening anymore (regression). Ensure that each project tile correctly links to its respective page.
+
+Action items for the autonomous team (continue work until ~21:00):
+- Update HTML/CSS/JS to fix headings, images, and links.
+- Add/replace the QR code image for the school archive.
+- Source high‑quality images for Kodak and Grijpmachine.
+- Set the correct cover image for Generation Plastic Soup.
+- Fix the logo cropping and ensure hover rotation animation works.
+- Test all project links.
+
+Please prioritize fixing the broken project links first, then address the visual updates.

@@ -8,3 +8,5 @@ team_state.json
 *.bak
 .DS_Store
 __pycache__/
+feedback_from_casper.txt
+*feedback*.txt

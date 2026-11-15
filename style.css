@@ -1,12 +1,15 @@
 :root {
+  /* Kleurenpalet: The Dark Workshop x Sci-Fi Craft */
   --bg-primary: #161412;        /* Diep Houtskool */
   --bg-secondary: #231F1D;      /* Gerookt Eiken */
   --text-main: #F4F1EA;         /* Cloud Dancer (Warm Wit - No Pure White) */
+  --text-muted: #A8A095;        /* Subtiel warm grijs */
   --accent-copper: #C87D4B;     /* Koper / Gesmolten Amber */
   --accent-copper-dim: rgba(200, 125, 75, 0.2);
   --font-ui: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -222,7 +225,7 @@ body.dark-workshop {
   border: 1px solid var(--accent-copper-dim);
   padding: 12px;
   background: var(--bg-secondary);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: var(--box-shadow);
   transform: rotate(1deg);
   max-width: 450px;
   width: 100%;

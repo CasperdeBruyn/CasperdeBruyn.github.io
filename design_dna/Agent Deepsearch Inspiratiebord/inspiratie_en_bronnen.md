@@ -1,7 +1,4 @@
- is een risico op pixelvorming als we niet overstappen op SVG of `image-rendering: crisp-edges`.
-## 2. 💡 Inspiratie & Design Strategie: "The Tactile Sci-Fi"
-Om de gevraagde combinatie van **Futuristisch (Sci-Fi)** en **Klassiek (Craft)** te bereiken, stel ik de volgende visuele synthese voor:
-*   **Concept:** *The Digital Blueprint.* De website moet aanvoelen als een interactief technisch dossier van een meubelmaker uit de toekomst.
+s een interactief technisch dossier van een meubelmaker uit de toekomst.
 *   **Interactie-model (The Dossier Drawer):** In plaats van standaard pop-ups, gebruiken we een **Side-Drawer (Drawer Engine)**.
 *   *Effect:* Wanneer een project wordt aangeklikt, schuift er een paneel in vanaf de rechterzijde met een subtiele mechanische 'click' (audio-visueel). De rest van de site krijgt een `backdrop-filter: blur(12px)` en een donkere overlay.
 *   *Navigatie:* Gebruik `URL-hashes` (`#project/bomby-bird`) zodat de gebruiker de 'terug'-knop van de browser kan gebruiken om het dossier te sluiten.
@@ -133,3 +130,8 @@ Ik stel voor om de volgende visuele laag toe te voegen om de "Futuristische Klas
 *   Gebruik enkel SVG. Als er geen SVG is, gebruik `image-rendering: crisp-edges` op de hoogste resolutie bron.
 3.  **The Ghost Contact Form:**
 *   Maak het formulier werkend
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 229 (2026-11-15 01:51 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

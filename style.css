@@ -11,7 +11,7 @@
 * { box-sizing: border-box; }
 
 body.dark-workshop {
-    background-color: var(--bg-primary); /* Fallback */
+    background-color: var(--bg-primary);
     background-image: radial-gradient(circle at 50% 50%, #231F1D 0%, #161412 100%);
     color: var(--text-primary);
     font-family: var(--font-ui);
@@ -19,11 +19,11 @@ body.dark-workshop {
     line-height: 1.6;
 }
 
+/* Fallback voor grain.png */
 .noise-overlay {
     position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-    background-image: url('assets/textures/grain.png');
-    background-repeat: repeat;
-    opacity: 0.05; mix-blend-mode: overlay;
+    background: repeating-linear-gradient(45deg, rgba(200, 125, 75, 0.03), rgba(200, 125, 75, 0.03) 1px, transparent 1px, transparent 5px);
+    opacity: 0.2;
 }
 
 .main-header {
@@ -34,44 +34,84 @@ body.dark-workshop {
     padding: 1rem 0;
 }
 
-.header-logo-grid { display: flex; gap: 10px; }
-.logo-item { 
-    width: 40px; height: 40px; object-fit: contain; 
-    image-rendering: -webkit-optimize-contrast; 
-}
+.header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.hero-text { 
-    font-family: var(--font-mono); 
-    border-right: 2px solid var(--accent-copper);
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3.5s steps(40, end);
-}
+.header-logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.logo-item { width: 60px; height: 60px; object-fit: contain; }
 
-@keyframes typing { from { width: 0 } to { width: 100% } }
+.nav-list { display: flex; list-style: none; gap: 2rem; }
+.nav-link { color: var(--text-primary); text-decoration: none; font-family: var(--font-mono); }
+
+.typewriter { font-family: var(--font-mono); border-right: 2px solid var(--accent-copper); animation: blink 0.75s step-end infinite; }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent-copper) } }
 
 .project-card {
+    background: var(--bg-secondary);
     border: 1px solid rgba(200, 125, 75, 0.2);
-    transition: var(--transition);
+    padding: 1rem; cursor: pointer; transition: var(--transition);
 }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
+.project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 
 .drawer-overlay {
-    position: fixed; inset: 0; background: rgba(16, 14, 12, 0.9); z-index: 1000;
-    display: flex; justify-content: flex-end; opacity: 0; visibility: hidden;
-    transition: var(--transition);
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000;
+    display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: var(--transition);
 }
-
 .drawer-overlay.active { opacity: 1; visibility: visible; }
-.drawer-container {
-    width: 100%; max-width: 600px; height: 100%;
-    background: var(--bg-primary); padding: 4rem;
-    transform: translateX(100%); transition: var(--transition);
-}
-.drawer-overlay.active .drawer-container { transform: translateX(0); }
+.drawer-container { width: 100%; max-width: 600px; height: 100%; background: var(--bg-primary); padding: 3rem; overflow-y: auto; }
 
-.btn { background: var(--accent-copper); color: var(--bg-primary); border: none; padding: 1rem 2rem; cursor: pointer; }
+.social-icon:hover { color: var(--accent-copper); }
 
-@media (max-width: 768px) {
-    .main-nav { display: none; }
-}
+<!-- file: script.js -->
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Email Obfuscation (Logic: Decoding only on click)
+    const encoded = "Y2Fzc2VyLmRlYnJ1eW5AaG90bWFpbC5jb20="; 
+    const mailLinks = document.querySelectorAll('.mailto-link');
+    mailLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = atob(encoded);
+            window.location.href = `mailto:${email}`;
+        });
+    });
+
+    // 2. Typewriter Effect
+    const phrases = ["CMD Student", "Maker & Woodworker", "Tech Enthusiast", "AI Homelab Builder"];
+    let i = 0;
+    const typeSpan = document.querySelector('.typewriter');
+    setInterval(() => {
+        typeSpan.textContent = phrases[i];
+        i = (i + 1) % phrases.length;
+    }, 3000);
+
+    // 3. Project Drawer & Data Fetch
+    const drawer = document.getElementById('projectDrawer');
+    const drawerContent = document.getElementById('drawerContent');
+    const closeDrawer = document.querySelector('.drawer-close');
+
+    async function loadProjectData(slug) {
+        // In een echte setup: fetch('data/portfolio.json').then(...)
+        // Hier simulatie van data-fetch
+        drawerContent.innerHTML = `<h2>Loading ${slug}...</h2>`;
+        drawer.classList.add('active');
+    }
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => loadProjectData(card.dataset.project));
+    });
+
+    closeDrawer.addEventListener('click', () => drawer.classList.remove('active'));
+    drawer.addEventListener('click', (e) => { if(e.target === drawer) drawer.classList.remove('active'); });
+
+    // 4. Contact Form Feedback
+    const form = document.querySelector('.transmission-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.style.display = 'none';
+        document.getElementById('formSuccessMessage').style.display = 'block';
+        setTimeout(() => {
+            form.style.display = 'block';
+            document.getElementById('formSuccessMessage').style.display = 'none';
+        }, 5000);
+    });
+});

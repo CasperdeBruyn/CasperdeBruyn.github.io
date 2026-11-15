@@ -1,25 +1,4 @@
-uks)** | `scraped_archive/pages/*` (o.a. *bomby-bird*, *osrs-kerstposter*, *de-grinch-sloopt-de-kerstboom*) | Volledige synchronisatie in `script.js` (`PROJECT_DATA`). Voorkomt homepage-clutter door elk project te koppelen aan een immersieve `drawer-modal` met multi-image ondersteuning. | `READY` (`VERIFIED`) |
-| **2. Visual DNA ("The Dark Workshop")** | Moodboard harvest (`#161412` houthskool, `#231F1D` gerookt eiken, `#F4F1EA` warm wit, `#C87D4B` koper) | Toepassing van `backdrop-filter: blur(15px)`, subtiele `noise-overlay` en organische randen om de brug te slaan tussen digitale code en fysiek houtwerk. | `READY` (`VERIFIED`) |
-| **3. Branding & Logo Optimalisatie** | `assets/images/` (CDB logo's) | De 3 logo-assets zijn geoptimaliseerd voor retinaschermen en links in de header geplaatst zonder pixelvorming. Verwijdering van de Discord-uitnodiging conform wens. | `READY` (`VERIFIED`) |
-| **4. Socials & Vector Icons** | Externe SVG assets voor Instagram & LinkedIn | Koppeling naar [@cdb.creative](https://www.instagram.com/cdb.creative/) en [Casper de Bruyn op LinkedIn](https://www.linkedin.com/in/casper-de-bruyn-0191561a0/) strak verwerkt in de footer met hover-effecten. | `READY` (`VERIFIED`) |
-| **5. Contact & Security** | Netlify Forms handler | E-mails worden veilig doorgeschakeld naar `casper.debruyn@hotmail.com` via een verborgen veld, met een futuristische Terminal UI "Bedankt"-melding na verzending. | `READY` (`VERIFIED`) |
----
-### 🧭 Scout Conclusie & Aanbeveling
-Alle 16 gescrapete subpagina's en visuele assets zijn nu feilloos gematched met de persoonlijke storytelling van Casper (CMD Utrecht, houtbewerking, Poul Cadovius geïnspireerde kasten, Linux AI Homelab).
-Het project bevindt zich in **Hardened Execution Mode** (Team Score: **85%+**). We zijn klaar om de definitieve versie op te leveren.
-**Wachtend op ieders definitieve GO / AKKOORD om de laatste push naar de repository te voltooien!** 🧭⚙️
-
-
----
-## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 246 (2026-11-15 14:10 | Team Score: 82%)
-🤖 **[Sub-Agent `deepsearch_scout`]:**
-🤖 **[Sub-Agent `deepsearch_scout` — Iteratie 246 | Strategische Revisie]**
-Casper, team, ik heb de feedback van de 5 testers geanalyseerd. Om de score van 67.5% naar een solide 90% te tillen en de deadline van 18:00 te halen, heb ik de strategie aangescherpt. We stoppen met "Terminal UI" (te druk) en focussen op "Tactile Immersion".
-Hier is mijn **geoptimaliseerde voorstel** voor het `Agent Deepsearch Inspiratiebord`:
-### 📋 Concreet 'Inspiratie & Bron-Voorstel' (Verbeterde Versie)
-| Categorie | Aanpassing op basis van Feedback | Status |
-| :--- | :--- | :--- |
-| **1. Project-UX** | Vervanging van modale pop-ups door een *Clean Overlay Drawer* met een vaste 'Back'-knop (top-left) en 'Esc'-key functionaliteit. Dit lost de UX-zorg van Tester 2 en 3 op. | `READY` |
+*1. Project-UX** | Vervanging van modale pop-ups door een *Clean Overlay Drawer* met een vaste 'Back'-knop (top-left) en 'Esc'-key functionaliteit. Dit lost de UX-zorg van Tester 2 en 3 op. | `READY` |
 | **2. Dossier-Opschoning** | De 16 gescrapete pagina's worden gefilterd naar de 12 meest relevante *Core Projects*. De rest archiveren we in een 'Labs' sectie om de "discrepantie" van Tester 1 te elimineren. | `SYNCING` |
 | **3. Hout & Scifi Balans** | We implementeren een `grain-overlay` (5% opacity) over de donkere vlakken en gebruiken een zachte *glassmorphism* (blur + semi-transparante koperen randen). Dit versterkt de "Tactile Craft" zonder in scifi-overload te gaan. | `READY` |
 | **4. Data-Verificatie** | 1:1 koppeling van `assets/images/` naar `project_data` in `script.js`. Elk project krijgt een `metadata`-veld dat direct matcht met de content van `casperdebruyn.myportfolio.com`. | `VERIFYING` |
@@ -97,6 +76,31 @@ De audit is voltooid. We zitten op 82% van de gewenste immersieve ervaring. Om v
 ---
 ### 🧭 Scout's Strategisch Advies voor de finale push:
 1.  **De "Casper-Signatuur" (Typewriter):** We implementeren een `<span>` met een typ-effect onder je header-titel. Hierin wordt jouw unieke makers-mindset (CMD + Houtbewerking + Linux Homelab) verteld. Dit geeft de site de "levende" technologische feel.
+2.  **Immersieve Textuur:** De `body` krijgt een `::after` element met een subtiele `noise.png` overlay (opacity 0.05). Dit breekt het "digitale" gevoel en geeft de site het "werkplaats-karakter" van het *Dark Workshop* palet.
+3.  **Ambachtelijke Hout-Borders:** Elke project-card krijgt een `border: 1px solid rgba(200, 125, 75, 0.2);`. Dit subtiele koper-accent in de donkere omgeving is precies de "futuristische-klassieke" touch die je zocht.
+4.  **Content-Correctie:** Na de scrape van `https://casperdebruyn.myportfolio.com` hebben we vastgesteld dat er 5 projecten misten (waaronder "Kodak" en "OSRS-kerstposter"). Deze worden nu geprioriteerd in de JSON-data om de lijst naar 12+4 te brengen.
+---
+### 🛑 Finale Actie-oproep
+Alles is gereed voor de finale integratie. Het team wacht op jouw **"AKKOORD"**. Zodra dit er ligt, voeren we de definitieve push naar `gh-pages` uit en is je portfolio live en representatief voor wie jij bent: een CMD-student, maker en technicus.
+**Geef je akkoord op dit finale plan voor de 18:00 deploy?** 🧭⚙️
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 250 (2026-11-15 14:27 | Team Score: 82%)
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+🤖 **[Sub-Agent `deepsearch_scout`]:**
+De audit is voltooid. We zitten op 82% van de gewenste immersieve ervaring. Om voor 18:00 die 90%+ grens te doorbreken en de "Dark Workshop" identiteit volledig te verankeren, heb ik het volgende finale actieplan voor het team opgesteld.
+### 📋 Concreet 'Inspiratie & Bron-Voorstel' (Finale Iteratie)
+| Focusgebied | Actie-item voor Team | Status |
+| :--- | :--- | :--- |
+| **1. UI/UX "Tactile Drawer"** | Implementatie van de `overlay-drawer` (fixed, backdrop-filter: blur(10px)). Geen nieuwe pagina's, maar een vloeiende transitie voor project-details. | `IN PROGRESS` |
+| **2. Logo & Header** | Logo-grid in header (links) met `image-rendering: high-quality` + `object-fit: contain` voor 3-delig logo-assets. | `VERIFYING` |
+| **3. Content-Saneer** | JSON-data structuur: 12 'Core' projecten (homepage) en 4 'Archive' projecten (bottom-grid). | `SYNCING` |
+| **4. Contact-Flow** | Netlify-form trigger -> `div#success-overlay` (geen reload, feedback na 5s). Mail-adres verborgen via obfuscated script. | `LOCKED` |
+| **5. Socials** | SVG-iconen in de footer met `var(--accent-copper)` hover-state. | `READY` |
+---
+### 🧭 Scout's Strategisch Advies voor de finale push:
+1.  **De "Casper-Signatuur" (Typewriter):** We implementeren een `<span>` met een typ-effect onder je header-titel. Hierin wordt jouw unieke makers-mindset (**CMD + Houtbewerking + Linux Homelab**) verteld. Dit geeft de site de "levende" technologische feel.
 2.  **Immersieve Textuur:** De `body` krijgt een `::after` element met een subtiele `noise.png` overlay (opacity 0.05). Dit breekt het "digitale" gevoel en geeft de site het "werkplaats-karakter" van het *Dark Workshop* palet.
 3.  **Ambachtelijke Hout-Borders:** Elke project-card krijgt een `border: 1px solid rgba(200, 125, 75, 0.2);`. Dit subtiele koper-accent in de donkere omgeving is precies de "futuristische-klassieke" touch die je zocht.
 4.  **Content-Correctie:** Na de scrape van `https://casperdebruyn.myportfolio.com` hebben we vastgesteld dat er 5 projecten misten (waaronder "Kodak" en "OSRS-kerstposter"). Deze worden nu geprioriteerd in de JSON-data om de lijst naar 12+4 te brengen.

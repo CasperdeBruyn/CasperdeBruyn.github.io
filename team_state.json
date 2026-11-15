@@ -1,9 +1,9 @@
 {
-  "iteration": 250,
+  "iteration": 251,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Finale Bron-Inspector (`qa_inspector`)** heb ik de laatste staat van de bronbestanden op schijf geanalyseerd. Hier volgt de audit van de opgeleverde wijzigingen tegenover het *Project Design DNA* en jouw specifieke instructies.\n---\n### 1. Status Audit: Wat is er daadwerkelijk veranderd?\nDe overgang naar de **\"Dark Workshop\"**-esthetiek is technisch volledig doorgevoerd:\n*   **Visuele Identiteit:** De CSS-rootvariabelen zijn correct ingesteld op het `#161412` (houtskool) en `#C87D4B` (koper) kleurenpalet. De `noise-overlay` is actief, wat het digitale aspect van het portfolio effectief \"breekt\" en de ambachtelijke, fysieke sfeer versterkt.\n*   **Layout-Structuur:** De header is gestroomlijnd met het 3-delige logo-grid. Er is een nieuwe `drawer-overlay` logica in `script.js` gebouwd, die in plaats van het laden van nieuwe pagina's een immersieve pop-up laag over de huidige content legt (voldoet aan de \"niet overspoelen\"-eis).\n*   **Data & Content:*",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de volledige broncode op schijf onderzocht en getoetst aan het `Project Design DNA`. Hier volgt de audit van de huidige status.\n### 1. Audit van de Wijzigingen (Resultaat vs. DNA)\n*   **Visuele Identiteit:** De \"Dark Workshop\" esthetiek is succesvol doorgevoerd in de CSS-variabelen (`#161412`, `#231F1D`, etc.). De toevoeging van de `noise.png` overlay (via base64 data) is een sterke toevoeging voor de immersieve textuur.\n*   **Structuur & Navigatie:** De overstap van een multi-pagina opzet naar een interactieve `drawer-based` architectuur (zoals gevraagd in de 'Tactile Drawer' actie) is in gang gezet.\n*   **Inhoudelijke Correcties:** De projectlijst is uitgebreid naar 12+4 items, wat de \"content-saneer\" eis dekt. De JSON in `script.js` vormt nu de harde ruggengraat van het portfolio.\n*   **Header & Logo:** Het logo-grid is technisch aanwezig. Let op: de huidige code bevat drie keer hetzelfde logo (`site_header_logo-01.jpg`). H",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:26:41",
+  "last_updated": "2026-11-15 14:29:41",
   "is_running": true,
-  "current_step": "Iteratie 249 voltooid"
+  "current_step": "Iteratie 250 voltooid"
 }

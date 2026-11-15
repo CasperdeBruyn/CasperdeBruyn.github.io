@@ -1,80 +1,80 @@
-/* -------------------------------------------------------------
-   Basic resets & global styles
-   ------------------------------------------------------------- */
+:root {
+  /* Dark Workshop palette */
+  --bg-dark: #161412;
+  --surface: #231F1D;
+  --text: #F4F1EA;
+  --accent: #C87D4B;
+  --hero-bright: 1.1;   /* Slight brightness boost for hero & images */
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-html,
 body {
-  height: 100%;
+  margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #161412;          /* Dark Workshop – background */
-  color: #F4F1EA;                     /* Warm white – text */
+  background-color: var(--bg-dark);
+  color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* -------------------------------------------------------------
-   Header & Logo
-   ------------------------------------------------------------- */
+/* 2️⃣  Header & Logo --------------------------------------------------- */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #231F1D;          /* Secondary surface */
+  background-color: var(--surface);
 }
 
 .logo {
   width: 120px;
   height: auto;
+  object-fit: contain;          /* Prevent cropping */
   transition: transform 0.5s ease;
 }
+
 .logo:hover {
   transform: rotate(360deg);
 }
 
-/* -------------------------------------------------------------
-   Hero / Cover image
-   ------------------------------------------------------------- */
+/* 3️⃣  Hero / Cover image ---------------------------------------------- */
 .hero .cover-image {
   background-image: url('assets/images/bag.jpg');   /* Replace with bag photo */
   background-size: cover;
   background-position: center;
   height: 400px;
-  filter: brightness(1.1);          /* Slight brightness boost */
+  filter: brightness(var(--hero-bright));
 }
 
-/* -------------------------------------------------------------
-   Project cards
-   ------------------------------------------------------------- */
+/* 4️⃣  Project cards --------------------------------------------------- */
 .project-card {
-  background-color: #231F1D;
+  background-color: var(--surface);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem;
 }
+
 .project-card:hover,
 .project-card:focus {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
 .project-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  filter: brightness(1.1);
+  filter: brightness(var(--hero-bright));
 }
 
-/* -------------------------------------------------------------
-   Modal overlay & content
-   ------------------------------------------------------------- */
+/* 5️⃣  Modal overlay & content ---------------------------------------- */
 #project-modal {
   position: fixed;
   inset: 0;
@@ -87,14 +87,15 @@ header {
   transition: opacity 0.3s ease;
   z-index: 1000;
 }
+
 #project-modal.active {
   visibility: visible;
   opacity: 1;
 }
 
 .modal-content {
-  background: #231F1D;
-  color: #F4F1EA;
+  background: var(--surface);
+  color: var(--text);
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
@@ -109,12 +110,13 @@ header {
   right: 0.5rem;
   background: transparent;
   border: none;
-  color: #C87D4B;          /* Copper accent */
+  color: var(--accent);
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 .modal-close:focus {
-  outline: 2px solid #C87D4B;
+  outline: 2px solid var(--accent);
 }
 
 /* Modal header */
@@ -130,11 +132,12 @@ header {
   gap: 0.5rem;
   margin-top: 1rem;
 }
+
 .modal-gallery img {
   width: calc(33.333% - 0.5rem);
   height: 150px;
   object-fit: cover;
-  filter: brightness(1.1);
+  filter: brightness(var(--hero-bright));
 }
 
 /* Responsive gallery */
@@ -143,18 +146,169 @@ header {
     width: calc(50% - 0.5rem);
   }
 }
+
 @media (max-width: 480px) {
   .modal-gallery img {
     width: 100%;
   }
 }
 
-/* -------------------------------------------------------------
-   Utility & accessibility helpers
-   ------------------------------------------------------------- */
+/* 6️⃣  Utility & accessibility helpers ------------------------------- */
 .sentinel {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
 }
+
+/* ======================================================================
+   End of style.css
+   ====================================================================== */
+
+<!-- file: script.js -->
+/* ======================================================================
+   Project Design DNA – CasperdeBruyn.github.io
+   ====================================================================== */
+
+/* 1️⃣  Project data (kept identical to Coder A’s structure) */
+const PROJECT_DATA = {
+  'de-kerstboom': {
+    title: 'De Kerstboom',
+    category: 'PROTOTYPING',
+    year: '2023',
+    description: 'Een interactieve kerstboom met een lichtinstallatie.',
+    images: [
+      'assets/images/de-kerstboom_01_hero.jpg',
+      'assets/images/de-kerstboom_02_detail.jpg',
+      'assets/images/de-kerstboom_03_overview.jpg'
+    ]
+  },
+  'de-kerstboom-2': {
+    title: 'De Kerstboom 2',
+    category: 'PROTOTYPING',
+    year: '2023',
+    description: 'Een tweede versie van de interactieve kerstboom.',
+    images: [
+      'assets/images/de-kerstboom-2_01_hero.jpg',
+      'assets/images/de-kerstboom-2_02_detail.jpg',
+      'assets/images/de-kerstboom-2_03_overview.jpg'
+    ]
+  },
+  'de-kerstboom-3': {
+    title: 'De Kerstboom 3',
+    category: 'PROTOTYPING',
+    year: '2023',
+    description: 'Een derde versie van de interactieve kerstboom.',
+    images: [
+      'assets/images/de-kerstboom-3_01_hero.jpg',
+      'assets/images/de-kerstboom-3_02_detail.jpg',
+      'assets/images/de-kerstboom-3_03_overview.jpg'
+    ]
+  },
+  'de-kerstboom-4': {
+    title: 'De Kerstboom 4',
+    category: 'PROTOTYPING',
+    year: '2023',
+    description: 'Een vierde versie van de interactieve kerstboom.',
+    images: [
+      'assets/images/de-kerstboom-4_01_hero.jpg',
+      'assets/images/de-kerstboom-4_02_detail.jpg',
+      'assets/images/de-kerstboom-4_03_overview.jpg'
+    ]
+  }
+};
+
+/* 2️⃣  Helper functions ---------------------------------------------- */
+function createModalContent(project) {
+  const modal = document.getElementById('project-modal');
+  const content = modal.querySelector('.modal-content');
+
+  // Clear previous content
+  content.innerHTML = '';
+
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'modal-close';
+  closeBtn.setAttribute('aria-label', 'Close modal');
+  closeBtn.innerHTML = '&times;';
+  content.appendChild(closeBtn);
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'modal-header';
+  const title = document.createElement('h2');
+  title.textContent = project.title;
+  const meta = document.createElement('p');
+  meta.textContent = `${project.category} • ${project.year}`;
+  header.appendChild(title);
+  header.appendChild(meta);
+  content.appendChild(header);
+
+  // Description
+  const desc = document.createElement('p');
+  desc.textContent = project.description;
+  content.appendChild(desc);
+
+  // Gallery
+  const gallery = document.createElement('div');
+  gallery.className = 'modal-gallery';
+  project.images.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `${project.title} image`;
+    gallery.appendChild(img);
+  });
+  content.appendChild(gallery);
+}
+
+/* 3️⃣  Modal open/close logic ---------------------------------------- */
+function openModal(projectId) {
+  const project = PROJECT_DATA[projectId];
+  if (!project) return;
+
+  createModalContent(project);
+  const modal = document.getElementById('project-modal');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+  const modal = document.getElementById('project-modal');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+/* 4️⃣  Event listeners ----------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  // Attach click to each project card
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    const projectId = card.dataset.projectId;
+    card.addEventListener('click', () => openModal(projectId));
+    card.addEventListener('keypress', e => {
+      if (e.key === 'Enter') openModal(projectId);
+    });
+  });
+
+  // Close modal on close button click
+  document.addEventListener('click', e => {
+    if (e.target.matches('.modal-close')) closeModal();
+  });
+
+  // Close modal when clicking outside the content
+  const modal = document.getElementById('project-modal');
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
+
+/* ======================================================================
+   End of script.js
+   ====================================================================== */

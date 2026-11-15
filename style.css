@@ -5,6 +5,7 @@
     --accent-copper: #C87D4B;
     --font-ui: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { box-sizing: border-box; }
@@ -14,105 +15,48 @@ body.dark-workshop {
     color: var(--text-main);
     font-family: var(--font-ui);
     margin: 0;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Immersive Noise Layer */
-.noise-overlay {
-    position: fixed; inset: 0; z-index: 9999;
-    background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.05; pointer-events: none; mix-blend-mode: overlay;
+/* Noise & Texture */
+body:before {
+    content: ""; position: fixed; inset: 0; z-index: 9999;
+    background: url('assets/images/grain.png'); opacity: 0.05; pointer-events: none;
 }
 
 /* Header & Nav */
-.main-header { padding: 30px 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
+.main-header { padding: 30px 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); position: sticky; top: 0; background: rgba(22, 20, 18, 0.8); backdrop-filter: blur(10px); }
 .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-.logo-wrapper { display: flex; align-items: center; gap: 15px; }
-.logo-small { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
-.brand-name { font-weight: 700; letter-spacing: 2px; font-family: var(--font-mono); }
-.nav-list { display: flex; gap: 30px; list-style: none; font-family: var(--font-mono); }
-.nav-link { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-.nav-link:hover { color: var(--accent-copper); }
+.logo-small { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; transition: var(--transition); }
+.brand-name { font-weight: 700; letter-spacing: 2px; font-family: var(--font-mono); font-size: 0.8rem; }
+.nav-list { display: flex; gap: 30px; list-style: none; font-family: var(--font-mono); font-size: 0.8rem; }
+.nav-list a { color: var(--text-main); text-decoration: none; transition: var(--transition); }
+.nav-list a:hover { color: var(--accent-copper); }
 
-/* Hero Section */
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 80px; }
-.status-badge { font-family: var(--font-mono); color: var(--accent-copper); font-size: 0.8rem; margin-bottom: 10px; }
-.pulse { display: inline-block; width: 8px; height: 8px; background: var(--accent-copper); border-radius: 50%; animation: pulse 2s infinite; }
-.glitch-text { font-size: 3rem; margin: 0; text-transform: uppercase; }
+/* Projects Grid & Spatial Glassmorphism */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.project-card { 
+    background: var(--bg-secondary); padding: 20px; border: 1px solid rgba(200, 125, 75, 0.1); 
+    transition: var(--transition); cursor: pointer; backdrop-filter: blur(5px);
+}
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; border-radius: 2px; }
 
-/* Projects Grid */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-.project-card { background: var(--bg-secondary); padding: 15px; border: 1px solid rgba(200, 125, 75, 0.1); transition: 0.3s; cursor: pointer; }
-.project-card:hover { transform: translateY(-5px); border-color: var(--accent-copper); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-.view-btn { background: var(--accent-copper); border: none; color: #fff; padding: 8px 15px; cursor: pointer; font-family: var(--font-mono); width: 100%; margin-top: 10px; }
-
-/* Drawer & Overlay */
-.drawer-overlay { position: fixed; top: 0; right: -100%; width: 100%; max-width: 600px; height: 100%; background: var(--bg-secondary); z-index: 10001; padding: 40px; transition: 0.5s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.5); backdrop-filter: blur(20px); }
+/* Drawer Immersive UI */
+.drawer-overlay { 
+    position: fixed; top: 0; right: -100%; width: 100%; max-width: 600px; height: 100%; 
+    background: var(--bg-secondary); z-index: 10001; padding: 60px; transition: var(--transition);
+    overflow-y: auto; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
 .drawer-overlay.active { right: 0; }
-.drawer-close { background: none; border: 1px solid var(--accent-copper); color: var(--accent-copper); padding: 10px 20px; cursor: pointer; float: right; }
+.drawer-close { background: none; border: 1px solid var(--accent-copper); color: var(--accent-copper); padding: 10px 20px; cursor: pointer; position: absolute; top: 20px; right: 20px; }
+.gallery-img { width: 100%; margin-bottom: 20px; border: 1px solid rgba(200, 125, 75, 0.1); }
 
-/* Contact */
-.contact-form-wrapper form { display: flex; flex-direction: column; gap: 15px; }
-.contact-form-wrapper input, .contact-form-wrapper textarea { background: var(--bg-secondary); border: 1px solid rgba(200, 125, 75, 0.2); color: white; padding: 12px; }
-
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
-
-<!-- file: script.js -->
-document.addEventListener('DOMContentLoaded', () => {
-    const PROJECTS = [
-        { id: "bomby-bird", title: "Bomby Bird", story: "Retro arcade engine project.", gallery: ["b1.jpg"] },
-        { id: "grinch", title: "De Grinch", story: "Character design and illustration.", gallery: ["g2.jpg"] },
-        { id: "plastic-soup", title: "Plastic Soup", story: "Research and sustainability.", gallery: ["p1.jpg"] },
-        { id: "grijpmachine", title: "Grijpmachine", story: "Interactive installation.", gallery: ["g1.jpg"] },
-        { id: "hu-begeleidt", title: "HU Begeleidt", story: "UX/UI for education.", gallery: ["h1.jpg"] },
-        { id: "kodak", title: "Kodak", story: "Visual brand identity.", gallery: ["k1.jpg"] },
-        { id: "osrs", title: "OSRS", story: "Community poster art.", gallery: ["o1.jpg"] },
-        { id: "picknicken", title: "Picknicken", story: "Personal memory project.", gallery: ["s1.jpg"] },
-        { id: "samen-spelen", title: "Samen Spelen", story: "Design research.", gallery: ["s2.jpg"] },
-        { id: "school", title: "School Projecten", story: "Diverse coursework archive.", gallery: ["a1.jpg"] },
-        { id: "vechtclub", title: "Vechtclub XL", story: "Event identity and visuals.", gallery: ["v1.jpg"] },
-        { id: "zeefdrukken", title: "Zeefdrukken", story: "Manual print craftsmanship.", gallery: ["z1.jpg"] }
-    ];
-
-    const drawer = document.getElementById('projectDrawer');
-    const drawerTitle = document.getElementById('drawerTitle');
-    const drawerContent = document.getElementById('drawerContent');
-
-    // Drawer Logic
-    const openDrawer = (id) => {
-        const p = PROJECTS.find(x => x.id === id);
-        if (!p) return;
-        drawerTitle.textContent = p.title;
-        drawerContent.innerHTML = `<p>${p.story}</p><div class="gallery-preview"></div>`;
-        drawer.classList.add('active');
-    };
-
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => openDrawer(card.dataset.project));
-    });
-
-    document.querySelector('.drawer-close').onclick = () => drawer.classList.remove('active');
-
-    // Email Obfuscation
-    const email = atob("Y2FzcGVyLmRlYnJ1eW5AaG90bWFpbC5jb20=");
-    document.getElementById('obf-link-container').innerHTML = `<a href="mailto:${email}" style="color:var(--accent-copper)">Get in touch</a>`;
-
-    // Form Handling
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const feedback = document.getElementById('formFeedback');
-        form.style.display = 'none';
-        feedback.classList.remove('hidden');
-    });
-
-    // Typewriter
-    const typewriter = document.getElementById('typewriter');
-    const text = ["CMD Student", "Maker", "Linux Homelab Architect", "Immersive Designer"];
-    let count = 0;
-    setInterval(() => {
-        typewriter.textContent = text[count % text.length];
-        count++;
-    }, 3000);
-});
+/* Contact & Socials */
+.social-cluster { display: flex; gap: 15px; }
+.social-cluster img { width: 24px; filter: grayscale(100%); transition: var(--transition); }
+.social-cluster img:hover { filter: grayscale(0%); transform: scale(1.1); }
+#contact form { display: flex; flex-direction: column; gap: 20px; max-width: 500px; }
+#contact input, #contact textarea { background: var(--bg-secondary); border: 1px solid #333; color: white; padding: 15px; }
+#contact button { background: var(--accent-copper); border: none; padding: 15px; color: var(--bg-primary); font-weight: bold; cursor: pointer; }
+.hidden { display: none; }

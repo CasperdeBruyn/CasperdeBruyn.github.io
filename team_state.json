@@ -1,9 +1,9 @@
 {
-  "iteration": 251,
+  "iteration": 252,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de volledige broncode op schijf onderzocht en getoetst aan het `Project Design DNA`. Hier volgt de audit van de huidige status.\n### 1. Audit van de Wijzigingen (Resultaat vs. DNA)\n*   **Visuele Identiteit:** De \"Dark Workshop\" esthetiek is succesvol doorgevoerd in de CSS-variabelen (`#161412`, `#231F1D`, etc.). De toevoeging van de `noise.png` overlay (via base64 data) is een sterke toevoeging voor de immersieve textuur.\n*   **Structuur & Navigatie:** De overstap van een multi-pagina opzet naar een interactieve `drawer-based` architectuur (zoals gevraagd in de 'Tactile Drawer' actie) is in gang gezet.\n*   **Inhoudelijke Correcties:** De projectlijst is uitgebreid naar 12+4 items, wat de \"content-saneer\" eis dekt. De JSON in `script.js` vormt nu de harde ruggengraat van het portfolio.\n*   **Header & Logo:** Het logo-grid is technisch aanwezig. Let op: de huidige code bevat drie keer hetzelfde logo (`site_header_logo-01.jpg`). H",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls Finale Bron-Inspector (`qa_inspector`) heb ik de actuele toestand van `/home/casper/projects/CasperdeBruyn.github.io` gescand. Hier is mijn audit-rapportage:\n### 1. Audit van de huidige status (Wat is er veranderd?)\n*   **Visuele Identiteit:** De \"Dark Workshop\" esthetiek is succesvol verankerd. Het `:root` CSS-bestand bevat nu de exacte HEX-waarden (`#161412`, `#231F1D`, `#F4F1EA`, `#C87D4B`) die zorgen voor de gewenste futuristische-klassieke uitstraling. De `noise-overlay` is toegevoegd voor die tactiele \"fysieke\" kwaliteit.\n*   **Data-structuur:** De JSON-objecten in `script.js` zijn opgeschoond en uitgebreid naar 12 core-projecten en 4 archief-items, waardoor de \"missende\" projecten nu zijn opgenomen.\n*   **Interactie:** De basis voor de `project-drawer` (de gewenste pop-up/overlay) is technisch geïnitieerd in `script.js` met een `transition` van `0.5s cubic-bezier`.\n*   **Branding & Socials:** Het logo-grid in de header is aanwezig (wacht op ",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:29:41",
+  "last_updated": "2026-11-15 14:33:31",
   "is_running": true,
-  "current_step": "Iteratie 250 voltooid"
+  "current_step": "Iteratie 251 voltooid"
 }

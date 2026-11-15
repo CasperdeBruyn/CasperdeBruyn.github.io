@@ -271,27 +271,4 @@ body.dark-workshop {
 .main-footer { padding: 40px 0; border-top: 1px solid rgba(244, 241, 234, 0.05); font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); }
 .footer-container { display: flex; justify-content: space-between; align-items: center; }
 .homelab-status { color: var(--accent-copper); letter-spacing: 1px; }
-.back-top { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
-.back-top:hover { color: var(--accent-copper); }
-
-/* Responsive Media Queries */
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .container { padding: 0 20px; }
-}
-
-@media (max-width: 768px) {
-  .form-row { grid-template-columns: 1fr; }
-  .modal-gallery { grid-template-columns: 1fr; }
-  .main-nav { display: none; }
-  .footer-container { flex-direction: column; gap: 15px; text-align: center; }
-}
-
-<!-- file: script.js -->
-/**
- * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Handles Immersive Interactions, Dossier Modal Projects with Focus Management, and Secure Form Submission.
- * Fully tested & verified for runtime correctness. No truncations.
- */
-
-document.addEventListener
+.back-top { color: var

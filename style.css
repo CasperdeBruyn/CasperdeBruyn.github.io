@@ -229,6 +229,7 @@ body.dark-workshop {
 .submit-btn:hover { letter-spacing: 2px; filter: brightness(1.15); box-shadow: 0 0 20px var(--accent-copper-glow); }
 
 .hidden-message { display: none; text-align: center; padding: 50px; border: 1px dashed var(--accent-copper); background: rgba(22,20,18,0.5); }
+.hidden-message.visible { display: block; }
 .hidden-message h3 { color: var(--accent-copper); font-family: var(--font-mono); margin-bottom: 12px; font-size: 1.1rem; }
 .hidden-message p { color: var(--text-muted); font-size: 0.95rem; }
 
@@ -454,16 +455,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close on Escape key & handle Focus Trap
     document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
-
-    // 3. SECURE FORM TRANSMISSION (Formspree + Thank You Window)
-    const form = document.getElementById('transmission-form');
-    const formSuccess = document.getElementById('form-success');
-
-    if (form) {
-        form.addEventListener('submit', async (
+        if (!modal.classList.contains('

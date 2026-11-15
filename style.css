@@ -10,7 +10,7 @@
 
 * { box-sizing: border-box; }
 
-body {
+body.dark-workshop {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-ui);
@@ -22,121 +22,117 @@ body {
 .noise-overlay {
     position: fixed; inset: 0; pointer-events: none; z-index: 9999;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04; mix-blend-mode: overlay;
+    opacity: 0.05; mix-blend-mode: overlay;
 }
 
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-.main-header { padding: 2rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(15px); background: rgba(22, 20, 18, 0.85); border-bottom: 1px solid rgba(200, 125, 75, 0.1); }
+.main-header {
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    background: rgba(35, 31, 29, 0.85);
+    border-bottom: 1px solid rgba(200, 125, 75, 0.2);
+}
+
 .header-container { display: flex; justify-content: space-between; align-items: center; }
 
-.logo-main { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--accent-copper); }
+.logo-cluster { display: flex; align-items: center; gap: 1rem; }
+.logo-main {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-copper);
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
 
-.nav-list { display: flex; list-style: none; gap: 2.5rem; font-family: var(--font-mono); font-size: 0.85rem; }
-.nav-link { color: var(--text-primary); text-decoration: none; transition: var(--transition); }
-.nav-link:hover { color: var(--accent-copper); }
+.main-nav .nav-list { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0; font-family: var(--font-mono); font-size: 0.85rem; }
+.nav-link { color: var(--text-primary); text-decoration: none; transition: var(--transition); letter-spacing: 1px; }
+.nav-link:hover { color: var(--accent-copper); text-shadow: 0 0 8px rgba(200, 125, 75, 0.4); }
 
-.social-cluster { display: flex; gap: 1.2rem; }
-.social-icon { color: var(--text-primary); transition: var(--transition); width: 24px; height: 24px; }
-.social-icon:hover { color: var(--accent-copper); transform: scale(1.1); filter: drop-shadow(0 0 5px var(--accent-copper)); }
+.social-cluster { display: flex; gap: 1rem; align-items: center; }
+.social-icon { color: var(--text-primary); transition: var(--transition); width: 22px; height: 22px; }
+.social-icon:hover { color: var(--accent-copper); transform: scale(1.1); filter: drop-shadow(0 0 8px var(--accent-copper)); }
 
-.hero-section { padding: 8rem 0; }
-.glitch-text { font-size: clamp(2.5rem, 6vw, 4rem); font-family: var(--font-mono); margin-bottom: 2rem; }
+.hero-section { padding: 8rem 0 4rem 0; }
+.hero-content { max-width: 800px; }
+.glitch-text { font-size: clamp(2.5rem, 5vw, 4rem); font-family: var(--font-mono); margin-bottom: 2rem; font-weight: 500; letter-spacing: -0.02em; }
 .accent { color: var(--accent-copper); }
-.about-bio { max-width: 700px; font-weight: 300; font-size: 1.15rem; }
+.about-bio { font-size: 1.15rem; font-weight: 300; opacity: 0.9; display: flex; flex-direction: column; gap: 1rem; }
 
 .workbench-section { padding: 6rem 0; }
-.section-heading { font-family: var(--font-mono); color: var(--accent-copper); margin-bottom: 4rem; font-size: 1.2rem; letter-spacing: 2px; }
+.section-heading { font-family: var(--font-mono); color: var(--accent-copper); margin-bottom: 3rem; font-size: 1.1rem; letter-spacing: 2px; }
 
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-.project-card { 
-    background: var(--bg-secondary); padding: 1.5rem; cursor: pointer; 
-    border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); border-radius: 4px;
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.project-card {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(200, 125, 75, 0.1);
+    transition: var(--transition);
+    border-radius: 6px;
 }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.project-card img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 1.5rem; filter: grayscale(0.2); }
-.project-card h3 { font-family: var(--font-mono); font-size: 1rem; margin: 0; }
+.project-card:hover {
+    border-color: var(--accent-copper);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 15px rgba(200, 125, 75, 0.1);
+}
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    filter: contrast(1.05);
+    image-rendering: -webkit-optimize-contrast;
+}
+.project-card h3 { font-family: var(--font-mono); font-size: 1rem; margin: 0 0 0.5rem 0; color: var(--text-primary); }
+.project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+.tag { font-family: var(--font-mono); font-size: 0.75rem; background: rgba(200, 125, 75, 0.15); color: var(--accent-copper); padding: 0.2rem 0.6rem; border-radius: 3px; }
 
 .drawer-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000;
+    position: fixed; inset: 0; background: rgba(16, 14, 12, 0.85); z-index: 1000;
     display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: var(--transition);
+    backdrop-filter: blur(8px);
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
-.drawer-container { 
-    width: 100%; max-width: 600px; height: 100%; background: var(--bg-primary); 
-    padding: 3rem; overflow-y: auto; border-left: 1px solid var(--accent-copper);
+.drawer-container {
+    width: 100%; max-width: 650px; height: 100%; background: var(--bg-primary);
+    padding: 3rem; overflow-y: auto; border-left: 1px solid rgba(200, 125, 75, 0.3);
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
 }
-.drawer-close { background: none; border: none; color: var(--accent-copper); font-size: 2.5rem; cursor: pointer; float: right; }
-.drawer-content h2 { color: var(--accent-copper); font-family: var(--font-mono); }
+.drawer-overlay.active .drawer-container { transform: translateX(0); }
+.drawer-close { background: none; border: none; color: var(--accent-copper); font-size: 2.5rem; cursor: pointer; position: absolute; top: 1.5rem; right: 2rem; transition: var(--transition); }
+.drawer-close:hover { transform: scale(1.1); color: var(--text-primary); }
 
-.transmission-form { display: flex; flex-direction: column; gap: 1.2rem; max-width: 500px; }
-input, textarea { background: var(--bg-secondary); border: 1px solid #444; color: var(--text-primary); padding: 1rem; font-family: var(--font-mono); }
-.btn { background: var(--accent-copper); color: #161412; border: none; padding: 1rem; cursor: pointer; font-family: var(--font-mono); font-weight: bold; transition: var(--transition); }
-.btn:hover { background: var(--text-primary); }
-.terminal-success { font-family: var(--font-mono); padding: 2rem; border: 1px solid var(--accent-copper); color: var(--accent-copper); margin-top: 2rem; }
+.drawer-content h2 { color: var(--accent-copper); font-family: var(--font-mono); font-size: 1.8rem; margin-top: 1rem; }
+.drawer-gallery { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+.drawer-gallery img { width: 100%; border-radius: 4px; border: 1px solid rgba(200, 125, 75, 0.2); }
 
-<!-- file: script.js -->
-/**
- * Casper de Bruyn — Portfolio Engine V6.0
- * Logic: Immersive Dossier System & Form Handling
- */
+.contact-section { padding: 6rem 0 8rem 0; }
+.transmission-form { display: flex; flex-direction: column; gap: 1.2rem; max-width: 550px; }
+input, textarea {
+    background: var(--bg-secondary); border: 1px solid rgba(200, 125, 75, 0.2);
+    color: var(--text-primary); padding: 1rem; font-family: var(--font-mono); border-radius: 4px;
+    transition: var(--transition);
+}
+input:focus, textarea:focus { outline: none; border-color: var(--accent-copper); box-shadow: 0 0 10px rgba(200, 125, 75, 0.2); }
+.btn {
+    background: var(--accent-copper); color: var(--bg-primary); border: none; padding: 1rem;
+    cursor: pointer; font-family: var(--font-mono); font-weight: bold; border-radius: 4px;
+    transition: var(--transition); letter-spacing: 1px;
+}
+.btn:hover { background: var(--text-primary); box-shadow: 0 0 15px rgba(244, 241, 234, 0.3); }
+.terminal-success { font-family: var(--font-mono); padding: 2rem; border: 1px solid var(--accent-copper); color: var(--accent-copper); margin-top: 2rem; background: var(--bg-secondary); border-radius: 4px; }
 
-const PROJECT_DATA = {
-    "generation-plastic-soup": { title: "Generation Plastic Soup", story: "Educational strategy card game addressing ocean pollution." },
-    "zeefdrukken": { title: "Zeefdrukken", story: "Hand-pulled prints exploring vector art in physical form." },
-    "samen-spelen": { title: "Samen Spelen", story: "Design project focused on social cohesion and interaction." },
-    "grijpmachine": { title: "Grijpmachine", story: "Functional installation combining mechanical craft and UX." },
-    "kodak": { title: "Kodak", story: "Futuristic re-interpretation of heritage branding." },
-    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade mechanics coded from scratch." },
-    "picknicken-met-sophie": { title: "Picknicken met Sophie", story: "Emotional journey mapping for social experiences." },
-    "osrs-kerstposter": { title: "OSRS Kerstposter", story: "Modern vector design study of nostalgic realms." },
-    "de-grinch-sloopt-de-kerstboom": { title: "De Grinch", story: "Rapid prototype of a chaotic tabletop experience." },
-    "vechtclub-xl": { title: "Vechtclub XL", story: "Developing industrial identity and atmospheric branding." },
-    "hu-begeleidt": { title: "Hu Begeleidt", story: "Digital platform research for student well-being." },
-    "school-projecten": { title: "School Projecten", story: "Compilation of academic design challenges." }
-};
+footer { padding: 3rem 0; text-align: center; font-family: var(--font-mono); font-size: 0.85rem; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.05); }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const drawer = document.getElementById('projectDrawer');
-    const drawerContent = document.getElementById('drawerContent');
-    const closeBtn = document.querySelector('.drawer-close');
-
-    // Drawer Logic
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('data-project');
-            const data = PROJECT_DATA[id];
-            if(data) {
-                drawerContent.innerHTML = `
-                    <div class="drawer-content">
-                        <h2>${data.title}</h2>
-                        <p style="margin: 2rem 0;">${data.story}</p>
-                        <img src="${card.querySelector('img').src}" style="width:100%; border-radius:4px;">
-                    </div>
-                `;
-                drawer.classList.add('active');
-            }
-        });
-    });
-
-    // Close Modals
-    const closeModal = () => drawer.classList.remove('active');
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => { if (e.target === drawer) closeModal(); });
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-    // Contact Form & Success Terminal
-    const form = document.querySelector('.transmission-form');
-    const successMsg = document.getElementById('formSuccessMessage');
-    
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('.btn');
-        btn.innerText = "[ENCRYPTING PACKET...]";
-        
-        // Simuleer verzending
-        await new Promise(r => setTimeout(r, 1500));
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-    });
-});
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+    .hero-section { padding: 4rem 0; }
+}

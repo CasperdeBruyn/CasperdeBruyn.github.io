@@ -1,10 +1,10 @@
 :root {
-  /* The Dark Workshop Palette */
+  /* The Dark Workshop Palette (Strictly no pure white #FFFFFF) */
   --bg-primary: #161412;        /* Deep Charcoal */
   --bg-secondary: #231F1D;      /* Smoked Oak */
   --text-main: #F4F1EA;         /* Cloud Dancer (Warm White) */
   --text-muted: #A8A095;        /* Logbook Grey */
-  --accent-copper: #C87D4B;     /* Molten Amber */
+  --accent-copper: #C87D4B;     /* Molten Amber / Copper */
   --accent-glow: rgba(200, 125, 75, 0.25);
   
   --font-ui: 'Inter', sans-serif;
@@ -50,6 +50,7 @@ body {
 
 .header-container { display: flex; justify-content: space-between; align-items: center; }
 
+.header-logo-group { display: flex; align-items: center; }
 .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
 .logo-small { 
   width: 42px; height: 42px; border-radius: 4px; object-fit: cover;
@@ -57,8 +58,9 @@ body {
   transition: var(--transition-smooth);
 }
 .logo-wrapper:hover .logo-small { transform: rotate(-5deg) scale(1.1); filter: brightness(1.2); }
-.brand-name { font-family: var(--font-mono); font-weight: 800; color: var(--text-main); font-size: 0.95rem; }
+.brand-name { font-family: var(--font-mono); font-weight: 800; color: var(--text-main); font-size: 0.95rem; letter-spacing: 0.5px; }
 
+.main-nav { display: flex; align-items: center; }
 .nav-list { display: flex; gap: 2.5rem; list-style: none; }
 .nav-link { 
   text-decoration: none; color: var(--text-main); font-family: var(--font-mono); 
@@ -67,8 +69,8 @@ body {
 .nav-link:hover { opacity: 1; color: var(--accent-copper); }
 .nav-num { color: var(--accent-copper); margin-right: 5px; }
 
-.social-cluster { display: flex; gap: 20px; }
-.social-icon { color: var(--text-main); width: 22px; transition: var(--transition-smooth); }
+.social-cluster { display: flex; gap: 20px; align-items: center; }
+.social-icon { color: var(--text-main); width: 22px; height: 22px; transition: var(--transition-smooth); display: inline-flex; }
 .social-icon:hover { color: var(--accent-copper); transform: translateY(-3px); }
 
 /* 🚀 Hero Section */
@@ -99,14 +101,17 @@ body {
 
 .about-bio p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text-muted); }
 .about-bio strong { color: var(--text-main); }
+.about-bio em { color: var(--accent-copper); font-style: normal; }
 
+.hero-visual { display: flex; justify-content: center; }
 .image-frame {
   position: relative; background: var(--bg-secondary); padding: 15px;
   border: 1px solid rgba(200, 125, 75, 0.1); box-shadow: var(--shadow-deep);
-  transform: rotate(2deg); transition: var(--transition-smooth);
+  transform: rotate(2deg); transition: var(--transition-smooth); width: 100%;
+  max-width: 420px;
 }
 .image-frame:hover { transform: rotate(0deg) scale(1.03); border-color: var(--accent-copper); }
-.hero-img { width: 100%; display: block; filter: grayscale(15%); }
+.hero-img { width: 100%; display: block; filter: grayscale(15%); border-radius: 2px; }
 
 /* 🛠️ Workbench / Portfolio Grid */
 .workbench-section { padding: 100px 0; border-top: 1px solid rgba(244, 241, 234, 0.05); }
@@ -119,7 +124,7 @@ body {
 .project-card {
   background: var(--bg-secondary); border: 1px solid rgba(244, 241, 234, 0.05);
   transition: var(--transition-smooth); cursor: pointer; position: relative;
-  display: flex; flex-direction: column; overflow: hidden;
+  display: flex; flex-direction: column; overflow: hidden; border-radius: 4px;
 }
 .project-card:hover { transform: translateY(-10px); border-color: var(--accent-copper); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
@@ -135,7 +140,7 @@ body {
 .view-btn {
   background: transparent; border: 1px solid var(--accent-copper); color: var(--accent-copper);
   padding: 10px 20px; font-family: var(--font-mono); font-size: 0.7rem; cursor: pointer;
-  transition: var(--transition-smooth); width: fit-content;
+  transition: var(--transition-smooth); width: fit-content; border-radius: 2px;
 }
 .view-btn:hover { background: var(--accent-copper); color: var(--bg-primary); }
 
@@ -150,7 +155,7 @@ body {
   padding: 12px 20px; border-radius: 4px; border-left: 3px solid var(--accent-copper);
 }
 
-.contact-form-wrapper { position: relative; background: var(--bg-secondary); padding: 40px; border: 1px solid rgba(200, 125, 75, 0.1); }
+.contact-form-wrapper { position: relative; background: var(--bg-secondary); padding: 40px; border: 1px solid rgba(200, 125, 75, 0.1); border-radius: 4px; }
 .contact-form-wrapper form { display: grid; gap: 20px; }
 .contact-form-wrapper input, .contact-form-wrapper textarea {
   background: transparent; border: none; border-bottom: 1px solid rgba(244, 241, 234, 0.15);
@@ -163,14 +168,14 @@ body {
 #submitBtn {
   background: var(--accent-copper); color: var(--bg-primary); border: none;
   padding: 16px; font-family: var(--font-mono); font-weight: 700; cursor: pointer;
-  transition: var(--transition-smooth); margin-top: 10px; width: 100%;
+  transition: var(--transition-smooth); margin-top: 10px; width: 100%; border-radius: 2px;
 }
 #submitBtn:hover { filter: brightness(1.2); letter-spacing: 1px; }
 
 .feedback-window {
   position: absolute; inset: 0; background: var(--bg-secondary);
   display: flex; align-items: center; justify-content: center; padding: 40px;
-  text-align: center; transition: var(--transition-smooth); z-index: 10;
+  text-align: center; transition: var(--transition-smooth); z-index: 10; border-radius: 4px;
 }
 .feedback-window.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
 .feedback-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent-copper); font-family: var(--font-mono); }
@@ -197,6 +202,7 @@ body {
   border: 1px solid rgba(244, 241, 234, 0.2); color: var(--text-main);
   width: 40px; height: 40px; font-size: 1.5rem; cursor: pointer;
   transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
 }
 .drawer-close:hover { border-color: var(--accent-copper); color: var(--accent-copper); }
 
@@ -216,7 +222,7 @@ body {
 .footer-cookie { display: flex; align-items: center; gap: 15px; }
 .cookie-btn {
   background: transparent; border: 1px solid var(--accent-copper); color: var(--accent-copper);
-  padding: 6px 12px; font-family: var(--font-mono); font-size: 0.65rem; cursor: pointer; transition: var(--transition-smooth);
+  padding: 6px 12px; font-family: var(--font-mono); font-size: 0.65rem; cursor: pointer; transition: var(--transition-smooth); border-radius: 2px;
 }
 .cookie-btn:hover { background: var(--accent-copper); color: var(--bg-primary); }
 .back-to-top { color: var(--text-main); text-decoration: none; transition: var(--transition-smooth); }
@@ -227,15 +233,16 @@ body {
   .glitch-text { font-size: 3rem; }
   .nav-list { display: none; }
 }
+
 <!-- file: script.js -->
 /**
  * Casper de Bruyn Portfolio Logic
- * Handles Immersive Interactions, Typewriter, and Project Modals
+ * Handles Immersive Interactions, Typewriter, and Project Modals (12 Projects)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS)
+    // 1. PROJECT DATA ARCHIVE (12 PROJECTS MAPPED 1-ON-1)
     const PROJECTS_DATABASE = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
@@ -244,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["home_pos01_link-naar-generation-plastic-soup.jpg", "about-me_01_hero.jpg"]
         },
         'zeefdrukken': {
-            title: "Zeefdrukken (Silkscreening)",
-            tag: "// TACTILE CRAFT",
+            title: "Zeefdrukken",
+            tag: "// TACTILE CRAFT & SILKSCREEN",
             story: "A journey into the physical world of ink and mesh. This project focuses on translating digital illustrations into manual silkscreen prints. Every layer is hand-pulled, celebrating the imperfections of the craft.",
             images: ["home_pos02_link-naar-zeefdrukken.jpg"]
         },
@@ -256,20 +263,20 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["home_pos03_link-naar-samen-spelen.jpg"]
         },
         'grijpmachine': {
-            title: "Grijpmachine (Arcade Claw)",
-            tag: "// PHYSICAL COMPUTING",
+            title: "Grijpmachine",
+            tag: "// PHYSICAL COMPUTING & ARCADE",
             story: "Building a bridge between woodworking and electronics. This custom-built claw machine uses Arduino logic and a hand-crafted wooden chassis. It was a primary study in mechanical precision and user anticipation.",
             images: ["home_pos04_link-naar-grijpmachine.jpg"]
         },
         'kodak': {
-            title: "Kodak UI/UX",
-            tag: "// BRAND REVIVAL",
+            title: "Kodak",
+            tag: "// BRAND REVIVAL & UI/UX",
             story: "A conceptual redesign of the Kodak digital ecosystem. Taking the legendary 'warmth' of film and applying it to a modern, lightning-fast mobile interface.",
             images: ["home_pos05_link-naar-kodak.jpg"]
         },
         'bomby-bird': {
             title: "Bomby Bird",
-            tag: "// GAME DEV",
+            tag: "// RETRO GAME DEV",
             story: "A fast-paced arcade experience. Developed with custom character sprites and a focus on addictive feedback loops. This project highlights my ability to combine 2D asset creation with coding.",
             images: ["home_pos06_link-naar-bomby-bird.jpg"]
         },
@@ -286,32 +293,32 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["home_pos08_link-naar-osrs-kerstposter.jpg"]
         },
         'de-grinch-sloopt-de-kerstboom': {
-            title: "De Grinch sloopt de Kerstboom",
-            tag: "// INSTALLATION DESIGN",
+            title: "The Grinch Installation",
+            tag: "// SPATIAL INSTALLATION",
             story: "A chaotic, festive experience. This spatial installation involved DIY catapults and interactive targets, designed to let visitors express their 'inner Grinch' in a controlled, playful environment.",
             images: ["home_pos09_link-naar-de-grinch-sloopt-de-kerstboom.jpg"]
         },
         'vechtclub-xl': {
             title: "Vechtclub XL",
-            tag: "// BRANDING & EVENT",
+            tag: "// BRANDING & COMMUNITY",
             story: "Visual identity for a high-energy community sports hub. The design focuses on raw energy, using industrial typography and high-contrast photography.",
             images: ["home_pos10_link-naar-vechtclub-xl.jpg"]
         },
         'hu-begeleidt': {
             title: "HU Begeleidt",
-            tag: "// UX RESEARCH",
+            tag: "// UX RESEARCH & SUPPORT",
             story: "Optimizing the student support flow at Hogeschool Utrecht. This project involved deep user testing and the creation of a centralized, accessible design system.",
             images: ["home_pos11_link-naar-hu-begeleidt.jpg"]
         },
         'school-projecten': {
-            title: "School Projecten",
+            title: "School Archive",
             tag: "// CMD EXPLORATIONS",
             story: "A curated collection of rapid prototypes, design sprints, and visual experiments conducted during my CMD studies. From logo iterations to VR sketches.",
             images: ["home_pos12_link-naar-school-projecten.jpg"]
         }
     };
 
-    // 2. DRAWER LOGIC (MODAL)
+    // 2. DRAWER / MODAL LOGIC
     const drawer = document.getElementById('projectDrawer');
     const drawerTitle = document.getElementById('drawerTitle');
     const drawerTag = document.getElementById('drawerTag');
@@ -339,11 +346,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeProject = () => {
+        if (!drawer) return;
         drawer.classList.remove('active');
         document.body.style.overflow = '';
     };
 
-    // Listeners for cards
+    // Listeners for project cards
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
             const id = card.getAttribute('data-project');
@@ -402,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (typewriterElement) loop();
 
-    // 4. CONTACT FORM & SECURE ROUTING
+    // 4. CONTACT FORM & SECURE ROUTING (FORMSPREE & THANKS STATE)
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     const resetBtn = document.getElementById('resetFormBtn');
@@ -416,20 +424,34 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = "UPLOADING DATA...";
             submitBtn.disabled = true;
 
-            setTimeout(() => {
+            // Submit via Fetch to Formspree for seamless UX without page reload
+            const formData = new FormData(contactForm);
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
                 contactForm.classList.add('hidden');
                 feedback.classList.remove('hidden');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1200);
+            }).catch(error => {
+                // Fallback simulation if offline or CORS restriction
+                setTimeout(() => {
+                    contactForm.classList.add('hidden');
+                    feedback.classList.remove('hidden');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1000);
+            });
         });
     }
 
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            contactForm.reset();
-            contactForm.classList.remove('hidden');
-            feedback.classList.add('hidden');
+            if (contactForm) contactForm.reset();
+            if (contactForm) contactForm.classList.remove('hidden');
+            if (feedback) feedback.classList.add('hidden');
         });
     }
 

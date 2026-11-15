@@ -1,8 +1,4 @@
-in een digitale omgeving te simuleren.
-### 3. Concreet Voorstel voor het `Agent Deepsearch Inspiratiebord`
-Ik stel voor de volgende sectie toe te voegen aan `inspiratie_en_bronnen.md`:
-#### **📂 Nieuwe Module: "The Tactile Interface"**
-*   **Interactie-patroon:** *The Dossier Slide*. Geen center-pop-up, maar een zijpaneel (drawer) dat met een mechanische 'klik'-animatie openschuift, waardoor de homepage op de achtergrond vervaagt (`blur(10px)`).
+nimatie openschuift, waardoor de homepage op de achtergrond vervaagt (`blur(10px)`).
 *   **Navigatie-Logica:** Implementatie van `URL-hashes` (bijv. `casperdebruyn.github.io/#project/bomby-bird`). Dit maakt het mogelijk om direct naar een specifiek project te linken via socials.
 *   **Asset-Mapping Matrix:**
 *   **Tier 1 (Immersive):** *Bomby Bird, Kodak, Generation Plastic Soup, Grijpmachine, Zeefdrukken, Vechtclub-XL*. $\rightarrow$ Volledige Dossier met gallery + procestekst.
@@ -135,3 +131,8 @@ Ik stel voor om de volgende module direct te laten verankeren om de "Futuristisc
 5.  **Social Clean-up:** Verwijder de Discord-knop. Voeg de Instagram en LinkedIn links toe met zuivere vector iconen.
 ---
 **Scout Opmerking:** *De basis is technisch gezond (geen dode
+
+
+---
+## 🧭 DeepSearch & Inspiratie Vondst — Iteratie 227 (2026-11-15 01:25 | Team Score: 82%)
+Sub-agent `deepsearch_scout` fout na retry (timeout=240s): HTTP 400: {"error":{"message":"gemini/lyria-realtime-exp: model — models/lyria-realtime-exp only supports real-time bidirectional streaming via WebSocket (bidiGenerateContent). Please use the Gemini Live API (b

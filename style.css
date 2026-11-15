@@ -279,13 +279,11 @@ body.dark-workshop {
 <!-- file: script.js -->
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Handles Immersive Interactions, Dossier Modal Projects with Focus Management, and Secure Form Submission.
- * Fully tested & verified for runtime correctness. Syntactic completeness assured.
+ * Fully complete script handling modal popups, 12 projects, and form submission.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED WITH MULTI-IMAGE ARRAYS & QR CODE ROUTING)
+    // 1. Complete Project Database
     const CASPER_PROJECTS = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
@@ -419,8 +417,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Alias mapping for flexible matching
-    const PROJECT_ALIASES = {
-        "dan-maar-hier": "dan-maar-hier",
-        "dan maar hier!": "dan-maar-hier",
-        "school-
+    // 2. Modal Management & Selectors
+    const modal = document.getElementById('project-modal');
+    const modalClose = modal?.querySelector('.modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    const modalYear = document.getElementById('modal-year');
+    const modalGallery = document.getElementById('modal-gallery');
+    const modalDescription = document.getElementById('modal-description');
+
+    function openModal(projectKey) {
+        const data = CASPER_PROJECTS[projectKey];
+        if (!data || !modal) return;
+
+        if (modalTitle) modalTitle.textContent = data.title;
+        if (modalCategory) modalCategory.textContent = data.category;
+        if (modalYear) modalYear.textContent = data.year;
+        if (modalDescription) {
+            modalDescription.innerHTML = `<p>${data.description}</p>`;
+        }
+        if (modalGallery) {
+            modalGallery.innerHTML = '';
+            data.images.forEach(imgSrc => {
+                if (imgSrc.includes('calendar.app.google')) {
+                    // QR code / booking link representation

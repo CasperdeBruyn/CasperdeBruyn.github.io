@@ -278,7 +278,7 @@ body.dark-workshop {
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-copper);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 40px rgba(200, 125, 75, 0.15);
 }
 
 .card-img-wrapper {

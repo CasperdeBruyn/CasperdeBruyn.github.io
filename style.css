@@ -5,45 +5,45 @@
     --accent-copper: #C87D4B;
     --font-ui: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * { box-sizing: border-box; }
 
 body.dark-workshop {
     background-color: var(--bg-primary);
-    background-image: radial-gradient(circle at 50% 50%, #231F1D 0%, #161412 100%);
     color: var(--text-primary);
     font-family: var(--font-ui);
     margin: 0;
     line-height: 1.6;
 }
 
-/* Fallback voor grain.png */
 .noise-overlay {
     position: fixed; inset: 0; pointer-events: none; z-index: 9999;
     background: repeating-linear-gradient(45deg, rgba(200, 125, 75, 0.03), rgba(200, 125, 75, 0.03) 1px, transparent 1px, transparent 5px);
-    opacity: 0.2;
+    opacity: 0.15;
 }
 
 .main-header {
     position: sticky; top: 0; z-index: 100;
-    backdrop-filter: blur(15px);
-    background: rgba(35, 31, 29, 0.85);
+    backdrop-filter: blur(10px);
+    background: rgba(35, 31, 29, 0.9);
     border-bottom: 1px solid rgba(200, 125, 75, 0.2);
     padding: 1rem 0;
 }
 
 .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.header-logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.logo-item { width: 60px; height: 60px; object-fit: contain; }
+.header-logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.logo-item { width: 45px; height: 45px; object-fit: contain; }
 
 .nav-list { display: flex; list-style: none; gap: 2rem; }
-.nav-link { color: var(--text-primary); text-decoration: none; font-family: var(--font-mono); }
+.nav-list a { color: var(--text-primary); text-decoration: none; font-family: var(--font-mono); font-size: 0.9rem; }
 
 .typewriter { font-family: var(--font-mono); border-right: 2px solid var(--accent-copper); animation: blink 0.75s step-end infinite; }
 @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent-copper) } }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
 
 .project-card {
     background: var(--bg-secondary);
@@ -51,67 +51,18 @@ body.dark-workshop {
     padding: 1rem; cursor: pointer; transition: var(--transition);
 }
 .project-card:hover { border-color: var(--accent-copper); transform: translateY(-5px); }
-.project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 1rem; }
 
 .drawer-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000;
     display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: var(--transition);
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
-.drawer-container { width: 100%; max-width: 600px; height: 100%; background: var(--bg-primary); padding: 3rem; overflow-y: auto; }
+.drawer-container { 
+    width: 100%; max-width: 600px; height: 100%; 
+    background: var(--bg-primary); padding: 3rem; overflow-y: auto; 
+    border-left: 1px solid var(--accent-copper);
+}
 
-.social-icon:hover { color: var(--accent-copper); }
-
-<!-- file: script.js -->
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Email Obfuscation (Logic: Decoding only on click)
-    const encoded = "Y2Fzc2VyLmRlYnJ1eW5AaG90bWFpbC5jb20="; 
-    const mailLinks = document.querySelectorAll('.mailto-link');
-    mailLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = atob(encoded);
-            window.location.href = `mailto:${email}`;
-        });
-    });
-
-    // 2. Typewriter Effect
-    const phrases = ["CMD Student", "Maker & Woodworker", "Tech Enthusiast", "AI Homelab Builder"];
-    let i = 0;
-    const typeSpan = document.querySelector('.typewriter');
-    setInterval(() => {
-        typeSpan.textContent = phrases[i];
-        i = (i + 1) % phrases.length;
-    }, 3000);
-
-    // 3. Project Drawer & Data Fetch
-    const drawer = document.getElementById('projectDrawer');
-    const drawerContent = document.getElementById('drawerContent');
-    const closeDrawer = document.querySelector('.drawer-close');
-
-    async function loadProjectData(slug) {
-        // In een echte setup: fetch('data/portfolio.json').then(...)
-        // Hier simulatie van data-fetch
-        drawerContent.innerHTML = `<h2>Loading ${slug}...</h2>`;
-        drawer.classList.add('active');
-    }
-
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => loadProjectData(card.dataset.project));
-    });
-
-    closeDrawer.addEventListener('click', () => drawer.classList.remove('active'));
-    drawer.addEventListener('click', (e) => { if(e.target === drawer) drawer.classList.remove('active'); });
-
-    // 4. Contact Form Feedback
-    const form = document.querySelector('.transmission-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        form.style.display = 'none';
-        document.getElementById('formSuccessMessage').style.display = 'block';
-        setTimeout(() => {
-            form.style.display = 'block';
-            document.getElementById('formSuccessMessage').style.display = 'none';
-        }, 5000);
-    });
-});
+.drawer-close { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: var(--text-primary); cursor: pointer; background: none; border: none; }
+#success-overlay { display: none; padding: 2rem; text-align: center; border: 1px solid var(--accent-copper); }

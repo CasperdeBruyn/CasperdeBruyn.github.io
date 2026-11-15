@@ -1,9 +1,9 @@
 {
-  "iteration": 249,
+  "iteration": 250,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls Finale Bron-Inspector (`qa_inspector`) heb ik de actuele status van `/home/casper/projects/CasperdeBruyn.github.io` gescand. Hier is mijn audit-rapport.\n### 📋 Inspectie Rapport: Status na Iteratie 248\n#### 1. Wat is daadwerkelijk veranderd?\n*   **Design DNA \"Dark Workshop\" implementatie:** Het kleurenpalet (`#161412`, `#231F1D`, `#F4F1EA`, `#C87D4B`) is volledig doorgevoerd in de `:root` van `style.css`.\n*   **Immersieve Textuur:** De `noise-overlay` (repeating-linear-gradient) is toegevoegd als `::after` equivalent (`.noise-overlay`), wat de visuele diepte geeft die in de richtlijnen stond.\n*   **Structuur & Layout:** De header bevat nu een `logo-grid` en de navigatie is strak getrokken. Er is een `drawer-overlay` systeem opgezet voor projectdetails (vervangt het idee van losse pagina's).\n*   **Interactie:** De basis voor `PROJECT_DATA` in `script.js` is gelegd, waarbij projecten gekoppeld zijn aan een \"story\" en asset-paden.\n*   **Socials:** De f",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls **Finale Bron-Inspector (`qa_inspector`)** heb ik de laatste staat van de bronbestanden op schijf geanalyseerd. Hier volgt de audit van de opgeleverde wijzigingen tegenover het *Project Design DNA* en jouw specifieke instructies.\n---\n### 1. Status Audit: Wat is er daadwerkelijk veranderd?\nDe overgang naar de **\"Dark Workshop\"**-esthetiek is technisch volledig doorgevoerd:\n*   **Visuele Identiteit:** De CSS-rootvariabelen zijn correct ingesteld op het `#161412` (houtskool) en `#C87D4B` (koper) kleurenpalet. De `noise-overlay` is actief, wat het digitale aspect van het portfolio effectief \"breekt\" en de ambachtelijke, fysieke sfeer versterkt.\n*   **Layout-Structuur:** De header is gestroomlijnd met het 3-delige logo-grid. Er is een nieuwe `drawer-overlay` logica in `script.js` gebouwd, die in plaats van het laden van nieuwe pagina's een immersieve pop-up laag over de huidige content legt (voldoet aan de \"niet overspoelen\"-eis).\n*   **Data & Content:*",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:20:44",
+  "last_updated": "2026-11-15 14:26:41",
   "is_running": true,
-  "current_step": "Iteratie 248 voltooid"
+  "current_step": "Iteratie 249 voltooid"
 }

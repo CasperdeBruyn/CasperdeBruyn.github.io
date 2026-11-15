@@ -1,9 +1,9 @@
 {
-  "iteration": 259,
+  "iteration": 260,
   "crawl_completed": true,
-  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\nAls `qa_inspector` heb ik de huidige staat van `/home/casper/projects/CasperdeBruyn.github.io` gescand. Hier is de audit van de huidige implementatie:\n### 🔍 Statusoverzicht: Wat is er veranderd?\nDe transformatie naar de **\"Dark Workshop\"**-esthetiek is technisch verankerd.\n1.  **Visuele Identiteit:** De CSS-variabelen (`--bg-primary: #161412`, `--accent-copper: #C87D4B`) staan correct ingesteld en passen naadloos bij het gevraagde design-DNA. Er is een `noise-overlay` geïmplementeerd voor die authentieke, tactiele 'workshop'-ervaring.\n2.  **Architectuur:** De structuur is veranderd van een statische pagina naar een dynamisch grid-systeem (12 projecten), ondersteund door een `drawer-overlay` die de homepage overzichtelijk houdt—precies zoals verzocht.\n3.  **Content-Mapping:** Alle 12 projecten zijn nu geladen in de `script.js` logica, inclusief de voorbereiding voor de detail-weergave.\n4.  **Socials:** De externe Discord-invitatie is verwijderd en verva",
+  "last_qa_feedback": "🤖 **[Sub-Agent `qa_inspector`]:**\n🔍 **FINALE BRON-INSPECTOR RAPPORT (`qa_inspector`)**\n*Audit uitgevoerd na Iteratie 259 — Project: `CasperdeBruyn.github.io`*\nAls Finale Bron-Inspector heb ik de volledige codebasis op schijf (`index.html`, `style.css`, `script.js` en asset-koppelingen) grondig gescand en getoetst aan het **Project Design DNA** en de specifieke wensen van Casper.\nHier is het definitieve overzicht van de transformatie, de huidige staat en de laatste acties voor de finish.\n---\n### 🛠️ 1. Wat is er daadwerkelijk veranderd? (Codebase Wijzigingen)\n*   **Design DNA Geïmplementeerd (\"The Dark Workshop\"):** De kleurovereenkomst is 100% doorgevoerd in `style.css` via `:root` variabelen (`--bg-primary: #161412`, `--bg-secondary: #231F1D`, `--text-main: #F4F1EA`, `--accent-copper: #C87D4B`). Diep wit is volledig vermeden.\n*   **Tactiele Textuur:** Er is een subtiele SVG-grain overlay (`.noise-overlay`) toegevoegd voor een immersieve, ambachtelijke sfeer.\n*   **De 12 Projecten Gemap",
   "completed_changes": [],
-  "last_updated": "2026-11-15 14:56:57",
+  "last_updated": "2026-11-15 14:59:15",
   "is_running": true,
-  "current_step": "Iteratie 258 voltooid"
+  "current_step": "Iteratie 259 voltooid"
 }

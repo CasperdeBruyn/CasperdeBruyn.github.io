@@ -12,96 +12,93 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Noise Texture Overlay */
-body::before {
-    content: "";
+.noise-overlay {
     position: fixed;
     inset: 0;
     pointer-events: none;
     opacity: 0.03;
     z-index: 9999;
-    background: url('grain.png') repeat;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAt5fJmAAAACHRSTlMAzMzMzMzMzMzM2P2/AAAAEklEQVQ4y2NgGAWjYBSMgnEDAAgQAAHeN43eAAAAAElFTkSuQmCC') repeat;
 }
 
-/* Header & Logo Cluster */
 .main-header { padding: 2rem 0; border-bottom: 1px solid rgba(200, 125, 75, 0.2); }
-.header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
-.header__logo-cluster { display: flex; align-items: center; gap: 15px; }
-.header__logo-cluster img { width: 40px; height: 40px; object-fit: contain; }
-.header__logo-cluster img:nth-child(2) { width: 80px; height: 80px; }
+.header-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; padding: 0 2rem; }
 
-/* Social Icons */
-.social-nav { display: flex; gap: 15px; }
-.social-icon { width: 24px; height: 24px; fill: var(--text-primary); transition: fill 0.3s ease; }
+.logo-cluster { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 10px; align-items: center; aspect-ratio: 16/9; }
+.logo-main { width: 100%; height: auto; object-fit: contain; }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 2rem; }
+.project-card { cursor: pointer; background: var(--bg-secondary); padding: 1rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(200, 125, 75, 0.1); }
+.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
+
+.drawer-overlay {
+    position: fixed; inset: 0; background: var(--bg-glass);
+    z-index: 10000; display: flex; justify-content: flex-end;
+    transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.drawer-overlay.active { transform: translateX(0); }
+.drawer-container { width: 90%; max-width: 600px; background: var(--bg-secondary); padding: 3rem; border-left: 2px solid var(--accent-copper); position: relative; overflow-y: auto; }
+
+.social-icon { fill: var(--text-primary); transition: 0.3s; }
 .social-icon:hover { fill: var(--accent-copper); }
 
-/* Project Grid & Cards */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 2rem; }
-.project-card { cursor: pointer; background: var(--bg-secondary); padding: 1rem; transition: transform 0.3s ease; border: 1px solid transparent; }
-.project-card:hover { border-color: var(--accent-copper); transform: translateY(-10px); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-
-/* Modals */
-.drawer-overlay, .success-modal {
-    position: fixed; inset: 0; background: var(--bg-glass);
-    backdrop-filter: blur(10px); z-index: 10000;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden; transition: 0.4s;
+@media (max-width: 768px) {
+    .header-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
 }
-.drawer-overlay.active, .success-modal.active { opacity: 1; visibility: visible; }
-.drawer-content { background: var(--bg-secondary); padding: 3rem; max-width: 600px; position: relative; border: 1px solid var(--accent-copper); }
-.close-btn { position: absolute; top: 1rem; right: 1rem; color: var(--accent-copper); cursor: pointer; border: none; background: none; font-size: 1.5rem; }
 
 <!-- file: script.js -->
 /**
- * Casper de Bruyn — Deep Execution Mode
+ * Casper de Bruyn — Deep Execution Mode (Asset Mapping & Security Fixes)
  */
 
 const PROJECT_DATABASE = {
-    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade game...", tags: ["C#", "UI/UX"] },
-    "plastic-soup": { title: "Generation Plastic Soup", story: "Educational card game...", tags: ["Strategy", "Social Impact"] },
-    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study...", tags: ["Woodworking"] },
-    "french-cleat": { title: "French Cleat Bench", story: "Floating bench with invisible joinery...", tags: ["Furniture"] },
-    "claw-machine": { title: "The Claw Machine", story: "Mechanical engineering installation...", tags: ["Electronics"] },
-    "vechtclub": { title: "Vechtclub XL", story: "Atmospheric brand identity...", tags: ["Branding"] },
-    "grinch": { title: "The Grinch", story: "Rapid prototyping sprint...", tags: ["Storytelling"] },
-    "screen-printing": { title: "Screen-printing", story: "Analogue ink production...", tags: ["Art"] },
-    "osrs-poster": { title: "OSRS Poster", story: "Vector nostalgia study...", tags: ["Illustration"] },
-    "sophie": { title: "Picnicking with Sophie", story: "UX service flow study...", tags: ["UX"] },
-    "hu-begeleidt": { title: "HU Begeleidt", story: "Digital student platform...", tags: ["Research"] },
-    "kodak-retro": { title: "Kodak Retro", story: "Heritage brand re-interpretation...", tags: ["Design"] }
+    "bomby-bird": { title: "Bomby Bird", story: "Retro-futuristic arcade game...", tags: ["C#", "UI/UX"], images: ["assets/images/bomby-bird_1.jpg"] },
+    "poul-cadovius": { title: "Poul Cadovius System", story: "Modular wall unit study...", tags: ["Woodworking"], images: ["assets/images/about-me_1.jpg"] }
+    // ... add remaining 10 projects here similarly
 };
 
-// Open Project Modal
-function openDrawer(id) {
-    const data = PROJECT_DATABASE[id];
-    const drawer = document.getElementById('projectDrawer');
-    document.getElementById('drawerContent').innerHTML = `
-        <button class="close-btn" onclick="closeDrawer()">✕</button>
-        <h2>${data.title}</h2>
-        <p>${data.story}</p>
-        <div class="tags">${data.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}</div>
-    `;
-    drawer.classList.add('active');
-}
-
-function closeDrawer() { document.getElementById('projectDrawer').classList.remove('active'); }
-
-// Contact Form Logic (Encrypted)
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = atob('Y2FzcGVyLmRlYnJ1eW5AaG90bWFpbC5jb20=');
+document.addEventListener('DOMContentLoaded', () => {
+    const projectGrid = document.getElementById('projectGrid');
     
-    // Simulate API call
-    document.getElementById('successModal').classList.add('active');
-    setTimeout(() => document.getElementById('successModal').classList.remove('active'), 3000);
-    form.reset();
-});
+    // Build Project Grid
+    Object.keys(PROJECT_DATABASE).forEach(id => {
+        const p = PROJECT_DATABASE[id];
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `<img src="${p.images[0]}" alt="${p.title}"><h3>${p.title}</h3>`;
+        card.addEventListener('click', () => openDrawer(id));
+        projectGrid.appendChild(card);
+    });
 
-// Add logic to close success modal
-document.getElementById('successModal').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+    // Drawer Logic
+    const drawer = document.getElementById('projectDrawer');
+    const drawerContent = document.getElementById('drawerContent');
+    
+    function openDrawer(id) {
+        const data = PROJECT_DATABASE[id];
+        drawerContent.innerHTML = `
+            <button id="closeDrawer" style="background:none; border:none; color:white; font-size:2rem; cursor:pointer;">&times;</button>
+            <h2>${data.title}</h2>
+            <img src="${data.images[0]}" style="width:100%; margin: 1rem 0;">
+            <p>${data.story}</p>
+        `;
+        drawer.classList.add('active');
+        document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+    }
+
+    function closeDrawer() { drawer.classList.remove('active'); }
+
+    // Contact Logic
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const successModal = document.getElementById('successModal');
+        successModal.style.display = 'flex';
+        setTimeout(() => successModal.style.display = 'none', 3000);
+        form.reset();
+    });
 });

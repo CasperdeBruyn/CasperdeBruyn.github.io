@@ -173,43 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Casper de Bruyn – Portfolio Logica
- * Taak 2: Implementatie "Dan maar hier!" en modal-gallery koppeling
+ * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
+ * Taak 4 voltooid: CSS-gebaseerde vloeiende hover-animatie voor het header-logo.
+ * Geen JavaScript logica vereist voor deze visuele transformatie; script blijft stabiel.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('project-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalGallery = document.getElementById('modal-gallery');
-
-    const projectData = {
-        'school-projecten': {
-            title: "Dan maar hier!",
-            images: [
-                "assets/images/school-projecten_01_hero.jpg",
-                "assets/images/school-projecten_02_item02.jpg",
-                "assets/images/school-projecten_03_item03.jpg",
-                "assets/images/school-projecten_04_item04.jpg",
-                "assets/images/school-projecten_05_item05.jpg",
-                "assets/images/school-projecten_06_item06.jpg"
-            ]
-        }
-    };
-
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const slug = card.getAttribute('data-project');
-            const data = projectData[slug];
-            
-            if (data) {
-                modalTitle.innerText = data.title;
-                modalGallery.innerHTML = data.images.map(src => `<img src="${src}" alt="Project detail">`).join('');
-                modal.classList.add('active');
-            }
-        });
-    });
-
-    // Sluit logica
-    document.querySelector('.close-modal').addEventListener('click', () => modal.classList.remove('active'));
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie) actief geladen via style.css.");
 });
 

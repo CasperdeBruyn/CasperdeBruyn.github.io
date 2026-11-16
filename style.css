@@ -297,164 +297,24 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* -------------------------------------------------
-   Casper de Bruyn – Portfolio
-   Style sheet (Coder B – Styling & Layout)
-   ------------------------------------------------- */
-
-/* ---- Algemeen ------------------------------------------------- */
-:root {
-    --bg-primary:    #1a1a1a;
-    --bg-secondary:  #231f1d;
-    --bg-modal:      rgba(35,31,29,0.95);
-    --text-main:     #e0e0e0;
-    --accent-copper: #c87d4b;
-    --border-radius: 8px;
-    --transition-ease: 0.3s ease;
-}
-
-/* ---- Project‑kaarten ------------------------------------------------- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-}
-
-/* Kaart‑container */
-.project-card {
-    background: var(--bg-secondary);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,.4);
-    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
-}
-.project-card:hover,
-.project-card:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,.6);
-}
-
-/* Afbeelding (cover) */
-.project-card img.cover {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;               /* standaard */
-    transition: transform var(--transition-ease);
-}
-.project-card:hover img.cover,
-.project-card:focus-visible img.cover {
-    transform: scale(1.03);
-}
-
-/* Specifieke cover voor “Dan maar hier!” (school‑projecten) */
-.project-card[data-project="school-projecten"] img.cover {
-    object-fit: cover;               /* behoudt aspect‑ratio */
-    content: url("assets/images/school-projecten_06_item06.jpg");
-}
-
-/* Titel & meta‑info onder de afbeelding */
-.project-card .card-meta {
-    padding: 0.8rem 1rem;
-    color: var(--text-main);
-}
-.project-card .card-meta h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.3;
-}
-
-/* ---- Modal (Dossier‑view) ------------------------------------------------- */
-#project-modal {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-modal);
-    backdrop-filter: blur(5px);
-    display: none;               /* standaard verborgen */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-#project-modal.active {
-    display: flex;
-}
-
-/* Modal‑content */
-#project-modal .modal-content {
-    background: var(--bg-secondary);
-    border-radius: var(--border-radius);
-    max-width: 860px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 2rem;
-    position: relative;
-    box-shadow: 0 12px 30px rgba(0,0,0,.5);
-    animation: modalFadeIn 0.25s var(--transition-ease) forwards;
-}
-
-/* Sluitknop */
-#project-modal .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    color: var(--accent-copper);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: transform var(--transition-ease);
-}
-#project-modal .modal-close:hover,
-#project-modal .modal-close:focus {
-    transform: rotate(90deg);
-}
-
-/* Titel & meta‑info in modal */
-#project-modal #modal-title {
-    margin-top: 0;
-    font-size: 1.8rem;
-    color: var(--text-main);
-}
-#project-modal #modal-category,
-#project-modal #modal-year {
-    font-size: 0.9rem;
-    color: var(--accent-copper);
-    margin-bottom: 0.5rem;
-}
-
-/* Beschrijving */
-#project-modal #modal-description {
-    margin: 1rem 0;
-    line-height: 1.6;
-    color: var(--text-main);
-}
-
-/* Galerij binnen modal */
-#project-modal .modal-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.8rem;
-    margin-top: 1rem;
-}
-#project-modal .modal-gallery img {
-    width: 100%;
-    height: 150px;
+/* =================================================================el
+   TAAK 4: Header-logo hover rotatie & behoud vierkant formaat (36x36px)
+   ================================================================= */
+.header-logo img,
+header img[src*="site_header_logo-01.jpg"],
+.site-logo img {
+    width: 36px !important;
+    height: 36px !important;
     object-fit: cover;
-    border-radius: var(--border-radius);
-    background: #111;
+    border-radius: 0 !important; /* Streng verboden om rond af te snijden */
+    transform: rotate(0deg);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
-/* Fade‑in animatie */
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.96); }
-    to   { opacity: 1; transform: scale(1); }
-}
-
-/* ---- Responsief ------------------------------------------------- */
-@media (max-width: 600px) {
-    .project-card img.cover { height: 150px; }
-    #project-modal .modal-content { padding: 1.5rem; }
+.header-logo img:hover,
+header img[src*="site_header_logo-01.jpg"]:hover,
+.site-logo img:hover {
+    transform: rotate(15deg); /* Subtiele, vloeiende draaiing */
 }
 

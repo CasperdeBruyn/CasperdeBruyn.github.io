@@ -173,126 +173,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Casper de Bruyn – Portfolio Logica (Coder B)
- * Taak 2: “Dan maar hier!” – hernoemen, cover‑afbeelding aanpassen
- * en volledige modal‑gallery koppelen.
+ * Casper de Bruyn – Portfolio Logica
+ * Taak 2: Implementatie "Dan maar hier!" en modal-gallery koppeling
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalGallery = document.getElementById('modal-gallery');
 
-    /* -------------------------------------------------
-       1. PROJECTDATA
-       ------------------------------------------------- */
-    const PROJECT_DATA = {
-        // ← overige projecten blijven ongewijzigd (niet getoond voor beknoptheid)
+    const projectData = {
         'school-projecten': {
             title: "Dan maar hier!",
-            category: "CMD MULTIDISCIPLINARY",
-            year: "2023‑2025",
-            description:
-                "Een verzameling van diverse ontwerpexperimenten, van typografie‑oefeningen tot vroege UI‑prototypes tijdens mijn CMD‑studie.",
             images: [
                 "assets/images/school-projecten_01_hero.jpg",
                 "assets/images/school-projecten_02_item02.jpg",
                 "assets/images/school-projecten_03_item03.jpg",
                 "assets/images/school-projecten_04_item04.jpg",
                 "assets/images/school-projecten_05_item05.jpg",
-                "assets/images/school-projecten_06_item06.jpg",
-                "assets/images/school-projecten_07_item07.jpg"
+                "assets/images/school-projecten_06_item06.jpg"
             ]
         }
-        // ← andere projecten kunnen hier worden toegevoegd
     };
 
-    /* -------------------------------------------------
-       2. MODAL ELEMENTEN
-       ------------------------------------------------- */
-    const modal          = document.getElementById('project-modal');
-    const modalTitle     = document.getElementById('modal-title');
-    const modalCat       = document.getElementById('modal-category');
-    const modalYear      = document.getElementById('modal-year');
-    const modalDesc     = document.getElementById('modal-description');
-    const modalGallery   = document.getElementById('modal-gallery');
-    const closeBtn       = modal.querySelector('.modal-close');
-
-    let previouslyFocused = null;
-
-    /* -------------------------------------------------
-       3. FUNCTIES – open / close modal
-       ------------------------------------------------- */
-    const openProject = (projectId) => {
-        const data = PROJECT_DATA[projectId];
-        if (!data) return;               // onbekend project → niets doen
-
-        // focus‑beheer
-        previouslyFocused = document.activeElement;
-
-        // vul modal‑content
-        modalTitle.textContent = data.title;
-        modalCat.textContent   = data.category;
-        modalYear.textContent  = data.year;
-        modalDesc.innerHTML    = `<p>${data.description}</p>`;
-
-        // galerij opbouwen
-        modalGallery.innerHTML = '';
-        data.images.forEach(src => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = data.title;
-            img.loading = 'lazy';
-            img.onerror = () => {
-                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23C87D4B" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[AFBEELDING ONBESCHIKBAAR]</text></svg>';
-            };
-            modalGallery.appendChild(img);
-        });
-
-        // toon modal
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
-    };
-
-    const closeModal = () => {
-        if (!modal.classList.contains('active')) return;
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        if (previouslyFocused) previouslyFocused.focus();
-    };
-
-    /* -------------------------------------------------
-       4. EVENTLISTENERS – kaarten & modal
-       ------------------------------------------------- */
-    // klik op elke project‑kaart
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
-            const id = card.getAttribute('data-project');
-            openProject(id);
+            const slug = card.getAttribute('data-project');
+            const data = projectData[slug];
+            
+            if (data) {
+                modalTitle.innerText = data.title;
+                modalGallery.innerHTML = data.images.map(src => `<img src="${src}" alt="Project detail">`).join('');
+                modal.classList.add('active');
+            }
         });
     });
 
-    // sluitknop
-    closeBtn.addEventListener('click', closeModal);
-
-    // klik buiten de modal‑content
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // ESC‑toets
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-
-    /* -------------------------------------------------
-       5. SPECIFIEKE COVER‑AFBEELDING VOOR “Dan maar hier!”
-       ------------------------------------------------- */
-    const schoolCard = document.querySelector('.project-card[data-project="school-projecten"] img.cover');
-    if (schoolCard) {
-        schoolCard.src = 'assets/images/school-projecten_06_item06.jpg';
-        schoolCard.alt = 'Dan maar hier! – cover';
-    }
-
+    // Sluit logica
+    document.querySelector('.close-modal').addEventListener('click', () => modal.classList.remove('active'));
 });
 

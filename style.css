@@ -298,17 +298,14 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /**
- * Casper de Bruyn Portfolio Styling (Coder B — Styling, Layout & Logic Builder)
- * [ACTIEVE GITHUB SKILLS: GoogleChrome/modern-web-guidance]
- * Taak 4 geverifieerd: Header-logo hover rotatie en behoud 36x36px formaat.
+ * Casper de Bruyn Portfolio Styling (Coder B — Styling & Layout Builder)
+ * Taak 4 geverifieerd: Header-logo hover rotatie & modal-ontwerp actief.
  */
 
-/* Basisvariabelen & Root definities (Dark Workshop DNA) */
 :root {
     --bg-main: #12100E;
-    --bg-secondary: #1A1715;
-    --text-main: #E6E1DC;
-    --text-muted: #9E9690;
+    --bg-secondary: #1C1917;
+    --text-main: #E6E2DD;
     --accent-copper: #C87D4B;
     --border-active: #3D3530;
     --transition-speed: 0.3s;
@@ -321,7 +318,7 @@ img[src*="site_header_logo"] {
     width: 36px !important;
     height: 36px !important;
     object-fit: cover;
-    border-radius: 4px; /* Voorkomt lelijke afsnijding, behoudt strakke vierkante vorm */
+    border-radius: 4px;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

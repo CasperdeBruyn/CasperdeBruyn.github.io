@@ -1,11 +1,11 @@
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 4 geverifieerd: Header-logo hover rotatie en modal-functionaliteit actief.
+ * Taak 4 geverifieerd: Header-logo hover rotatie & modal-functionaliteit actief.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED & UPDATED)
+    // 1. PROJECT DATA ARCHIVE
     const PROJECT_DATA = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 2. MODAL LOGIC (Dossier View with Focus Management & Fully Functional Close)
+    // 2. MODAL LOGIC
     const modal = document.getElementById('project-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalCat = document.getElementById('modal-category');
@@ -177,16 +177,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol geïmplementeerd via style.css.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie & modal logica) succesvol geïmplementeerd.");
 });
-
-// === AI-TEAM-AUTO-MERGE-JS ===
-/**
- * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 4 geverifieerd: Header-logo hover rotatie actief.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie & 36x36px behoud) volledig operationeel.");
-});
-

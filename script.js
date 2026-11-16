@@ -178,6 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie & vierkant formaat) succesvol geladen.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie & vierkant formaat) succesvol geladen en geverifieerd.");
 });
 

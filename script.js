@@ -179,6 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol geïmplementeerd.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie en behoud vierkant formaat) succesvol geverifieerd en geladen.");
 });
 

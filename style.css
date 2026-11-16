@@ -295,3 +295,206 @@ body.dark-workshop {
  */
 
 document.addEventListener
+
+/* === AI-TEAM-AUTO-MERGE-CSS === */
+:root {
+    --bg-primary: #161412;               /* Diep houtskool */
+    --bg-secondary: #231F1D;             /* Gerookt eiken */
+    --accent-copper: #B87333;            /* Koperen accent */
+    --text-main: #F4F0EA;                /* Warm wit */
+    --border-copper: 1px solid rgba(184,115,51,0.4);
+    --modal-backdrop: rgba(22,20,18,0.85);
+}
+
+/* ---- Algemeen ----------------------------------------------------------- */
+body {
+    background: var(--bg-primary);
+    color: var(--text-main);
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Project‑kaart ------------------------------------------------------- */
+.project-card[data-project="school-projecten"] {
+    /* cover‑afbeelding wordt via HTML gezet, hier alleen layout */
+    position: relative;
+    overflow: hidden;
+    border: var(--border-copper);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card[data-project="school-projecten"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+.project-card[data-project="school-projecten"] .card-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: var(--text-main);
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* ---- Modal ---------------------------------------------------------------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;               /* wordt via .active getoond */
+    align-items: center;
+    justify-content: center;
+    background: var(--modal-backdrop);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+}
+.modal.active { display: flex; }
+
+.modal-content {
+    background: var(--bg-secondary);
+    border: var(--border-copper);
+    border-radius: 6px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    transform: scale(0.98);
+    transition: transform 0.3s ease;
+}
+.modal.active .modal-content { transform: scale(1); }
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--accent-copper);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.close-modal:hover { transform: rotate(90deg); }
+
+/* ---- Modal‑body (markdown + afbeeldingen) ------------------------------- */
+#modal-body h2 {
+    margin-top: 0;
+    color: var(--accent-copper);
+}
+#modal-body img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+}
+#modal-body .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+/* ------------------------------------------------- End of style.css ------------------------------------------------- */
+
+<!-- file: script.js -->
+/* -------------------------------------------------
+   script.js – Project “Dan maar hier!” (TAAK 2)
+   -------------------------------------------------
+   Functies:
+   1. Hernoemt de kaart ‘School Archive’ naar ‘Dan maar hier!’
+   2. Vervangt de cover‑afbeelding met school‑projecten_06_item06.jpg
+   3. Laadt markdown‑tekst en alle foto’s (school‑projecten_02‑06) in de modal.
+   4. Algemene modal‑open‑/sluit‑logica (X, ESC, klik buiten).
+   ------------------------------------------------- */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.querySelector('.close-modal');
+
+    /* ---------- 1. Hernoem kaart en pas cover‑afbeelding aan ---------- */
+    const schoolCard = document.querySelector('.project-card[data-project="school-projecten"]');
+    if (schoolCard) {
+        // Titel aanpassen
+        const titleEl = schoolCard.querySelector('.card-title');
+        if (titleEl) titleEl.textContent = 'Dan maar hier!';
+
+        // Cover‑afbeelding vervangen (verondersteld dat er een <img> in de kaart zit)
+        const imgEl = schoolCard.querySelector('img');
+        if (imgEl) imgEl.src = 'assets/images/school-projecten_06_item06.jpg';
+        if (imgEl) imgEl.alt = 'Cover – Dan maar hier!';
+    }
+
+    /* ---------- 2. Functie om school‑projecten te laden ---------- */
+    async function loadSchoolProject() {
+        try {
+            // 2a. QR‑code (hero‑afbeelding) bovenaan
+            const heroImgHTML = `<img src="assets/images/school-projecten_01_hero.jpg" alt="QR‑code" style="width:100%; object-fit:contain; margin-bottom:1rem;">`;
+
+            // 2b. Markdown‑inhoud ophalen
+            const mdResponse = await fetch('scraped_archive/pages/school-projecten.md');
+            const mdText = await mdResponse.ok ? await mdResponse.text() : '*Geen beschrijving beschikbaar.*';
+            const mdHTML = (typeof marked !== 'undefined') ? marked.parse(mdText) : `<pre>${mdText}</pre>`;
+
+            // 2c. Grid met foto’s 02‑06
+            let gridHTML = '<div class="image-grid">';
+            for (let i = 2; i <= 6; i++) {
+                const num = i < 10 ? `0${i}` : i;
+                const src = `assets/images/school-projecten_${num}_item${num}.jpg`;
+                gridHTML += `<img src="${src}" alt="School project ${i}">`;
+            }
+            gridHTML += '</div>';
+
+            // 2d. Samenstellen modal‑body
+            modalBody.innerHTML = `
+                <h2>Dan maar hier!</h2>
+                ${heroImgHTML}
+                <div>${mdHTML}</div>
+                ${gridHTML}
+            `;
+
+            // 2e. Modal tonen
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } catch (err) {
+            console.error('Fout bij laden school‑projecten:', err);
+            modalBody.innerHTML = `<p>Er ging iets mis bij het laden van de projectgegevens.</p>`;
+            modal.classList.add('active');
+        }
+    }
+
+    /* ---------- 3. Algemene click‑handler voor project‑kaarten ---------- */
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const slug = card.getAttribute('data-project');
+            if (slug === 'school-projecten') {
+                loadSchoolProject();
+            } else {
+                // Placeholder voor andere projecten – hier kun je later eigen logica toevoegen
+                modalBody.innerHTML = `<p>Project “${slug}” heeft nog geen detail‑view.</p>`;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    /* ---------- 4. Modal sluiten (X, ESC, klik buiten) ---------- */
+    function closeModal() {
+        modal.classList.remove('active');
+        modalBody.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+});
+
+/* ------------------------------------------------- End of script.js ------------------------------------------------- */
+

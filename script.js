@@ -170,26 +170,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (e
-
-// === AI-TEAM-AUTO-MERGE-JS ===
-// Update van PROJECT_DATA voor 'school-projecten'
-// Hernoemd naar 'Dan maar hier!' en uitgebreid met alle school-project afbeeldingen.
-
-const PROJECT_DATA = {
-    // ... (andere projecten blijven ongewijzigd)
-    'school-projecten': {
-        title: "Dan maar hier!",
-        category: "CMD MULTIDISCIPLINARY",
-        year: "2023-2025",
-        description: "Een gecureerde selectie van diverse design experimenten, van typografie-oefeningen tot vroege UI-prototypes tijdens mijn CMD-studie.",
-        images: [
-            "assets/images/school-projecten_01_hero.jpg",
-            "assets/images/school-projecten_02_item02.jpg",
-            "assets/images/school-projecten_03_item03.jpg",
-            "assets/images/school-projecten_04_item04.jpg",
-            "assets/images/school-projecten_05_item05.jpg",
-            "assets/images/school-projecten_06_item06.jpg"
-        ]
-    }
-};
-

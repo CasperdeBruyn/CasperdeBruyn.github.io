@@ -305,39 +305,37 @@ document.addEventListener
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(35, 31, 29, 0.9);
     backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .modal.active {
+    display: flex;
     opacity: 1;
-    visibility: visible;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     background: #1a1a1a;
-    border: 1px solid #b87333; /* Koper accent */
-    color: #e0e0e0;
+    border: 1px solid #C87D4B;
+    color: #f4f4f4;
     padding: 40px;
     width: 90%;
-    max-width: 900px;
+    max-width: 800px;
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .close-modal {
     position: absolute;
     top: 20px;
     right: 30px;
-    color: #b87333;
+    color: #C87D4B;
     font-size: 40px;
     cursor: pointer;
     background: none;
@@ -346,14 +344,15 @@ document.addEventListener
 
 .modal-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
 
 .modal-gallery img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     border: 1px solid #333;
 }
 

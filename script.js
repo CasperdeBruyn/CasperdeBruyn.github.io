@@ -86,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["assets/images/hu-begeleidt_01_hero.jpg"]
         },
         'school-projecten': {
-            title: "School Archive",
+            title: "Dan maar hier!",
             category: "CMD MULTIDISCIPLINARY",
             year: "2023-2025",
             description: "A curated selection of various design experiments, from typography exercises to early UI prototypes during my CMD studies.",
-            images: ["assets/images/school-projecten_01_hero.jpg"]
+            images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
         }
     };
 
@@ -174,27 +174,32 @@ document.addEventListener('DOMContentLoaded', () => {
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn Portfolio Logic (Coder B)
- * TAAK 2: 'Dan maar hier!' implementatie
+ * TAAK 2: 'Dan maar hier!' implementatie & Modal Data Mapping
  */
+
+// Update van de data voor 'school-projecten'
+const PROJECT_DATA = {
+    // ... (andere projecten blijven gelijk)
+    'school-projecten': {
+        title: "Dan maar hier!",
+        category: "CMD MULTIDISCIPLINARY",
+        year: "2023-2025",
+        description: "Een verzameling van diverse ontwerpexperimenten, van typografie-oefeningen tot vroege UI-prototypes tijdens mijn CMD-studie.",
+        images: [
+            "assets/images/school-projecten_01_hero.jpg",
+            "assets/images/school-projecten_06_item06.jpg"
+        ]
+    }
+};
 
 const modal = document.getElementById('project-modal');
 const modalBody = document.getElementById('modal-body');
 const closeBtn = document.querySelector('.close-modal');
 
-// Event Delegation voor projectkaarten
-document.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card');
-    if (card) {
-        const projectId = card.getAttribute('data-project');
-        openProject(projectId);
-    }
-});
-
 const openProject = (id) => {
     const data = PROJECT_DATA[id];
     if (!data) return;
 
-    // Vul modal content
     modalBody.innerHTML = `
         <h2>${data.title}</h2>
         <p><strong>${data.category} | ${data.year}</strong></p>
@@ -217,6 +222,14 @@ const closeProject = () => {
     modal.classList.remove('active');
 };
 
+// Event Listeners
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+        openProject(card.getAttribute('data-project'));
+    });
+});
+
 closeBtn.addEventListener('click', closeProject);
 window.addEventListener('click', (e) => { if (e.target === modal) closeProject(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProject(); });
 

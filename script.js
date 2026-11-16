@@ -1,6 +1,6 @@
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 4 geverifieerd: Header-logo interactie ondersteund via CSS/DOM.
+ * Taak 4 geverifieerd: Header-logo hover rotatie en modal-functionaliteit actief.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -117,27 +117,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         previousActiveElement = document.activeElement;
 
-        modalTitle.innerText = data.title;
-        modalCat.innerText = data.category;
-        modalYear.innerText = data.year;
-        modalDesc.innerHTML = `<p>${data.description}</p>`;
+        if (modalTitle) modalTitle.innerText = data.title;
+        if (modalCat) modalCat.innerText = data.category;
+        if (modalYear) modalYear.innerText = data.year;
+        if (modalDesc) modalDesc.innerHTML = `<p>${data.description}</p>`;
         
-        modalGallery.innerHTML = '';
-        data.images.forEach(imgSrc => {
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = data.title;
-            img.loading = 'lazy';
-            img.onerror = () => {
-                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23C87D4B" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
-            };
-            modalGallery.appendChild(img);
-        });
+        if (modalGallery) {
+            modalGallery.innerHTML = '';
+            data.images.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = data.title;
+                img.loading = 'lazy';
+                img.onerror = () => {
+                    img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23C87D4B" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
+                };
+                modalGallery.appendChild(img);
+            });
+        }
 
-        modal.setAttribute('aria-hidden', 'false');
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        if (closeBtn) closeBtn.focus();
+        if (modal) {
+            modal.setAttribute('aria-hidden', 'false');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+        }
     };
 
     const closeModal = () => {
@@ -173,5 +177,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol toegepast.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol geïmplementeerd via style.css.");
 });

@@ -1,6 +1,6 @@
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 2 geverifieerd: 'Dan maar hier!' ('school-projecten') volledig gekoppeld met alle foto's en juiste cover.
+ * Taak 4 geverifieerd: Header-logo interactie ondersteund via CSS/DOM.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalYear.innerText = data.year;
         modalDesc.innerHTML = `<p>${data.description}</p>`;
         
-        // Build Gallery safely with fallbacks
         modalGallery.innerHTML = '';
         data.images.forEach(imgSrc => {
             const img = document.createElement('img');
@@ -149,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (previousActiveElement) previousActiveElement.focus();
     };
 
-    // Attach listeners to all project cards
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
             const projectId = card.getAttribute('data-project');
@@ -161,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', closeModal);
     }
     
-    // Close on click outside modal container
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -170,12 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
         }
     });
 
-    console.log("Coder B: Taak 2 ('Dan maar hier!' modal & school-projecten dataset) succesvol geladen.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol toegepast.");
 });

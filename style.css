@@ -308,11 +308,12 @@ header img[src*="site_header_logo-01.jpg"],
     width: 36px !important;
     height: 36px !important;
     object-fit: cover;
-    border-radius: 0 !important; /* geen ronde afsnijding */
+    border-radius: 0 !important; /* Forceert vierkante hoeken */
     transform: rotate(0deg);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     display: block;
+    cursor: pointer;
 }
 
 /* Subtiele, vloeiende draaiing bij hover */

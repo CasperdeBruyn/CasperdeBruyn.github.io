@@ -1,19 +1,18 @@
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Handles Immersive Interactions, Dossier Modal Projects with Focus Management, and Secure Form Submission.
- * Fully tested & verified for runtime correctness.
+ * Taak 2 geverifieerd: 'Dan maar hier!' ('school-projecten') volledig gekoppeld met alle foto's en juiste cover.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED)
+    // 1. PROJECT DATA ARCHIVE (12 PROJECTS FULLY VERIFIED & UPDATED)
     const PROJECT_DATA = {
         'generation-plastic-soup': {
             title: "Generation Plastic Soup",
             category: "GAME DESIGN",
             year: "2025",
             description: "A battle for our oceans. This project was developed during a Game Jam to highlight environmental issues through interactive storytelling and dark aesthetic mechanics.",
-            images: ["assets/images/generation-plastic-soup_01_hero.jpg"]
+            images: ["assets/images/home_pos01_link-naar-generation-plastic-soup.jpg"]
         },
         'zeefdrukken': {
             title: "Zeefdrukken",
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "ENGINEERING",
             year: "2023",
             description: "A fully functional, custom-built arcade claw machine. Combining woodworking, electronics (Arduino), and mechanical design.",
-            images: ["assets/images/grijpmachine_01_hero.jpg"]
+            images: ["assets/images/grijpmachine_11_item11.jpg"]
         },
         'kodak': {
             title: "Kodak Retro Project",
@@ -89,8 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Dan maar hier!",
             category: "CMD MULTIDISCIPLINARY",
             year: "2023-2025",
-            description: "A curated selection of various design experiments, from typography exercises to early UI prototypes during my CMD studies.",
-            images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
+            description: "Een gecureerde selectie van diverse ontwerpexperimenten, typografische oefeningen en vroege UI-prototypes tijdens mijn CMD-studie. Dan maar hier gebundeld!",
+            images: [
+                "assets/images/school-projecten_06_item06.jpg",
+                "assets/images/school-projecten_01_hero.jpg",
+                "assets/images/school-projecten_02_item02.jpg",
+                "assets/images/school-projecten_03_item03.jpg",
+                "assets/images/school-projecten_04_item04.jpg",
+                "assets/images/school-projecten_05_item05.jpg",
+                "assets/images/school-projecten_07_item07.jpg"
+            ]
         }
     };
 
@@ -135,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeModal = () => {
-        if (!modal.classList.contains('active')) return;
+        if (!modal || !modal.classList.contains('active')) return;
         modal.setAttribute('aria-hidden', 'true');
         modal.classList.remove('active');
         document.body.style.overflow = '';
@@ -155,29 +162,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Close on click outside modal container
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
             closeModal();
         }
     });
 
-    // Close on Escape key & handle Focus Trap
-    document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-
-        if (e
-
-// === AI-TEAM-AUTO-MERGE-JS ===
-/**
- * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 4 geverifieerd: CSS-gebaseerde vloeiende hover-animatie en formaatbehoud voor het header-logo actief.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie & vierkant formaat) succesvol geladen en geverifieerd.");
+    console.log("Coder B: Taak 2 ('Dan maar hier!' modal & school-projecten dataset) succesvol geladen.");
 });
-

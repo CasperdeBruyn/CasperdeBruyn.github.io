@@ -297,62 +297,164 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* Modal Dossier Styling */
-.modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(35, 31, 29, 0.9);
-    backdrop-filter: blur(8px);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* -------------------------------------------------
+   Casper de Bruyn – Portfolio
+   Style sheet (Coder B – Styling & Layout)
+   ------------------------------------------------- */
+
+/* ---- Algemeen ------------------------------------------------- */
+:root {
+    --bg-primary:    #1a1a1a;
+    --bg-secondary:  #231f1d;
+    --bg-modal:      rgba(35,31,29,0.95);
+    --text-main:     #e0e0e0;
+    --accent-copper: #c87d4b;
+    --border-radius: 8px;
+    --transition-ease: 0.3s ease;
 }
 
-.modal.active {
-    display: flex;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: #1a1a1a;
-    border: 1px solid #C87D4B;
-    color: #f4f4f4;
-    padding: 40px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-}
-
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #C87D4B;
-    font-size: 40px;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-.modal-gallery {
+/* ---- Project‑kaarten ------------------------------------------------- */
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
 }
 
-.modal-gallery img {
+/* Kaart‑container */
+.project-card {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
+}
+.project-card:hover,
+.project-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.6);
+}
+
+/* Afbeelding (cover) */
+.project-card img.cover {
     width: 100%;
     height: 200px;
+    object-fit: cover;               /* standaard */
+    transition: transform var(--transition-ease);
+}
+.project-card:hover img.cover,
+.project-card:focus-visible img.cover {
+    transform: scale(1.03);
+}
+
+/* Specifieke cover voor “Dan maar hier!” (school‑projecten) */
+.project-card[data-project="school-projecten"] img.cover {
+    object-fit: cover;               /* behoudt aspect‑ratio */
+    content: url("assets/images/school-projecten_06_item06.jpg");
+}
+
+/* Titel & meta‑info onder de afbeelding */
+.project-card .card-meta {
+    padding: 0.8rem 1rem;
+    color: var(--text-main);
+}
+.project-card .card-meta h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+/* ---- Modal (Dossier‑view) ------------------------------------------------- */
+#project-modal {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-modal);
+    backdrop-filter: blur(5px);
+    display: none;               /* standaard verborgen */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+#project-modal.active {
+    display: flex;
+}
+
+/* Modal‑content */
+#project-modal .modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    max-width: 860px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0,0,0,.5);
+    animation: modalFadeIn 0.25s var(--transition-ease) forwards;
+}
+
+/* Sluitknop */
+#project-modal .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--accent-copper);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-ease);
+}
+#project-modal .modal-close:hover,
+#project-modal .modal-close:focus {
+    transform: rotate(90deg);
+}
+
+/* Titel & meta‑info in modal */
+#project-modal #modal-title {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: var(--text-main);
+}
+#project-modal #modal-category,
+#project-modal #modal-year {
+    font-size: 0.9rem;
+    color: var(--accent-copper);
+    margin-bottom: 0.5rem;
+}
+
+/* Beschrijving */
+#project-modal #modal-description {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+/* Galerij binnen modal */
+#project-modal .modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+#project-modal .modal-gallery img {
+    width: 100%;
+    height: 150px;
     object-fit: cover;
-    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    background: #111;
+}
+
+/* Fade‑in animatie */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Responsief ------------------------------------------------- */
+@media (max-width: 600px) {
+    .project-card img.cover { height: 150px; }
+    #project-modal .modal-content { padding: 1.5rem; }
 }
 

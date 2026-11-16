@@ -170,3 +170,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (e
+
+// === AI-TEAM-AUTO-MERGE-JS ===
+/**
+ * Casper de Bruyn Portfolio Logic (Coder B)
+ * TAAK 2: 'Dan maar hier!' implementatie
+ */
+
+const modal = document.getElementById('project-modal');
+const modalBody = document.getElementById('modal-body');
+const closeBtn = document.querySelector('.close-modal');
+
+// Event Delegation voor projectkaarten
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.project-card');
+    if (card) {
+        const projectId = card.getAttribute('data-project');
+        openProject(projectId);
+    }
+});
+
+const openProject = (id) => {
+    const data = PROJECT_DATA[id];
+    if (!data) return;
+
+    // Vul modal content
+    modalBody.innerHTML = `
+        <h2>${data.title}</h2>
+        <p><strong>${data.category} | ${data.year}</strong></p>
+        <p>${data.description}</p>
+        <div class="modal-gallery" id="modal-gallery"></div>
+    `;
+
+    const gallery = document.getElementById('modal-gallery');
+    data.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = data.title;
+        gallery.appendChild(img);
+    });
+
+    modal.classList.add('active');
+};
+
+const closeProject = () => {
+    modal.classList.remove('active');
+};
+
+closeBtn.addEventListener('click', closeProject);
+window.addEventListener('click', (e) => { if (e.target === modal) closeProject(); });
+

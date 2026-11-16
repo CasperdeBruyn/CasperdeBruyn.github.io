@@ -1,13 +1,14 @@
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 1: klikbare .project-card → modal met volledige data + galerij
+ * Taak 1‑5: klikbare project‑kaarten → modal met volledige data + galerij,
+ *          micro‑interacties, responsive details.
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* -----------------------------------------------------------------
-       1. PROJECT DATA
+       1. PROJECT DATA (incl. de 3 nieuwe projecten)
        ----------------------------------------------------------------- */
     const PROJECT_DATA = {
         'generation-plastic-soup': {
@@ -59,7 +60,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 "assets/images/school-projecten_05_item05.jpg",
                 "assets/images/school-projecten_07_item07.jpg"
             ]
+        },
+
+        /* ----- Nieuwe projecten (taak 5) ----- */
+        'vr-learning-lab': {
+            title: "Stage bij VR Learning Lab",
+            category: "INTERNSHIP",
+            year: "2024",
+            description: "Ontwikkeling van interactieve VR‑trainingen voor industriële safety‑scenario’s. Verantwoordelijk voor concept‑design, asset‑creatie en Unity‑integratie.",
+            images: [
+                "assets/images/placeholder_vr_01.jpg",
+                "assets/images/placeholder_vr_02.jpg"
+            ]
+        },
+        'royal-system-kast': {
+            title: "DIY Royal System kast",
+            category: "PERSONAL PROJECT",
+            year: "2023",
+            description: "Een modulair opslagsysteem geïnspireerd op de klassieke Royal‑System. Gemaakt van gerecycled hout, met magnetische sluitingen en CNC‑geprofileerde panelen.",
+            images: [
+                "assets/images/placeholder_royal_01.jpg",
+                "assets/images/placeholder_royal_02.jpg"
+            ]
+        },
+        'linux-ai-homelab': {
+            title: "Linux AI Homelab",
+            category: "DEVOPS / AI",
+            year: "2024",
+            description: "Zelfgebouwde homelab op Debian‑basis met GPU‑acceleratie, Docker‑orchestratie en LLM‑inference. Documentatie en scripts beschikbaar op GitHub.",
+            images: [
+                "assets/images/placeholder_homelab_01.jpg",
+                "assets/images/placeholder_homelab_02.jpg"
+            ]
         }
+
         // … overige projecten blijven ongewijzigd …
     };
 
@@ -72,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalYear      = document.getElementById('modal-year');
     const modalDesc      = document.getElementById('modal-description');
     const modalGallery   = document.getElementById('modal-gallery');
-    const modalExtra     = document.getElementById('modal-extra');   // optioneel HTML‑content
+    const modalExtra     = document.getElementById('modal-extra');   // optioneel
     const closeBtn       = document.querySelector('.modal-close');
     let previousActiveElement = null;
 
@@ -81,19 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
        ----------------------------------------------------------------- */
     const openProject = (id) => {
         const data = PROJECT_DATA[id];
-        if (!data) return;
+        if (!data) {
+            console.warn(`Geen data gevonden voor project-id: ${id}`);
+            return;
+        }
 
         previousActiveElement = document.activeElement;
 
-        // Titel, categorie, jaar
-        modalTitle.innerText   = data.title;
-        modalCat.innerText     = data.category;
-        modalYear.innerText    = data.year;
+        // Vul basis‑velden
+        modalTitle.textContent   = data.title;
+        modalCat.textContent     = data.category;
+        modalYear.textContent    = data.year;
+        modalDesc.innerHTML      = `<p>${data.description}</p>`;
 
-        // Beschrijving
-        modalDesc.innerHTML = `<p>${data.description}</p>`;
-
-        // Afbeeldingen‑galerij
+        // Galerij opbouwen
         modalGallery.innerHTML = '';
         data.images.forEach(src => {
             const img = document.createElement('img');
@@ -101,18 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
             img.alt = data.title;
             img.loading = 'lazy';
             img.onerror = () => {
-                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23C87D4B" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
+                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23B87333" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
             };
             modalGallery.appendChild(img);
         });
 
-        // Optioneel: extra HTML‑content uit scraped_archive/pages/
+        // Optionele extra HTML (bijv. uitgebreide case‑study)
         if (modalExtra) {
             fetch(`scraped_archive/pages/${id}.html`)
                 .then(r => r.ok ? r.text() : '')
-                .then(html => {
-                    modalExtra.innerHTML = html;
-                })
+                .then(html => { modalExtra.innerHTML = html; })
                 .catch(() => { modalExtra.innerHTML = ''; });
         }
 
@@ -134,17 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -----------------------------------------------------------------
        4. EVENT LISTENERS
        ----------------------------------------------------------------- */
-    // Klik op elke project‑kaart
+    // Klik / toetsenbord op elke project‑kaart
     document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const projectId = card.getAttribute('data-project');
-            openProject(projectId);
-        });
-        // Toegankelijkheid: ook via Enter/Space
+        const projectId = card.getAttribute('data-project');
+
+        // Click
+        card.addEventListener('click', () => openProject(projectId));
+
+        // Toegankelijkheid: Enter & Space
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const projectId = card.getAttribute('data-project');
                 openProject(projectId);
             }
         });
@@ -165,5 +198,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeModal();
     });
 
-    console.log("Coder B: taak 1 (klikbare project‑kaarten + modal) geïmplementeerd.");
+    console.log("Coder B: taken 1‑5 (modal, data, micro‑interacties, responsive) geïmplementeerd.");
 });

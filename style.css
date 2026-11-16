@@ -301,13 +301,14 @@ document.addEventListener
    TAAK 4: Header-logo hover rotatie & behoud vierkant formaat (36x36px)
    ================================================================== */
 
-.header-logo img,
+/* Specifieke target voor het header-logo */
 header img[src*="site_header_logo-01.jpg"],
+.header-logo img,
 .site-logo img {
     width: 36px !important;
     height: 36px !important;
     object-fit: cover;
-    border-radius: 0 !important; /* Zorgt ervoor dat het logo niet rond wordt afgesneden */
+    border-radius: 0 !important; /* Forceert vierkante hoeken */
     transform: rotate(0deg);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
@@ -316,8 +317,8 @@ header img[src*="site_header_logo-01.jpg"],
 }
 
 /* Subtiele, vloeiende rotatie bij hover */
-.header-logo img:hover,
 header img[src*="site_header_logo-01.jpg"]:hover,
+.header-logo img:hover,
 .site-logo img:hover {
     transform: rotate(15deg);
 }

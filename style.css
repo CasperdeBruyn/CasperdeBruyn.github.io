@@ -300,22 +300,25 @@ document.addEventListener
 /* ==================================================================
    TAAK 4: Header-logo hover rotatie & behoud vierkant formaat (36x36px)
    ================================================================== */
+
+/* Zorgt dat het logo vierkant blijft en niet rond wordt afgeknipt */
 .header-logo img,
 header img[src*="site_header_logo-01.jpg"],
 .site-logo img {
     width: 36px !important;
     height: 36px !important;
     object-fit: cover;
-    border-radius: 0 !important; /* Voorkomt afronding van het logo */
+    border-radius: 0 !important; /* geen ronde afsnijding */
     transform: rotate(0deg);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     display: block;
 }
 
+/* Subtiele, vloeiende draaiing bij hover */
 .header-logo img:hover,
 header img[src*="site_header_logo-01.jpg"]:hover,
 .site-logo img:hover {
-    transform: rotate(15deg); /* Subtiele, vloeiende draaiing */
+    transform: rotate(15deg);
 }
 

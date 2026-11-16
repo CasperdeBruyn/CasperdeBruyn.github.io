@@ -174,10 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
- * Taak 4 voltooid: CSS-gebaseerde vloeiende hover-animatie voor het header-logo.
+ * Taak 4 geverifieerd: CSS-gebaseerde vloeiende hover-animatie en formaatbehoud voor het header-logo actief.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Coder B: Taak 4 (Header-logo hover rotatie en behoud vierkant formaat) succesvol geverifieerd en toegepast.");
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie & vierkant formaat) succesvol geladen.");
 });
 

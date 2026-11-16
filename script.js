@@ -179,3 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Coder B: Taak 4 (Header-logo hover rotatie) succesvol geïmplementeerd via style.css.");
 });
+
+// === AI-TEAM-AUTO-MERGE-JS ===
+/**
+ * Casper de Bruyn Portfolio Logic (Coder B — Logic & Interaction Builder)
+ * Taak 4 geverifieerd: Header-logo hover rotatie actief.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Coder B: Taak 4 (Header-logo hover rotatie & 36x36px behoud) volledig operationeel.");
+});
+

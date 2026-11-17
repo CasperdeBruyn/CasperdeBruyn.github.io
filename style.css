@@ -441,3 +441,115 @@ document.addEventListener
     }
 }
 
+
+/* === TAAK 1A, 1B & 2B: SPLIT MODAL (TEKST LINKS, CAROUSEL RECHTS) & GEEN AFGESNEDEN FOTO'S === */
+.card-image {
+    background: #161412 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.card-image img, .project-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #161412 !important;
+}
+#project-modal .modal-content, .modal-container {
+    max-width: 1180px !important;
+    width: 92vw !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+    background: #231F1D !important;
+    border: 1px solid rgba(200, 125, 75, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+}
+.modal-split-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1.15fr !important;
+    gap: 2.2rem !important;
+    align-items: start !important;
+}
+@media (max-width: 860px) {
+    .modal-split-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+.modal-left-text {
+    color: #F4F1EA !important;
+    line-height: 1.7 !important;
+    max-height: 72vh !important;
+    overflow-y: auto !important;
+    padding-right: 0.75rem !important;
+}
+.modal-right-carousel {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    background: #161412 !important;
+    padding: 1.25rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(244, 241, 234, 0.08) !important;
+}
+.carousel-stage {
+    width: 100% !important;
+    height: 52vh !important;
+    max-height: 520px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+.carousel-stage img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+}
+.carousel-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 1rem !important;
+}
+.carousel-btn {
+    background: #231F1D !important;
+    color: #F4F1EA !important;
+    border: 1px solid #C87D4B !important;
+    padding: 0.5rem 1.1rem !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+.carousel-btn:hover {
+    background: #C87D4B !important;
+    color: #161412 !important;
+}
+.carousel-dots {
+    display: flex !important;
+    gap: 0.4rem !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+.carousel-thumb {
+    width: 48px !important;
+    height: 36px !important;
+    object-fit: contain !important;
+    background: #161412 !important;
+    border: 1px solid rgba(244,241,234,0.2) !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    opacity: 0.55 !important;
+}
+.carousel-thumb.active {
+    border-color: #C87D4B !important;
+    opacity: 1 !important;
+}

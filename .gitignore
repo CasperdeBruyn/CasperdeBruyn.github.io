@@ -1,12 +1,9 @@
-# Lokale AI-Team & Werkmappen (NIET publiek op GitHub)
-design_dna/
-portfolio content (nog te uploaden)/
-scraped_archive/
-IMAGE_MANIFEST.md
+# Houd alle AI-instructies, stijlbestanden en lokale archieven 100% lokaal!
+stijl_en_kleuren.md
 TEAM_INSTRUCTIONS.txt
-team_state.json
-*.bak
-.DS_Store
+design_dna/
+scraped_archive/
+portfolio content*/
+*.log
 __pycache__/
-feedback_from_casper.txt
-*feedback*.txt
+.DS_Store

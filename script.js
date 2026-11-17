@@ -323,3 +323,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+// === SPLIT MODAL CAROUSEL & LIVE YEAR UPGRADE (TAAK 1A, 1B, 2B, 3) ===
+document.addEventListener('DOMContentLoaded', () => {
+    const yrSpan = document.getElementById('live-archive-year');
+    if (yrSpan) yrSpan.textContent = new Date().getFullYear();
+    document.querySelectorAll('.hero-tag, .system-status, .status-badge, p, span').forEach(el => {
+        if (el.children.length === 0 && /C(?:MD|DB)_ARCHIVE_\d{4}/i.test(el.textContent)) {
+            el.textContent = el.textContent.replace(/C(?:MD|DB)_ARCHIVE_\d{4}/gi, 'CDB_ARCHIVE_' + new Date().getFullYear());
+        }
+    });
+
+    const modal = document.getElementById('project-modal');
+    const modalGallery = document.getElementById('modal-gallery');
+    const modalDesc = document.getElementById('modal-desc');
+    if (modal && modalGallery && modalDesc && !modal.querySelector('.modal-split-layout')) {
+        const parentBox = modalDesc.parentElement;
+        if (parentBox) {
+            const splitWrap = document.createElement('div');
+            splitWrap.className = 'modal-split-layout';
+            const leftCol = document.createElement('div');
+            leftCol.className = 'modal-left-text';
+            const rightCol = document.createElement('div');
+            rightCol.className = 'modal-right-carousel';
+            parentBox.insertBefore(splitWrap, modalDesc);
+            leftCol.appendChild(modalDesc);
+            rightCol.appendChild(modalGallery);
+            splitWrap.appendChild(leftCol);
+            splitWrap.appendChild(rightCol);
+        }
+    }
+
+    // Maak van #modal-gallery automatisch een interactieve carousel zodra er foto's in worden geladen
+    if (modalGallery) {
+        const observer = new MutationObserver(() => {
+            if (modalGallery.dataset.carouselBuilding === '1') return;
+            const rawImgs = Array.from(modalGallery.querySelectorAll('img')).map(im => im.getAttribute('src')).filter(Boolean);
+            if (rawImgs.length === 0 || modalGallery.querySelector('.carousel-stage')) return;
+
+            modalGallery.dataset.carouselBuilding = '1';
+            let curIdx = 0;
+
+            const renderCarousel = () => {
+                modalGallery.innerHTML = `
+                    <div class="carousel-stage">
+                        <img src="${rawImgs[curIdx]}" alt="Project slide ${curIdx + 1}">
+                    </div>
+                    <div class="carousel-controls">
+                        <button type="button" class="carousel-btn" id="car-prev">← Prev</button>
+                        <span style="color:#F4F1EA;font-size:0.9rem;">${curIdx + 1} / ${rawImgs.length}</span>
+                        <button type="button" class="carousel-btn" id="car-next">Next →</button>
+                    </div>
+                    <div class="carousel-dots">
+                        ${rawImgs.map((src, idx) => `<img src="${src}" class="carousel-thumb ${idx === curIdx ? 'active' : ''}" data-idx="${idx}" alt="thumb">`).join('')}
+                    </div>
+                `;
+                const prevBtn = modalGallery.querySelector('#car-prev');
+                const nextBtn = modalGallery.querySelector('#car-next');
+                if (prevBtn) prevBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx - 1 + rawImgs.length) % rawImgs.length; renderCarousel(); };
+                if (nextBtn) nextBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx + 1) % rawImgs.length; renderCarousel(); };
+                modalGallery.querySelectorAll('.carousel-thumb').forEach(th => {
+                    th.onclick = (ev) => { ev.stopPropagation(); curIdx = parseInt(th.dataset.idx, 10) || 0; renderCarousel(); };
+                });
+            };
+            renderCarousel();
+            modalGallery.dataset.carouselBuilding = '0';
+        });
+        observer.observe(modalGallery, { childList: true });
+    }
+});

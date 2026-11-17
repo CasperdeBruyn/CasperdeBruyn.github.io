@@ -307,7 +307,8 @@ document.addEventListener
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 9998;
+    mix-blend-mode: screen;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23C87D4B' stroke-width='1.35' stroke-linecap='round' opacity='0.55'%3E%3Cpath d='M10 20h35l15 15v30M70 10v30l20 20h40M20 90h30l15-15h25l15 15v35M95 110h35M15 125h45l15-15'/%3E%3Ccircle cx='10' cy='20' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='60' cy='65' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='70' cy='10' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='130' cy='60' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='20' cy='90' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='105' cy='125' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='95' cy='110' r='2.5' fill='%23C87D4B'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 140px 140px;
     -webkit-mask-image: radial-gradient(240px circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);

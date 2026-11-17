@@ -297,9 +297,11 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==============================
-   Modal & Carousel Layout (Taak 1A)
-   ============================== */
+/* ==========================================================================
+   Coder B: Stijl voor Modale Pop-up & Carrousel (Taak 1A)
+   Skill: GoogleChrome/modern-web-guidance
+   ================================================================---------- */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -311,6 +313,7 @@ document.addEventListener
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .modal-overlay.active {
@@ -318,41 +321,43 @@ document.addEventListener
   pointer-events: auto;
 }
 
-.modal-container {
-  position: relative;
+.modal {
   background: var(--bg-secondary, #231F1D);
   color: var(--text-light, #F4F1EA);
   width: 90vw;
   max-width: 1100px;
-  height: 80vh;
-  max-height: 700px;
+  height: 85vh;
+  max-height: 750px;
   border-radius: 12px;
   display: flex;
   flex-direction: row;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .modal-close {
   position: absolute;
   top: 15px;
   right: 20px;
-  background: transparent;
+  background: none;
   border: none;
   color: var(--text-light, #F4F1EA);
-  font-size: 2rem;
+  font-size: 2.2rem;
   cursor: pointer;
   z-index: 10;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
+  line-height: 1;
 }
 
 .modal-close:hover {
   color: var(--accent, #C87D4B);
 }
 
+/* Linkerkant: Projecttekst en metadata */
 .modal-left {
   flex: 1;
-  padding: 40px 30px;
+  padding: 40px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -360,14 +365,15 @@ document.addEventListener
 }
 
 .modal-left h2 {
-  margin: 0;
   font-size: 2rem;
+  margin: 0 0 5px 0;
   color: var(--text-light, #F4F1EA);
 }
 
 .modal-meta {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--accent, #C87D4B);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -376,16 +382,18 @@ document.addEventListener
   font-size: 1rem;
   line-height: 1.6;
   white-space: pre-line;
-  opacity: 0.9;
+  color: rgba(244, 241, 234, 0.85);
+  margin-top: 10px;
 }
 
+/* Rechterkant: Carrousel en afbeeldingen */
 .modal-right {
-  flex: 1;
+  flex: 1.2;
   background: #000;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .carousel-viewport {
@@ -394,20 +402,21 @@ document.addEventListener
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 30px;
 }
 
 .carousel-viewport img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Cruciaal: foto's passen in kader en worden niet afgesneden */
+  object-fit: contain; /* Zorgt ervoor dat foto's passen in het kader en niet worden afgesneden */
+  border-radius: 4px;
 }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   font-size: 1.5rem;
@@ -418,23 +427,30 @@ document.addEventListener
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 5;
 }
 
 .carousel-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--accent, #C87D4B);
+  transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-btn.prev { left: 15px; }
-.carousel-btn.next { right: 15px; }
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
 
+/* Responsieve aanpassing voor mobiel */
 @media (max-width: 768px) {
-  .modal-container {
+  .modal {
     flex-direction: column;
     height: 90vh;
+    width: 95vw;
   }
   .modal-left, .modal-right {
     flex: 1;
+  }
+  .modal-left {
+    padding: 20px;
   }
 }
 

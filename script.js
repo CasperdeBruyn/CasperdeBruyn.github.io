@@ -252,35 +252,38 @@ My portfolio likes cookies :]",
 });
 
 // === AI-TEAM-AUTO-MERGE-JS ===
-// Skill: GoogleChrome/modern-web-guidance
 /**
- * Casper de Bruyn – Modal & Carousel Logic (Coder B)
- * Taak 1A: Volledige pop-up met projecttekst links, carrousel rechts en object-fit contain.
+ * Coder B: Modal & Carrousel Logica (Taak 1A)
+ * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Selecteer benodigde DOM elementen
-    const modalOverlay = document.createElement('div');
-    modalOverlay.className = 'modal-overlay';
-    modalOverlay.innerHTML = `
-        <div class="modal-container">
-            <button class="modal-close" aria-label="Sluit pop-up">&times;</button>
-            <div class="modal-left">
-                <h2 id="modal-title"></h2>
-                <div class="modal-meta"><span id="modal-category"></span> &bull; <span id="modal-year"></span></div>
-                <div class="modal-description" id="modal-desc"></div>
-            </div>
-            <div class="modal-right">
-                <div class="carousel-viewport">
-                    <img id="carousel-img" src="" alt="Project afbeelding">
+    // 1. Injecteer de modal structuur in de DOM als deze nog niet bestaat
+    if (!document.getElementById('project-modal')) {
+        const modalOverlay = document.createElement('div');
+        modalOverlay.id = 'project-modal';
+        modalOverlay.className = 'modal-overlay';
+        modalOverlay.innerHTML = `
+            <div class="modal">
+                <button class="modal-close" aria-label="Sluit pop-up">&times;</button>
+                <div class="modal-left">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-meta"><span id="modal-category"></span> &bull; <span id="modal-year"></span></div>
+                    <div class="modal-description" id="modal-desc"></div>
                 </div>
-                <button class="carousel-btn prev" aria-label="Vorige foto">&#10094;</button>
-                <button class="carousel-btn next" aria-label="Volgende foto">&#10095;</button>
+                <div class="modal-right">
+                    <div class="carousel-viewport">
+                        <img id="carousel-img" src="" alt="Project afbeelding">
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Vorige foto">&#10094;</button>
+                    <button class="carousel-btn next" aria-label="Volgende foto">&#10095;</button>
+                </div>
             </div>
-        </div>
-    `;
-    document.body.appendChild(modalOverlay);
+        `;
+        document.body.appendChild(modalOverlay);
+    }
 
+    const modalOverlay = document.getElementById('project-modal');
     const titleEl = document.getElementById('modal-title');
     const categoryEl = document.getElementById('modal-category');
     const yearEl = document.getElementById('modal-year');
@@ -299,9 +302,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 2. Open de modal en laad de juiste projectdata + afbeeldingen
     window.openProjectModal = function(projectKey) {
+        if (typeof PROJECT_DATA === 'undefined' || !PROJECT_DATA[projectKey]) return;
         const project = PROJECT_DATA[projectKey];
-        if (!project) return;
 
         titleEl.textContent = project.title;
         categoryEl.textContent = project.category;
@@ -316,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
     };
 
+    // 3. Sluit de modal
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
@@ -332,28 +337,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 4. Carrousel navigatie knoppen
     prevBtn.addEventListener('click', () => {
-        if (currentImages.length > 0) {
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            updateCarouselImage();
-        }
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateCarouselImage();
     });
 
     nextBtn.addEventListener('click', () => {
-        if (currentImages.length > 0) {
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            updateCarouselImage();
-        }
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateCarouselImage();
     });
 
-    // Koppel klikhandlers aan projectkaarten
-    document.querySelectorAll('.project-card, [data-project]').forEach(card => {
-        card.addEventListener('click', () => {
+    // 5. Koppel klikgedrag aan alle elementen met een data-project attribuut
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('[data-project]');
+        if (card) {
             const projectKey = card.getAttribute('data-project');
-            if (projectKey && PROJECT_DATA[projectKey]) {
-                openProjectModal(projectKey);
+            if (projectKey) {
+                window.openProjectModal(projectKey);
             }
-        });
+        }
     });
 });
 

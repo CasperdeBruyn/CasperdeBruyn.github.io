@@ -327,26 +327,29 @@ document.addEventListener('DOMContentLoaded', () => {
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 11: Volledige interactiviteit, modal-logica, dynamisch jaar en carousel.
+ * Optimalisatie & Modal/Carousel Interactie
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. Dynamisch Jaartal voor Archief */
+    /* -----------------------------------------------------------------
+       1. Dynamisch Jaartal (CMD_ARCHIVE) & Initialisatie
+       ----------------------------------------------------------------- */
     const currentYear = new Date().getFullYear();
     const archiveYearEl = document.getElementById('cmd-archive-year');
     if (archiveYearEl) {
         archiveYearEl.textContent = currentYear;
     }
 
-    /* 2. Modal & Carousel State */
+    /* -----------------------------------------------------------------
+       2. Modal & Carousel State Management
+       ----------------------------------------------------------------- */
     const modalOverlay = document.querySelector('.modal-overlay');
     const modalCloseBtn = document.querySelector('.modal-close');
     let currentImageIndex = 0;
     let activeImages = [];
 
-    // Functie om modal te openen met project data
     window.openProjectModal = function(projectId) {
         if (typeof PROJECT_DATA === 'undefined' || !PROJECT_DATA[projectId]) return;
         
@@ -364,16 +367,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateCarouselImage();
         if (modalOverlay) modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Voorkom achtergrond scrollen
     };
 
     function updateCarouselImage() {
         const imgEl = document.querySelector('.carousel-image');
         if (imgEl && activeImages.length > 0) {
             imgEl.src = activeImages[currentImageIndex];
+            imgEl.alt = `Project afbeelding ${currentImageIndex + 1}`;
         }
     }
 
-    // Carousel navigatie knoppen
     window.nextImage = function() {
         if (activeImages.length === 0) return;
         currentImageIndex = (currentImageIndex + 1) % activeImages.length;
@@ -386,9 +390,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarouselImage();
     };
 
-    // Sluiten van modal
     function closeModal() {
         if (modalOverlay) modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     }
 
     if (modalCloseBtn) {
@@ -403,16 +407,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
+        if (modalOverlay && modalOverlay.classList.contains('active')) {
+            if (e.key === 'ArrowRight') window.nextImage();
+            if (e.key === 'ArrowLeft') window.prevImage();
+        }
     });
 
-    // Event listeners koppelen aan projectkaarten
+    /* -----------------------------------------------------------------
+       3. Event Listeners Koppelen aan Projectkaarten
+       ----------------------------------------------------------------- */
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
             const projectId = card.getAttribute('data-project');
-            if (projectId) openProjectModal(projectId);
+            if (projectId) {
+                openProjectModal(projectId);
+            }
         });
     });
 
-    console.log("Coder B: Alle functionaliteiten en optimalisaties succesvol geladen.");
 });
 

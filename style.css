@@ -467,9 +467,14 @@ document.addEventListener
 }
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* 1. Header Logo Optimalisatie (Taak 10) */
+/* ==============================
+   Taak 11: Website Optimalisaties & Layout
+   ============================== */
+
+/* Verwijder border rond header-logo en stel soepele 90 graden bounce in */
 .header-logo {
   border: none !important;
+  outline: none !important;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   cursor: pointer;
 }
@@ -478,14 +483,14 @@ document.addEventListener
   transform: rotate(90deg);
 }
 
-/* 2. Verwijder 'UPCOMING PROJECT' balk (Taak 11) */
+/* Verberg overbodige balken zoals de oude upcoming project bar */
 .upcoming-project-bar {
   display: none !important;
 }
 
-/* 3. Zorg dat de archief sectie goed oogt */
+/* Stijl voor de dynamische archief sectie */
 .cmd-archive-title {
   font-weight: bold;
-  color: var(--accent);
+  color: var(--accent, #C87D4B);
 }
 

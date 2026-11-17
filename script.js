@@ -327,7 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 9-11: Dynamische jaartallen, logo-animatie en opschonen secties.
+ * Taak 9-11: Dynamische jaartallen, logo-animatie en projectuitbreidingen.
+ * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -339,17 +340,18 @@ document.addEventListener('DOMContentLoaded', () => {
         archiveElement.textContent = currentYear;
     }
 
-    /* 2. Project Data Update (Taak 11: VR Learning Lab verplaatst) */
-    // VR Learning Lab is nu een volwaardig project in PROJECT_DATA
-    PROJECT_DATA['vr-learning-lab'] = {
-        title: "Stage bij VR Learning Lab",
-        category: "INTERACTIVE / VR",
-        year: "2024",
-        description: "Stage bij VR Learning Lab – een intensieve periode waarin ik meewerkte aan prototypen voor educatieve virtual-reality-ervaringen.",
-        images: ["assets/images/vr-lab_01.jpg"]
-    };
+    /* 2. Project Data Uitbreiding (Taak 11) */
+    if (typeof PROJECT_DATA !== 'undefined') {
+        PROJECT_DATA['vr-learning-lab'] = {
+            title: "Stage bij VR Learning Lab",
+            category: "INTERACTIVE / VR",
+            year: "2024",
+            description: "Stage bij VR Learning Lab – een intensieve periode waarin ik meewerkte aan prototypen voor educatieve virtual-reality-ervaringen.",
+            images: ["assets/images/vr-lab_01.jpg"]
+        };
+    }
 
-    /* 3. Logo interactie (Taak 10) */
+    /* 3. Logo interactie optimalisatie (Taak 10) */
     const logo = document.querySelector('.header-logo');
     if (logo) {
         logo.addEventListener('mouseenter', () => {
@@ -357,6 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    console.log("Portfolio geoptimaliseerd: Jaar " + currentYear + " actief, logo-animatie ingesteld.");
+    console.log("Website succesvol geoptimaliseerd voor jaar " + currentYear);
 });
 

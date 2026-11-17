@@ -298,13 +298,12 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* ==============================
-   Modale Venster (Pop-up) & Layout
+   Modal & Carousel Layout (Taak 1A)
    ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -320,65 +319,57 @@ document.addEventListener
 }
 
 .modal-container {
+  position: relative;
   background: var(--bg-secondary, #231F1D);
   color: var(--text-light, #F4F1EA);
   width: 90vw;
   max-width: 1100px;
-  height: 85vh;
-  max-height: 800px;
+  height: 80vh;
+  max-height: 700px;
   border-radius: 12px;
   display: flex;
-  position: relative;
+  flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Sluitknop */
 .modal-close {
   position: absolute;
-  top: 16px;
+  top: 15px;
   right: 20px;
-  background: rgba(0,0,0,0.4);
+  background: transparent;
   border: none;
-  color: #fff;
-  font-size: 1.8rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  color: var(--text-light, #F4F1EA);
+  font-size: 2rem;
   cursor: pointer;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease;
+  transition: color 0.2s;
 }
 
 .modal-close:hover {
-  background: var(--accent, #C87D4B);
+  color: var(--accent, #C87D4B);
 }
 
-/* Linkerkant: Project Tekst & Info */
 .modal-left {
   flex: 1;
-  padding: 40px;
+  padding: 40px 30px;
   overflow-y: auto;
-  border-right: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .modal-left h2 {
+  margin: 0;
   font-size: 2rem;
-  margin-bottom: 8px;
   color: var(--text-light, #F4F1EA);
 }
 
 .modal-meta {
   font-size: 0.9rem;
+  color: var(--accent, #C87D4B);
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--accent, #C87D4B);
-  margin-bottom: 24px;
-  font-weight: 600;
 }
 
 .modal-description {
@@ -388,16 +379,13 @@ document.addEventListener
   opacity: 0.9;
 }
 
-/* Rechterkant: Carrousel & Afbeeldingen (niet afgesneden) */
 .modal-right {
   flex: 1;
-  background: #0f0e0d;
+  background: #000;
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
 }
 
 .carousel-viewport {
@@ -412,52 +400,40 @@ document.addEventListener
 .carousel-viewport img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Cruciaal: zorgt dat foto's passen zonder af te snijden */
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  object-fit: contain; /* Cruciaal: foto's passen in kader en worden niet afgesneden */
 }
 
-/* Carrousel Navigatie Knoppen */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   font-size: 1.5rem;
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 5;
+  transition: background 0.2s;
 }
 
 .carousel-btn:hover {
-  background: var(--accent, #C87D4B);
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.carousel-btn.prev { left: 16px; }
-.carousel-btn.next { right: 16px; }
+.carousel-btn.prev { left: 15px; }
+.carousel-btn.next { right: 15px; }
 
-/* Responsive aanpassing voor schermen < 768px */
 @media (max-width: 768px) {
   .modal-container {
     flex-direction: column;
-    width: 95vw;
     height: 90vh;
   }
-  .modal-left {
-    flex: 1;
-    padding: 20px;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .modal-right {
+  .modal-left, .modal-right {
     flex: 1;
   }
 }

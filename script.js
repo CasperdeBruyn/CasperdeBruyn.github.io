@@ -293,14 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImages = [];
     let currentIndex = 0;
 
-    // Functie om de carrousel afbeelding bij te werken
     function updateCarouselImage() {
         if (currentImages.length > 0) {
             imgEl.src = currentImages[currentIndex];
         }
     }
 
-    // Open modal met project data
     window.openProjectModal = function(projectKey) {
         const project = PROJECT_DATA[projectKey];
         if (!project) return;
@@ -318,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
     };
 
-    // Sluit modal
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
@@ -335,25 +332,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Carrousel navigatie handlers
     prevBtn.addEventListener('click', () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateCarouselImage();
+        if (currentImages.length > 0) {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateCarouselImage();
+        }
     });
 
     nextBtn.addEventListener('click', () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateCarouselImage();
+        if (currentImages.length > 0) {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateCarouselImage();
+        }
     });
 
-    // Koppel klikhandlers aan bestaande projectkaarten
+    // Koppel klikhandlers aan projectkaarten
     document.querySelectorAll('.project-card, [data-project]').forEach(card => {
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
+        card.addEventListener('click', () => {
             const projectKey = card.getAttribute('data-project');
-            if (projectKey) {
+            if (projectKey && PROJECT_DATA[projectKey]) {
                 openProjectModal(projectKey);
             }
         });

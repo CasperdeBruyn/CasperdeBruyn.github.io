@@ -298,18 +298,20 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* -------------------------------------------------------------
-   Header logo – subtiel en vloeiend draaien bij hover
+   Header logo – Subtiele en vloeiende rotatie bij hover
    ------------------------------------------------------------- */
 header .logo img {
   width: 36px;
   height: 36px;
-  object-fit: contain;
+  object-fit: contain;          /* Voorkomt dat het logo wordt afgesneden of vervormd */
   display: block;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  /* Gebruik van cubic-bezier voor een high-end, vloeiend gevoel */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 header .logo img:hover {
-  transform: rotate(20deg);
+  /* Subtiele draaiing in plaats van een volledige spin voor een professionele look */
+  transform: rotate(15deg);
 }
 

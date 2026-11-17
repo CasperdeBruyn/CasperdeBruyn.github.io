@@ -261,34 +261,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('project-modal');
     const imgEl = document.getElementById('carousel-img');
     const titleEl = document.getElementById('modal-title');
-    const categoryEl = document.getElementById('modal-category');
-    const yearEl = document.getElementById('modal-year');
     const descEl = document.getElementById('modal-desc');
     
     let currentImages = [];
     let currentIndex = 0;
 
-    // Open Modal
     window.openProjectModal = (projectKey) => {
         const project = PROJECT_DATA[projectKey];
         if (!project) return;
 
         titleEl.textContent = project.title;
-        categoryEl.textContent = project.category;
-        yearEl.textContent = project.year;
         descEl.textContent = project.description;
-        
         currentImages = project.images;
         currentIndex = 0;
-        updateCarousel();
         
+        updateCarousel();
         modalOverlay.classList.add('active');
     };
 
-    // Close Modal
-    const closeModal = () => {
-        modalOverlay.classList.remove('active');
-    };
+    const closeModal = () => modalOverlay.classList.remove('active');
 
     function updateCarousel() {
         imgEl.src = currentImages[currentIndex];
@@ -308,8 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarousel();
     });
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 });
 

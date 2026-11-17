@@ -399,56 +399,53 @@ body {
 }
 
 /* ==============================
-   5. Modal content (text)
+   5. Project card styling
    ============================== */
-.modal-content {
-  flex: 1 1 40%;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: var(--accent);
-}
-
-.modal-content p {
-  flex: 1;
-  line-height: 1.6;
-  white-space: pre-wrap;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.modal-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
+.project-card {
+  position: relative;
   cursor: pointer;
-  z-index: 10;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
 }
 
-.modal-close:hover {
-  color: var(--accent);
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.project-card:hover .overlay {
+  background: rgba(0,0,0,0.6);
 }
 
 /* ==============================
-   7. Header logo hover rotation
+   6. Header logo
    ============================== */
-#header-logo {
+#site-header-logo {
   width: 120px;
+  height: auto;
   transition: transform 0.5s ease;
 }
 
-#header-logo:hover {
+#site-header-logo:hover {
   transform: rotate(360deg);
 }
 

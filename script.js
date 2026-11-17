@@ -254,14 +254,14 @@ My portfolio likes cookies :]",
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 4: Homelab & Craft interactie en modale ondersteuning.
+ * Inclusief projectdata, modale logica en interactie voor Homelab & Craft.
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* -----------------------------------------------------------------
-       1. PROJECT DATA (Inclusief basisstructuur en modale inhoud)
+       1. PROJECT DATA & HOMELAB EXTENSIE
        ----------------------------------------------------------------- */
     const PROJECT_DATA = {
         'generation-plastic-soup': {
@@ -367,96 +367,47 @@ My portfolio likes cookies :]",
     };
 
     /* -----------------------------------------------------------------
-       2. MODAL & CAROUSEL LOGICA
+       2. MODAL & INTERACTIE LOGICA
        ----------------------------------------------------------------- */
-    const modalOverlay = document.createElement('div');
-    modalOverlay.className = 'modal-overlay';
-    modalOverlay.innerHTML = `
-        <div class="modal">
-            <div class="carousel">
-                <button class="nav prev">&#10094;</button>
-                <img id="modal-image" src="" alt="Project Afbeelding">
-                <button class="nav next">&#10095;</button>
-            </div>
-            <div class="modal-details">
-                <button class="modal-close">&times;</button>
-                <h2 id="modal-title"></h2>
-                <div class="meta"><span id="modal-category"></span> &bull; <span id="modal-year"></span></div>
-                <p id="modal-description"></p>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(modalOverlay);
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalTitle = document.querySelector('.modal-title');
+    const modalCategory = document.querySelector('.modal-category');
+    const modalYear = document.querySelector('.modal-year');
+    const modalDesc = document.querySelector('.modal-description');
+    const modalImage = document.querySelector('.modal-image');
+    const closeModalBtn = document.querySelector('.modal-close');
 
-    let currentProject = null;
-    let currentImageIndex = 0;
+    if (modalOverlay) {
+        document.querySelectorAll('[data-project]').forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project');
+                const project = PROJECT_DATA[projectId];
 
-    const modalImg = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalYear = document.getElementById('modal-year');
-    const modalDesc = document.getElementById('modal-description');
-    const closeBtn = modalOverlay.querySelector('.modal-close');
-    const prevBtn = modalOverlay.querySelector('.prev');
-    const nextBtn = modalOverlay.querySelector('.next');
-
-    function openModal(projectId) {
-        const data = PROJECT_DATA[projectId];
-        if (!data) return;
-
-        currentProject = data;
-        currentImageIndex = 0;
-
-        modalTitle.textContent = data.title;
-        modalCategory.textContent = data.category;
-        modalYear.textContent = data.year;
-        modalDesc.innerHTML = data.description.replace(/\n/g, '<br>');
-
-        updateCarouselImage();
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function updateCarouselImage() {
-        if (!currentProject || !currentProject.images.length) return;
-        modalImg.src = currentProject.images[currentImageIndex];
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (!currentProject) return;
-        currentImageIndex = (currentImageIndex - 1 + currentProject.images.length) % currentProject.images.length;
-        updateCarouselImage();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (!currentProject) return;
-        currentImageIndex = (currentImageIndex + 1) % currentProject.images.length;
-        updateCarouselImage();
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
-
-    // Koppel klikgedrag aan projectkaarten
-    document.querySelectorAll('.project-card, [data-project]').forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', () => {
-            const projectId = card.getAttribute('data-project');
-            if (projectId && PROJECT_DATA[projectId]) {
-                openModal(projectId);
-            }
+                if (project) {
+                    if (modalTitle) modalTitle.textContent = project.title;
+                    if (modalCategory) modalCategory.textContent = project.category;
+                    if (modalYear) modalYear.textContent = project.year;
+                    if (modalDesc) modalDesc.textContent = project.description;
+                    if (modalImage && project.images.length > 0) {
+                        modalImage.src = project.images[0];
+                    }
+                    modalOverlay.classList.add('active');
+                }
+            });
         });
-    });
 
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+        };
+
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    }
 });
 

@@ -298,27 +298,39 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* ==============================
-   1. Basis & kleuren
+   1. Basis & Kleuren
    ============================== */
 :root {
   --bg-dark: #161412;          /* Diep Houtskool */
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --transition: 0.3s ease;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
   background: var(--bg-dark);
   color: var(--text-light);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
 /* ==============================
-   2. Modal overlay & container
+   2. Header Logo & Navigatie
+   ============================== */
+.header-logo {
+  border-radius: 0; /* Niet rond afgesneden conform wens */
+  transition: transform var(--transition);
+}
+
+.header-logo:hover {
+  transform: rotate(15deg);
+}
+
+/* ==============================
+   3. Modal Overlay & Container
    ============================== */
 .modal-overlay {
   position: fixed;
@@ -346,7 +358,7 @@ body {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
 }
 
 @media (max-width: 768px) {
@@ -356,7 +368,7 @@ body {
 }
 
 /* ==============================
-   3. Carousel & image styling
+   4. Carousel & Image Styling
    ============================== */
 .carousel {
   position: relative;
@@ -365,114 +377,30 @@ body {
   align-items: center;
   justify-content: center;
   background: #000;
-  min-height: 300px;
 }
 
 .carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* Voorkomt dat foto's worden afgesneden */
   transition: opacity var(--transition);
 }
 
-.carousel .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: var(--text-light);
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  outline: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition);
-}
-
-.carousel .nav:hover {
-  background: var(--accent);
-}
-
-.carousel .nav.prev { left: 10px; }
-.carousel .nav.next { right: 10px; }
-
 /* ==============================
-   4. Modal details
-   ============================== */
-.modal-details {
-  flex: 1 1 40%;
-  padding: 2rem;
-  overflow-y: auto;
-  position: relative;
-}
-
-.modal-details h2 {
-  margin-top: 0;
-  color: var(--accent);
-  font-size: 1.8rem;
-}
-
-.modal-details .meta {
-  font-size: .9rem;
-  color: rgba(244,241,234,.6);
-  margin-bottom: 1rem;
-}
-
-.modal-details p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color var(--transition);
-}
-
-.modal-close:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   5. Homelab & Craft section (Taak 4)
+   5. Onderdeel // 04 HOMELAB & CRAFT
    ============================== */
 .homelab-section {
-  background: var(--bg-secondary);
-  border-top: 1px solid rgba(255,255,255,.05);
-  padding: 4rem 0;
-}
-
-.homelab-container {
+  padding: 5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.homelab-header {
-  font-family: monospace;
-  font-size: 1.1rem;
-  color: var(--accent);
-  margin-bottom: .5rem;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-
-.homelab-title {
-  font-size: 2.2rem;
-  font-weight: 700;
+.homelab-section h2 {
+  font-size: 2rem;
   color: var(--text-light);
   margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.75rem;
 }
 
 .homelab-grid {
@@ -482,7 +410,7 @@ body {
 }
 
 .homelab-card {
-  background: var(--bg-dark);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,.05);
@@ -493,7 +421,7 @@ body {
 
 .homelab-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
 
 .homelab-card .card-img-placeholder {

@@ -253,60 +253,73 @@ My portfolio likes cookies :]",
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Casper de Bruyn – Modal & Carousel Logic
+ * Casper de Bruyn – Modal & Carousel Logica
  * Skill: GoogleChrome/modern-web-guidance
  */
 
-const modalOverlay = document.getElementById('project-modal');
-const imgEl = document.getElementById('carousel-img');
-const titleEl = document.getElementById('modal-title');
-const descEl = document.getElementById('modal-desc');
+document.addEventListener('DOMContentLoaded', () => {
+    const modalOverlay = document.getElementById('project-modal');
+    const imgEl = document.getElementById('carousel-img');
+    const titleEl = document.getElementById('modal-title');
+    const descEl = document.getElementById('modal-desc');
+    const closeBtn = document.querySelector('.modal-close');
 
-let currentImages = [];
-let currentIndex = 0;
+    let currentImages = [];
+    let currentIndex = 0;
 
-// Navigatie logica
-function updateCarouselImage() {
-    if (imgEl && currentImages.length > 0) {
-        imgEl.src = currentImages[currentIndex];
+    function updateCarouselImage() {
+        if (imgEl && currentImages.length > 0) {
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+                imgEl.src = currentImages[currentIndex];
+                imgEl.style.opacity = '1';
+            }, 150);
+        }
     }
-}
 
-window.nextImage = () => {
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    updateCarouselImage();
-};
+    window.nextImage = () => {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateCarouselImage();
+    };
 
-window.prevImage = () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    updateCarouselImage();
-};
+    window.prevImage = () => {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateCarouselImage();
+    };
 
-// Open modal
-window.openProjectModal = (projectKey) => {
-    const project = PROJECT_DATA[projectKey];
-    if (!project) return;
+    window.openProjectModal = (projectKey) => {
+        const project = PROJECT_DATA[projectKey];
+        if (!project) return;
 
-    titleEl.textContent = project.title;
-    descEl.innerText = project.description;
-    currentImages = project.images;
-    currentIndex = 0;
+        titleEl.textContent = project.title;
+        descEl.innerText = project.description;
+        currentImages = project.images || [];
+        currentIndex = 0;
+
+        updateCarouselImage();
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
     
-    updateCarouselImage();
-    modalOverlay.classList.add('active');
-};
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+    });
 
-// Sluit modal
-const closeModal = () => {
-    modalOverlay.classList.remove('active');
-};
-
-document.querySelector('.modal-close').addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+        if (modalOverlay.classList.contains('active')) {
+            if (e.key === 'ArrowRight') window.nextImage();
+            if (e.key === 'ArrowLeft') window.prevImage();
+        }
+    });
 });
 

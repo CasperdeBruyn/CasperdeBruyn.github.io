@@ -298,127 +298,79 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* ==============================
-   1. Basis & kleuren
+   1. Basis & Kleuren (Dark Wood & Amber)
    ============================== */
 :root {
   --bg-dark: #161412;          /* Diep Houtskool */
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --placeholder-bg: #333;      /* Placeholder achtergrond */
-  --placeholder-text: #AAA;    /* Placeholder tekstkleur */
+  --border-color: rgba(244, 241, 234, 0.1);
 }
 
-/* Algemene body styling */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
 /* ==============================
-   2. Header logo (niet rond, hover‑rotatie)
+   2. Sectie Stijlen & // 04 Homelab & Craft
    ============================== */
-.site-header img {
-  border-radius: 0;                /* geen ronde hoeken */
-  transition: transform 0.5s ease;
-}
-.site-header img:hover {
-  transform: rotate(360deg);        /* vloeiende rotatie */
-}
-
-/* ==============================
-   3. Section “Homelab & Craft”
-   ============================== */
-.section-homelab {
-  padding: 4rem 2rem;
-  background: var(--bg-secondary);
-}
-.section-homelab h2 {
-  text-align: center;
-  margin-bottom: 2rem;
+.section-header {
+  font-family: monospace;
   color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
-.section-homelab .grid {
+
+.homelab-craft-section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border-color);
+}
+
+.homelab-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-/* ==============================
-   4. Project card (placeholder)
-   ============================== */
-.project-card {
-  position: relative;
-  overflow: hidden;
+.homelab-card {
+  background: var(--bg-secondary);
   border-radius: 8px;
-  cursor: pointer;
-  background: var(--placeholder-bg);
-  color: var(--placeholder-text);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.project-card:hover {
+
+.homelab-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  border-color: var(--accent);
 }
-.project-card .placeholder {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+
+.homelab-card h3 {
+  color: var(--accent);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
-.project-card .placeholder .title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.project-card .placeholder .category,
-.project-card .placeholder .year {
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-}
-.project-card .placeholder .description {
-  flex: 1;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-}
-.project-card .placeholder .cta {
-  margin-top: 1rem;
-}
-.project-card .placeholder .cta button {
-  padding: 0.5rem 1rem;
-  background: var(--accent);
+
+.homelab-card p {
   color: var(--text-light);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.project-card .placeholder .cta button:hover {
-  background: #b66e3e;
-}
-.project-card .placeholder .cta button:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-.project-card .placeholder .cta button:active {
-  transform: scale(0.98);
-}
-.project-card .placeholder .cta button:disabled {
-  background: #555;
-  cursor: not-allowed;
-}
-.project-card .placeholder .cta button:disabled:hover,
-.project-card .placeholder .cta button:disabled:focus,
-.project-card .placeholder .cta button:disabled:active {
-  background: #555;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* ==============================
-   5. Modal overlay & container
+   3. Modal overlay & container
    ============================== */
 .modal-overlay {
   position: fixed;
@@ -432,10 +384,12 @@ body {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
 .modal-overlay.active {
   opacity: 1;
   pointer-events: auto;
 }
+
 .modal {
   background: var(--bg-secondary);
   border-radius: 8px;
@@ -446,12 +400,17 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
+
 @media (max-width: 768px) {
-  .modal { flex-direction: column; }
+  .modal {
+    flex-direction: column;
+    width: 95vw;
+    height: 90vh;
+  }
 }
 
 /* ==============================
-   6. Carousel & image styling
+   4. Carousel & Image Styling
    ============================== */
 .carousel {
   flex: 1 1 60%;
@@ -461,12 +420,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .carousel img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   transition: opacity 0.3s ease;
 }
+
 .carousel .nav {
   position: absolute;
   top: 50%;
@@ -482,12 +443,16 @@ body {
   outline: none;
   transition: background 0.2s;
 }
-.carousel .nav:hover { background: rgba(255,255,255,0.25); }
+
+.carousel .nav:hover {
+  background: rgba(255,255,255,0.25);
+}
+
 .carousel .nav.prev { left: 12px; }
 .carousel .nav.next { right: 12px; }
 
 /* ==============================
-   7. Modal text paneel
+   5. Modal Text Paneel
    ============================== */
 .modal-text {
   flex: 1 1 40%;
@@ -495,20 +460,19 @@ body {
   overflow-y: auto;
   position: relative;
 }
-.modal-text h2 { margin-bottom: 0.5rem; color: var(--accent); }
-.modal-text p { margin-top: 1rem; }
 
-/* ==============================
-   8. Responsief
-   ============================== */
-@media (max-width: 768px) {
-  .modal { width: 95vw; height: 90vh; }
-  .carousel, .modal-text { width: 100%; height: 50%; }
-  .modal-text { padding: 1rem; }
+.modal-text h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.modal-text p {
+  margin-top: 1rem;
+  line-height: 1.6;
 }
 
 /* ==============================
-   9. Utilities
+   6. Utilities
    ============================== */
 .hidden { display: none !important; }
 

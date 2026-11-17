@@ -305,112 +305,20 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --transition: 0.3s ease;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Algemene body styling */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
 /* ==============================
-   2. Header & logo
-   ============================== */
-header {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background: var(--bg-secondary);
-}
-
-header img.logo {
-  width: 120px;
-  height: auto;
-  transition: transform var(--transition);
-}
-
-header img.logo:hover {
-  transform: rotate(360deg);
-}
-
-/* ==============================
-   3. Project cards
-   ============================== */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.project-card {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 8px;
-  background: var(--bg-secondary);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-}
-
-.project-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-}
-
-.project-card .card-info {
-  padding: 0.75rem;
-}
-
-.project-card .card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0;
-  color: var(--text-light);
-}
-
-.project-card .card-category {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-top: 0.25rem;
-}
-
-/* ==============================
-   4. Placeholder card (voor nieuwe projecten)
-   ============================== */
-.placeholder-card {
-  background: var(--bg-secondary);
-  border: 2px dashed var(--accent);
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  height: 200px;
-  cursor: pointer;
-  transition: background var(--transition);
-}
-
-.placeholder-card:hover {
-  background: var(--accent);
-  color: var(--bg-secondary);
-}
-
-/* ==============================
-   5. Modal overlay
+   2. Modal overlay & container
    ============================== */
 .modal-overlay {
   position: fixed;
@@ -430,28 +338,28 @@ header img.logo:hover {
   pointer-events: auto;
 }
 
-/* ==============================
-   6. Modal container
-   ============================== */
 .modal {
   background: var(--bg-secondary);
   border-radius: 8px;
   max-width: 90vw;
   max-height: 90vh;
+  width: 900px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 768px) {
   .modal {
     flex-direction: column;
+    max-height: 95vh;
   }
 }
 
 /* ==============================
-   7. Carousel & image styling
+   3. Carousel & image styling
    ============================== */
 .carousel {
   position: relative;
@@ -460,6 +368,7 @@ header img.logo:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
 }
 
 .carousel img {
@@ -476,28 +385,31 @@ header img.logo:hover {
   background: rgba(255,255,255,0.15);
   border: none;
   color: var(--text-light);
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: 40px;
   height: 40px;
   cursor: pointer;
   outline: none;
   border-radius: 50%;
   transition: background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel .nav.prev { left: 10px; }
 .carousel .nav.next { right: 10px; }
 
 .carousel .nav:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.3);
 }
 
 /* ==============================
-   8. Modal content (rechts)
+   4. Modal content (rechts)
    ============================== */
 .modal-content {
   flex: 1;
-  padding: 1.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -517,24 +429,27 @@ header img.logo:hover {
   letter-spacing: 0.05em;
   color: var(--accent);
   margin-bottom: 0.5rem;
+  font-family: monospace;
 }
 
 .modal-year {
   font-size: 0.85rem;
-  color: var(--text-light);
-  margin-bottom: 1rem;
+  color: rgba(244, 241, 234, 0.6);
+  margin-bottom: 1.5rem;
 }
 
 .modal-description {
   flex-grow: 1;
-  line-height: 1.6;
+  line-height: 1.7;
   white-space: pre-wrap;
+  color: rgba(244, 241, 234, 0.9);
+  font-size: 0.95rem;
 }
 
 .modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
   background: rgba(255,255,255,0.1);
   border: none;
   color: var(--text-light);
@@ -544,9 +459,101 @@ header img.logo:hover {
   cursor: pointer;
   font-size: 1.25rem;
   transition: background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 .modal-close:hover {
   background: var(--accent);
+}
+
+/* ==============================
+   5. Logo & Header Micro-interacties
+   ============================== */
+.site-logo {
+  border-radius: 0 !important;
+  transition: transform 0.5s ease;
+}
+
+.site-logo:hover {
+  transform: rotate(360deg);
+}
+
+/* ==============================
+   6. Homelab & Craft Section (Nieuw - Taak 4)
+   ============================== */
+.homelab-section {
+  padding: 6rem 2rem;
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.homelab-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homelab-header {
+  font-family: monospace;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.homelab-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+.homelab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.homelab-card {
+  background: var(--bg-dark);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform var(--transition), border-color var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.homelab-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.homelab-card h3 {
+  color: var(--text-light);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+}
+
+.homelab-card p {
+  color: rgba(244, 241, 234, 0.75);
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.homelab-tag {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.75rem;
+  background: rgba(200, 125, 75, 0.15);
+  color: var(--accent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  text-transform: uppercase;
 }
 

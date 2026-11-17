@@ -305,117 +305,112 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --border-color: #3A3632;     /* Licht donker */
   --transition: 0.3s ease;
 }
 
-/* ==============================
-   2. Algemene layout
-   ============================== */
+/* Algemene body styling */
 body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
+/* ==============================
+   2. Header & logo
+   ============================== */
 header {
   display: flex;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem;
   background: var(--bg-secondary);
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
-header .logo {
+header img.logo {
   width: 120px;
   height: auto;
   transition: transform var(--transition);
 }
 
-header .logo:hover {
+header img.logo:hover {
   transform: rotate(360deg);
 }
 
 /* ==============================
-   3. Project grid
+   3. Project cards
    ============================== */
-.projects {
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
 }
 
 .project-card {
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  overflow: hidden;
+  position: relative;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-secondary);
   transition: transform var(--transition), box-shadow var(--transition);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
 }
 
-.project-image-wrapper {
-  position: relative;
+.project-card img {
   width: 100%;
-  padding-top: 56.25%; /* 16:9 */
-  overflow: hidden;
-}
-
-.project-image-wrapper img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  height: 160px;
   object-fit: cover;
-  transition: transform var(--transition);
+  display: block;
 }
 
-.project-card:hover .project-image-wrapper img {
-  transform: scale(1.04);
+.project-card .card-info {
+  padding: 0.75rem;
 }
 
-.project-info {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.project-category {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
-}
-
-.project-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
+.project-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
   color: var(--text-light);
 }
 
-.project-year {
-  margin-top: auto;
+.project-card .card-category {
   font-size: 0.85rem;
-  color: var(--text-light);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.25rem;
 }
 
 /* ==============================
-   4. Modal overlay
+   4. Placeholder card (voor nieuwe projecten)
+   ============================== */
+.placeholder-card {
+  background: var(--bg-secondary);
+  border: 2px dashed var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  height: 200px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.placeholder-card:hover {
+  background: var(--accent);
+  color: var(--bg-secondary);
+}
+
+/* ==============================
+   5. Modal overlay
    ============================== */
 .modal-overlay {
   position: fixed;
@@ -424,7 +419,7 @@ header .logo:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 1000;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition);
@@ -436,24 +431,17 @@ header .logo:hover {
 }
 
 /* ==============================
-   5. Modal container
+   6. Modal container
    ============================== */
 .modal {
   background: var(--bg-secondary);
-  border-radius: 12px;
-  width: 90vw;
-  max-width: 1100px;
+  border-radius: 8px;
+  max-width: 90vw;
   max-height: 90vh;
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  position: relative;
-  transform: scale(0.95);
-  transition: transform var(--transition);
-}
-
-.modal-overlay.active .modal {
-  transform: scale(1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 768px) {
@@ -463,24 +451,25 @@ header .logo:hover {
 }
 
 /* ==============================
-   6. Carousel (links)
+   7. Carousel & image styling
    ============================== */
-.modal-carousel {
-  flex: 1.2;
+.carousel {
   position: relative;
+  flex: 1 1 60%;
   background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modal-carousel img {
+.carousel img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: opacity var(--transition);
 }
 
-.carousel-nav {
+.carousel .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -496,15 +485,15 @@ header .logo:hover {
   transition: background var(--transition);
 }
 
-.carousel-nav:hover {
+.carousel .nav.prev { left: 10px; }
+.carousel .nav.next { right: 10px; }
+
+.carousel .nav:hover {
   background: rgba(255,255,255,0.25);
 }
 
-.carousel-nav.prev { left: 10px; }
-.carousel-nav.next { right: 10px; }
-
 /* ==============================
-   7. Modal content (rechts)
+   8. Modal content (rechts)
    ============================== */
 .modal-content {
   flex: 1;
@@ -512,6 +501,7 @@ header .logo:hover {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  position: relative;
 }
 
 .modal-title {
@@ -558,20 +548,5 @@ header .logo:hover {
 
 .modal-close:hover {
   background: var(--accent);
-}
-
-/* ==============================
-   8. Placeholder card (voor nieuwe projecten)
-   ============================== */
-.placeholder-card {
-  background: var(--bg-secondary);
-  border: 2px dashed var(--accent);
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  height: 200px;
 }
 

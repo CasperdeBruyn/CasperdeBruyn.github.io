@@ -327,38 +327,92 @@ document.addEventListener('DOMContentLoaded', () => {
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 9-11: Dynamische jaartallen, logo-animatie en projectuitbreidingen.
+ * Taak 11: Volledige interactiviteit, modal-logica, dynamisch jaar en carousel.
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. Dynamisch jaar voor CMD_ARCHIVE (Taak 9) */
+    /* 1. Dynamisch Jaartal voor Archief */
     const currentYear = new Date().getFullYear();
-    const archiveElement = document.getElementById('cmd-archive-year');
-    if (archiveElement) {
-        archiveElement.textContent = currentYear;
+    const archiveYearEl = document.getElementById('cmd-archive-year');
+    if (archiveYearEl) {
+        archiveYearEl.textContent = currentYear;
     }
 
-    /* 2. Project Data Uitbreiding (Taak 11) */
-    if (typeof PROJECT_DATA !== 'undefined') {
-        PROJECT_DATA['vr-learning-lab'] = {
-            title: "Stage bij VR Learning Lab",
-            category: "INTERACTIVE / VR",
-            year: "2024",
-            description: "Stage bij VR Learning Lab – een intensieve periode waarin ik meewerkte aan prototypen voor educatieve virtual-reality-ervaringen.",
-            images: ["assets/images/vr-lab_01.jpg"]
-        };
+    /* 2. Modal & Carousel State */
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalCloseBtn = document.querySelector('.modal-close');
+    let currentImageIndex = 0;
+    let activeImages = [];
+
+    // Functie om modal te openen met project data
+    window.openProjectModal = function(projectId) {
+        if (typeof PROJECT_DATA === 'undefined' || !PROJECT_DATA[projectId]) return;
+        
+        const project = PROJECT_DATA[projectId];
+        activeImages = project.images || [];
+        currentImageIndex = 0;
+
+        const titleEl = document.querySelector('.modal-title');
+        const catEl = document.querySelector('.modal-category');
+        const descEl = document.querySelector('.modal-description');
+        
+        if (titleEl) titleEl.textContent = project.title;
+        if (catEl) catEl.textContent = `${project.category} — ${project.year}`;
+        if (descEl) descEl.textContent = project.description;
+
+        updateCarouselImage();
+        if (modalOverlay) modalOverlay.classList.add('active');
+    };
+
+    function updateCarouselImage() {
+        const imgEl = document.querySelector('.carousel-image');
+        if (imgEl && activeImages.length > 0) {
+            imgEl.src = activeImages[currentImageIndex];
+        }
     }
 
-    /* 3. Logo interactie optimalisatie (Taak 10) */
-    const logo = document.querySelector('.header-logo');
-    if (logo) {
-        logo.addEventListener('mouseenter', () => {
-            logo.style.transition = 'transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    // Carousel navigatie knoppen
+    window.nextImage = function() {
+        if (activeImages.length === 0) return;
+        currentImageIndex = (currentImageIndex + 1) % activeImages.length;
+        updateCarouselImage();
+    };
+
+    window.prevImage = function() {
+        if (activeImages.length === 0) return;
+        currentImageIndex = (currentImageIndex - 1 + activeImages.length) % activeImages.length;
+        updateCarouselImage();
+    };
+
+    // Sluiten van modal
+    function closeModal() {
+        if (modalOverlay) modalOverlay.classList.remove('active');
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
         });
     }
 
-    console.log("Website succesvol geoptimaliseerd voor jaar " + currentYear);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Event listeners koppelen aan projectkaarten
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const projectId = card.getAttribute('data-project');
+            if (projectId) openProjectModal(projectId);
+        });
+    });
+
+    console.log("Coder B: Alle functionaliteiten en optimalisaties succesvol geladen.");
 });
 

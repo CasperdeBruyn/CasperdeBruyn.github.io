@@ -297,33 +297,112 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==============================
+/* ==========================================================
    1. Basis & kleuren
-   ============================== */
+   ========================================================== */
 :root {
   --bg-dark: #161412;          /* Diep Houtskool */
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.3s ease;    /* Veelgebruikte overgang */
+}
+
+/* Reset & globale typografie */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--bg-dark);
   color: var(--text-light);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-/* ==============================
-   2. Modal overlay & container
-   ============================== */
+/* ==========================================================
+   2. Header & logo micro‑interacties
+   ========================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--bg-secondary);
+}
+
+.site-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 0 !important;   /* Taak 4: niet rond afsnijden */
+  transition: transform var(--transition);
+}
+
+.site-logo:hover {
+  transform: rotate(360deg);      /* Hover‑rotatie */
+}
+
+/* ==========================================================
+   3. Project‑kaarten (grid)
+   ========================================================== */
+.project-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.project-card {
+  background: var(--bg-dark);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-card .info {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.project-card .info h3 {
+  margin: 0 0 .5rem;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.project-card .info p {
+  margin: 0;
+  font-size: .9rem;
+  color: rgba(244,241,234,.75);
+}
+
+/* ==========================================================
+   4. Modal overlay & container
+   ========================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,121 +422,32 @@ body {
   border-radius: 8px;
   max-width: 90vw;
   max-height: 90vh;
-  width: 900px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,.5);
 }
 
+/* Responsief: stapel onder elkaar op smalle schermen */
 @media (max-width: 768px) {
   .modal {
     flex-direction: column;
-    max-height: 95vh;
   }
 }
 
-/* ==============================
-   3. Carousel & image styling
-   ============================== */
-.carousel {
-  position: relative;
-  flex: 1 1 60%;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-}
-
-.carousel img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: opacity var(--transition);
-}
-
-.carousel .nav {
+/* Close‑knop */
+.modal-close {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
+  top: .75rem;
+  right: .75rem;
+  background: rgba(255,255,255,.15);
   border: none;
   color: var(--text-light);
   font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  outline: none;
-  border-radius: 50%;
-  transition: background var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel .nav.prev { left: 10px; }
-.carousel .nav.next { right: 10px; }
-
-.carousel .nav:hover {
-  background: rgba(255,255,255,0.3);
-}
-
-/* ==============================
-   4. Modal content (rechts)
-   ============================== */
-.modal-content {
-  flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  position: relative;
-}
-
-.modal-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: var(--text-light);
-}
-
-.modal-category {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  font-family: monospace;
-}
-
-.modal-year {
-  font-size: 0.85rem;
-  color: rgba(244, 241, 234, 0.6);
-  margin-bottom: 1.5rem;
-}
-
-.modal-description {
-  flex-grow: 1;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  color: rgba(244, 241, 234, 0.9);
-  font-size: 0.95rem;
-}
-
-.modal-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  background: rgba(255,255,255,0.1);
-  border: none;
-  color: var(--text-light);
   width: 36px;
   height: 36px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.25rem;
   transition: background var(--transition);
   display: flex;
   align-items: center;
@@ -469,25 +459,86 @@ body {
   background: var(--accent);
 }
 
-/* ==============================
-   5. Logo & Header Micro-interacties
-   ============================== */
-.site-logo {
-  border-radius: 0 !important;
-  transition: transform 0.5s ease;
+/* ==========================================================
+   5. Carousel (linker kant van modal)
+   ========================================================== */
+.carousel {
+  flex: 1 1 60%;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.site-logo:hover {
-  transform: rotate(360deg);
+.carousel img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* Zorgt dat de foto niet wordt afgesneden */
+  transition: opacity var(--transition);
 }
 
-/* ==============================
-   6. Homelab & Craft Section (Nieuw - Taak 4)
-   ============================== */
+/* Navigatie‑knoppen */
+.carousel .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.15);
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.carousel .nav:hover {
+  background: var(--accent);
+}
+
+.carousel .nav.prev { left: 10px; }
+.carousel .nav.next { right: 10px; }
+
+/* ==========================================================
+   6. Details‑kolom (rechter kant van modal)
+   ========================================================== */
+.modal-details {
+  flex: 1 1 40%;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-details h2 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.modal-details .meta {
+  font-size: .9rem;
+  color: rgba(244,241,234,.6);
+  margin-bottom: 1rem;
+}
+
+.modal-details p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================
+   7. Homelab & Craft sectie (Taak 4)
+   ========================================================== */
 .homelab-section {
   padding: 6rem 2rem;
   background: var(--bg-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255,255,255,.05);
 }
 
 .homelab-container {
@@ -499,8 +550,8 @@ body {
   font-family: monospace;
   font-size: 1.25rem;
   color: var(--accent);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
+  margin-bottom: .5rem;
+  letter-spacing: .05em;
 }
 
 .homelab-title {
@@ -520,10 +571,11 @@ body {
   background: var(--bg-dark);
   padding: 2.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,.05);
   transition: transform var(--transition), border-color var(--transition);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .homelab-card:hover {
@@ -532,28 +584,31 @@ body {
 }
 
 .homelab-card h3 {
-  color: var(--text-light);
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0 0 .75rem;
   font-size: 1.35rem;
+  color: var(--text-light);
 }
 
 .homelab-card p {
-  color: rgba(244, 241, 234, 0.75);
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
   flex-grow: 1;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+  color: rgba(244,241,234,.75);
 }
 
 .homelab-tag {
   display: inline-block;
   font-family: monospace;
-  font-size: 0.75rem;
-  background: rgba(200, 125, 75, 0.15);
+  font-size: .75rem;
+  background: rgba(200,125,75,.15);
   color: var(--accent);
-  padding: 0.35rem 0.75rem;
+  padding: .35rem .75rem;
   border-radius: 4px;
-  align-self: flex-start;
   text-transform: uppercase;
 }
+
+/* ==========================================================
+   8. Algemene utilities
+   ========================================================== */
+.hidden { display: none; }
 

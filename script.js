@@ -253,52 +253,90 @@ My portfolio likes cookies :]",
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Casper de Bruyn – Modal & Carrousel Logic
+ * Casper de Bruyn – Modal & Carrousel Logica (Taak 1A)
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('project-modal');
+    if (!modalOverlay) return;
+
     const imgEl = document.getElementById('carousel-img');
     const titleEl = document.getElementById('modal-title');
     const descEl = document.getElementById('modal-desc');
-    
+    const closeBtn = document.querySelector('.modal-close');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+
     let currentImages = [];
     let currentIndex = 0;
 
+    // Open modal functie (globaal aanroepbaar vanuit projectkaarten)
     window.openProjectModal = (projectKey) => {
-        const project = PROJECT_DATA[projectKey];
-        if (!project) return;
+        const project = typeof PROJECT_DATA !== 'undefined' ? PROJECT_DATA[projectKey] : null;
+        if (!project) {
+            console.warn(`Project data niet gevonden voor sleutel: ${projectKey}`);
+            return;
+        }
 
-        titleEl.textContent = project.title;
-        descEl.textContent = project.description;
-        currentImages = project.images;
+        if (titleEl) titleEl.textContent = project.title;
+        if (descEl) descEl.textContent = project.description;
+        
+        currentImages = project.images || [];
         currentIndex = 0;
         
-        updateCarousel();
+        updateCarouselImage();
         modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Voorkom scrollen achtergrond
     };
 
-    const closeModal = () => modalOverlay.classList.remove('active');
+    // Sluit modal functie
+    const closeModal = () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 
-    function updateCarousel() {
+    // Update carrousel afbeelding
+    function updateCarouselImage() {
+        if (!imgEl || currentImages.length === 0) return;
         imgEl.src = currentImages[currentIndex];
+        imgEl.alt = `Project afbeelding ${currentIndex + 1}`;
     }
 
-    // Event Listeners
-    document.querySelector('.modal-close').addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+    // Event Listeners voor navigatie en sluiten
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
     
-    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateCarousel();
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
     });
 
-    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateCarousel();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentImages.length === 0) return;
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateCarouselImage();
+        });
+    }
 
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentImages.length === 0) return;
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateCarouselImage();
+        });
+    }
+
+    // Toetsenbordondersteuning (Escape om te sluiten, Pijltjes voor carrousel)
+    document.addEventListener('keydown', (e) => {
+        if (!modalOverlay.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            closeModal();
+        } else if (e.key === 'ArrowLeft' && prevBtn) {
+            prevBtn.click();
+        } else if (e.key === 'ArrowRight' && nextBtn) {
+            nextBtn.click();
+        }
+    });
 });
 

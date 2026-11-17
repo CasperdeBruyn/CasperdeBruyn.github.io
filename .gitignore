@@ -7,3 +7,7 @@ portfolio content*/
 *.log
 __pycache__/
 .DS_Store
+
+team_state.json
+
+IMAGE_MANIFEST.md

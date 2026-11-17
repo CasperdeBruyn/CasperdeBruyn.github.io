@@ -296,171 +296,174 @@ body.dark-workshop {
 
 document.addEventListener
 
-/* === AI-TEAM-AUTO-MERGE-CSS === */
-/* =========================================================
-   0. Basis & Kleuren (hergebruikt van eerdere iteraties)
-   ========================================================= */
+/* === CASPER CORE LOCKED STYLES (TAAK 4..10) === */
+
+/* TAAK 5: Goud/Brons Moederbord-Patroon (onzichtbaar in rust, licht op onder de cursor!) */
 :root {
-  --bg-dark: #161412;          /* Diep Houtskool */
-  --bg-secondary: #231F1D;     /* Gerookt Eiken */
-  --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
-  --accent: #C87D4B;           /* Koper / Gesmolten Amber */
+    --cursor-x: -500px;
+    --cursor-y: -500px;
+}
+#pcb-glow-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23C87D4B' stroke-width='1.35' stroke-linecap='round' opacity='0.55'%3E%3Cpath d='M10 20h35l15 15v30M70 10v30l20 20h40M20 90h30l15-15h25l15 15v35M95 110h35M15 125h45l15-15'/%3E%3Ccircle cx='10' cy='20' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='60' cy='65' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='70' cy='10' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='130' cy='60' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='20' cy='90' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='105' cy='125' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='95' cy='110' r='2.5' fill='%23C87D4B'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 140px 140px;
+    -webkit-mask-image: radial-gradient(240px circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);
+    mask-image: radial-gradient(240px circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);
 }
 
-/* ---------------------------------------------------------
-   1. Globale body‑instellingen
-   --------------------------------------------------------- */
-body {
-  background: var(--bg-dark);
-  color: var(--text-light);
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+/* TAAK 10: Verwijder border om het header-logo en maak er een soepele 90-graden draai/bounce van */
+.logo-wrapper, .logo-wrapper img, .logo-img, header .logo img {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.logo-wrapper:hover .logo-img, .logo-wrapper:hover img, .logo-img:hover {
+    transform: rotate(90deg) scale(1.06) !important;
 }
 
-/* ---------------------------------------------------------
-   2. Header‑logo (hover‑rotatie)
-   --------------------------------------------------------- */
-header .logo {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-}
-header .logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-header .logo:hover img {
-  transform: rotate(360deg);
-}
-
-/* ---------------------------------------------------------
-   3. Modal overlay & container (ongewijzigd)
-   --------------------------------------------------------- */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.modal {
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-@media (max-width: 768px) {
-  .modal { flex-direction: column; }
-}
-
-/* ---------------------------------------------------------
-   4. Carousel binnen modal
-   --------------------------------------------------------- */
-.carousel {
-  position: relative;
-  flex: 1 1 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-}
-.carousel img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: opacity 0.3s ease;
-}
-.carousel .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: var(--text-light);
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  outline: none;
-  border-radius: 50%;
-}
-.carousel .nav.prev { left: 10px; }
-.carousel .nav.next { right: 10px; }
-.carousel .nav:hover {
-  background: rgba(255,255,255,0.3);
-}
-
-/* ---------------------------------------------------------
-   5. Sectie‑titel (hergebruikt)
-   --------------------------------------------------------- */
-.ft-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--text-light);
-  letter-spacing: 1px;
-  border-bottom: 1px solid rgba(244,241,234,0.1);
-  padding-bottom: 0.5rem;
-}
-
-/* ---------------------------------------------------------
-   6. **04 – HOMELAB & CRAFT** – Grid & Cards
-   --------------------------------------------------------- */
+/* TAAK 4: Homelab & Craft Sectie Styling */
 .homelab-section {
-  padding: 4rem 2rem;
-  background: var(--bg-dark);
+    padding: 5rem 0;
+    position: relative;
+    z-index: 2;
 }
 .homelab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2.2rem;
 }
 .homelab-card {
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid rgba(244,241,234,0.05);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+    background: #231F1D;
+    border: 1px solid rgba(200, 125, 75, 0.25);
+    border-radius: 10px;
+    padding: 1.85rem;
+    color: #F4F1EA;
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 .homelab-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
+    transform: translateY(-4px);
+    border-color: #C87D4B;
 }
 .homelab-card h3 {
-  margin-top: 0;
-  color: var(--text-light);
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-.homelab-card p {
-  color: rgba(244,241,234,0.8);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
+    margin: 0.6rem 0 0.75rem;
+    color: #F4F1EA;
 }
 
-/* ---------------------------------------------------------
-   7. Responsieve aanpassingen
-   --------------------------------------------------------- */
-@media (max-width: 480px) {
-  .homelab-section { padding: 3rem 1rem; }
-  .modal-details { padding: 1rem; }
+/* TAAK 6: Split Pop-up Modal (Tekst links, Carousel rechts) & Geen afgesneden foto's */
+.card-image {
+    background: #161412 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.card-image img, .project-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #161412 !important;
+}
+#project-modal .modal-content, .modal-container {
+    max-width: 1180px !important;
+    width: 92vw !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+    background: #231F1D !important;
+    border: 1px solid rgba(200, 125, 75, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+}
+.modal-split-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1.15fr !important;
+    gap: 2.2rem !important;
+    align-items: start !important;
+}
+@media (max-width: 860px) {
+    .modal-split-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+.modal-left-text {
+    color: #F4F1EA !important;
+    line-height: 1.7 !important;
+    max-height: 72vh !important;
+    overflow-y: auto !important;
+    padding-right: 0.75rem !important;
+}
+.modal-right-carousel {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    background: #161412 !important;
+    padding: 1.25rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(244, 241, 234, 0.08) !important;
+}
+.carousel-stage {
+    width: 100% !important;
+    height: 52vh !important;
+    max-height: 520px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+.carousel-stage img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+}
+.carousel-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 1rem !important;
+}
+.carousel-btn {
+    background: #231F1D !important;
+    color: #F4F1EA !important;
+    border: 1px solid #C87D4B !important;
+    padding: 0.5rem 1.1rem !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+}
+.carousel-btn:hover {
+    background: #C87D4B !important;
+    color: #161412 !important;
+}
+.carousel-dots {
+    display: flex !important;
+    gap: 0.4rem !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+.carousel-thumb {
+    width: 48px !important;
+    height: 36px !important;
+    object-fit: contain !important;
+    background: #161412 !important;
+    border: 1px solid rgba(244,241,234,0.2) !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    opacity: 0.55 !important;
+}
+.carousel-thumb.active {
+    border-color: #C87D4B !important;
+    opacity: 1 !important;
 }
 
+/* === AI-TEAM-AUTO-MERGE-CSS === */

@@ -251,183 +251,77 @@ My portfolio likes cookies :]",
     console.log("Coder B: taken 1‑5 (modal, data, micro‑interacties, responsive) geïmplementeerd.");
 });
 
-// === AI-TEAM-AUTO-MERGE-JS ===
-/**
- * Casper de Bruyn – Portfolio Logic (Coder B)
- * Taak 1‑5: Project‑modal, carrousel, micro‑interacties en
- *           ondersteuning voor het nieuwe onderdeel “04 HOMELAB & CRAFT”.
- * Skill: GoogleChrome/modern-web-guidance
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* -----------------------------------------------------------------
-     1. PROJECTDATA (incl. bestaande projecten + placeholders)
-     ----------------------------------------------------------------- */
-  const PROJECT_DATA = {
-    // --- bestaande projecten (verkort weergegeven) -----------------
-    'generation-plastic-soup': {
-      title: "Generation Plastic Soup",
-      category: "GAME DESIGN",
-      year: "2025",
-      description: `Casper de Bruyn - Generation Plastic Soup
-
-Tijdens een Game Jam georganiseerd door EPIC‑WE, Beeld & Geluid, HvA, en Dropstuff.nl creëerden we een game rondom stijgende zeespiegels en EU‑waarden.
-
-Mijn rol: Ontwerp van spelonderdelen en speelkaarten.`,
-      images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
-    },
-    // ... (overige projecten blijven ongewijzigd) ...
-
-    // --- placeholders voor de 3 nieuwe projectkaarten -------------
-    'stage-vr-learning-lab': {
-      title: "Stage bij VR Learning Lab",
-      category: "INTERACTIVE / VR",
-      year: "2024",
-      description: `Stage bij VR Learning Lab – een intensieve periode waarin ik
-meewerkte aan prototypen voor educatieve virtual‑reality‑ervaringen.
-Mijn focus lag op interaction‑design, asset‑optimalisatie en
-gebruikers‑feedback‑loops.`,
-      images: [
-        "assets/images/placeholder_vr_learning_01.jpg",
-        "assets/images/placeholder_vr_learning_02.jpg"
-      ]
-    },
-    'royal-system-kast': {
-      title: "De Royal System kast versie",
-      category: "PRODUCT DESIGN",
-      year: "2023",
-      description: `Concept‑ en prototype‑ontwikkeling van een modulair
-opbergsysteem (Royal System). Ik ontwierp de mechanische
-koppelingen, werkte met CNC‑frees en leverde een render‑ready
-visualisatie voor productie.`,
-      images: [
-        "assets/images/placeholder_royal_kast_01.jpg",
-        "assets/images/placeholder_royal_kast_02.jpg"
-      ]
-    },
-    'linux-ai-homelab': {
-      title: "Linux AI Homelab & Smart Home",
-      category: "DEVOPS / AI",
-      year: "2022‑2025",
-      description: `Mijn eigen homelab draait op Debian‑based Linux, gevirtualiseerd
-met Proxmox. Hier host ik AI‑services (Stable Diffusion,
-LLM‑inference), een zelf‑gebouwde Home‑Assistant‑installatie en
-een netwerk‑monitoring stack (Grafana + Prometheus). Het project
-combineert automatisering, privacy‑first principes en hands‑on
-hardware‑experimenten (Raspberry Pi, Nvidia Jetson).`,
-      images: [
-        "assets/images/placeholder_homelab_01.jpg",
-        "assets/images/placeholder_homelab_02.jpg",
-        "assets/images/placeholder_homelab_03.jpg"
-      ]
-    }
-  };
-
-  /* -----------------------------------------------------------------
-     2. MODAL LOGICA
-     ----------------------------------------------------------------- */
-  const overlay = document.querySelector('.modal-overlay');
-  const modal = document.querySelector('.modal');
-  const modalImg = modal.querySelector('.carousel img');
-  const modalTitle = modal.querySelector('.modal-title');
-  const modalCategory = modal.querySelector('.modal-category');
-  const modalYear = modal.querySelector('.modal-year');
-  const modalDesc = modal.querySelector('.modal-description');
-  const navPrev = modal.querySelector('.nav.prev');
-  const navNext = modal.querySelector('.nav.next');
-
-  let currentKey = null;
-  let currentImgIndex = 0;
-
-  // Open modal voor een gegeven project‑key
-  function openModal(key) {
-    const data = PROJECT_DATA[key];
-    if (!data) return;
-
-    currentKey = key;
-    currentImgIndex = 0;
-
-    modalTitle.textContent = data.title;
-    modalCategory.textContent = data.category;
-    modalYear.textContent = data.year;
-    modalDesc.textContent = data.description;
-    modalImg.src = data.images[0];
-
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  // Sluit modal
-  function closeModal() {
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    currentKey = null;
-  }
-
-  // Navigeer door afbeeldingen
-  function showImage(idx) {
-    const imgs = PROJECT_DATA[currentKey].images;
-    if (idx < 0) idx = imgs.length - 1;
-    if (idx >= imgs.length) idx = 0;
-    currentImgIndex = idx;
-    modalImg.style.opacity = 0;
-    setTimeout(() => {
-      modalImg.src = imgs[currentImgIndex];
-      modalImg.style.opacity = 1;
-    }, 150);
-  }
-
-  // Event‑listeners voor project‑kaarten (data‑project attribuut)
-  document.querySelectorAll('[data-project]').forEach(card => {
-    card.addEventListener('click', () => {
-      const key = card.getAttribute('data-project');
-      openModal(key);
-    });
-  });
-
-  // Sluit‑acties
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) closeModal();
-  });
-  document.querySelector('.modal .close-btn')?.addEventListener('click', closeModal);
-  document.addEventListener('keydown', e => {
-    if (!overlay.classList.contains('active')) return;
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowLeft') showImage(currentImgIndex - 1);
-    if (e.key === 'ArrowRight') showImage(currentImgIndex + 1);
-  });
-
-  // Carousel knoppen
-  navPrev?.addEventListener('click', () => showImage(currentImgIndex - 1));
-  navNext?.addEventListener('click', () => showImage(currentImgIndex + 1));
-
-  /* -----------------------------------------------------------------
-     3. NAVIGATIE TUSSEN SECTIES (01‑WORK, 02‑ABOUT, 03‑CONTACT, 04‑HOMELAB)
-     ----------------------------------------------------------------- */
-  document.querySelectorAll('nav a[data-target]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('data-target');
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* -----------------------------------------------------------------
-     4. INIT – placeholder‑afbeeldingen (indien ze nog niet bestaan)
-     ----------------------------------------------------------------- */
-  // In een echte build zouden de placeholder‑afbeeldingen vervangen
-  // worden door echte foto’s. Voor nu zorgen we dat een ontbrekende
-  // afbeelding een nette fallback toont.
-  const imgElements = document.querySelectorAll('img');
-  imgElements.forEach(img => {
-    img.addEventListener('error', () => {
-      img.src = 'assets/images/placeholder_missing.jpg';
-    });
-  });
-
+// === CASPER CORE LOCKED JS (TAAK 5, 6, 9) ===
+document.addEventListener('mousemove', (e) => {
+    document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
+    document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const curYear = new Date().getFullYear();
+    const yrSpan = document.getElementById('live-archive-year');
+    if (yrSpan) yrSpan.textContent = curYear;
+    document.querySelectorAll('.hero-tag, .system-status, .status-badge, p, span').forEach(el => {
+        if (el.children.length === 0 && /C(?:MD|DB)_ARCHIVE_\d{4}/i.test(el.textContent)) {
+            el.textContent = el.textContent.replace(/C(?:MD|DB)_ARCHIVE_\d{4}/gi, 'CDB_ARCHIVE_' + curYear);
+        }
+    });
+
+    const modal = document.getElementById('project-modal');
+    const modalGallery = document.getElementById('modal-gallery');
+    const modalDesc = document.getElementById('modal-desc');
+    if (modal && modalGallery && modalDesc && !modal.querySelector('.modal-split-layout')) {
+        const parentBox = modalDesc.parentElement;
+        if (parentBox) {
+            const splitWrap = document.createElement('div');
+            splitWrap.className = 'modal-split-layout';
+            const leftCol = document.createElement('div');
+            leftCol.className = 'modal-left-text';
+            const rightCol = document.createElement('div');
+            rightCol.className = 'modal-right-carousel';
+            parentBox.insertBefore(splitWrap, modalDesc);
+            leftCol.appendChild(modalDesc);
+            rightCol.appendChild(modalGallery);
+            splitWrap.appendChild(leftCol);
+            splitWrap.appendChild(rightCol);
+        }
+    }
+
+    if (modalGallery) {
+        const observer = new MutationObserver(() => {
+            if (modalGallery.dataset.carouselBuilding === '1') return;
+            const rawImgs = Array.from(modalGallery.querySelectorAll('img')).map(im => im.getAttribute('src')).filter(Boolean);
+            if (rawImgs.length === 0 || modalGallery.querySelector('.carousel-stage')) return;
+
+            modalGallery.dataset.carouselBuilding = '1';
+            let curIdx = 0;
+            const renderCarousel = () => {
+                modalGallery.innerHTML = `
+                    <div class="carousel-stage">
+                        <img src="${rawImgs[curIdx]}" alt="Project slide ${curIdx + 1}">
+                    </div>
+                    <div class="carousel-controls">
+                        <button type="button" class="carousel-btn" id="car-prev">← Prev</button>
+                        <span style="color:#F4F1EA;font-size:0.9rem;">${curIdx + 1} / ${rawImgs.length}</span>
+                        <button type="button" class="carousel-btn" id="car-next">Next →</button>
+                    </div>
+                    <div class="carousel-dots">
+                        ${rawImgs.map((src, idx) => `<img src="${src}" class="carousel-thumb ${idx === curIdx ? 'active' : ''}" data-idx="${idx}" alt="thumb">`).join('')}
+                    </div>
+                `;
+                const prevBtn = modalGallery.querySelector('#car-prev');
+                const nextBtn = modalGallery.querySelector('#car-next');
+                if (prevBtn) prevBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx - 1 + rawImgs.length) % rawImgs.length; renderCarousel(); };
+                if (nextBtn) nextBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx + 1) % rawImgs.length; renderCarousel(); };
+                modalGallery.querySelectorAll('.carousel-thumb').forEach(th => {
+                    th.onclick = (ev) => { ev.stopPropagation(); curIdx = parseInt(th.dataset.idx, 10) || 0; renderCarousel(); };
+                });
+            };
+            renderCarousel();
+            modalGallery.dataset.carouselBuilding = '0';
+        });
+        observer.observe(modalGallery, { childList: true });
+    }
+});
+
+// === AI-TEAM-AUTO-MERGE-JS ===

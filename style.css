@@ -305,7 +305,6 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --overlay-bg: rgba(0,0,0,0.85);
 }
 
 body {
@@ -323,7 +322,7 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: var(--overlay-bg);
+  background: rgba(0,0,0,0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,44 +399,76 @@ body {
 }
 
 /* ==============================
-   5. Text panel
+   5. Project card styling
    ============================== */
-.text-panel {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.text-panel h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: var(--accent);
-}
-
-.text-panel p {
-  flex: 1 1 auto;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.text-panel .close-btn {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
+.project-card {
   cursor: pointer;
-  padding: 0.5rem;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  background: var(--bg-secondary);
 }
 
-.text-panel .close-btn:hover {
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card .info {
+  padding: 0.5rem;
+  font-size: 0.9rem;
   color: var(--accent);
 }
 
 /* ==============================
-   6. Utility
+   6. Header logo
    ============================== */
-.hidden { display: none; }
+#site-header-logo {
+  width: 120px;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+#site-header-logo:hover {
+  transform: rotate(360deg);
+}
+
+/* ==============================
+   7. Modal content (text side)
+   ============================== */
+.modal .content {
+  flex: 1 1 40%;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal .content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.modal .content p {
+  line-height: 1.6;
+}
+
+/* ==============================
+   8. Close button
+   ============================== */
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
 

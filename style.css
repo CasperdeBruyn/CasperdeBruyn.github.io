@@ -297,44 +297,39 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* -------------------------------------------------
+/* ==============================
    1. Basis & kleuren
-   ------------------------------------------------- */
+   ============================== */
 :root {
-  --bg-dark:        #161412;   /* Diep Houtskool */
-  --bg-secondary:  #231F1D;   /* Gerookt Eiken */
-  --text-light:    #F4F1EA;   /* Warm Wit */
-  --accent:        #C87D4B;   /* Koper / Gesmolten Amber */
-  --overlay-bg:    rgba(0,0,0,0.85);
+  --bg-dark: #161412;          /* Diep Houtskool */
+  --bg-secondary: #231F1D;     /* Gerookt Eiken */
+  --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
+  --accent: #C87D4B;           /* Koper / Gesmolten Amber */
 }
-
-/* reset + body */
-*,
-*::before,
-*::after { box-sizing: border-box; margin:0; padding:0; }
 
 body {
   background: var(--bg-dark);
   color: var(--text-light);
   font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
-/* -------------------------------------------------
-   2. Modal overlay (achtergrond)
-   ------------------------------------------------- */
+/* ==============================
+   2. Modal overlay
+   ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: var(--overlay-bg);
+  background: rgba(0,0,0,0.85);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -342,123 +337,129 @@ body {
   pointer-events: auto;
 }
 
-/* -------------------------------------------------
+/* ==============================
    3. Modal container
-   ------------------------------------------------- */
+   ============================== */
 .modal {
   background: var(--bg-secondary);
   border-radius: 8px;
   max-width: 90vw;
   max-height: 90vh;
-  width: 1000px;               /* max breedte op desktop */
   display: flex;
+  flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* mobiel: stapel onder elkaar */
 @media (max-width: 768px) {
-  .modal { flex-direction: column; width: 95vw; }
+  .modal {
+    flex-direction: column;
+  }
 }
 
-/* -------------------------------------------------
-   4. Carousel (afbeeldingen)
-   ------------------------------------------------- */
+/* ==============================
+   4. Carousel & image styling
+   ============================== */
 .carousel {
-  flex: 1 1 60%;
   position: relative;
-  background: #000;
+  flex: 1 1 60%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #000;
 }
 
 .carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;               /* nooit afsnijden */
-  transition: opacity .3s ease;
+  object-fit: contain; /* Zorgt dat de foto niet wordt afgesneden */
+  transition: opacity 0.3s ease;
 }
 
-/* navigatie‑knoppen */
 .carousel .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
   width: 40px;
   height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255,255,255,.15);
-  color: var(--text-light);
-  font-size: 1.8rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
+  outline: none;
+  border-radius: 50%;
 }
+
+.carousel .nav.prev { left: 10px; }
+.carousel .nav.next { right: 10px; }
 
 .carousel .nav:hover {
-  background: rgba(255,255,255,.25);
+  background: rgba(255,255,255,0.25);
 }
 
-.carousel .nav.prev { left: 12px; }
-.carousel .nav.next { right: 12px; }
-
-/* -------------------------------------------------
-   5. Modal content (tekst)
-   ------------------------------------------------- */
+/* ==============================
+   5. Modal content (text side)
+   ============================== */
 .modal-content {
   flex: 1 1 40%;
-  padding: 1.5rem;
+  padding: 2rem;
   overflow-y: auto;
-  position: relative;               /* voor close‑knop */
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .modal-content h2 {
-  margin: 0;
+  margin-top: 0;
   color: var(--accent);
-  font-size: 1.8rem;
-}
-
-.modal-content .meta {
-  font-size: .9rem;
-  color: #aaa;
 }
 
 .modal-content p {
   line-height: 1.6;
+  flex: 1;
 }
 
-/* close‑knop (X) */
-.modal-content .close-btn {
+/* ==============================
+   6. Close button
+   ============================== */
+.modal-close {
   position: absolute;
-  top: .8rem;
-  right: .8rem;
+  top: 0.5rem;
+  right: 0.5rem;
   background: transparent;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--text-light);
   cursor: pointer;
-  transition: transform .2s;
 }
 
-.modal-content .close-btn:hover {
-  transform: rotate(90deg);
+.modal-close:hover {
+  color: var(--accent);
 }
 
-/* -------------------------------------------------
-   6. Animaties (optioneel)
-   ------------------------------------------------- */
-@keyframes fadeIn {
-  from { opacity:0; }
-  to   { opacity:1; }
+/* ==============================
+   7. Header logo hover rotation
+   ============================== */
+#site-header-logo {
+  transition: transform 0.5s ease;
 }
-.modal-overlay.active .modal {
-  animation: fadeIn .3s ease forwards;
+
+#site-header-logo:hover {
+  transform: rotate(360deg);
+}
+
+/* ==============================
+   8. Placeholder styling for new projects
+   ============================== */
+.project-card.placeholder {
+  background: var(--bg-secondary);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 2px dashed var(--accent);
+  border-radius: 8px;
+  height: 200px;
 }
 

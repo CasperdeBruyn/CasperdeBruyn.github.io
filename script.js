@@ -253,7 +253,7 @@ My portfolio likes cookies :]",
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Casper de Bruyn – Modal & Carrousel Logica (Taak 1A)
+ * Casper de Bruyn – Modal & Carousel Logic (Coder B)
  * Skill: GoogleChrome/modern-web-guidance
  */
 
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImages = [];
     let currentIndex = 0;
 
-    // Open modal functie (globaal aanroepbaar vanuit projectkaarten)
+    // Open modal functie (globaal aanroepbaar)
     window.openProjectModal = (projectKey) => {
         const project = typeof PROJECT_DATA !== 'undefined' ? PROJECT_DATA[projectKey] : null;
         if (!project) {
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         updateCarouselImage();
         modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Voorkom scrollen achtergrond
+        document.body.style.overflow = 'hidden';
     };
 
     // Sluit modal functie
@@ -310,6 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modalOverlay) closeModal();
     });
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             if (currentImages.length === 0) return;
@@ -326,17 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Toetsenbordondersteuning (Escape om te sluiten, Pijltjes voor carrousel)
-    document.addEventListener('keydown', (e) => {
-        if (!modalOverlay.classList.contains('active')) return;
-        
-        if (e.key === 'Escape') {
-            closeModal();
-        } else if (e.key === 'ArrowLeft' && prevBtn) {
-            prevBtn.click();
-        } else if (e.key === 'ArrowRight' && nextBtn) {
-            nextBtn.click();
-        }
+    // Koppel click events aan projectkaarten op de pagina
+    document.querySelectorAll('.project-card, [data-project]').forEach(card => {
+        card.addEventListener('click', () => {
+            const projectKey = card.getAttribute('data-project');
+            if (projectKey) {
+                window.openProjectModal(projectKey);
+            }
+        });
     });
 });
 

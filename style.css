@@ -297,259 +297,235 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==============================
-   Modale Project Pop-up & Carousel Stijlen
-   ============================== */
+/* ==========================================================
+   1. Basis & kleuren
+   ========================================================== */
+:root {
+  --bg-dark: #161412;          /* Diep Houtskool */
+  --bg-secondary: #231F1D;     /* Gerookt Eiken */
+  --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
+  --accent: #C87D4B;           /* Koper / Gesmolten Amber */
+  --overlay: rgba(0, 0, 0, 0.85);
+}
+
+/* reset + globale layout */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 100%; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ==========================================================
+   2. Header & logo
+   ========================================================== */
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--bg-secondary);
+}
+
+header img.logo {
+  height: 48px;
+  width: auto;
+  transition: transform 0.4s ease;
+  /* voorkom ronde uitsnede */
+  object-fit: contain;
+}
+
+header img.logo:hover {
+  transform: rotate(360deg);
+}
+
+/* ==========================================================
+   3. Project‑grid
+   ========================================================== */
+.project-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* individuele kaart */
+.project-card {
+  position: relative;
+  height: 340px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+/* cover‑afbeelding */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover::before {
+  transform: scale(1.07);
+}
+
+/* overlay‑tekst */
+.project-card .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.7));
+  color: var(--text-light);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   4. Modal overlay & container
+   ========================================================== */
 .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
+/* modal‑box */
 .modal {
-    background: #231F1D;
-    border-radius: 12px;
-    width: 85vw;
-    max-width: 1100px;
-    height: 80vh;
-    max-height: 700px;
-    display: flex;
-    flex-direction: row; /* Tekst links, carousel rechts */
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 960px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
 }
 
-/* Tekstsectie links */
-.modal-text-content {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-    color: #F4F1EA;
-    background: #1C1917;
+/* sluitknop */
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
 }
 
-.modal-text-content h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #C87D4B;
-}
-
-.modal-text-content .meta {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.modal-text-content p {
-    line-height: 1.6;
-    font-size: 1rem;
-    white-space: pre-line;
-}
-
-/* Carousel sectie rechts */
+/* ==========================================================
+   5. Carousel (links) & tekst (rechts)
+   ========================================================== */
 .carousel {
-    flex: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0f0e0d;
-    overflow: hidden;
+  flex: 1 1 60%;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Zorgt dat foto's passen en niet worden afgesneden */
-    transition: opacity 0.3s ease;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
 }
 
-/* Navigatiedoppen */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: #F4F1EA;
-    padding: 12px 16px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    transition: background 0.2s ease;
-    z-index: 10;
+/* navigatie‑knoppen */
+.carousel .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
 }
 
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+.carousel .nav:hover {
+  background: rgba(255,255,255,0.25);
 }
 
-.carousel-btn.prev { left: 15px; }
-.carousel-btn.next { right: 15px; }
+.carousel .nav.prev { left: 12px; }
+.carousel .nav.next { right: 12px; }
 
-/* Sluit knop */
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 1.8rem;
-    color: #F4F1EA;
-    z-index: 20;
-    background: rgba(0,0,0,0.4);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease;
+/* tekst‑paneel */
+.modal-text {
+  flex: 1 1 40%;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  position: relative;
 }
 
-.modal-close:hover {
-    background: #C87D4B;
+.modal-text h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
 }
 
-/* Mobiele weergave: stapelen */
+.modal-text p {
+  margin-top: 1rem;
+}
+
+/* ==========================================================
+   6. Responsief
+   ========================================================== */
 @media (max-width: 768px) {
-    .modal {
-        flex-direction: column;
-        width: 95vw;
-        height: 90vh;
-    }
-    .modal-text-content {
-        flex: 1;
-        padding: 20px;
-    }
-    .carousel {
-        flex: 1;
-    }
+  .modal {
+    flex-direction: column;
+    width: 95vw;
+    height: 90vh;
+  }
+  .carousel,
+  .modal-text {
+    flex: none;
+    width: 100%;
+    height: 50%;
+  }
+  .modal-text {
+    padding: 1rem;
+  }
 }
 
+/* ==========================================================
+   7. Utilities (optioneel)
+   ========================================================== */
+.hidden { display: none !important; }
 
-/* === TAAK 1A, 1B & 2B: SPLIT MODAL (TEKST LINKS, CAROUSEL RECHTS) & GEEN AFGESNEDEN FOTO'S === */
-.card-image {
-    background: #161412 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-.card-image img, .project-card img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    object-position: center !important;
-    background: #161412 !important;
-}
-#project-modal .modal-content, .modal-container {
-    max-width: 1180px !important;
-    width: 92vw !important;
-    max-height: 88vh !important;
-    overflow-y: auto !important;
-    background: #231F1D !important;
-    border: 1px solid rgba(200, 125, 75, 0.35) !important;
-    border-radius: 12px !important;
-    padding: 2rem !important;
-}
-.modal-split-layout {
-    display: grid !important;
-    grid-template-columns: 1fr 1.15fr !important;
-    gap: 2.2rem !important;
-    align-items: start !important;
-}
-@media (max-width: 860px) {
-    .modal-split-layout {
-        grid-template-columns: 1fr !important;
-    }
-}
-.modal-left-text {
-    color: #F4F1EA !important;
-    line-height: 1.7 !important;
-    max-height: 72vh !important;
-    overflow-y: auto !important;
-    padding-right: 0.75rem !important;
-}
-.modal-right-carousel {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
-    background: #161412 !important;
-    padding: 1.25rem !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(244, 241, 234, 0.08) !important;
-}
-.carousel-stage {
-    width: 100% !important;
-    height: 52vh !important;
-    max-height: 520px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-}
-.carousel-stage img {
-    max-width: 100% !important;
-    max-height: 100% !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-    border-radius: 6px !important;
-}
-.carousel-controls {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    gap: 1rem !important;
-}
-.carousel-btn {
-    background: #231F1D !important;
-    color: #F4F1EA !important;
-    border: 1px solid #C87D4B !important;
-    padding: 0.5rem 1.1rem !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
-}
-.carousel-btn:hover {
-    background: #C87D4B !important;
-    color: #161412 !important;
-}
-.carousel-dots {
-    display: flex !important;
-    gap: 0.4rem !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-}
-.carousel-thumb {
-    width: 48px !important;
-    height: 36px !important;
-    object-fit: contain !important;
-    background: #161412 !important;
-    border: 1px solid rgba(244,241,234,0.2) !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    opacity: 0.55 !important;
-}
-.carousel-thumb.active {
-    border-color: #C87D4B !important;
-    opacity: 1 !important;
-}

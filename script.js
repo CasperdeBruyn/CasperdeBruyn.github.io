@@ -258,137 +258,241 @@ My portfolio likes cookies :]",
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const modalOverlay = document.getElementById('project-modal');
-    const imgEl = document.getElementById('carousel-img');
-    const titleEl = document.getElementById('modal-title');
-    const descEl = document.getElementById('modal-desc');
-    const closeBtn = document.querySelector('.modal-close');
+  /* -------------------------------------------------------------
+     1. PROJECT DATA (incl. nieuw onderdeel “Homelab & Craft”)
+     ------------------------------------------------------------- */
+  const PROJECT_DATA = {
+    'generation-plastic-soup': {
+      title: "Generation Plastic Soup",
+      category: "GAME DESIGN",
+      year: "2025",
+      description: `Casper de Bruyn - Generation plastic soup
 
-    let currentImages = [];
-    let currentIndex = 0;
+The Project During a Game Jam organized by EPIC-WE, Beeld & Geluid, HvA, and Dropstuff.nl, we created a game to raise awareness about EU values, centered around the theme of rising sea levels.
 
-    function updateCarouselImage() {
-        if (imgEl && currentImages.length > 0) {
-            imgEl.style.opacity = '0';
-            setTimeout(() => {
-                imgEl.src = currentImages[currentIndex];
-                imgEl.style.opacity = '1';
-            }, 150);
-        }
+My Role During this Game Jam, I was responsible for designing the game pieces and the playing cards. The core concept and the user interface were a collaborative group effort.
+
+The Game Idea It's a battle between the old and the new generation: profit versus a cleaner ocean. The older generation is focused on financial gain, which leads to further pollution of the waters. Meanwhile, the new generation is fighting to clean up the ocean for a better future.
+
+Who will win this battle? And can we still change the future?
+
+Check out the game for yourself! I've added the link to our itch.io page down below. ⬇️`,
+      images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
+    },
+
+    'zeefdrukken': {
+      title: "Zeefdrukken",
+      category: "PHYSICAL CRAFT",
+      year: "2024",
+      description: `Casper de Bruyn - Street Fresh
+
+The Project During a project week, our team was tasked with building a concept for a new startup business from the ground up.
+
+My Role For this project, my role was a mix of physical crafting and strategic design. I was responsible for screen-printing the physical T-shirts, creating the graphic design for one of the shirts, and helping to shape the overall business model.
+
+The Concept We developed a subscription service for uniquely designed T-shirts. Every month, a brand-new, exclusive design is created and presented to our subscribers before any printing takes place.
+
+The customer always has the freedom to opt in for that month's drop or simply skip it. By using this on-demand, user-choice approach, we actively combat unnecessary overproduction and completely eliminate dead stock.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
+    },
+
+    'samen-spelen': {
+      title: "Samen Spelen",
+      category: "INTERACTIVE",
+      year: "2024",
+      description: `Casper de Bruyn - Samen spelen
+
+The Project For the organization "Samen Spelen" (Playing Together), our team designed a braille-based concept game for use in public playgrounds.
+
+My Role For this project, I was responsible for designing the physical game pieces and the game board, researching braille typography, and shaping the overall user interaction.
+
+The Concept The main challenge given to us was to spark conversations between parents at the playground, specifically to raise awareness that the playground is fully accessible for children with disabilities.
+
+Our solution was an interactive braille game. Through this game, children can learn a new skill in a fun, informative way while actively involving their parents. This natural parent‑child engagement acts as an icebreaker, making it much easier for parents to connect and start talking with one another.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
+    },
+
+    'grijpmachine': {
+      title: "Grijpmachine",
+      category: "ENGINEERING",
+      year: "2023",
+      description: `Casper de Bruyn - Grijpmachine
+
+For a DIY school project, I designed and built a fully functional physical claw machine, the "Lucky Grapple"—to distribute bags of chips during a school exhibition.
+
+My Role I was responsible for the complete physical construction of this installation. This involved woodworking to build the arcade cabinet, designing and cutting the mechanical parts for the claw, and engineering a custom control system using syringes to operate the machine's movements.
+
+The Concept The goal was to transform a simple task, handing out snacks at an expo, into a playful and engaging experience. Instead of simply handing out bags of chips to visitors, they had to actively operate the custom syringe‑controls to play the game and grab their own snack.
+
+This installation is a perfect reflection of my passion for Immersive Design: combining hands‑on physical craftsmanship with fun, interactive user experiences.
+
+My portfolio likes cookies :]`,
+      images: ["assets/images/grijpmachine_01_hero.jpg", "assets/images/grijpmachine_02_item02.jpg", "assets/images/grijpmachine_03_item03.jpg", "assets/images/grijpmachine_04_item04.jpg", "assets/images/grijpmachine_05_item05.jpg", "assets/images/grijpmachine_06_item06.jpg", "assets/images/grijpmachine_07_item07.jpg", "assets/images/grijpmachine_08_item08.jpg", "assets/images/grijpmachine_09_item09.jpg", "assets/images/grijpmachine_10_item10.jpg", "assets/images/grijpmachine_11_item11.jpg", "assets/images/grijpmachine_12_item12.jpg", "assets/images/grijpmachine_13_item13.jpg", "assets/images/grijpmachine_14_item14.jpg", "assets/images/grijpmachine_15_item15.jpg", "assets/images/grijpmachine_16_item16.jpg", "assets/images/grijpmachine_17_item17.jpg", "assets/images/grijpmachine_18_item18.jpg"]
+    },
+
+    'kodak': {
+      title: "Kodak Retro Project",
+      category: "BRANDING",
+      year: "2023",
+      description: `The Project For a school assignment, I was tasked with creating a conceptual rebranding campaign for an iconic brand. I chose to focus on Kodak.
+
+My Role I was responsible for the complete visual and conceptual design of this campaign, including designing the posters, developing the retro‑inspired visual identity, and writing the core slogans.
+
+The Concept The core message of this rebranding campaign is clear: we need to shoot more analog and rely less on our digital smartphones. In a world where people constantly experience life through a screen, this concept encourages everyone to put their digital devices away.
+
+Through bold, retro‑style typography and contrasting illustrations (the classic analog camera versus the smartphone), the posters promote a "Screenfree" lifestyle. It’s a call to embrace the authentic, tangible experience of analog photography and to truly live in the moment, rather than just looking at it through a phone screen.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
+    },
+
+    'school-projecten': {
+      title: "Dan maar hier!",
+      category: "CMD MULTIDISCIPLINARY",
+      year: "2023‑2025",
+      description: `Casper de Bruyn - Dan maar hier!
+
+The Project Inspired by a recent article from the investigative journalism platform Follow the Money regarding the shifting housing market, our team developed a conceptual guerrilla campaign to raise awareness about the absurdly high housing prices.
+
+My Role For this campaign, I was responsible for conceptualizing the core message, illustrating the satirical line‑art, and executing the physical guerrilla marketing in the city.
+
+The Concept We created a satirical campaign titled "#DANMAARHIER" (If I can't afford a house, I'll just live here!). We designed classic real estate "For Sale" posters featuring humorous line‑art and physically placed them in absurd public locations, such as a tree, a bus shelter, and a public trash bin.
+
+By advertising these unlivable spots as potential real estate, like labeling a trash can as a "Room with a jacuzzi", we used physical guerrilla marketing in the real world to make a bold statement. The physical signs, combined with a QR code, were designed to make people stop, laugh, and ultimately reflect on the harsh reality of the ongoing housing crisis.
+
+My portfolio likes cookies :]`,
+      images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
+    },
+
+    /* ---------------------------------------------------------
+       4. NIEUWE ONDERDEEL – HOMELAB & CRAFT
+       --------------------------------------------------------- */
+    'homelab-craft': {
+      title: "Linux AI Homelab & Craft",
+      category: "HOMELAB & CRAFT",
+      year: "2024‑2025",
+      description: `Dit onderdeel combineert mijn passie voor Linux‑gebaseerde AI‑homelabs, slimme‑huis‑automatisering en het houtwerk‑project van Poul Cadovius.
+
+- **Linux AI Homelab**: Een zelf‑gebouwde server‑rack met GPU‑acceleratie, Docker‑containers voor LLM‑inference, Home‑Assistant‑integratie en een eigen CI/CD‑pipeline.
+- **Smart Home Automatisering**: MQTT‑gestuurde sensoren, Zigbee‑nodes, en spraak‑acties via Rhasspy. Alles draait op dezelfde Linux‑basis, waardoor data‑privacy gegarandeerd is.
+- **Poul Cadovius Houtproject**: Een ambachtelijk vervaardigd houten kast‑frame waarin de rack‑units passen. Het ontwerp combineert CNC‑gesneden panelen met hand‑gesneden details, geïnspireerd op Scandinavische minimalisme.
+
+Bekijk de foto‑galerij voor een rondleiding door de rack‑opstelling, de automatiserings‑dashboard en de uiteindelijke houten afwerking.`,
+      images: [
+        "assets/images/homelab_01_rack.jpg",
+        "assets/images/homelab_02_dashboard.jpg",
+        "assets/images/homelab_03_zigbee.jpg",
+        "assets/images/homelab_04_cadovius_cabinet.jpg"
+      ]
     }
+  };
 
-    window.nextImage = () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateCarouselImage();
-    };
+  /* -------------------------------------------------------------
+     2. DOM‑referenties
+     ------------------------------------------------------------- */
+  const modalOverlay = document.getElementById('project-modal');
+  const imgEl = document.getElementById('carousel-img');
+  const titleEl = document.getElementById('modal-title');
+  const descEl = document.getElementById('modal-desc');
+  const closeBtn = document.querySelector('.modal-close');
 
-    window.prevImage = () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateCarouselImage();
-    };
+  let currentImages = [];
+  let currentIndex = 0;
 
-    window.openProjectModal = (projectKey) => {
-        const project = PROJECT_DATA[projectKey];
-        if (!project) return;
+  /* -------------------------------------------------------------
+     3. Carousel‑helper
+     ------------------------------------------------------------- */
+  function updateCarouselImage() {
+    if (!imgEl || currentImages.length === 0) return;
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = currentImages[currentIndex];
+      imgEl.style.opacity = '1';
+    }, 150);
+  }
 
-        titleEl.textContent = project.title;
-        descEl.innerText = project.description;
-        currentImages = project.images || [];
-        currentIndex = 0;
+  window.nextImage = () => {
+    if (currentImages.length === 0) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateCarouselImage();
+  };
 
-        updateCarouselImage();
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    };
+  window.prevImage = () => {
+    if (currentImages.length === 0) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateCarouselImage();
+  };
 
-    const closeModal = () => {
-        modalOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    };
+  /* -------------------------------------------------------------
+     4. Open / Close modal
+     ------------------------------------------------------------- */
+  window.openProjectModal = (projectKey) => {
+    const project = PROJECT_DATA[projectKey];
+    if (!project) return;
 
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal();
+    titleEl.textContent = project.title;
+    descEl.textContent = project.description;
+
+    currentImages = project.images || [];
+    currentIndex = 0;
+    updateCarouselImage();
+
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (modalOverlay.classList.contains('active')) {
+      if (e.key === 'ArrowRight') window.nextImage();
+      if (e.key === 'ArrowLeft') window.prevImage();
+    }
+  });
+
+  /* -------------------------------------------------------------
+     5. Click‑handler voor project‑kaarten (event‑delegation)
+     ------------------------------------------------------------- */
+  const grid = document.querySelector('.project-grid');
+  if (grid) {
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.project-card');
+      if (!card) return;
+      const projectKey = card.dataset.project;
+      if (projectKey) openProjectModal(projectKey);
     });
+  }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-        if (modalOverlay.classList.contains('active')) {
-            if (e.key === 'ArrowRight') window.nextImage();
-            if (e.key === 'ArrowLeft') window.prevImage();
-        }
-    });
+  /* -------------------------------------------------------------
+     6. Dynamisch toepassen van cover‑afbeeldingen via CSS‑variabelen
+        (zodat we geen inline‑style nodig hebben)
+     ------------------------------------------------------------- */
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    const key = card.dataset.project;
+    const data = PROJECT_DATA[key];
+    if (!data) return;
+
+    // bepaal cover‑afbeelding (eerste afbeelding van de array)
+    const cover = data.images && data.images[0] ? data.images[0] : '';
+    if (cover) {
+      card.style.setProperty('--cover-url', `url(${cover})`);
+      // we gebruiken ::before in CSS, dus hier alleen de variabele
+      card.style.setProperty('--cover-url', `url(${cover})`);
+    }
+  });
 });
 
-
-// === SPLIT MODAL CAROUSEL & LIVE YEAR UPGRADE (TAAK 1A, 1B, 2B, 3) ===
-document.addEventListener('DOMContentLoaded', () => {
-    const yrSpan = document.getElementById('live-archive-year');
-    if (yrSpan) yrSpan.textContent = new Date().getFullYear();
-    document.querySelectorAll('.hero-tag, .system-status, .status-badge, p, span').forEach(el => {
-        if (el.children.length === 0 && /C(?:MD|DB)_ARCHIVE_\d{4}/i.test(el.textContent)) {
-            el.textContent = el.textContent.replace(/C(?:MD|DB)_ARCHIVE_\d{4}/gi, 'CDB_ARCHIVE_' + new Date().getFullYear());
-        }
-    });
-
-    const modal = document.getElementById('project-modal');
-    const modalGallery = document.getElementById('modal-gallery');
-    const modalDesc = document.getElementById('modal-desc');
-    if (modal && modalGallery && modalDesc && !modal.querySelector('.modal-split-layout')) {
-        const parentBox = modalDesc.parentElement;
-        if (parentBox) {
-            const splitWrap = document.createElement('div');
-            splitWrap.className = 'modal-split-layout';
-            const leftCol = document.createElement('div');
-            leftCol.className = 'modal-left-text';
-            const rightCol = document.createElement('div');
-            rightCol.className = 'modal-right-carousel';
-            parentBox.insertBefore(splitWrap, modalDesc);
-            leftCol.appendChild(modalDesc);
-            rightCol.appendChild(modalGallery);
-            splitWrap.appendChild(leftCol);
-            splitWrap.appendChild(rightCol);
-        }
-    }
-
-    // Maak van #modal-gallery automatisch een interactieve carousel zodra er foto's in worden geladen
-    if (modalGallery) {
-        const observer = new MutationObserver(() => {
-            if (modalGallery.dataset.carouselBuilding === '1') return;
-            const rawImgs = Array.from(modalGallery.querySelectorAll('img')).map(im => im.getAttribute('src')).filter(Boolean);
-            if (rawImgs.length === 0 || modalGallery.querySelector('.carousel-stage')) return;
-
-            modalGallery.dataset.carouselBuilding = '1';
-            let curIdx = 0;
-
-            const renderCarousel = () => {
-                modalGallery.innerHTML = `
-                    <div class="carousel-stage">
-                        <img src="${rawImgs[curIdx]}" alt="Project slide ${curIdx + 1}">
-                    </div>
-                    <div class="carousel-controls">
-                        <button type="button" class="carousel-btn" id="car-prev">← Prev</button>
-                        <span style="color:#F4F1EA;font-size:0.9rem;">${curIdx + 1} / ${rawImgs.length}</span>
-                        <button type="button" class="carousel-btn" id="car-next">Next →</button>
-                    </div>
-                    <div class="carousel-dots">
-                        ${rawImgs.map((src, idx) => `<img src="${src}" class="carousel-thumb ${idx === curIdx ? 'active' : ''}" data-idx="${idx}" alt="thumb">`).join('')}
-                    </div>
-                `;
-                const prevBtn = modalGallery.querySelector('#car-prev');
-                const nextBtn = modalGallery.querySelector('#car-next');
-                if (prevBtn) prevBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx - 1 + rawImgs.length) % rawImgs.length; renderCarousel(); };
-                if (nextBtn) nextBtn.onclick = (ev) => { ev.stopPropagation(); curIdx = (curIdx + 1) % rawImgs.length; renderCarousel(); };
-                modalGallery.querySelectorAll('.carousel-thumb').forEach(th => {
-                    th.onclick = (ev) => { ev.stopPropagation(); curIdx = parseInt(th.dataset.idx, 10) || 0; renderCarousel(); };
-                });
-            };
-            renderCarousel();
-            modalGallery.dataset.carouselBuilding = '0';
-        });
-        observer.observe(modalGallery, { childList: true });
-    }
-});

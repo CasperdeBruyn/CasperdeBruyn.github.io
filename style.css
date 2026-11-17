@@ -297,10 +297,9 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==========================================================================
-   TAAK 1A: Project Modal, Tekst Links, Carrousel Rechts & Passende Afbeeldingen
-   ================================================================********** */
-
+/* ==============================
+   1. Basis & Kleuren (Modal & Carousel)
+   ============================== */
 :root {
   --bg-dark: #161412;
   --bg-secondary: #231F1D;
@@ -308,7 +307,9 @@ document.addEventListener
   --accent: #C87D4B;
 }
 
-/* Modal Overlay */
+/* ==============================
+   2. Modal Overlay & Container
+   ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -320,7 +321,7 @@ document.addEventListener
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  backdrop-filter: blur(4px);
+  padding: 2rem;
 }
 
 .modal-overlay.active {
@@ -328,15 +329,13 @@ document.addEventListener
   pointer-events: auto;
 }
 
-/* Modal Container (Tekst links, Carrousel rechts) */
 .modal {
   background: var(--bg-secondary);
   color: var(--text-light);
   border-radius: 12px;
-  width: 90vw;
+  width: 100%;
   max-width: 1100px;
-  height: 80vh;
-  max-height: 700px;
+  max-height: 85vh;
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -344,47 +343,78 @@ document.addEventListener
   position: relative;
 }
 
-/* Tekstgedeelte links */
-.modal-text {
-  flex: 0 0 45%;
+/* Sluitknop */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   3. Modal Layout: Tekst links, Carousel rechts
+   ============================== */
+.modal-text-pane {
+  flex: 1;
   padding: 2.5rem;
   overflow-y: auto;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 85vh;
+  box-sizing: border-box;
 }
 
-.modal-text h2 {
-  font-size: 1.8rem;
+.modal-text-pane h2 {
   margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.modal-text-pane .project-meta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: var(--accent);
-  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
 }
 
-.modal-text p {
+.modal-text-pane p {
   line-height: 1.6;
+  color: #D1CBC1;
   white-space: pre-line;
-  color: rgba(244, 241, 234, 0.85);
 }
 
-/* Carrousel / Afbeeldingengedeelte rechts */
+/* Carousel Pane */
 .carousel {
-  flex: 1;
   position: relative;
-  background: #000;
+  flex: 1.2;
+  background: #0d0b0a;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 350px;
   overflow: hidden;
 }
 
 .carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Cruciaal: foto's worden nooit afgesneden */
+  object-fit: contain; /* Voorkomt afsnijden van foto's */
   display: block;
-  user-select: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Navigatisknoppen carrousel */
+/* Navigatie Knoppen */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -392,64 +422,37 @@ document.addEventListener
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-light);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  transition: background 0.2s, transform 0.2s;
-  z-index: 10;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
+
+.carousel-btn.prev { left: 1rem; }
+.carousel-btn.next { right: 1.25rem; }
 
 .carousel-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
 }
 
-.carousel-btn.prev { left: 16px; }
-.carousel-btn.next { right: 16px; }
-
-/* Sluitknop */
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  transition: background 0.2s;
-}
-
-.modal-close:hover {
-  background: var(--accent);
-}
-
-/* Responsive weergave voor kleinere schermen */
+/* Responsief gedrag op kleinere schermen */
 @media (max-width: 768px) {
   .modal {
     flex-direction: column;
-    height: 90vh;
+    max-height: 90vh;
   }
-  .modal-text {
-    flex: 0 0 50%;
+  .modal-text-pane {
+    max-height: 40vh;
     padding: 1.5rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .carousel {
-    flex: 1;
+    min-height: 250px;
   }
 }
 

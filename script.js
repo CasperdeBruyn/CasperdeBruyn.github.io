@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Zeefdrukken",
       category: "PHYSICAL CRAFT",
       year: "2024",
-      description: "Traditional screen‑printing techniques applied to modern graphic designs. Exploring the textures and imperfections of manual ink application.",
+      description: "Traditional screen-printing techniques applied to modern graphic designs. Exploring the textures and imperfections of manual ink application.",
       images: ["assets/images/zeefdrukken_01_hero.jpg"]
     },
     'samen-spelen': {
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Grijpmachine",
       category: "ENGINEERING",
       year: "2023",
-      description: "A fully functional, custom‑built arcade claw machine. Combining woodworking, electronics (Arduino), and mechanical design.",
+      description: "A fully functional, custom-built arcade claw machine. Combining woodworking, electronics (Arduino), and mechanical design.",
       images: ["assets/images/grijpmachine_11_item11.jpg"]
     },
     'kodak': {
@@ -247,8 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'school-projecten': {
       title: "Dan maar hier!",
       category: "CMD MULTIDISCIPLINARY",
-      year: "2023–2025",
-      description: "Een gecureerde selectie van diverse ontwerpexperimenten, typografische oefeningen en vroege UI‑prototypes tijdens mijn CMD‑studie. Dan maar hier gebundeld!",
+      year: "2023-2025",
+      description: "Een gecureerde selectie van diverse ontwerpexperimenten, typografische oefeningen en vroege UI-prototypes tijdens mijn CMD-studie. Dan maar hier gebundeld!",
       images: [
         "assets/images/school-projecten_06_item06.jpg",
         "assets/images/school-projecten_01_hero.jpg",
@@ -259,12 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "assets/images/school-projecten_07_item07.jpg"
       ]
     },
-
     'vr-learning-lab': {
       title: "Stage bij VR Learning Lab",
       category: "INTERNSHIP",
       year: "2024",
-      description: "Ontwikkeling van interactieve VR‑trainingen voor industriële safety‑scenario’s. Verantwoordelijk voor concept‑design, asset‑creatie en Unity‑integratie.",
+      description: "Ontwikkeling van interactieve VR-trainingen voor industriële safety-scenario’s. Verantwoordelijk voor concept-design, asset-creatie en Unity-integratie.",
       images: [
         "assets/images/placeholder_vr_01.jpg",
         "assets/images/placeholder_vr_02.jpg"
@@ -274,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "DIY Royal System kast",
       category: "PERSONAL PROJECT",
       year: "2023",
-      description: "Een modulair opslagsysteem geïnspireerd op de klassieke Royal‑System. Gemaakt van gerecycled hout, met magnetische sluitingen en CNC‑geprofileerde panelen.",
+      description: "Een modulair opslagsysteem geïnspireerd op de klassieke Royal-System. Gemaakt van gerecycled hout, met magnetische sluitingen en CNC-geprofileerde panelen.",
       images: [
         "assets/images/placeholder_royal_01.jpg",
         "assets/images/placeholder_royal_02.jpg"
@@ -284,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Linux AI Homelab",
       category: "DEVOPS / AI",
       year: "2024",
-      description: "Zelfgebouwde homelab op Debian‑basis met GPU‑acceleratie, Docker‑orchestratie en LLM‑inference. Documentatie en scripts beschikbaar op GitHub.",
+      description: "Zelfgebouwde homelab op Debian-basis met GPU-acceleratie, Docker-orchestratie en LLM-inference. Documentatie en scripts beschikbaar op GitHub.",
       images: [
         "assets/images/placeholder_homelab_01.jpg",
         "assets/images/placeholder_homelab_02.jpg"
@@ -302,8 +301,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.modal-close');
   let previousActiveElement = null;
 
-  const fallbackSvg =
-    'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23B87333" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[IMAGE UNAVAILABLE]</text></svg>';
+  const safeFetchExtra = (id) => {
+    if (!modalExtra) return;
+    fetch(`scraped_archive/pages/${id}.html`)
+      .then(r => (r.ok ? r.text() : ''))
+      .then(html => {
+        modalExtra.innerHTML = html || '';
+      })
+      .catch(() => {
+        modalExtra.innerHTML = '';
+      });
+  };
 
   const openProject = (id) => {
     const data = PROJECT_DATA[id];
@@ -316,42 +324,44 @@ document.addEventListener('DOMContentLoaded', () => {
     modalYear.textContent = data.year;
     modalDesc.innerHTML = `<p>${data.description}</p>`;
 
-    modalGallery.innerHTML = '';
-    data.images.forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = data.title;
-      img.loading = 'lazy';
-      img.onerror = () => { img.src = fallbackSvg; };
-      modalGallery.appendChild(img);
-    });
-
-    if (modalExtra) {
-      fetch(`scraped_archive/pages/${id}.html`)
-        .then(r => r.ok ? r.text() : '')
-        .then(html => { modalExtra.innerHTML = html; })
-        .catch(() => { modalExtra.innerHTML = ''; });
+    if (modalGallery) {
+      modalGallery.innerHTML = '';
+      data.images.forEach((src) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = data.title;
+        img.loading = 'lazy';
+        img.onerror = () => {
+          img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="%23231F1D"/><text x="50%" y="50%" fill="%23B87333" font-family="monospace" font-size="18" text-anchor="middle" dominant-baseline="middle">IMAGE UNAVAILABLE</text></svg>';
+        };
+        modalGallery.appendChild(img);
+      });
     }
+
+    safeFetchExtra(id);
 
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    closeBtn?.focus();
+    if (closeBtn) closeBtn.focus();
   };
 
   const closeModal = () => {
     if (!modal || !modal.classList.contains('active')) return;
+
     modal.setAttribute('aria-hidden', 'true');
     modal.classList.remove('active');
     document.body.style.overflow = '';
+
     if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
       previousActiveElement.focus();
     }
   };
 
-  document.querySelectorAll('.project-card').forEach(card => {
+  document.querySelectorAll('.project-card').forEach((card) => {
     const projectId = card.getAttribute('data-project');
-
+    card.setAttribute('tabindex', card.getAttribute('tabindex') || '0');
+    card.setAttribute('role', card.getAttribute('role') || 'button');
     card.addEventListener('click', () => openProject(projectId));
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -361,16 +371,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  closeBtn?.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
 
-  console.log("Coder B: modal, data, micro-interacties en responsive details actief.");
+  console.log('Coder B: taken 1-5 geïmplementeerd.');
 });
 

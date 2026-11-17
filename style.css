@@ -297,87 +297,17 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* TAAK 4 — header logo: niet afsnijden, wel hover-rotatie */
-.site-header img,
-.header-logo img,
-.logo img,
-img[alt*="logo" i] {
+/* -------------------------------------------------------------
+   Header logo – subtiel en vloeiend draaien bij hover
+   ------------------------------------------------------------- */
+header .logo img {
   width: 36px;
   height: 36px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0;
-  transition: transform 260ms ease, filter 260ms ease;
-  will-change: transform;
+  object-fit: contain;          /* behoudt de volledige afbeelding */
+  transition: transform 0.4s ease-in-out;
 }
 
-.site-header img:hover,
-.header-logo img:hover,
-.logo img:hover,
-img[alt*="logo" i]:hover {
-  transform: rotate(10deg) scale(1.03);
-  filter: saturate(1.05);
-}
-
-/* TAAK 5 — industriële placeholders voor nieuwe projecten */
-.project-card[data-project="vr-learning-lab"] .project-cover,
-.project-card[data-project="royal-system-kast"] .project-cover,
-.project-card[data-project="linux-ai-homelab"] .project-cover,
-.project-card[data-project="vr-learning-lab"] img,
-.project-card[data-project="royal-system-kast"] img,
-.project-card[data-project="linux-ai-homelab"] img {
-  object-fit: cover;
-  object-position: center;
-  background:
-    linear-gradient(135deg, rgba(184,115,51,.22), rgba(35,31,29,.85)),
-    linear-gradient(0deg, rgba(255,255,255,.04), rgba(255,255,255,.04));
-}
-
-/* modal micro-interacties */
-#project-modal {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 220ms ease, visibility 220ms ease;
-}
-
-#project-modal.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-#project-modal .modal-content {
-  transform: translateY(16px) scale(.985);
-  transition: transform 240ms ease;
-}
-
-#project-modal.active .modal-content {
-  transform: translateY(0) scale(1);
-}
-
-.modal-close {
-  transition: transform 180ms ease, color 180ms ease, opacity 180ms ease;
-}
-
-.modal-close:hover,
-.modal-close:focus-visible {
-  transform: rotate(90deg);
-}
-
-/* responsive verfijning */
-@media (max-width: 768px) {
-  .site-header img,
-  .header-logo img,
-  .logo img,
-  img[alt*="logo" i] {
-    width: 34px;
-    height: 34px;
-  }
-
-  #project-modal .modal-content {
-    width: calc(100% - 24px);
-    margin: 12px;
-  }
+header .logo img:hover {
+  transform: rotate(360deg);     /* volledige rotatie */
 }
 

@@ -305,12 +305,8 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --transition: 0.3s ease;
 }
 
-/* ------------------------------
-   2. Algemene styling
-   ------------------------------ */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -320,19 +316,9 @@ body {
   overflow-x: hidden;
 }
 
-header img.logo {
-  width: 120px;
-  height: auto;
-  transition: transform var(--transition);
-}
-
-header img.logo:hover {
-  transform: rotate(360deg);
-}
-
-/* ------------------------------
-   3. Modal overlay
-   ------------------------------ */
+/* ==============================
+   2. Modal overlay
+   ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -343,7 +329,7 @@ header img.logo:hover {
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -351,9 +337,9 @@ header img.logo:hover {
   pointer-events: auto;
 }
 
-/* ------------------------------
-   4. Modal container
-   ------------------------------ */
+/* ==============================
+   3. Modal container
+   ============================== */
 .modal {
   background: var(--bg-secondary);
   border-radius: 8px;
@@ -363,6 +349,7 @@ header img.logo:hover {
   flex-direction: row;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  position: relative;
 }
 
 @media (max-width: 768px) {
@@ -371,23 +358,75 @@ header img.logo:hover {
   }
 }
 
-/* ------------------------------
-   5. Carousel & image styling
-   ------------------------------ */
+/* ==============================
+   4. Close button
+   ============================== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   5. Content area
+   ============================== */
+.modal-content {
+  flex: 1 1 40%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content h2.project-title {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.modal-content p.project-meta {
+  margin: 5px 0 15px;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.modal-content .project-description {
+  line-height: 1.6;
+}
+
+.modal-content .project-description a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.modal-content .project-description a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   6. Carousel
+   ============================== */
 .carousel {
-  position: relative;
   flex: 1 1 60%;
+  position: relative;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000;
 }
 
 .carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Zorgt dat de foto niet wordt afgesneden */
-  transition: opacity var(--transition);
+  object-fit: contain;
+  transition: opacity 0.3s ease;
 }
 
 .carousel .nav {
@@ -413,38 +452,5 @@ header img.logo:hover {
 
 .carousel .nav:hover {
   background: rgba(255,255,255,0.25);
-}
-
-/* ------------------------------
-   6. Project details
-   ------------------------------ */
-.project-details {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.project-details h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.project-details p {
-  line-height: 1.6;
-}
-
-/* ------------------------------
-   7. Close button
-   ------------------------------ */
-.modal .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 10;
 }
 

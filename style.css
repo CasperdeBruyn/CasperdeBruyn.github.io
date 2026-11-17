@@ -399,61 +399,7 @@ body {
 }
 
 /* ==============================
-   5. Modal content (text side)
-   ============================== */
-.modal-content {
-  flex: 1 1 40%;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.modal-content p {
-  flex: 1 1 auto;
-  line-height: 1.6;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.modal-close:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Header logo
-   ============================== */
-header .logo img {
-  width: 120px;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.5s ease;
-}
-
-header .logo img:hover {
-  transform: rotate(360deg);
-}
-
-/* ==============================
-   8. Project card styles
+   5. Project card styling
    ============================== */
 .project-card {
   position: relative;
@@ -492,21 +438,40 @@ header .logo img:hover {
 }
 
 /* ==============================
-   9. Placeholder styling for new projects
+   6. Modal content (text side)
    ============================== */
-.placeholder-card {
-  background: var(--bg-secondary);
+.modal-content {
+  flex: 1 1 40%;
+  padding: 20px;
+  overflow-y: auto;
   color: var(--text-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.placeholder-card:hover {
-  transform: scale(1.02);
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.modal-content p {
+  line-height: 1.6;
+}
+
+/* ==============================
+   7. Close button
+   ============================== */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-close:hover {
+  color: var(--accent);
 }
 

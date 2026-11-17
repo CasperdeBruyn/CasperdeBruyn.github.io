@@ -298,19 +298,15 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* ==============================
-   1. Basis & kleuren
+   1. Basis & Kleuren
    ============================== */
 :root {
   --bg-dark: #161412;          /* Diep Houtskool */
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --header-height: 80px;
 }
 
-/* ------------------------------
-   2. Algemene layout
-   ------------------------------ */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -320,100 +316,9 @@ body {
   overflow-x: hidden;
 }
 
-header {
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  background: var(--bg-secondary);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-header .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-header .logo img {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 0;          /* niet rond afsnijden */
-  transition: transform 0.3s ease;
-}
-
-header .logo img:hover {
-  transform: rotate(360deg);  /* hover‑rotatie */
-}
-
-/* ------------------------------
-   3. Project cards
-   ------------------------------ */
-.project-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-}
-
-.project-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover img {
-  transform: scale(1.05);
-}
-
-.project-card .card-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.75rem;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  color: var(--text-light);
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-/* ------------------------------
-   4. Section header
-   ------------------------------ */
-.section-header {
-  margin: 3rem 0 1rem;
-  font-size: 2rem;
-  color: var(--accent);
-  text-align: center;
-  position: relative;
-}
-
-.section-header::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -0.5rem;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* ------------------------------
-   5. Modal overlay
-   ------------------------------ */
+/* ==============================
+   2. Modal overlay & container
+   ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -432,9 +337,6 @@ header .logo img:hover {
   pointer-events: auto;
 }
 
-/* ------------------------------
-   6. Modal container
-   ------------------------------ */
 .modal {
   background: var(--bg-secondary);
   border-radius: 8px;
@@ -452,9 +354,9 @@ header .logo img:hover {
   }
 }
 
-/* ------------------------------
-   7. Carousel & image styling
-   ------------------------------ */
+/* ==============================
+   3. Carousel & image styling
+   ============================== */
 .carousel {
   position: relative;
   flex: 1 1 60%;
@@ -484,6 +386,7 @@ header .logo img:hover {
   cursor: pointer;
   outline: none;
   border-radius: 50%;
+  transition: background 0.2s ease;
 }
 
 .carousel .nav.prev { left: 10px; }
@@ -493,9 +396,21 @@ header .logo img:hover {
   background: rgba(255,255,255,0.3);
 }
 
-/* ------------------------------
-   8. Modal details
-   ------------------------------ */
+/* ==============================
+   4. Header Logo & Navigatie
+   ============================== */
+.site-header img {
+  border-radius: 0; /* Niet rond afsnijden conform richtlijnen */
+  transition: transform 0.4s ease;
+}
+
+.site-header img:hover {
+  transform: rotate(15deg) scale(1.05);
+}
+
+/* ==============================
+   5. Modal details
+   ============================== */
 .modal-details {
   flex: 1 1 40%;
   padding: 1.5rem;
@@ -518,11 +433,66 @@ header .logo img:hover {
   margin-bottom: 1rem;
 }
 
-/* ------------------------------
-   9. Responsieve aanpassingen
-   ------------------------------ */
+/* ==============================
+   6. Homelab & Craft Section (Taak 4)
+   ============================== */
+.homelab-craft-section {
+  padding: 5rem 2rem;
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(244,241,234,0.1);
+}
+
+.homelab-craft-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homelab-craft-header h2 {
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-family: monospace;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.homelab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.homelab-card {
+  background: var(--bg-dark);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(244,241,234,0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.homelab-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.homelab-card h3 {
+  margin-top: 0;
+  color: var(--text-light);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.homelab-card p {
+  color: rgba(244,241,234,0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==============================
+   7. Responsieve aanpassingen
+   ============================== */
 @media (max-width: 480px) {
-  .project-card img { height: 140px; }
+  .homelab-craft-section { padding: 3rem 1rem; }
   .modal-details { padding: 1rem; }
 }
 

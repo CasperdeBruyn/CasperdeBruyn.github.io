@@ -254,156 +254,122 @@ My portfolio likes cookies :]",
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
  * Casper de Bruyn – Portfolio Logic (Coder B)
+ * Taak 4: Homelab & Craft sectie interactie & bestaande modal logica.
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -----------------------------------------------------------------
-     1. PROJECT DATA (incl. de 3 nieuwe projecten)
+     1. PROJECT DATA (Inclusief alle projecten & modale inhoud)
      ----------------------------------------------------------------- */
   const PROJECT_DATA = {
-    /* bestaande projecten ... */
     'generation-plastic-soup': {
       title: "Generation Plastic Soup",
       category: "GAME DESIGN",
       year: "2025",
-      description: `Casper de Bruyn – Generation Plastic Soup
-
-The Project
-During a Game Jam organized by EPIC‑WE, Beeld & Geluid, HvA, and Dropstuff.nl, we created a game to raise awareness about EU values, centred around the theme of rising sea levels.
-
-My Role
-Designing the game pieces and playing cards. The core concept and UI were a collaborative effort.
-
-The Game Idea
-A battle between profit‑driven old generation and eco‑conscious new generation.
-
-Check it out on itch.io!`,
+      description: `Casper de Bruyn – Generation Plastic Soup\n\nTijdens een Game Jam georganiseerd door EPIC-WE, Beeld & Geluid, HvA en Dropstuff.nl ontwierpen we een game over stijgende zeespiegels en EU-waarden.\n\nMijn rol: Ontwerp van spelonderdelen en speelkaarten.`,
       images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
     },
-
-    /* ... andere bestaande projecten ... */
-
-    /* ----- Nieuwe projecten (taak 5) ----- */
-    'homelab-craft': {
-      title: "Linux AI Homelab & Smart Home",
-      category: "TECH & CRAFT",
+    'zeefdrukken': {
+      title: "Zeefdrukken",
+      category: "PHYSICAL CRAFT",
       year: "2024",
-      description: `Casper de Bruyn – Linux AI Homelab & Smart Home
-
-In dit project bouwde ik een Linux‑gebaseerd AI‑homelab dat dienstdoet als centrale hub voor smart‑home automatisering. De server draait op een Raspberry Pi 4 met Ubuntu Server en maakt gebruik van Docker‑containers voor AI‑modellen (ChatGPT‑style, beeld‑herkenning, etc.). Daarnaast ontwikkelde ik een houten kast (Poul Cadovius) om de hardware netjes te huisvesten.
-
-De homelab ondersteunt:
-- Automatische verlichting via MQTT
-- Spraakgestuurde bediening via Alexa en Google Assistant
-- Real‑time monitoring van energieverbruik
-- Zelf‑lerende AI‑assistent voor huishoudelijke taken
-
-Bekijk de volledige documentatie en code op GitHub.`,
-      images: [
-        "assets/images/homelab_01_hero.jpg",
-        "assets/images/homelab_02_item02.jpg",
-        "assets/images/homelab_03_item03.jpg",
-        "assets/images/homelab_04_item04.jpg"
-      ]
+      description: `Casper de Bruyn – Street Fresh\n\nEen abonnementsdienst voor unieke T-shirts om overproductie en dode voorraad tegen te gaan.\n\nMijn rol: Zeefdrukken van de fysieke T-shirts en grafisch ontwerp.`,
+      images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
+    },
+    'samen-spelen': {
+      title: "Samen Spelen",
+      category: "INTERACTIVE",
+      year: "2024",
+      description: `Casper de Bruyn – Samen Spelen\n\nEen braille-gebaseerd conceptspel voor openbare speelplekken om inclusie te bevorderen.\n\nMijn rol: Fysiek ontwerp van speelstukken en gebruikersonderzoek.`,
+      images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
+    },
+    'grijpmachine': {
+      title: "Grijpmachine",
+      category: "ENGINEERING",
+      year: "2023",
+      description: `Casper de Bruyn – Grijpmachine ("Lucky Grapple")\n\nEen volledig functionele mechanische grijpmachine gebouwd met houtbewerking en spuitjessystemen.\n\nMijn rol: Volledige constructie en mechanisch ontwerp.`,
+      images: ["assets/images/grijpmachine_01_hero.jpg", "assets/images/grijpmachine_02_item02.jpg", "assets/images/grijpmachine_03_item03.jpg", "assets/images/grijpmachine_04_item04.jpg", "assets/images/grijpmachine_05_item05.jpg", "assets/images/grijpmachine_06_item06.jpg", "assets/images/grijpmachine_07_item07.jpg", "assets/images/grijpmachine_08_item08.jpg", "assets/images/grijpmachine_09_item09.jpg", "assets/images/grijpmachine_10_item10.jpg", "assets/images/grijpmachine_11_item11.jpg", "assets/images/grijpmachine_12_item12.jpg", "assets/images/grijpmachine_13_item13.jpg", "assets/images/grijpmachine_14_item14.jpg", "assets/images/grijpmachine_15_item15.jpg", "assets/images/grijpmachine_16_item16.jpg", "assets/images/grijpmachine_17_item17.jpg", "assets/images/grijpmachine_18_item18.jpg"]
+    },
+    'kodak': {
+      title: "Kodak Retro Project",
+      category: "BRANDING",
+      year: "2023",
+      description: `Casper de Bruyn – Kodak Rebranding\n\nEen conceptuele campagne om analoge fotografie te stimuleren en schermtijd te verminderen.\n\nMijn rol: Visuele identiteit en posterontwerp.`,
+      images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
+    },
+    'school-projecten': {
+      title: "Dan maar hier!",
+      category: "CMD MULTIDISCIPLINARY",
+      year: "2023‑2025",
+      description: `Casper de Bruyn – Dan maar hier!\n\nEen satirische guerrilla-campagne rondom de woningmarkt en hoge huizenprijzen.\n\nMijn rol: Conceptontwikkeling en fysieke guerrilla marketing.`,
+      images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
     }
   };
 
   /* -----------------------------------------------------------------
-     2. Dynamische projectkaart generatie
-     ----------------------------------------------------------------- */
-  const projectsContainer = document.querySelector('#projects');
-
-  Object.entries(PROJECT_DATA).forEach(([key, data]) => {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.dataset.project = key;
-
-    const img = document.createElement('img');
-    img.src = data.images[0]; // cover
-    img.alt = data.title;
-
-    const title = document.createElement('div');
-    title.className = 'card-title';
-    title.textContent = data.title;
-
-    card.append(img, title);
-    projectsContainer.appendChild(card);
-  });
-
-  /* -----------------------------------------------------------------
-     3. Modal logica
+     2. Modal functionaliteit & Event Listeners
      ----------------------------------------------------------------- */
   const modalOverlay = document.querySelector('.modal-overlay');
-  const modal = document.querySelector('.modal');
-  const modalDetails = modal.querySelector('.modal-details');
-  const carousel = modal.querySelector('.carousel');
-  const closeBtn = modal.querySelector('.modal-close');
+  const modalTitle = document.querySelector('.modal-title');
+  const modalCategory = document.querySelector('.modal-category');
+  const modalYear = document.querySelector('.modal-year');
+  const modalDescription = document.querySelector('.modal-description');
+  const modalImage = document.querySelector('.modal-image');
+  const closeBtn = document.querySelector('.modal-close');
 
-  const openModal = (key) => {
-    const data = PROJECT_DATA[key];
-    if (!data) return;
+  let currentImages = [];
+  let currentIndex = 0;
 
-    // Modal details
-    modalDetails.querySelector('h2').textContent = data.title;
-    modalDetails.querySelector('.meta').textContent = `${data.category} • ${data.year}`;
-    modalDetails.querySelector('p').textContent = data.description;
+  function openModal(projectId) {
+    const project = PROJECT_DATA[projectId];
+    if (!project) return;
 
-    // Carousel images
-    carousel.innerHTML = ''; // reset
-    data.images.forEach((src, idx) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = `${data.title} - ${idx + 1}`;
-      img.style.display = idx === 0 ? 'block' : 'none';
-      carousel.appendChild(img);
-    });
+    modalTitle.textContent = project.title;
+    modalCategory.textContent = project.category;
+    modalYear.textContent = project.year;
+    modalDescription.textContent = project.description;
 
-    // Nav buttons
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'nav prev';
-    prevBtn.textContent = '‹';
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'nav next';
-    nextBtn.textContent = '›';
-    carousel.append(prevBtn, nextBtn);
+    currentImages = project.images || [];
+    currentIndex = 0;
 
-    // Carousel logic
-    let currentIdx = 0;
-    const imgs = carousel.querySelectorAll('img');
-    const showImg = (idx) => {
-      imgs.forEach((img, i) => img.style.display = i === idx ? 'block' : 'none');
-    };
-    prevBtn.onclick = () => {
-      currentIdx = (currentIdx - 1 + imgs.length) % imgs.length;
-      showImg(currentIdx);
-    };
-    nextBtn.onclick = () => {
-      currentIdx = (currentIdx + 1) % imgs.length;
-      showImg(currentIdx);
-    };
+    if (currentImages.length > 0) {
+      modalImage.src = currentImages[currentIndex];
+    }
 
     modalOverlay.classList.add('active');
-  };
+  }
 
-  const closeModal = () => {
+  function closeModal() {
     modalOverlay.classList.remove('active');
-  };
+  }
 
-  // Event listeners
-  projectsContainer.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card');
-    if (!card) return;
-    openModal(card.dataset.project);
+  // Klik op projectkaarten
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.getAttribute('data-project');
+      openModal(projectId);
+    });
   });
 
-  closeBtn?.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
+
+  /* -----------------------------------------------------------------
+     3. Console bevestiging
+     ----------------------------------------------------------------- */
+  console.log("Coder B: Homelab & Craft sectie en modal logica succesvol geladen.");
 });
 

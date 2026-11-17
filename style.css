@@ -399,61 +399,41 @@ body {
 }
 
 /* ==============================
-   5. Text panel
+   5. Project card styling
    ============================== */
-.text-panel {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.text-panel h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.text-panel p {
-  flex-grow: 1;
-  line-height: 1.6;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
+.project-card {
+  position: relative;
   cursor: pointer;
-  z-index: 10;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
 }
 
-.close-btn:hover {
-  color: var(--accent);
+.project-card:hover {
+  transform: scale(1.02);
 }
 
-/* ==============================
-   7. Project card cover images
-   ============================== */
 .project-card img {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* voor de kaart zelf */
-  transition: transform 0.3s ease;
+  object-fit: cover;
+  display: block;
 }
 
-.project-card:hover img {
-  transform: scale(1.05);
+.project-card .card-title {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: var(--text-light);
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border-radius: 4px;
 }
 
 /* ==============================
-   8. Header logo
+   6. Header logo
    ============================== */
 #header-logo {
   width: 120px;

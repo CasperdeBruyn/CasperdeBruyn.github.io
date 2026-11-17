@@ -305,10 +305,8 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-  --transition: 0.3s ease;
 }
 
-/* Algemene body styling */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -331,7 +329,7 @@ body {
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -375,7 +373,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain; /* Zorgt dat de foto niet wordt afgesneden */
-  transition: opacity var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .carousel .nav {
@@ -408,8 +406,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
-  background: var(--bg-secondary);
-  transition: transform var(--transition);
+  transition: transform 0.2s ease;
 }
 
 .project-card:hover {
@@ -423,42 +420,41 @@ body {
   display: block;
 }
 
-.project-card .card-title {
+.project-card .info {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 0.5rem;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   color: var(--text-light);
-  font-size: 1rem;
-  text-align: center;
+  font-size: 0.9rem;
 }
 
 /* ==============================
    6. Header logo
    ============================== */
-#site-header-logo {
+#header-logo {
   width: 120px;
-  height: auto;
-  transition: transform var(--transition);
+  transition: transform 0.3s ease;
 }
 
-#site-header-logo:hover {
+#header-logo:hover {
   transform: rotate(360deg);
 }
 
 /* ==============================
-   7. Placeholder styling for new projects
+   7. Close button
    ============================== */
-.project-card.placeholder {
-  background: var(--bg-secondary);
-  border: 2px dashed var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
   color: var(--accent);
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
 }
 

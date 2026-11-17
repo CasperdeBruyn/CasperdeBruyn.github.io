@@ -399,57 +399,13 @@ body {
 }
 
 /* ==============================
-   5. Modal text panel
-   ============================== */
-.modal-content {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-}
-
-.modal-content p {
-  flex: 1;
-  white-space: pre-wrap;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.modal-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.modal-close:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Project card styling
+   5. Project card styling
    ============================== */
 .project-card {
   position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 1rem;
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
-  background-size: cover;
-  background-position: center;
   transition: transform 0.2s ease;
 }
 
@@ -471,7 +427,7 @@ body {
 }
 
 /* ==============================
-   8. Header logo
+   6. Header logo
    ============================== */
 #header-logo {
   width: 120px;
@@ -484,7 +440,7 @@ body {
 }
 
 /* ==============================
-   9. Placeholder cards
+   7. Placeholder cards
    ============================== */
 .project-card.placeholder {
   background: var(--bg-secondary);

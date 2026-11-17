@@ -399,60 +399,20 @@ body {
 }
 
 /* ==============================
-   5. Project text panel
+   5. Project card styling
    ============================== */
-.project-text {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-text h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.project-text p {
-  line-height: 1.6;
-  flex: 1;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
+.project-card {
+  position: relative;
   cursor: pointer;
-  z-index: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
 }
 
-.close-btn:hover {
-  color: var(--accent);
+.project-card:hover {
+  transform: scale(1.02);
 }
 
-/* ==============================
-   7. Header logo hover rotation
-   ============================== */
-.header-logo {
-  width: 120px;
-  transition: transform 0.5s ease;
-}
-
-.header-logo:hover {
-  transform: rotate(360deg);
-}
-
-/* ==============================
-   8. Project card cover images
-   ============================== */
 .project-card img {
   width: 100%;
   height: 200px;
@@ -460,7 +420,47 @@ body {
   transition: transform 0.3s ease;
 }
 
-.project-card img:hover {
+.project-card:hover img {
   transform: scale(1.05);
+}
+
+.project-card .title {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  color: var(--text-light);
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+/* ==============================
+   6. Header logo
+   ============================== */
+#header-logo {
+  width: 120px;
+  transition: transform 0.5s ease;
+}
+
+#header-logo:hover {
+  transform: rotate(360deg);
+}
+
+/* ==============================
+   7. Close button
+   ============================== */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  color: var(--accent);
 }
 

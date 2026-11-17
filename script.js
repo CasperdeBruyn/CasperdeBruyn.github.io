@@ -15,51 +15,101 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Generation Plastic Soup",
             category: "GAME DESIGN",
             year: "2025",
-            description: "A battle for our oceans. This project was developed during a Game Jam to highlight environmental issues through interactive storytelling and dark aesthetic mechanics.",
-            images: ["assets/images/home_pos01_link-naar-generation-plastic-soup.jpg"]
+            description: "Casper de Bruyn - Generation plastic soup
+
+The Project During a Game Jam organized by EPIC-WE, Beeld & Geluid, HvA, and Dropstuff.nl, we created a game to raise awareness about EU values, centered around the theme of rising sea levels.
+
+My Role During this Game Jam, I was responsible for designing the game pieces and the playing cards. The core concept and the user interface were a collaborative group effort.
+
+The Game Idea It's a battle between the old and the new generation: profit versus a cleaner ocean. The older generation is focused on financial gain, which leads to further pollution of the waters. Meanwhile, the new generation is fighting to clean up the ocean for a better future.
+
+Who will win this battle? And can we still change the future?
+
+Check out the game for yourself! I've added the link to our itch.io page down below. ⬇️",
+            images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
         },
         'zeefdrukken': {
             title: "Zeefdrukken",
             category: "PHYSICAL CRAFT",
             year: "2024",
-            description: "Traditional screen‑printing techniques applied to modern graphic designs. Exploring the textures and imperfections of manual ink application.",
-            images: ["assets/images/zeefdrukken_01_hero.jpg"]
+            description: "Casper de Bruyn - Street Fresh
+
+The Project During a project week, our team was tasked with building a concept for a new startup business from the ground up.
+
+My Role For this project, my role was a mix of physical crafting and strategic design. I was responsible for screen-printing the physical T-shirts, creating the graphic design for one of the shirts, and helping to shape the overall business model.
+
+The Concept We developed a subscription service for uniquely designed T-shirts. Every month, a brand-new, exclusive design is created and presented to our subscribers before any printing takes place.
+
+The customer always has the freedom to opt in for that month's drop or simply skip it. By using this on-demand, user-choice approach, we actively combat unnecessary overproduction and completely eliminate dead stock.
+
+My portfolio likes cookies :]",
+            images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
         },
         'samen-spelen': {
             title: "Samen Spelen",
             category: "INTERACTIVE",
             year: "2024",
-            description: "A social design project focused on bringing people together in public spaces through analog play mechanics.",
-            images: ["assets/images/samen-spelen_01_hero.jpg"]
+            description: "Casper de Bruyn - Samen spelen
+
+The Project For the organization \"Samen Spelen\" (Playing Together), our team designed a braille-based concept game for use in public playgrounds.
+
+My Role For this project, I was responsible for designing the physical game pieces and the game board, researching braille typography, and shaping the overall user interaction.
+
+The Concept The main challenge given to us was to spark conversations between parents at the playground, specifically to raise awareness that the playground is fully accessible for children with disabilities.
+
+Our solution was an interactive braille game. Through this game, children can learn a new skill in a fun, informative way while actively involving their parents. This natural parent-child engagement acts as an icebreaker, making it much easier for parents to connect and start talking with one another.
+
+My portfolio likes cookies :]",
+            images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
         },
         'grijpmachine': {
             title: "Grijpmachine",
             category: "ENGINEERING",
             year: "2023",
-            description: "A fully functional, custom‑built arcade claw machine. Combining woodworking, electronics (Arduino), and mechanical design.",
-            images: ["assets/images/grijpmachine_11_item11.jpg"]
+            description: "Casper de Bruyn - Grijpmachine
+
+For a DIY school project, I designed and built a fully functional physical claw machine, the \"Lucky Grapple\"—to distribute bags of chips during a school exhibition.
+
+My Role I was responsible for the complete physical construction of this installation. This involved woodworking to build the arcade cabinet, designing and cutting the mechanical parts for the claw, and engineering a custom control system using syringes to operate the machine's movements.
+
+The Concept The goal was to transform a simple task, handing out snacks at an expo, into a playful and engaging experience. Instead of simply handing out bags of chips to visitors, they had to actively operate the custom syringe-controls to play the game and grab their own snack.
+
+This installation is a perfect reflection of my passion for Immersive Design: combining hands-on physical craftsmanship with fun, interactive user experiences.
+
+My portfolio likes cookies :]",
+            images: ["assets/images/grijpmachine_01_hero.jpg", "assets/images/grijpmachine_02_item02.jpg", "assets/images/grijpmachine_03_item03.jpg", "assets/images/grijpmachine_04_item04.jpg", "assets/images/grijpmachine_05_item05.jpg", "assets/images/grijpmachine_06_item06.jpg", "assets/images/grijpmachine_07_item07.jpg", "assets/images/grijpmachine_08_item08.jpg", "assets/images/grijpmachine_09_item09.jpg", "assets/images/grijpmachine_10_item10.jpg", "assets/images/grijpmachine_11_item11.jpg", "assets/images/grijpmachine_12_item12.jpg", "assets/images/grijpmachine_13_item13.jpg", "assets/images/grijpmachine_14_item14.jpg", "assets/images/grijpmachine_15_item15.jpg", "assets/images/grijpmachine_16_item16.jpg", "assets/images/grijpmachine_17_item17.jpg", "assets/images/grijpmachine_18_item18.jpg"]
         },
         'kodak': {
             title: "Kodak Retro Project",
             category: "BRANDING",
             year: "2023",
-            description: "Visual identity and design research into the iconic Kodak brand, focusing on the tactile nature of film in a digital age.",
-            images: ["assets/images/kodak_01_hero.jpg"]
+            description: "The Project For a school assignment, I was tasked with creating a conceptual rebranding campaign for an iconic brand. I chose to focus on Kodak.
+
+My Role I was responsible for the complete visual and conceptual design of this campaign, including designing the posters, developing the retro-inspired visual identity, and writing the core slogans.
+
+The Concept The core message of this rebranding campaign is clear: we need to shoot more analog and rely less on our digital smartphones. In a world where people constantly experience life through a screen, this concept encourages everyone to put their digital devices away.
+
+Through bold, retro-style typography and contrasting illustrations (the classic analog camera versus the smartphone), the posters promote a \"Screenfree\" lifestyle. It’s a call to embrace the authentic, tangible experience of analog photography and to truly live in the moment, rather than just looking at it through a phone screen.
+
+My portfolio likes cookies :]",
+            images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
         },
         'school-projecten': {
             title: "Dan maar hier!",
             category: "CMD MULTIDISCIPLINARY",
             year: "2023‑2025",
-            description: "Een gecureerde selectie van diverse ontwerpexperimenten, typografische oefeningen en vroege UI‑prototypes tijdens mijn CMD‑studie. Dan maar hier gebundeld!",
-            images: [
-                "assets/images/school-projecten_06_item06.jpg",
-                "assets/images/school-projecten_01_hero.jpg",
-                "assets/images/school-projecten_02_item02.jpg",
-                "assets/images/school-projecten_03_item03.jpg",
-                "assets/images/school-projecten_04_item04.jpg",
-                "assets/images/school-projecten_05_item05.jpg",
-                "assets/images/school-projecten_07_item07.jpg"
-            ]
+            description: "Casper de Bruyn - Dan maar hier!
+
+The Project Inspired by a recent article from the investigative journalism platform Follow the Money regarding the shifting housing market, our team developed a conceptual guerrilla campaign to raise awareness about the absurdly high housing prices.
+
+My Role For this campaign, I was responsible for conceptualizing the core message, illustrating the satirical line-art, and executing the physical guerrilla marketing in the city.
+
+The Concept We created a satirical campaign titled \"#DANMAARHIER\" (If I can't afford a house, I'll just live here!). We designed classic real estate \"For Sale\" posters featuring humorous line-art and physically placed them in absurd public locations, such as a tree, a bus shelter, and a public trash bin.
+
+By advertising these unlivable spots as potential real estate, like labeling a trash can as a \"Room with a jacuzzi\", we used physical guerrilla marketing in the real world to make a bold statement. The physical signs, combined with a QR code, were designed to make people stop, laugh, and ultimately reflect on the harsh reality of the ongoing housing crisis.
+
+My portfolio likes cookies :]",
+            images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
         },
 
         /* ----- Nieuwe projecten (taak 5) ----- */
@@ -213,51 +263,101 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Generation Plastic Soup',
       category: 'GAME DESIGN',
       year: '2025',
-      description: 'A battle for our oceans. This project was developed during a Game Jam to highlight environmental issues through interactive storytelling and dark aesthetic mechanics.',
-      images: ['assets/images/home_pos01_link-naar-generation-plastic-soup.jpg']
+      description: "Casper de Bruyn - Generation plastic soup
+
+The Project During a Game Jam organized by EPIC-WE, Beeld & Geluid, HvA, and Dropstuff.nl, we created a game to raise awareness about EU values, centered around the theme of rising sea levels.
+
+My Role During this Game Jam, I was responsible for designing the game pieces and the playing cards. The core concept and the user interface were a collaborative group effort.
+
+The Game Idea It's a battle between the old and the new generation: profit versus a cleaner ocean. The older generation is focused on financial gain, which leads to further pollution of the waters. Meanwhile, the new generation is fighting to clean up the ocean for a better future.
+
+Who will win this battle? And can we still change the future?
+
+Check out the game for yourself! I've added the link to our itch.io page down below. ⬇️",
+      images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
     },
     'zeefdrukken': {
       title: 'Zeefdrukken',
       category: 'PHYSICAL CRAFT',
       year: '2024',
-      description: 'Traditional screen-printing techniques applied to modern graphic designs. Exploring the textures and imperfections of manual ink application.',
-      images: ['assets/images/zeefdrukken_01_hero.jpg']
+      description: "Casper de Bruyn - Street Fresh
+
+The Project During a project week, our team was tasked with building a concept for a new startup business from the ground up.
+
+My Role For this project, my role was a mix of physical crafting and strategic design. I was responsible for screen-printing the physical T-shirts, creating the graphic design for one of the shirts, and helping to shape the overall business model.
+
+The Concept We developed a subscription service for uniquely designed T-shirts. Every month, a brand-new, exclusive design is created and presented to our subscribers before any printing takes place.
+
+The customer always has the freedom to opt in for that month's drop or simply skip it. By using this on-demand, user-choice approach, we actively combat unnecessary overproduction and completely eliminate dead stock.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
     },
     'samen-spelen': {
       title: 'Samen Spelen',
       category: 'INTERACTIVE',
       year: '2024',
-      description: 'A social design project focused on bringing people together in public spaces through analog play mechanics.',
-      images: ['assets/images/samen-spelen_01_hero.jpg']
+      description: "Casper de Bruyn - Samen spelen
+
+The Project For the organization \"Samen Spelen\" (Playing Together), our team designed a braille-based concept game for use in public playgrounds.
+
+My Role For this project, I was responsible for designing the physical game pieces and the game board, researching braille typography, and shaping the overall user interaction.
+
+The Concept The main challenge given to us was to spark conversations between parents at the playground, specifically to raise awareness that the playground is fully accessible for children with disabilities.
+
+Our solution was an interactive braille game. Through this game, children can learn a new skill in a fun, informative way while actively involving their parents. This natural parent-child engagement acts as an icebreaker, making it much easier for parents to connect and start talking with one another.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
     },
     'grijpmachine': {
       title: 'Grijpmachine',
       category: 'ENGINEERING',
       year: '2023',
-      description: 'A fully functional, custom-built arcade claw machine. Combining woodworking, electronics (Arduino), and mechanical design.',
-      images: ['assets/images/grijpmachine_11_item11.jpg']
+      description: "Casper de Bruyn - Grijpmachine
+
+For a DIY school project, I designed and built a fully functional physical claw machine, the \"Lucky Grapple\"—to distribute bags of chips during a school exhibition.
+
+My Role I was responsible for the complete physical construction of this installation. This involved woodworking to build the arcade cabinet, designing and cutting the mechanical parts for the claw, and engineering a custom control system using syringes to operate the machine's movements.
+
+The Concept The goal was to transform a simple task, handing out snacks at an expo, into a playful and engaging experience. Instead of simply handing out bags of chips to visitors, they had to actively operate the custom syringe-controls to play the game and grab their own snack.
+
+This installation is a perfect reflection of my passion for Immersive Design: combining hands-on physical craftsmanship with fun, interactive user experiences.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/grijpmachine_01_hero.jpg", "assets/images/grijpmachine_02_item02.jpg", "assets/images/grijpmachine_03_item03.jpg", "assets/images/grijpmachine_04_item04.jpg", "assets/images/grijpmachine_05_item05.jpg", "assets/images/grijpmachine_06_item06.jpg", "assets/images/grijpmachine_07_item07.jpg", "assets/images/grijpmachine_08_item08.jpg", "assets/images/grijpmachine_09_item09.jpg", "assets/images/grijpmachine_10_item10.jpg", "assets/images/grijpmachine_11_item11.jpg", "assets/images/grijpmachine_12_item12.jpg", "assets/images/grijpmachine_13_item13.jpg", "assets/images/grijpmachine_14_item14.jpg", "assets/images/grijpmachine_15_item15.jpg", "assets/images/grijpmachine_16_item16.jpg", "assets/images/grijpmachine_17_item17.jpg", "assets/images/grijpmachine_18_item18.jpg"]
     },
     'kodak': {
       title: 'Kodak Retro Project',
       category: 'BRANDING',
       year: '2023',
-      description: 'Visual identity and design research into the iconic Kodak brand, focusing on the tactile nature of film in a digital age.',
-      images: ['assets/images/kodak_01_hero.jpg']
+      description: "The Project For a school assignment, I was tasked with creating a conceptual rebranding campaign for an iconic brand. I chose to focus on Kodak.
+
+My Role I was responsible for the complete visual and conceptual design of this campaign, including designing the posters, developing the retro-inspired visual identity, and writing the core slogans.
+
+The Concept The core message of this rebranding campaign is clear: we need to shoot more analog and rely less on our digital smartphones. In a world where people constantly experience life through a screen, this concept encourages everyone to put their digital devices away.
+
+Through bold, retro-style typography and contrasting illustrations (the classic analog camera versus the smartphone), the posters promote a \"Screenfree\" lifestyle. It’s a call to embrace the authentic, tangible experience of analog photography and to truly live in the moment, rather than just looking at it through a phone screen.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
     },
     'school-projecten': {
       title: 'Dan maar hier!',
       category: 'CMD MULTIDISCIPLINARY',
       year: '2023-2025',
-      description: 'Een gecureerde selectie van diverse ontwerpexperimenten, typografische oefeningen en vroege UI-prototypes tijdens mijn CMD-studie. Dan maar hier gebundeld!',
-      images: [
-        'assets/images/school-projecten_06_item06.jpg',
-        'assets/images/school-projecten_01_hero.jpg',
-        'assets/images/school-projecten_02_item02.jpg',
-        'assets/images/school-projecten_03_item03.jpg',
-        'assets/images/school-projecten_04_item04.jpg',
-        'assets/images/school-projecten_05_item05.jpg',
-        'assets/images/school-projecten_07_item07.jpg'
-      ]
+      description: "Casper de Bruyn - Dan maar hier!
+
+The Project Inspired by a recent article from the investigative journalism platform Follow the Money regarding the shifting housing market, our team developed a conceptual guerrilla campaign to raise awareness about the absurdly high housing prices.
+
+My Role For this campaign, I was responsible for conceptualizing the core message, illustrating the satirical line-art, and executing the physical guerrilla marketing in the city.
+
+The Concept We created a satirical campaign titled \"#DANMAARHIER\" (If I can't afford a house, I'll just live here!). We designed classic real estate \"For Sale\" posters featuring humorous line-art and physically placed them in absurd public locations, such as a tree, a bus shelter, and a public trash bin.
+
+By advertising these unlivable spots as potential real estate, like labeling a trash can as a \"Room with a jacuzzi\", we used physical guerrilla marketing in the real world to make a bold statement. The physical signs, combined with a QR code, were designed to make people stop, laugh, and ultimately reflect on the harsh reality of the ongoing housing crisis.
+
+My portfolio likes cookies :]",
+      images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
     },
     'vr-learning-lab': {
       title: 'Stage bij VR Learning Lab',
@@ -301,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = data.title;
     modalCat.textContent = data.category;
     modalYear.textContent = data.year;
-    modalDesc.innerHTML = `<p>${data.description}</p>`;
+    modalDesc.innerHTML = String(data.description || '').split(/\n\n+/).map(p => `<p>${p}</p>`).join('');
 
     modalGallery.innerHTML = '';
     data.images.forEach(src => {

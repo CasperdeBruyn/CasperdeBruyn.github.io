@@ -291,7 +291,9 @@ My Role For this project, my role was a mix of physical crafting and strategic d
 
 The Concept We developed a subscription service for uniquely designed T‑shirts. Every month, a brand‑new, exclusive design is created and presented to our subscribers before any printing takes place.
 
-The customer always has the freedom to opt in for that month’s drop or simply skip it. By using this on‑demand, user‑choice approach, we actively combat unnecessary overproduction and completely`,
+The customer always has the freedom to opt in for that month’s drop or simply skip it. By using this on‑demand, user‑choice approach, we actively combat unnecessary overproduction and completely eliminate dead stock.
+
+My portfolio likes cookies :]`,
       images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
     },
     'samen-spelen': {
@@ -300,13 +302,13 @@ The customer always has the freedom to opt in for that month’s drop or simply 
       year: "2024",
       description: `Casper de Bruyn - Samen spelen
 
-The Project For the organization "Samen Spelen" (Playing Together), our team designed a braille-based concept game for use in public playgrounds.
+The Project For the organization “Samen Spelen” (Playing Together), our team designed a braille‑based concept game for use in public playgrounds.
 
 My Role For this project, I was responsible for designing the physical game pieces and the game board, researching braille typography, and shaping the overall user interaction.
 
 The Concept The main challenge given to us was to spark conversations between parents at the playground, specifically to raise awareness that the playground is fully accessible for children with disabilities.
 
-Our solution was an interactive braille game. Through this game, children can learn a new skill in a fun, informative way while actively involving their parents. This natural parent-child engagement acts as an icebreaker, making it much easier for parents to connect and start talking with one another.
+Our solution was an interactive braille game. Through this game, children can learn a new skill in a fun, informative way while actively involving their parents. This natural parent‑child engagement acts as an icebreaker, making it much easier for parents to connect and start talking with one another.
 
 My portfolio likes cookies :]`,
       images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
@@ -317,11 +319,11 @@ My portfolio likes cookies :]`,
       year: "2023",
       description: `Casper de Bruyn - Grijpmachine
 
-For a DIY school project, I designed and built a fully functional physical claw machine, the "Lucky Grapple"—to distribute bags of chips during a school exhibition.
+For a DIY school project, I designed and built a fully functional physical claw machine, the “Lucky Grapple”—to distribute bags of chips during a school exhibition.
 
-My Role I was responsible for the complete physical construction of this installation. This involved woodworking to build the arcade cabinet, designing and cutting the mechanical parts for the claw, and engineering a custom control system using syringes to operate the machine's movements.
+My Role I was responsible for the complete physical construction of this installation. This involved woodworking to build the arcade cabinet, designing and cutting the mechanical parts for the claw, and engineering a custom control system using syringes to operate the machine’s movements.
 
-The Concept The goal was to transform a simple task, handing out snacks at an expo, into a playful and engaging experience. Instead of simply handing out bags of chips to visitors, they had to actively operate the custom syringe-controls to play the game and grab their own snack.
+The Concept The goal was to transform a simple task, handing out snacks at an expo, into a playful and engaging experience. Instead of simply handing out bags of chips to visitors, they had to actively operate the custom syringe‑controls to play the game and grab their own snack.
 
 This installation is a perfect reflection of my passion for Immersive Design: combining hands‑on physical craftsmanship with fun, interactive user experiences.
 
@@ -334,11 +336,11 @@ My portfolio likes cookies :]`,
       year: "2023",
       description: `The Project For a school assignment, I was tasked with creating a conceptual rebranding campaign for an iconic brand. I chose to focus on Kodak.
 
-My Role I was responsible for the complete visual and conceptual design of this campaign, including designing the posters, developing the retro-inspired visual identity, and writing the core slogans.
+My Role I was responsible for the complete visual and conceptual design of this campaign, including designing the posters, developing the retro‑inspired visual identity, and writing the core slogans.
 
 The Concept The core message of this rebranding campaign is clear: we need to shoot more analog and rely less on our digital smartphones. In a world where people constantly experience life through a screen, this concept encourages everyone to put their digital devices away.
 
-Through bold, retro-style typography and contrasting illustrations (the classic analog camera versus the smartphone), the posters promote a "Screenfree" lifestyle. It’s a call to embrace the authentic, tangible experience of analog photography and to truly live in the moment, rather than just looking at it through a phone screen.
+Through bold, retro‑style typography and contrasting illustrations (the classic analog camera versus the smartphone), the posters promote a “Screenfree” lifestyle. It’s a call to embrace the authentic, tangible experience of analog photography and to truly live in the moment, rather than just looking at it through a phone screen.
 
 My portfolio likes cookies :]`,
       images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
@@ -353,9 +355,9 @@ The Project Inspired by a recent article from the investigative journalism platf
 
 My Role For this campaign, I was responsible for conceptualizing the core message, illustrating the satirical line‑art, and executing the physical guerrilla marketing in the city.
 
-The Concept We created a satirical campaign titled "#DANMAARHIER" (If I can't afford a house, I'll just live here!). We designed classic real estate "For Sale" posters featuring humorous line‑art and physically placed them in absurd public locations, such as a tree, a bus shelter, and a public trash bin.
+The Concept We created a satirical campaign titled “#DANMAARHIER” (If I can't afford a house, I'll just live here!). We designed classic real‑estate “For Sale” posters featuring humorous line‑art and physically placed them in absurd public locations, such as a tree, a bus shelter, and a public trash bin.
 
-By advertising these unlivable spots as potential real estate, like labeling a trash can as a "Room with a jacuzzi", we used physical guerrilla marketing in the real world to make a bold statement. The physical signs, combined with a QR code, were designed to make people stop, laugh, and ultimately reflect on the harsh reality of the ongoing housing crisis.
+By advertising these unlivable spots as potential real‑estate, like labeling a trash can as a “Room with a jacuzzi”, we used physical guerrilla marketing in the real world to make a bold statement. The physical signs, combined with a QR code, were designed to make people stop, laugh, and ultimately reflect on the harsh reality of the ongoing housing crisis.
 
 My portfolio likes cookies :]`,
       images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
@@ -363,7 +365,7 @@ My portfolio likes cookies :]`,
   };
 
   /* -----------------------------------------------------------------
-     2. Modal element creation
+     2. Modal elements (created once, reused)
      ----------------------------------------------------------------- */
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
@@ -378,89 +380,104 @@ My portfolio likes cookies :]`,
   closeBtn.innerHTML = '&times;';
   modal.appendChild(closeBtn);
 
-  const leftPane = document.createElement('div');
-  leftPane.className = 'modal-left';
-  modal.appendChild(leftPane);
+  const textArea = document.createElement('div');
+  textArea.className = 'modal-text';
+  modal.appendChild(textArea);
 
-  const rightPane = document.createElement('div');
-  rightPane.className = 'modal-right';
-  modal.appendChild(rightPane);
+  const carousel = document.createElement('div');
+  carousel.className = 'carousel';
+  modal.appendChild(carousel);
 
   /* -----------------------------------------------------------------
      3. Helper functions
      ----------------------------------------------------------------- */
-  function openModal(projectKey) {
-    const data = PROJECT_DATA[projectKey];
-    if (!data) return;
+  let currentProject = null;
+  let currentIndex = 0;
 
-    // Build left pane (text)
-    leftPane.innerHTML = `
-      <h2>${data.title}</h2>
-      <div class="meta">${data.category} • ${data.year}</div>
-      <p>${data.description.replace(/\n/g, '<br>')}</p>
+  function renderText(project) {
+    textArea.innerHTML = `
+      <h2>${project.title}</h2>
+      <h4>${project.category} • ${project.year}</h4>
+      <p>${project.description}</p>
     `;
+  }
 
-    // Build right pane (carousel)
-    rightPane.innerHTML = `
-      <div class="carousel">
-        <button class="nav prev" aria-label="Vorige afbeelding">&#9664;</button>
-        <img src="${data.images[0]}" alt="${data.title} afbeelding 1">
-        <button class="nav next" aria-label="Volgende afbeelding">&#9654;</button>
-      </div>
-    `;
+  function renderCarousel(images) {
+    carousel.innerHTML = ''; // reset
 
-    let currentIndex = 0;
-    const imgEl = rightPane.querySelector('img');
-    const prevBtn = rightPane.querySelector('.nav.prev');
-    const nextBtn = rightPane.querySelector('.nav.next');
+    const img = document.createElement('img');
+    img.src = images[0];
+    carousel.appendChild(img);
 
-    function updateImage() {
-      imgEl.src = data.images[currentIndex];
-      imgEl.alt = `${data.title} afbeelding ${currentIndex + 1}`;
-    }
+    // Prev button
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'nav prev';
+    prevBtn.innerHTML = '&#10094;';
+    carousel.appendChild(prevBtn);
 
+    // Next button
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'nav next';
+    nextBtn.innerHTML = '&#10095;';
+    carousel.appendChild(nextBtn);
+
+    // Event listeners
     prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + data.images.length) % data.images.length;
-      updateImage();
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      img.src = images[currentIndex];
     });
 
     nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % data.images.length;
-      updateImage();
+      currentIndex = (currentIndex + 1) % images.length;
+      img.src = images[currentIndex];
     });
+  }
 
-    // Show overlay
+  function openModal(projectId) {
+    const project = PROJECT_DATA[projectId];
+    if (!project) return;
+
+    currentProject = project;
+    currentIndex = 0;
+
+    renderText(project);
+    renderCarousel(project.images);
+
     overlay.classList.add('active');
   }
 
   function closeModal() {
     overlay.classList.remove('active');
+    // Optional: clear content to free memory
+    textArea.innerHTML = '';
+    carousel.innerHTML = '';
+    currentProject = null;
   }
 
   /* -----------------------------------------------------------------
      4. Event listeners
      ----------------------------------------------------------------- */
-  // Close on X
-  closeBtn.addEventListener('click', closeModal);
-
-  // Close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) {
-      closeModal();
-    }
+  // Click on project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.project;
+      openModal(id);
+    });
   });
 
-  // Close on click outside modal
+  // Close button
+  closeBtn.addEventListener('click', closeModal);
+
+  // Click outside modal content
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal();
   });
 
-  // Open modal on project card click
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const key = card.dataset.project;
-      openModal(key);
-    });
+  // ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeModal();
+    }
   });
 });
 

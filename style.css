@@ -307,7 +307,6 @@ document.addEventListener
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
 }
 
-/* Algemene body styling */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -359,7 +358,62 @@ body {
 }
 
 /* ==============================
-   4. Carousel & image styling
+   4. Modal text area
+   ============================== */
+.modal-text {
+  flex: 1 1 40%;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-text h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+}
+
+.modal-text h3,
+.modal-text h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.modal-text p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  flex: 1 0 auto;
+}
+
+/* ==============================
+   5. Close button
+   ============================== */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ==============================
+   6. Carousel & image styling
    ============================== */
 .carousel {
   position: relative;
@@ -390,6 +444,9 @@ body {
   cursor: pointer;
   outline: none;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel .nav.prev { left: 10px; }
@@ -400,47 +457,7 @@ body {
 }
 
 /* ==============================
-   5. Project text panel
-   ============================== */
-.project-details {
-  flex: 1 1 40%;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-details h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.project-details p {
-  flex: 1;
-  white-space: pre-wrap;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-light);
-  cursor: pointer;
-  z-index: 1;
-}
-
-.close-btn:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Project card styling (voor referentie)
+   7. Project cards
    ============================== */
 .project-card {
   position: relative;

@@ -467,3 +467,25 @@ document.addEventListener
 }
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
+/* 1. Header Logo Optimalisatie (Taak 10) */
+.header-logo {
+  border: none !important;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+}
+
+.header-logo:hover {
+  transform: rotate(90deg);
+}
+
+/* 2. Verwijder 'UPCOMING PROJECT' balk (Taak 11) */
+.upcoming-project-bar {
+  display: none !important;
+}
+
+/* 3. Zorg dat de archief sectie goed oogt */
+.cmd-archive-title {
+  font-weight: bold;
+  color: var(--accent);
+}
+

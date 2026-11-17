@@ -325,3 +325,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // === AI-TEAM-AUTO-MERGE-JS ===
+/**
+ * Casper de Bruyn – Portfolio Logic (Coder B)
+ * Taak 9-11: Dynamische jaartallen, logo-animatie en opschonen secties.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* 1. Dynamisch jaar voor CMD_ARCHIVE (Taak 9) */
+    const currentYear = new Date().getFullYear();
+    const archiveElement = document.getElementById('cmd-archive-year');
+    if (archiveElement) {
+        archiveElement.textContent = currentYear;
+    }
+
+    /* 2. Project Data Update (Taak 11: VR Learning Lab verplaatst) */
+    // VR Learning Lab is nu een volwaardig project in PROJECT_DATA
+    PROJECT_DATA['vr-learning-lab'] = {
+        title: "Stage bij VR Learning Lab",
+        category: "INTERACTIVE / VR",
+        year: "2024",
+        description: "Stage bij VR Learning Lab – een intensieve periode waarin ik meewerkte aan prototypen voor educatieve virtual-reality-ervaringen.",
+        images: ["assets/images/vr-lab_01.jpg"]
+    };
+
+    /* 3. Logo interactie (Taak 10) */
+    const logo = document.querySelector('.header-logo');
+    if (logo) {
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transition = 'transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        });
+    }
+
+    console.log("Portfolio geoptimaliseerd: Jaar " + currentYear + " actief, logo-animatie ingesteld.");
+});
+

@@ -399,60 +399,7 @@ body {
 }
 
 /* ==============================
-   5. Project description panel
-   ============================== */
-.description {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.description h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.description p {
-  flex: 1;
-  line-height: 1.5;
-}
-
-/* ==============================
-   6. Close button
-   ============================== */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.close-btn:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Header logo
-   ============================== */
-header .logo img {
-  width: 120px;
-  height: auto;
-  transition: transform 0.4s ease;
-}
-
-header .logo img:hover {
-  transform: rotate(360deg);
-}
-
-/* ==============================
-   8. Project card styling
+   5. Project card styling
    ============================== */
 .project-card {
   position: relative;
@@ -488,5 +435,18 @@ header .logo img:hover {
 
 .project-card:hover .overlay {
   opacity: 1;
+}
+
+/* ==============================
+   6. Header logo
+   ============================== */
+#site-header-logo {
+  width: 120px;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+#site-header-logo:hover {
+  transform: rotate(360deg);
 }
 

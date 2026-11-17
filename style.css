@@ -420,41 +420,61 @@ body {
   display: block;
 }
 
-.project-card .info {
+.project-card .card-title {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem;
-  background: rgba(0,0,0,0.6);
+  bottom: 8px;
+  left: 12px;
   color: var(--text-light);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 /* ==============================
-   6. Header logo
+   6. Modal content (text side)
    ============================== */
-#header-logo {
-  width: 120px;
-  transition: transform 0.3s ease;
+.modal-content {
+  flex: 1 1 40%;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-#header-logo:hover {
-  transform: rotate(360deg);
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.modal-content p {
+  line-height: 1.6;
 }
 
 /* ==============================
    7. Close button
    ============================== */
-.modal .close-btn {
+.modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   background: transparent;
   border: none;
-  color: var(--accent);
+  color: var(--text-light);
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
+}
+
+.modal-close:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   8. Header logo hover rotation
+   ============================== */
+#header-logo {
+  width: 120px;
+  transition: transform 0.5s ease;
+}
+
+#header-logo:hover {
+  transform: rotate(360deg);
 }
 

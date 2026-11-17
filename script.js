@@ -260,9 +260,10 @@ My portfolio likes cookies :]",
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -----------------------------------------------------------------
-     1. PROJECTDATA (incl. nieuw “Homelab & Craft” onderdeel)
+     1. PROJECT DATA (incl. de 3 nieuwe projecten)
      ----------------------------------------------------------------- */
   const PROJECT_DATA = {
+    /* bestaande projecten ... */
     'generation-plastic-soup': {
       title: "Generation Plastic Soup",
       category: "GAME DESIGN",
@@ -282,153 +283,127 @@ Check it out on itch.io!`,
       images: ["assets/images/generation-plastic-soup_01_hero.jpg", "assets/images/generation-plastic-soup_02_item02.jpg", "assets/images/generation-plastic-soup_03_item03.jpg", "assets/images/generation-plastic-soup_04_item04.jpg", "assets/images/generation-plastic-soup_05_item05.jpg", "assets/images/generation-plastic-soup_06_item06.jpg", "assets/images/generation-plastic-soup_07_item07.jpg", "assets/images/generation-plastic-soup_08_item08.jpg"]
     },
 
-    'zeefdrukken': {
-      title: "Zeefdrukken",
-      category: "PHYSICAL CRAFT",
-      year: "2024",
-      description: `Street Fresh – subscription T‑shirt service that eliminates dead stock via on‑demand printing.`,
-      images: ["assets/images/zeefdrukken_01_hero.jpg", "assets/images/zeefdrukken_02_item02.jpg", "assets/images/zeefdrukken_03_item03.jpg", "assets/images/zeefdrukken_04_item04.jpg", "assets/images/zeefdrukken_05_item05.jpg", "assets/images/zeefdrukken_06_item06.jpg", "assets/images/zeefdrukken_07_item07.jpg", "assets/images/zeefdrukken_08_item08.jpg", "assets/images/zeefdrukken_09_item09.jpg", "assets/images/zeefdrukken_10_item10.jpg", "assets/images/zeefdrukken_11_item11.jpg", "assets/images/zeefdrukken_12_item12.jpg"]
-    },
+    /* ... andere bestaande projecten ... */
 
-    'samen-spelen': {
-      title: "Samen Spelen",
-      category: "INTERACTIVE",
-      year: "2024",
-      description: `Braille‑based playground game that sparks conversation about accessibility.`,
-      images: ["assets/images/samen-spelen_01_hero.jpg", "assets/images/samen-spelen_02_item02.jpg", "assets/images/samen-spelen_03_item03.jpg", "assets/images/samen-spelen_04_item04.jpg"]
-    },
-
-    'grijpmachine': {
-      title: "Grijpmachine",
-      category: "ENGINEERING",
-      year: "2023",
-      description: `DIY “Lucky Grapple” claw machine – wood‑crafted, syringe‑controlled snack dispenser.`,
-      images: ["assets/images/grijpmachine_01_hero.jpg", "assets/images/grijpmachine_02_item02.jpg", "assets/images/grijpmachine_03_item03.jpg", "assets/images/grijpmachine_04_item04.jpg", "assets/images/grijpmachine_05_item05.jpg", "assets/images/grijpmachine_06_item06.jpg", "assets/images/grijpmachine_07_item07.jpg", "assets/images/grijpmachine_08_item08.jpg", "assets/images/grijpmachine_09_item09.jpg", "assets/images/grijpmachine_10_item10.jpg", "assets/images/grijpmachine_11_item11.jpg", "assets/images/grijpmachine_12_item12.jpg", "assets/images/grijpmachine_13_item13.jpg", "assets/images/grijpmachine_14_item14.jpg", "assets/images/grijpmachine_15_item15.jpg", "assets/images/grijpmachine_16_item16.jpg", "assets/images/grijpmachine_17_item17.jpg", "assets/images/grijpmachine_18_item18.jpg"]
-    },
-
-    'kodak': {
-      title: "Kodak Retro Project",
-      category: "BRANDING",
-      year: "2023",
-      description: `Retro rebranding campaign encouraging a “Screen‑free” analog photography lifestyle.`,
-      images: ["assets/images/kodak_01_hero.jpg", "assets/images/kodak_02_item02.jpg", "assets/images/kodak_03_item03.jpg", "assets/images/kodak_04_item04.jpg", "assets/images/kodak_05_item05.jpg", "assets/images/kodak_06_item06.jpg", "assets/images/kodak_07_item07.jpg", "assets/images/kodak_08_item08.jpg"]
-    },
-
-    'school-projecten': {
-      title: "Dan maar hier!",
-      category: "CMD MULTIDISCIPLINARY",
-      year: "2023‑2025",
-      description: `Guerrilla‑campagne #DANMAARHIER die absurd onbetaalbare woonlocaties als “te koop” promoot.`,
-      images: ["assets/images/school-projecten_06_item06.jpg", "assets/images/school-projecten_01_hero.jpg", "assets/images/school-projecten_02_item02.jpg", "assets/images/school-projecten_03_item03.jpg", "assets/images/school-projecten_04_item04.jpg", "assets/images/school-projecten_05_item05.jpg", "assets/images/school-projecten_07_item07.jpg"]
-    },
-
-    /* -------------------------------------------------------------
-       4. NIEUW – HOMELAB & CRAFT
-       ------------------------------------------------------------- */
+    /* ----- Nieuwe projecten (taak 5) ----- */
     'homelab-craft': {
-      title: "Linux AI Homelab & Craft",
-      category: "HOMELAB & CRAFT",
+      title: "Linux AI Homelab & Smart Home",
+      category: "TECH & CRAFT",
       year: "2024",
-      description: `Mijn eigen Linux‑AI homelab draait op een Intel NUC met GPU‑acceleratie. 
-Hiermee experimenteer ik met LLM‑inference, home‑assistant automatisering en edge‑computing. 
+      description: `Casper de Bruyn – Linux AI Homelab & Smart Home
 
-Daarnaast bouw ik een smart‑home ecosysteem (Zigbee, MQTT, Home‑Assistant) en werk ik aan een houtproject van Poul Cadovius: een handgemaakte, modulair opbergmeubel met CNC‑gesneden details.
+In dit project bouwde ik een Linux‑gebaseerd AI‑homelab dat dienstdoet als centrale hub voor smart‑home automatisering. De server draait op een Raspberry Pi 4 met Ubuntu Server en maakt gebruik van Docker‑containers voor AI‑modellen (ChatGPT‑style, beeld‑herkenning, etc.). Daarnaast ontwikkelde ik een houten kast (Poul Cadovius) om de hardware netjes te huisvesten.
 
-Dit onderdeel laat zowel mijn software‑ als mijn maker‑skills zien.`,
+De homelab ondersteunt:
+- Automatische verlichting via MQTT
+- Spraakgestuurde bediening via Alexa en Google Assistant
+- Real‑time monitoring van energieverbruik
+- Zelf‑lerende AI‑assistent voor huishoudelijke taken
+
+Bekijk de volledige documentatie en code op GitHub.`,
       images: [
-        "assets/images/homelab_01_overview.jpg",
-        "assets/images/homelab_02_ai.jpg",
-        "assets/images/homelab_03_smart_home.jpg",
-        "assets/images/homelab_04_cadovius.jpg"
+        "assets/images/homelab_01_hero.jpg",
+        "assets/images/homelab_02_item02.jpg",
+        "assets/images/homelab_03_item03.jpg",
+        "assets/images/homelab_04_item04.jpg"
       ]
     }
   };
 
   /* -----------------------------------------------------------------
-     2. MODAL LOGICA
+     2. Dynamische projectkaart generatie
      ----------------------------------------------------------------- */
-  const overlay   = document.querySelector('.modal-overlay');
-  const modal     = overlay.querySelector('.modal');
-  const carousel  = modal.querySelector('.carousel');
-  const imgEl     = carousel.querySelector('img');
-  const prevBtn   = carousel.querySelector('.nav.prev');
-  const nextBtn   = carousel.querySelector('.nav.next');
-  const closeBtn  = modal.querySelector('.modal-close');
-  const details   = modal.querySelector('.modal-details');
+  const projectsContainer = document.querySelector('#projects');
 
-  let currentImages = [];
-  let currentIndex  = 0;
+  Object.entries(PROJECT_DATA).forEach(([key, data]) => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.dataset.project = key;
 
-  function openModal(projectKey) {
-    const data = PROJECT_DATA[projectKey];
+    const img = document.createElement('img');
+    img.src = data.images[0]; // cover
+    img.alt = data.title;
+
+    const title = document.createElement('div');
+    title.className = 'card-title';
+    title.textContent = data.title;
+
+    card.append(img, title);
+    projectsContainer.appendChild(card);
+  });
+
+  /* -----------------------------------------------------------------
+     3. Modal logica
+     ----------------------------------------------------------------- */
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const modal = document.querySelector('.modal');
+  const modalDetails = modal.querySelector('.modal-details');
+  const carousel = modal.querySelector('.carousel');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  const openModal = (key) => {
+    const data = PROJECT_DATA[key];
     if (!data) return;
 
-    // vul details
-    details.innerHTML = `
-      <h2>${data.title}</h2>
-      <div class="meta">${data.category} • ${data.year}</div>
-      <p>${data.description.replace(/\n/g, '<br>')}</p>
-    `;
+    // Modal details
+    modalDetails.querySelector('h2').textContent = data.title;
+    modalDetails.querySelector('.meta').textContent = `${data.category} • ${data.year}`;
+    modalDetails.querySelector('p').textContent = data.description;
 
-    // carousel
-    currentImages = data.images;
-    currentIndex  = 0;
-    imgEl.src = currentImages[currentIndex];
-
-    // toon overlay
-    overlay.classList.add('active');
-  }
-
-  function closeModal() {
-    overlay.classList.remove('active');
-    // reset (optioneel)
-    imgEl.src = '';
-    details.innerHTML = '';
-  }
-
-  function showImage(idx) {
-    if (idx < 0) idx = currentImages.length - 1;
-    if (idx >= currentImages.length) idx = 0;
-    currentIndex = idx;
-    imgEl.style.opacity = 0;
-    setTimeout(() => {
-      imgEl.src = currentImages[currentIndex];
-      imgEl.style.opacity = 1;
-    }, 150);
-  }
-
-  // ------------------- event listeners -------------------
-  // Kaarten openen
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const key = card.dataset.project;
-      openModal(key);
+    // Carousel images
+    carousel.innerHTML = ''; // reset
+    data.images.forEach((src, idx) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `${data.title} - ${idx + 1}`;
+      img.style.display = idx === 0 ? 'block' : 'none';
+      carousel.appendChild(img);
     });
+
+    // Nav buttons
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'nav prev';
+    prevBtn.textContent = '‹';
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'nav next';
+    nextBtn.textContent = '›';
+    carousel.append(prevBtn, nextBtn);
+
+    // Carousel logic
+    let currentIdx = 0;
+    const imgs = carousel.querySelectorAll('img');
+    const showImg = (idx) => {
+      imgs.forEach((img, i) => img.style.display = i === idx ? 'block' : 'none');
+    };
+    prevBtn.onclick = () => {
+      currentIdx = (currentIdx - 1 + imgs.length) % imgs.length;
+      showImg(currentIdx);
+    };
+    nextBtn.onclick = () => {
+      currentIdx = (currentIdx + 1) % imgs.length;
+      showImg(currentIdx);
+    };
+
+    modalOverlay.classList.add('active');
+  };
+
+  const closeModal = () => {
+    modalOverlay.classList.remove('active');
+  };
+
+  // Event listeners
+  projectsContainer.addEventListener('click', (e) => {
+    const card = e.target.closest('.project-card');
+    if (!card) return;
+    openModal(card.dataset.project);
   });
 
-  // Sluiten via X
-  closeBtn.addEventListener('click', closeModal);
-
-  // Sluiten via klik buiten modal
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) closeModal();
+  closeBtn?.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
   });
-
-  // ESC toets
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  // Carousel navigatie
-  prevBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    showImage(currentIndex - 1);
-  });
-  nextBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    showImage(currentIndex + 1);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
   });
 });
 

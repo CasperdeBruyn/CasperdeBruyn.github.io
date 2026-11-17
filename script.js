@@ -253,112 +253,63 @@ My portfolio likes cookies :]",
 
 // === AI-TEAM-AUTO-MERGE-JS ===
 /**
- * Coder B: Modal & Carrousel Logica (Taak 1A)
+ * Casper de Bruyn – Modal & Carrousel Logic
  * Skill: GoogleChrome/modern-web-guidance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Injecteer de modal structuur in de DOM als deze nog niet bestaat
-    if (!document.getElementById('project-modal')) {
-        const modalOverlay = document.createElement('div');
-        modalOverlay.id = 'project-modal';
-        modalOverlay.className = 'modal-overlay';
-        modalOverlay.innerHTML = `
-            <div class="modal">
-                <button class="modal-close" aria-label="Sluit pop-up">&times;</button>
-                <div class="modal-left">
-                    <h2 id="modal-title"></h2>
-                    <div class="modal-meta"><span id="modal-category"></span> &bull; <span id="modal-year"></span></div>
-                    <div class="modal-description" id="modal-desc"></div>
-                </div>
-                <div class="modal-right">
-                    <div class="carousel-viewport">
-                        <img id="carousel-img" src="" alt="Project afbeelding">
-                    </div>
-                    <button class="carousel-btn prev" aria-label="Vorige foto">&#10094;</button>
-                    <button class="carousel-btn next" aria-label="Volgende foto">&#10095;</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modalOverlay);
-    }
-
     const modalOverlay = document.getElementById('project-modal');
+    const imgEl = document.getElementById('carousel-img');
     const titleEl = document.getElementById('modal-title');
     const categoryEl = document.getElementById('modal-category');
     const yearEl = document.getElementById('modal-year');
     const descEl = document.getElementById('modal-desc');
-    const imgEl = document.getElementById('carousel-img');
-    const closeBtn = modalOverlay.querySelector('.modal-close');
-    const prevBtn = modalOverlay.querySelector('.carousel-btn.prev');
-    const nextBtn = modalOverlay.querySelector('.carousel-btn.next');
-
+    
     let currentImages = [];
     let currentIndex = 0;
 
-    function updateCarouselImage() {
-        if (currentImages.length > 0) {
-            imgEl.src = currentImages[currentIndex];
-        }
-    }
-
-    // 2. Open de modal en laad de juiste projectdata + afbeeldingen
-    window.openProjectModal = function(projectKey) {
-        if (typeof PROJECT_DATA === 'undefined' || !PROJECT_DATA[projectKey]) return;
+    // Open Modal
+    window.openProjectModal = (projectKey) => {
         const project = PROJECT_DATA[projectKey];
+        if (!project) return;
 
         titleEl.textContent = project.title;
         categoryEl.textContent = project.category;
         yearEl.textContent = project.year;
         descEl.textContent = project.description;
         
-        currentImages = project.images || [];
+        currentImages = project.images;
         currentIndex = 0;
-        updateCarouselImage();
-
+        updateCarousel();
+        
         modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
     };
 
-    // 3. Sluit de modal
-    function closeModal() {
+    // Close Modal
+    const closeModal = () => {
         modalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+    };
+
+    function updateCarousel() {
+        imgEl.src = currentImages[currentIndex];
     }
 
-    closeBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal();
+    // Event Listeners
+    document.querySelector('.modal-close').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+    
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateCarousel();
+    });
+
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateCarousel();
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-            closeModal();
-        }
-    });
-
-    // 4. Carrousel navigatie knoppen
-    prevBtn.addEventListener('click', () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        updateCarouselImage();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentImages.length === 0) return;
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        updateCarouselImage();
-    });
-
-    // 5. Koppel klikgedrag aan alle elementen met een data-project attribuut
-    document.addEventListener('click', (e) => {
-        const card = e.target.closest('[data-project]');
-        if (card) {
-            const projectKey = card.getAttribute('data-project');
-            if (projectKey) {
-                window.openProjectModal(projectKey);
-            }
-        }
+        if (e.key === 'Escape') closeModal();
     });
 });
 

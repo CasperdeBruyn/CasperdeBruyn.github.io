@@ -297,160 +297,99 @@ body.dark-workshop {
 document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==========================================================================
-   Coder B: Stijl voor Modale Pop-up & Carrousel (Taak 1A)
-   Skill: GoogleChrome/modern-web-guidance
-   ================================================================---------- */
-
+/* Modal Overlay */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(5px);
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
 }
 
 .modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
+/* Modal Container */
 .modal {
-  background: var(--bg-secondary, #231F1D);
-  color: var(--text-light, #F4F1EA);
-  width: 90vw;
-  max-width: 1100px;
-  height: 85vh;
-  max-height: 750px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    background: #231F1D;
+    width: 100%;
+    max-width: 1000px;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    color: #F4F1EA;
 }
 
 .modal-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--text-light, #F4F1EA);
-  font-size: 2.2rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: color 0.2s ease;
-  line-height: 1;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.modal-close:hover {
-  color: var(--accent, #C87D4B);
-}
-
-/* Linkerkant: Projecttekst en metadata */
+/* Links: Tekst */
 .modal-left {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
 }
 
-.modal-left h2 {
-  font-size: 2rem;
-  margin: 0 0 5px 0;
-  color: var(--text-light, #F4F1EA);
-}
-
-.modal-meta {
-  font-size: 0.95rem;
-  color: var(--accent, #C87D4B);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.modal-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  white-space: pre-line;
-  color: rgba(244, 241, 234, 0.85);
-  margin-top: 10px;
-}
-
-/* Rechterkant: Carrousel en afbeeldingen */
+/* Rechts: Carrousel */
 .modal-right {
-  flex: 1.2;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+    flex: 1;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .carousel-viewport {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-viewport img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Zorgt ervoor dat foto's passen in het kader en niet worden afgesneden */
-  border-radius: 4px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Foto's worden niet afgesneden */
 }
 
 .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 1.5rem;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
 }
 
-.carousel-btn:hover {
-  background: var(--accent, #C87D4B);
-  transform: translateY(-50%) scale(1.05);
-}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
-.carousel-btn.prev { left: 20px; }
-.carousel-btn.next { right: 20px; }
-
-/* Responsieve aanpassing voor mobiel */
 @media (max-width: 768px) {
-  .modal {
-    flex-direction: column;
-    height: 90vh;
-    width: 95vw;
-  }
-  .modal-left, .modal-right {
-    flex: 1;
-  }
-  .modal-left {
-    padding: 20px;
-  }
+    .modal { flex-direction: column; height: 90vh; }
+    .modal-left { padding: 20px; }
 }
 

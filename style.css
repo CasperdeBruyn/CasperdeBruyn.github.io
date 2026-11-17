@@ -399,58 +399,13 @@ body {
 }
 
 /* ==============================
-   5. Project tekst
-   ============================== */
-.modal .content {
-  flex: 1 1 40%;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .content h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.modal .content p {
-  flex: 1;
-  white-space: pre-line;
-}
-
-/* ==============================
-   6. Close knop
-   ============================== */
-.modal .close-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.modal .close-btn:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Project kaarten
+   5. Project card styling
    ============================== */
 .project-card {
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
-  transition: transform 0.2s;
-}
-
-.project-card:hover {
-  transform: scale(1.02);
 }
 
 .project-card img {
@@ -479,6 +434,39 @@ body {
 .project-card .overlay span {
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+/* ==============================
+   6. Modal content (text side)
+   ============================== */
+.modal-content {
+  flex: 1 1 40%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.modal-content p {
+  line-height: 1.6;
+}
+
+/* ==============================
+   7. Close button
+   ============================== */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* ==============================

@@ -298,7 +298,7 @@ document.addEventListener
 
 /* === AI-TEAM-AUTO-MERGE-CSS === */
 /* ==============================
-   1. Basis & Kleuren
+   1. Basis & kleuren
    ============================== */
 :root {
   --bg-dark: #161412;          /* Diep Houtskool */
@@ -386,7 +386,9 @@ body {
   cursor: pointer;
   outline: none;
   border-radius: 50%;
-  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel .nav.prev { left: 10px; }
@@ -397,62 +399,64 @@ body {
 }
 
 /* ==============================
-   4. Header Logo & Navigatie
+   4. Header & Logo interactie
    ============================== */
-.site-header img {
-  border-radius: 0; /* Niet rond afsnijden conform richtlijnen */
+.site-header img, .header-logo {
   transition: transform 0.4s ease;
+  border-radius: 0; /* Niet rond afsnijden conform eerdere richtlijnen */
 }
 
-.site-header img:hover {
-  transform: rotate(15deg) scale(1.05);
+.site-header img:hover, .header-logo:hover {
+  transform: rotate(10deg) scale(1.05);
 }
 
 /* ==============================
-   5. Modal details
+   5. Modal Details
    ============================== */
 .modal-details {
   flex: 1 1 40%;
-  padding: 1.5rem;
+  padding: 2rem;
   overflow-y: auto;
+  background: var(--bg-secondary);
 }
 
 .modal-details h2 {
   margin-top: 0;
-  color: var(--accent);
+  color: var(--text-light);
+  font-size: 1.5rem;
 }
 
-.modal-details .meta {
-  font-size: 0.9rem;
-  margin: 0.5rem 0 1rem;
-  color: rgba(244,241,234,.7);
+.modal-details .category {
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .modal-details p {
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  color: rgba(244,241,234,0.85);
+  line-height: 1.6;
+  white-space: pre-line;
 }
 
 /* ==============================
-   6. Homelab & Craft Section (Taak 4)
+   6. Homelab & Craft Sectie (Taak 4)
    ============================== */
 .homelab-craft-section {
-  padding: 5rem 2rem;
-  background: var(--bg-secondary);
-  border-top: 1px solid rgba(244,241,234,0.1);
-}
-
-.homelab-craft-container {
+  padding: 6rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.homelab-craft-header h2 {
-  font-size: 1.4rem;
-  color: var(--accent);
-  font-family: monospace;
+.homelab-craft-section h2 {
+  font-size: 2rem;
   margin-bottom: 2rem;
+  color: var(--text-light);
   letter-spacing: 1px;
+  border-bottom: 1px solid rgba(244,241,234,0.1);
+  padding-bottom: 0.5rem;
 }
 
 .homelab-grid {
@@ -462,7 +466,7 @@ body {
 }
 
 .homelab-card {
-  background: var(--bg-dark);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid rgba(244,241,234,0.05);

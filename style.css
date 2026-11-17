@@ -305,11 +305,16 @@ document.addEventListener
   --bg-secondary: #231F1D;     /* Gerookt Eiken */
   --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
   --accent: #C87D4B;           /* Koper / Gesmolten Amber */
+  --accent-hover: #E08C5E;
+  --modal-bg: rgba(0, 0, 0, 0.85);
+  --modal-content-bg: var(--bg-secondary);
   --border-radius: 8px;
   --transition: 0.3s ease;
 }
 
-/* Algemene body styling */
+/* ==============================
+   2. Algemene styling
+   ============================== */
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -319,13 +324,49 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--accent-hover); }
+
 /* ==============================
-   2. Modal overlay
+   3. Projectkaart
+   ============================== */
+.project-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition);
+}
+.project-card:hover { transform: scale(1.02); }
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card .card-info {
+  padding: 0.75rem;
+  background: rgba(0,0,0,0.6);
+  color: var(--text-light);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+   4. Modal overlay
    ============================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: var(--modal-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,17 +375,13 @@ body {
   pointer-events: none;
   transition: opacity var(--transition);
 }
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 /* ==============================
-   3. Modal container
+   5. Modal container
    ============================== */
 .modal {
-  background: var(--bg-secondary);
+  background: var(--modal-content-bg);
   border-radius: var(--border-radius);
   max-width: 90vw;
   max-height: 90vh;
@@ -353,32 +390,27 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-
 @media (max-width: 768px) {
-  .modal {
-    flex-direction: column;
-  }
+  .modal { flex-direction: column; }
 }
 
 /* ==============================
-   4. Carousel & image styling
+   6. Carousel & image styling
    ============================== */
 .carousel {
   position: relative;
   flex: 1 1 60%;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000;
 }
-
 .carousel img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Zorgt dat de foto niet wordt afgesneden */
+  object-fit: contain;
   transition: opacity var(--transition);
 }
-
 .carousel .nav {
   position: absolute;
   top: 50%;
@@ -393,47 +425,25 @@ body {
   outline: none;
   border-radius: 50%;
 }
-
 .carousel .nav.prev { left: 10px; }
 .carousel .nav.next { right: 10px; }
-
-.carousel .nav:hover {
-  background: rgba(255,255,255,0.25);
-}
+.carousel .nav:hover { background: rgba(255,255,255,0.25); }
 
 /* ==============================
-   5. Project tekst
+   7. Modal content (text side)
    ============================== */
-.project-text {
+.modal-content {
   flex: 1 1 40%;
   padding: 1rem;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
 }
-
-.project-text h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: var(--accent);
-}
-
-.project-text p {
-  flex: 1;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.project-text .meta {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin-bottom: 1rem;
-}
+.modal-content h2 { margin-top: 0; }
+.modal-content p { line-height: 1.5; }
 
 /* ==============================
-   6. Close button
+   8. Close button
    ============================== */
-.close-btn {
+.modal-close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -442,21 +452,16 @@ body {
   color: var(--text-light);
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 10;
-}
-
-.close-btn:hover {
-  color: var(--accent);
-}
-
-/* ==============================
-   7. Header logo hover rotation
-   ============================== */
-#site-header-logo {
   transition: transform var(--transition);
 }
+.modal-close:hover { transform: rotate(90deg); }
 
-#site-header-logo:hover {
-  transform: rotate(360deg);
+/* ==============================
+   9. Header logo
+   ============================== */
+header .logo img {
+  width: 120px;
+  transition: transform var(--transition);
 }
+header .logo img:hover { transform: rotate(360deg); }
 

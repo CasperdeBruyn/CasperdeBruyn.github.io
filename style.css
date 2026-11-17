@@ -399,11 +399,11 @@ body {
 }
 
 /* ==============================
-   5. Modal content (text side)
+   5. Modal text panel
    ============================== */
 .modal-content {
   flex: 1 1 40%;
-  padding: 2rem;
+  padding: 1rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -411,12 +411,12 @@ body {
 
 .modal-content h2 {
   margin-top: 0;
-  color: var(--accent);
+  font-size: 1.8rem;
 }
 
 .modal-content p {
-  line-height: 1.6;
   flex: 1;
+  white-space: pre-wrap;
 }
 
 /* ==============================
@@ -428,8 +428,8 @@ body {
   right: 0.5rem;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
   color: var(--text-light);
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -438,18 +438,53 @@ body {
 }
 
 /* ==============================
-   7. Header logo hover rotation
+   7. Project card styling
    ============================== */
-#site-header-logo {
-  transition: transform 0.5s ease;
+.project-card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.2s ease;
 }
 
-#site-header-logo:hover {
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-card::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: rgba(0,0,0,0.6);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ==============================
+   8. Header logo
+   ============================== */
+#header-logo {
+  width: 120px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+#header-logo:hover {
   transform: rotate(360deg);
 }
 
 /* ==============================
-   8. Placeholder styling for new projects
+   9. Placeholder cards
    ============================== */
 .project-card.placeholder {
   background: var(--bg-secondary);

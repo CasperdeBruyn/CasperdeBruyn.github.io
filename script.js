@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box.addEventListener('click', activateBox);
     });
 
-    // 4. Gold/Bronze Motherboard PCB Pattern on Canvas (lights up smoothly around the cursor)
+    // 4. Realistisch Moederbord-Patroon (zoals foto: schuine koperbanen + rijen glanzende soldeerpinnen) met Zaklamp-vervaging
     let canvas = document.getElementById('pcb-canvas');
     if (!canvas) {
         canvas = document.createElement('canvas');
@@ -344,9 +344,130 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseX = -1000, mouseY = -1000;
     let targetX = -1000, targetY = -1000;
 
+    // Bouw een naadloze high-detail moederbord-tegel (offscreen canvas) geïnspireerd op een echte printplaat
+    const tileSize = 320;
+    const pcbTile = document.createElement('canvas');
+    pcbTile.width = tileSize;
+    pcbTile.height = tileSize;
+    const tCtx = pcbTile.getContext('2d');
+
+    function buildMotherboardTile() {
+        // Donkere printplaat ondergrond tussen de sporen
+        tCtx.fillStyle = '#120E0A';
+        tCtx.fillRect(0, 0, tileSize, tileSize);
+
+        // 1. Fijne parallelle diagonale (45-graden) gouden/koperen bus-banen (linksboven naar rechtsonder)
+        tCtx.strokeStyle = '#9E6B30';
+        tCtx.lineWidth = 2.0;
+        tCtx.lineCap = 'round';
+        tCtx.lineJoin = 'round';
+
+        // Bundel A: parallelle schuine moederbord-sporen met 45-graden knikken
+        for (let i = 0; i < 14; i++) {
+            const offset = i * 7;
+            tCtx.beginPath();
+            tCtx.moveTo(-20 + offset, 10);
+            tCtx.lineTo(75 + offset, 105);
+            tCtx.lineTo(75 + offset, 165);
+            tCtx.lineTo(190 + offset, 280);
+            tCtx.lineTo(250 + offset, 280);
+            tCtx.lineTo(340 + offset, 370);
+            tCtx.stroke();
+        }
+
+        // Bundel B: fijne dicht op elkaar liggende gouden data-sporen (zoals linksonder op de foto)
+        tCtx.strokeStyle = '#C4883E';
+        tCtx.lineWidth = 1.4;
+        for (let i = 0; i < 22; i++) {
+            const d = i * 4.2;
+            tCtx.beginPath();
+            tCtx.moveTo(0, 170 + d);
+            tCtx.lineTo(95 - d * 0.4, 265 + d * 0.6);
+            tCtx.lineTo(175, 345 + d * 0.6);
+            tCtx.stroke();
+        }
+
+        // Bundel C: rechter bovenhoek schuine printbanen
+        tCtx.strokeStyle = '#B37A36';
+        tCtx.lineWidth = 2.2;
+        for (let i = 0; i < 10; i++) {
+            const d = i * 8.5;
+            tCtx.beginPath();
+            tCtx.moveTo(140 + d, -10);
+            tCtx.lineTo(220 + d, 70);
+            tCtx.lineTo(265 + d, 70);
+            tCtx.lineTo(340 + d, 145);
+            tCtx.stroke();
+        }
+
+        // 2. Rijen 3D glanzende metalen soldeer-pinnen (IC pin-clusters precies zoals op de moederbord-foto)
+        function drawSolderPin(px, py, radius) {
+            // Koperen soldeer-ring (pad) op het bord
+            tCtx.fillStyle = '#C88A3E';
+            tCtx.beginPath();
+            tCtx.arc(px, py, radius + 2.2, 0, Math.PI * 2);
+            tCtx.fill();
+
+            // Donkere schaduwrand rond de soldeerdruppel
+            tCtx.fillStyle = '#1A140E';
+            tCtx.beginPath();
+            tCtx.arc(px, py, radius + 0.8, 0, Math.PI * 2);
+            tCtx.fill();
+
+            // 3D zilver/goud metallic soldeerpunt met glans-highlight
+            const pinGrad = tCtx.createRadialGradient(px - radius * 0.35, py - radius * 0.35, 0.5, px, py, radius);
+            pinGrad.addColorStop(0, '#FFFDF8');
+            pinGrad.addColorStop(0.35, '#D8D4C8');
+            pinGrad.addColorStop(0.75, '#7A7264');
+            pinGrad.addColorStop(1, '#2C261E');
+            tCtx.fillStyle = pinGrad;
+            tCtx.beginPath();
+            tCtx.arc(px, py, radius, 0, Math.PI * 2);
+            tCtx.fill();
+        }
+
+        // Cluster 1: Schuine matrix van glanzende soldeer-pinnen (4 rijen x 7 pinnen)
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 7; col++) {
+                const px = 42 + col * 15 + row * 9;
+                const py = 112 + col * 11 - row * 12;
+                drawSolderPin(px, py, 4.3);
+            }
+        }
+
+        // Cluster 2: Tweede IC soldeer-pinnen rij rechtsboven/midden
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 8; col++) {
+                const px = 175 + col * 14 + row * 8;
+                const py = 95 + col * 11 - row * 12;
+                drawSolderPin(px, py, 4.0);
+            }
+        }
+
+        // Cluster 3: Kleine koperen micro-vias (gaatjes in de sporen)
+        const vias = [
+            [75, 105], [89, 105], [103, 105], [117, 105],
+            [195, 225], [210, 238], [225, 251], [240, 264],
+            [130, 42], [145, 55], [160, 68], [280, 195], [295, 210]
+        ];
+        for (let v = 0; v < vias.length; v++) {
+            tCtx.fillStyle = '#D6994A';
+            tCtx.beginPath();
+            tCtx.arc(vias[v][0], vias[v][1], 3.0, 0, Math.PI * 2);
+            tCtx.fill();
+            tCtx.fillStyle = '#120E0A';
+            tCtx.beginPath();
+            tCtx.arc(vias[v][0], vias[v][1], 1.3, 0, Math.PI * 2);
+            tCtx.fill();
+        }
+    }
+    buildMotherboardTile();
+
+    let pcbPattern = null;
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        pcbPattern = ctx.createPattern(pcbTile, 'repeat');
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -356,72 +477,35 @@ document.addEventListener('DOMContentLoaded', () => {
         targetY = e.clientY;
     });
 
-    function drawPcbPattern() {
+    function drawPcbFlashlight() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        mouseX += (targetX - mouseX) * 0.25;
-        mouseY += (targetY - mouseY) * 0.25;
+        mouseX += (targetX - mouseX) * 0.22;
+        mouseY += (targetY - mouseY) * 0.22;
 
-        if (mouseX > -500 && mouseY > -500) {
-            const radius = 260;
-            const gridSize = 105;
-            const startCol = Math.max(0, Math.floor((mouseX - radius) / gridSize));
-            const endCol = Math.ceil((mouseX + radius) / gridSize);
-            const startRow = Math.max(0, Math.floor((mouseY - radius) / gridSize));
-            const endRow = Math.ceil((mouseY + radius) / gridSize);
+        if (mouseX > -500 && mouseY > -500 && pcbPattern) {
+            const flashlightRadius = 260;
 
             ctx.save();
-            // Subtle warm copper ambient glow under cursor
-            const grad = ctx.createRadialGradient(mouseX, mouseY, 5, mouseX, mouseY, radius);
-            grad.addColorStop(0, 'rgba(200, 125, 75, 0.14)');
-            grad.addColorStop(0.6, 'rgba(200, 125, 75, 0.04)');
-            grad.addColorStop(1, 'rgba(200, 125, 75, 0)');
-            ctx.fillStyle = grad;
+            // 1. Teken het moederbord-patroon binnen de zaklamp-cirkel
             ctx.beginPath();
-            ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.arc(mouseX, mouseY, flashlightRadius, 0, Math.PI * 2);
+            ctx.clip();
 
-            for (let r = startRow; r <= endRow; r++) {
-                for (let c = startCol; c <= endCol; c++) {
-                    const x = c * gridSize;
-                    const y = r * gridSize;
-                    const dist = Math.hypot((x + gridSize / 2) - mouseX, (y + gridSize / 2) - mouseY);
-                    if (dist > radius) continue;
+            ctx.fillStyle = pcbPattern;
+            ctx.fillRect(mouseX - flashlightRadius, mouseY - flashlightRadius, flashlightRadius * 2, flashlightRadius * 2);
 
-                    const alpha = Math.pow(1 - dist / radius, 1.45) * 0.78;
-                    ctx.strokeStyle = 'rgba(205, 133, 78, ' + alpha + ')';
-                    ctx.fillStyle = 'rgba(235, 175, 82, ' + Math.min(1, alpha * 1.25) + ')';
-                    ctx.lineWidth = 1.5;
+            // 2. Laat het zaklampje naar de randen toe vloeiend vervagen in het zwart (#161412)
+            const fadeGrad = ctx.createRadialGradient(mouseX, mouseY, 15, mouseX, mouseY, flashlightRadius);
+            fadeGrad.addColorStop(0, 'rgba(22, 20, 18, 0.05)');
+            fadeGrad.addColorStop(0.45, 'rgba(22, 20, 18, 0.35)');
+            fadeGrad.addColorStop(0.78, 'rgba(22, 20, 18, 0.82)');
+            fadeGrad.addColorStop(1, 'rgba(22, 20, 18, 1.0)');
+            ctx.fillStyle = fadeGrad;
+            ctx.fillRect(mouseX - flashlightRadius, mouseY - flashlightRadius, flashlightRadius * 2, flashlightRadius * 2);
 
-                    ctx.beginPath();
-                    ctx.moveTo(x + 12, y + 20);
-                    ctx.lineTo(x + 45, y + 20);
-                    ctx.lineTo(x + 65, y + 40);
-                    ctx.lineTo(x + 65, y + 85);
-
-                    ctx.moveTo(x + 25, y + 95);
-                    ctx.lineTo(x + 50, y + 70);
-                    ctx.lineTo(x + 95, y + 70);
-
-                    ctx.moveTo(x + 75, y + 15);
-                    ctx.lineTo(x + 90, y + 30);
-                    ctx.lineTo(x + 90, y + 55);
-                    ctx.stroke();
-
-                    const pads = [[12, 20], [65, 85], [25, 95], [95, 70], [75, 15], [90, 55]];
-                    for (let i = 0; i < pads.length; i++) {
-                        ctx.beginPath();
-                        ctx.arc(x + pads[i][0], y + pads[i][1], 2.7, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-
-                    if ((r + c) % 2 === 0) {
-                        ctx.strokeRect(x + 32, y + 36, 18, 18);
-                    }
-                }
-            }
             ctx.restore();
         }
-        requestAnimationFrame(drawPcbPattern);
+        requestAnimationFrame(drawPcbFlashlight);
     }
-    requestAnimationFrame(drawPcbPattern);
+    requestAnimationFrame(drawPcbFlashlight);
 });

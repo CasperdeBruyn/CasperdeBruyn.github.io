@@ -642,3 +642,33 @@ document.addEventListener
         grid-template-columns: 1fr !important;
     }
 }
+
+/* === MOEDERBORD ZAKLAMP ONDER DE CONTENT (Z-INDEX LAYERING) === */
+body {
+    background-color: #161412 !important;
+    position: relative !important;
+}
+#pcb-canvas {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    mix-blend-mode: normal !important;
+}
+/* Zorg dat secties transparant zijn zodat je het moederbord-zaklampje ONDER de pagina ziet schijnen, terwijl kaarten/kaders erbovenop liggen! */
+main, section, .hero-section, .workbench-section, .about-section, .homelab-framed-section, .contact-section, footer {
+    background: transparent !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+header, .main-header {
+    position: fixed !important;
+    z-index: 1000 !important;
+}
+.project-card, .hl-frame-box, .about-visual, .contact-form input, .contact-form textarea {
+    background-color: #1C1917 !important;
+    position: relative !important;
+    z-index: 3 !important;
+}

@@ -1,4 +1,4 @@
-// === CASPER DE BRUYN — COMPLETE INTERACTIVE PORTFOLIO ENGINE (TAAK 1..7) ===
+// === CASPER DE BRUYN — COMPLETE INTERACTIVE PORTFOLIO ENGINE ===
 const PROJECT_DOSSIERS = {
   "diy-royal-system": {
     "title": "DIY Royal System Wall Unit",
@@ -11,7 +11,7 @@ const PROJECT_DOSSIERS = {
   "linux-ai-homelab": {
     "title": "Linux AI Homelab & Autonomous Agent Team",
     "tag": "// ACTIVE SYSTEM \u2014 AI HOMELAB",
-    "desc": "My self-hosted Ubuntu Linux server in Delft acts as the neural backbone for both my smart home and development workflow.\n\nIt runs OmniRoute on port :20128 to balance requests across multiple LLMs with automatic latency probing, Home Assistant for climate and Shelly ventilation automation, AdGuard DNS sinkholing, and the autonomous 6-agent Discord coding pipeline that co-built this portfolio.",
+    "desc": "My self-hosted Ubuntu Linux server in Delft acts as the neural backbone for both my smart home and development workflow.\n\nIt runs OmniRoute on port :20128 to balance requests across multiple LLMs with automatic latency probing, Home Assistant for climate and Shelly ventilation automation, AdGuard DNS sinkholing, and the autonomous 6-agent Discord coding pipeline.",
     "images": [
       "assets/images/site_header_logo-01.jpg"
     ]
@@ -19,7 +19,7 @@ const PROJECT_DOSSIERS = {
   "vr-learning-lab": {
     "title": "Internship: VR Learning Lab",
     "tag": "// XR & SPATIAL DESIGN",
-    "desc": "During my internship at VR Learning Lab, I designed, prototyped, and user-tested immersive Virtual Reality learning experiences.\n\nFocusing on intuitive spatial interaction, physical comfort in VR, and visual storytelling, I translated educational challenges into engaging 3D environments that pull learners out of passive screens into active exploration.",
+    "desc": "During my internship at VR Learning Lab, I designed, prototyped, and user-tested immersive Virtual Reality learning experiences.\n\nFocusing on intuitive spatial interaction, physical comfort in VR, and visual storytelling, I translated educational challenges into engaging 3D environments.",
     "images": [
       "assets/images/site_header_logo-01.jpg"
     ]
@@ -27,7 +27,7 @@ const PROJECT_DOSSIERS = {
   "generation-plastic-soup": {
     "title": "Generation Plastic Soup",
     "tag": "// GAME DESIGN & EU GAME JAM",
-    "desc": "Created during an intensive Game Jam organized by EPIC-WE, Sound & Vision (Beeld & Geluid), HvA, and Dropstuff.nl, Generation Plastic Soup explores European values through the lens of rising sea levels.\n\nIt pits the older generation\u2014focused on short-term industrial profit\u2014against a new generation fighting to clean up the oceans. I designed all physical game pieces and playing cards while co-developing the core game mechanics and interface.",
+    "desc": "Created during an intensive Game Jam organized by EPIC-WE, Sound & Vision (Beeld & Geluid), HvA, and Dropstuff.nl, Generation Plastic Soup explores European values through the lens of rising sea levels.\n\nIt pits the older generation\u2014focused on short-term industrial profit\u2014against a new generation fighting to clean up the oceans. I designed all physical game pieces and playing cards while co-developing the core game mechanics.",
     "images": [
       "assets/images/generation-plastic-soup_01_hero.jpg",
       "assets/images/generation-plastic-soup_02_item02.jpg",
@@ -216,7 +216,7 @@ const PROJECT_DOSSIERS = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // TAAK 6: Actief jaartal via new Date().getFullYear()
+    // 1. Live Archive Year (getFullYear)
     const currentYear = new Date().getFullYear();
     document.querySelectorAll('.live-archive-year, #live-archive-year').forEach(el => {
         el.textContent = currentYear;
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // TAAK 3: Pop-up Modal met [X] & ESC, Tekst links, Foto-Carousel rechts
+    // 2. Project Modal (Split View: Text Left, Image Carousel Right, Close via [X], ESC, or Backdrop)
     const modal = document.getElementById('project-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalTag = document.getElementById('modal-tag');
@@ -245,10 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSlide() {
         if (!currentImages.length || !mainImg) return;
         mainImg.src = currentImages[currentIndex];
-        if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        if (counterEl) counterEl.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
         if (thumbsEl) {
             thumbsEl.innerHTML = currentImages.map((src, idx) =>
-                `<img src="${src}" class="carousel-thumb ${idx === currentIndex ? 'active' : ''}" data-idx="${idx}" alt="Slide ${idx + 1}">`
+                '<img src="' + src + '" class="carousel-thumb ' + (idx === currentIndex ? 'active' : '') + '" data-idx="' + idx + '" alt="Slide ' + (idx + 1) + '">'
             ).join('');
             thumbsEl.querySelectorAll('.carousel-thumb').forEach(th => {
                 th.addEventListener('click', (e) => {
@@ -266,7 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalTitle) modalTitle.textContent = data.title;
         if (modalTag) modalTag.textContent = data.tag;
         if (modalDesc) {
-            modalDesc.innerHTML = data.desc.split('\n\n').map(p => `<p>${p}</p>`).join('');
+            const paragraphs = String(data.desc || '').split(/\n\n+/);
+            modalDesc.innerHTML = paragraphs.map(p => '<p>' + p + '</p>').join('');
         }
         currentImages = Array.isArray(data.images) && data.images.length ? data.images : ['assets/images/site_header_logo-01.jpg'];
         currentIndex = 0;
@@ -284,7 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
             const slug = card.getAttribute('data-project');
             if (slug) openProjectModal(slug);
         });
@@ -319,130 +321,107 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
     });
 
-    // TAAK 1: Interactieve Homelab Widgets (Router Ping, Jarvis/Bond Scenes & Live Terminal)
-    const routerModels = [
-        ['groq/gpt-oss-120b', '138 ms'],
-        ['gemini/flash-lite-latest', '112 ms'],
-        ['gemini/gemini-3.1-flash-lite', '129 ms'],
-        ['deepseek/deepseek-v3.2', '194 ms'],
-        ['gemini/gemma-4-31b-it', '161 ms']
-    ];
-    let rIdx = 0;
-    const btnPing = document.getElementById('btn-ping-router');
-    if (btnPing) {
-        btnPing.addEventListener('click', () => {
-            rIdx = (rIdx + 1) % routerModels.length;
-            document.getElementById('hl-active-model').textContent = routerModels[rIdx][0];
-            document.getElementById('hl-latency-val').textContent = routerModels[rIdx][1] + ' (200 OK)';
-        });
+    // 3. Interactive Homelab Frame Diagram (hover/click node readout)
+    const readout = document.getElementById('hl-node-readout');
+    document.querySelectorAll('.hl-node-box').forEach(box => {
+        const activateBox = () => {
+            document.querySelectorAll('.hl-node-box').forEach(b => b.classList.remove('active'));
+            box.classList.add('active');
+            if (readout) readout.textContent = '> ' + (box.getAttribute('data-info') || '');
+        };
+        box.addEventListener('mouseenter', activateBox);
+        box.addEventListener('click', activateBox);
+    });
+
+    // 4. Gold/Bronze Motherboard PCB Pattern on Canvas (lights up smoothly around the cursor)
+    let canvas = document.getElementById('pcb-canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'pcb-canvas';
+        document.body.prepend(canvas);
     }
+    const ctx = canvas.getContext('2d');
+    let mouseX = -1000, mouseY = -1000;
+    let targetX = -1000, targetY = -1000;
 
-    document.querySelectorAll('.hl-chip-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.hl-chip-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const sc = document.getElementById('hl-scene-val');
-            if (sc) sc.textContent = btn.getAttribute('data-scene');
-        });
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    window.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
     });
 
-    const termReplies = {
-        status: '> [OK] Acer-Aspire Ubuntu Node | Load: 0.42 | AdGuard DNS: Blocking 28.4% ads | Portainer: 6 containers healthy.',
-        agents: '> [6/6 AGENTS READY] Scout -> Architect -> Designer -> Copywriter -> Coder A -> Coder B (Node V8 Gate: 96%).',
-        stack: '> [STACK] Python 3.14, Flask (:8090), Home Assistant (:8123), OmniRoute (:20128), Shelly Gen3 IoT, GitHub Pages.',
-        coffee: '> [418 I\'M A TEAPOT] Stoofvlees timer: simmering nicely. Espresso machine ready for late-night CMD sprints.'
-    };
-    const termOut = document.getElementById('hl-term-out');
-    document.querySelectorAll('.hl-cmd-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const cmd = btn.getAttribute('data-cmd');
-            if (!termOut || !cmd) return;
-            termOut.innerHTML = `
-                <div class="term-line"><span class="term-prompt">casper@delft-lab:~$</span> ${cmd}</div>
-                <div class="term-line term-resp">${termReplies[cmd] || '> Command executed.'}</div>
-            `;
-        });
-    });
+    function drawPcbPattern() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        mouseX += (targetX - mouseX) * 0.25;
+        mouseY += (targetY - mouseY) * 0.25;
 
-    // TAAK 4: Interactief Goud/Brons Moederbord-Patroon op Canvas (onzichtbaar in rust, licht op onder de cursor!)
-    const canvas = document.getElementById('pcb-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let mouseX = -1000, mouseY = -1000;
-        let targetX = -1000, targetY = -1000;
+        if (mouseX > -500 && mouseY > -500) {
+            const radius = 260;
+            const gridSize = 105;
+            const startCol = Math.max(0, Math.floor((mouseX - radius) / gridSize));
+            const endCol = Math.ceil((mouseX + radius) / gridSize);
+            const startRow = Math.max(0, Math.floor((mouseY - radius) / gridSize));
+            const endRow = Math.ceil((mouseY + radius) / gridSize);
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+            ctx.save();
+            // Subtle warm copper ambient glow under cursor
+            const grad = ctx.createRadialGradient(mouseX, mouseY, 5, mouseX, mouseY, radius);
+            grad.addColorStop(0, 'rgba(200, 125, 75, 0.14)');
+            grad.addColorStop(0.6, 'rgba(200, 125, 75, 0.04)');
+            grad.addColorStop(1, 'rgba(200, 125, 75, 0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
+            ctx.fill();
 
-        window.addEventListener('mousemove', (e) => {
-            targetX = e.clientX;
-            targetY = e.clientY;
-        });
+            for (let r = startRow; r <= endRow; r++) {
+                for (let c = startCol; c <= endCol; c++) {
+                    const x = c * gridSize;
+                    const y = r * gridSize;
+                    const dist = Math.hypot((x + gridSize / 2) - mouseX, (y + gridSize / 2) - mouseY);
+                    if (dist > radius) continue;
 
-        function drawPcbPattern() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            mouseX += (targetX - mouseX) * 0.22;
-            mouseY += (targetY - mouseY) * 0.22;
+                    const alpha = Math.pow(1 - dist / radius, 1.45) * 0.78;
+                    ctx.strokeStyle = 'rgba(205, 133, 78, ' + alpha + ')';
+                    ctx.fillStyle = 'rgba(235, 175, 82, ' + Math.min(1, alpha * 1.25) + ')';
+                    ctx.lineWidth = 1.5;
 
-            if (mouseX > -500 && mouseY > -500) {
-                const radius = 250;
-                const gridSize = 110;
-                const startCol = Math.max(0, Math.floor((mouseX - radius) / gridSize));
-                const endCol = Math.ceil((mouseX + radius) / gridSize);
-                const startRow = Math.max(0, Math.floor((mouseY - radius) / gridSize));
-                const endRow = Math.ceil((mouseY + radius) / gridSize);
+                    ctx.beginPath();
+                    ctx.moveTo(x + 12, y + 20);
+                    ctx.lineTo(x + 45, y + 20);
+                    ctx.lineTo(x + 65, y + 40);
+                    ctx.lineTo(x + 65, y + 85);
 
-                ctx.save();
-                for (let r = startRow; r <= endRow; r++) {
-                    for (let c = startCol; c <= endCol; c++) {
-                        const x = c * gridSize;
-                        const y = r * gridSize;
-                        const dist = Math.hypot((x + gridSize / 2) - mouseX, (y + gridSize / 2) - mouseY);
-                        if (dist > radius) continue;
+                    ctx.moveTo(x + 25, y + 95);
+                    ctx.lineTo(x + 50, y + 70);
+                    ctx.lineTo(x + 95, y + 70);
 
-                        const alpha = Math.pow(1 - dist / radius, 1.6) * 0.62;
-                        ctx.strokeStyle = `rgba(200, 125, 75, ${alpha})`;
-                        ctx.fillStyle = `rgba(229, 169, 60, ${alpha * 1.15})`;
-                        ctx.lineWidth = 1.4;
+                    ctx.moveTo(x + 75, y + 15);
+                    ctx.lineTo(x + 90, y + 30);
+                    ctx.lineTo(x + 90, y + 55);
+                    ctx.stroke();
 
-                        // Teken 45-graden printplaat/moederbord sporen en soldeer-nodes
+                    const pads = [[12, 20], [65, 85], [25, 95], [95, 70], [75, 15], [90, 55]];
+                    for (let i = 0; i < pads.length; i++) {
                         ctx.beginPath();
-                        ctx.moveTo(x + 12, y + 20);
-                        ctx.lineTo(x + 45, y + 20);
-                        ctx.lineTo(x + 65, y + 40);
-                        ctx.lineTo(x + 65, y + 85);
+                        ctx.arc(x + pads[i][0], y + pads[i][1], 2.7, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
 
-                        ctx.moveTo(x + 25, y + 95);
-                        ctx.lineTo(x + 50, y + 70);
-                        ctx.lineTo(x + 95, y + 70);
-
-                        ctx.moveTo(x + 75, y + 15);
-                        ctx.lineTo(x + 90, y + 30);
-                        ctx.lineTo(x + 90, y + 55);
-                        ctx.stroke();
-
-                        // Goud/bronzen soldeer-pads (vias)
-                        for (const [px, py] of [[12, 20], [65, 85], [25, 95], [95, 70], [75, 15], [90, 55]]) {
-                            ctx.beginPath();
-                            ctx.arc(x + px, y + py, 2.6, 0, Math.PI * 2);
-                            ctx.fill();
-                        }
-
-                        // Klein microchip-icoontje op geselecteerde tegels
-                        if ((r + c) % 2 === 0) {
-                            ctx.strokeRect(x + 32, y + 36, 18, 18);
-                        }
+                    if ((r + c) % 2 === 0) {
+                        ctx.strokeRect(x + 32, y + 36, 18, 18);
                     }
                 }
-                ctx.restore();
             }
-            requestAnimationFrame(drawPcbPattern);
+            ctx.restore();
         }
         requestAnimationFrame(drawPcbPattern);
     }
+    requestAnimationFrame(drawPcbPattern);
 });
-/* === AI-TEAM-AUTO-MERGE-JS === */

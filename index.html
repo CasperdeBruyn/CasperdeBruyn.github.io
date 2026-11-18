@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1794962130">
   <!-- Favicon uses the small logo version -->
   <link rel="icon" type="image/jpeg" href="assets/images/site_header_logo-01.jpg">
 </head>
@@ -142,7 +142,7 @@
                 </article>
                 <article class="project-card" data-project="grijpmachine">
                     <div class="card-image">
-                        <img src="assets/images/grijpmachine_11_item11.jpg" alt="The Claw Machine (Grijpmachine)" loading="lazy">
+                        <img src="assets/images/grijpmachine_01_hero.jpg" alt="The Claw Machine (Grijpmachine)" loading="lazy">
                         <div class="card-overlay"><span class="view-btn">OPEN DOSSIER</span></div>
                     </div>
                     <div class="card-content">
@@ -267,63 +267,58 @@
       </div>
     </section>
 
-    <section id="homelab" class="homelab-section">
-      <div class="section-header centered-header">
-        <span class="section-tag">// 03 AI HOMELAB & NEURAL INFRASTRUCTURE</span>
-        <h2 class="section-title">SELF-HOSTED BRAIN IN DELFT</h2>
-        <p class="section-lead">Why rent the cloud when you can run your own neural cluster in the closet? My Ubuntu server orchestrates multi-LLM routing, smart-home telemetry, and autonomous agents 24/7.</p>
-      </div>
-
-      <div class="homelab-cards-grid">
-        <!-- Kaart 1: Interactieve OmniRoute AI Router -->
-        <div class="hl-card">
-          <div class="hl-card-top">
-            <span class="card-tag">// NODE 01 — OMNIROUTE :20128</span>
-            <span class="hl-status-dot">ONLINE</span>
-          </div>
-          <h3>Multi-LLM Router & Failover</h3>
-          <p>Custom local API gateway balancing traffic across Gemini, Groq 120B, and DeepSeek with automatic 10-minute circuit breakers and live latency probing.</p>
-          <div class="hl-interactive-box" id="hl-router-box">
-            <div class="hl-metric-row"><span>Active Pool:</span><strong id="hl-active-model">groq/gpt-oss-120b</strong></div>
-            <div class="hl-metric-row"><span>Route Latency:</span><strong id="hl-latency-val">142 ms</strong></div>
-            <button type="button" class="hl-action-btn" id="btn-ping-router">⚡ Ping Next AI Node</button>
-          </div>
-        </div>
-
-        <!-- Kaart 2: Interactieve Smart Home & Jarvis/Bond Telemetry -->
-        <div class="hl-card">
-          <div class="hl-card-top">
-            <span class="card-tag">// NODE 02 — HOME ASSISTANT :8123</span>
-            <span class="hl-status-dot">ACTIVE</span>
-          </div>
-          <h3>Jarvis Telemetry & Climate Control</h3>
-          <p>Linked to ARP phone presence detection, Nefit Easy heating hooks, Shelly 1 Mini Gen3 bathroom humidity relays, and custom Jarvis/Bond voice routines.</p>
-          <div class="hl-interactive-box">
-            <div class="hl-metric-row"><span>Active Scene:</span><strong id="hl-scene-val">Workshop Focus (20.5°C)</strong></div>
-            <div class="hl-btn-group">
-              <button type="button" class="hl-chip-btn active" data-scene="Workshop Focus (20.5°C)">🔧 Focus</button>
-              <button type="button" class="hl-chip-btn" data-scene="Jarvis Protocol (Online)">🤖 Jarvis</button>
-              <button type="button" class="hl-chip-btn" data-scene="007 Night Mode (Dimmed)">🍸 Bond</button>
+        <section id="homelab" class="about-section container homelab-framed-section">
+      <div class="about-container homelab-frame-grid">
+        <div class="about-visual homelab-blueprint-frame">
+          <div class="hl-frame-box">
+            <div class="hl-frame-header">
+              <span class="hl-dot"></span>
+              <span class="hl-frame-title">SYS_MONITOR // DELFT_NODE_01</span>
+              <span id="hl-live-clock" class="hl-clock">UPTIME: 99.98%</span>
+            </div>
+            <div class="hl-diagram">
+              <div class="hl-node-box" data-info="Ubuntu 24.04 LTS Server running 24/7 in Delft — hosting Docker, Portainer & local staging (:8088).">
+                <span class="hl-node-code">01 // HOST</span>
+                <strong>Ubuntu Home Server</strong>
+                <small>Docker • Portainer • AdGuard DNS</small>
+              </div>
+              <div class="hl-connector-line"><span></span></div>
+              <div class="hl-node-box active" data-info="OmniRoute AI Gateway (:20128) — dynamically routing prompts across Gemini, Groq 120B & DeepSeek.">
+                <span class="hl-node-code">02 // NEURAL ROUTER</span>
+                <strong>OmniRoute AI Gateway</strong>
+                <small>Multi-LLM Failover • Auto-Probing</small>
+              </div>
+              <div class="hl-connector-line"><span></span></div>
+              <div class="hl-node-box" data-info="Home Assistant (:8123) & Flask Brain (:8090) — controlling Nefit heating, Shelly ventilation & Discord agents.">
+                <span class="hl-node-code">03 // AUTOMATION</span>
+                <strong>Home Assistant & Agent Team</strong>
+                <small>IoT Telemetry • 6-Agent Pipeline</small>
+              </div>
+            </div>
+            <div id="hl-node-readout" class="hl-frame-footer">
+              > Hover or click a module above to inspect live node architecture.
             </div>
           </div>
         </div>
 
-        <!-- Kaart 3: Interactieve Live Homelab Terminal -->
-        <div class="hl-card hl-terminal-card">
-          <div class="hl-card-top">
-            <span class="card-tag">// NODE 03 — INTERACTIVE SHELL</span>
-            <span class="hl-status-dot">TTY1</span>
-          </div>
-          <h3>Query The Homelab</h3>
-          <div class="hl-terminal-window" id="hl-term-out">
-            <div class="term-line"><span class="term-prompt">casper@delft-lab:~$</span> uptime --pretty</div>
-            <div class="term-line term-resp">> 24/7 Ubuntu Node | Docker + Portainer + AdGuard DNS + OmniRoute active. Klik op een commando hieronder:</div>
-          </div>
-          <div class="hl-btn-group">
-            <button type="button" class="hl-cmd-btn" data-cmd="status">status</button>
-            <button type="button" class="hl-cmd-btn" data-cmd="agents">agents</button>
-            <button type="button" class="hl-cmd-btn" data-cmd="stack">stack</button>
-            <button type="button" class="hl-cmd-btn" data-cmd="coffee">coffee</button>
+        <div class="about-text homelab-text-col">
+          <span class="section-tag" style="color:#C87D4B;font-family:monospace;letter-spacing:0.12em;display:block;margin-bottom:0.6rem;">// 03 AI HOMELAB</span>
+          <h2 class="section-title" style="margin-top:0;">THE SELF-HOSTED NEURAL LAB</h2>
+          <p>Behind my design work runs a dedicated Linux homelab in Delft. Instead of relying on black-box cloud tools, I wired up my own self-hosted infrastructure from scratch—turning an Ubuntu machine into an always-on automation and AI sandbox.</p>
+          <p>From network-wide AdGuard DNS sinkholing and smart climate/ventilation relays in Home Assistant to an autonomous multi-agent Discord coding pipeline powered by OmniRoute, this lab is where I test how far local AI and smart spaces can be pushed.</p>
+          <div class="about-meta homelab-meta-row">
+            <div class="meta-item">
+              <span class="meta-label">GATEWAY:</span>
+              <span class="meta-value">OmniRoute :20128</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">AUTOMATION:</span>
+              <span class="meta-value">Home Assistant & Shelly IoT</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">PIPELINE:</span>
+              <span class="meta-value">6 Autonomous Discord Agents</span>
+            </div>
           </div>
         </div>
       </div>
@@ -331,7 +326,7 @@
 
     <section id="contact" class="contact-section container">
       <div class="contact-header">
-        <h2 class="section-title"><span class="accent">// 03</span> TRANSMISSION</h2>
+        <h2 class="section-title"><span class="accent">// 04</span> TRANSMISSION</h2>
         <p>Send a data packet to my terminal. I usually respond within 48 hours.</p>
       </div>
       <div class="contact-container">

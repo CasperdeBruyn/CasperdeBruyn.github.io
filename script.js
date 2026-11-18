@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box.addEventListener('click', activateBox);
     });
 
-    // 4. Realistisch Moederbord-Patroon (zoals foto: schuine koperbanen + rijen glanzende soldeerpinnen) met Zaklamp-vervaging
+    // 4. Realistisch Moederbord-Patroon (100% NAADLOOS doorlopend + kleiner zaklampje van 150px)
     let canvas = document.getElementById('pcb-canvas');
     if (!canvas) {
         canvas = document.createElement('canvas');
@@ -344,122 +344,143 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseX = -1000, mouseY = -1000;
     let targetX = -1000, targetY = -1000;
 
-    // Bouw een naadloze high-detail moederbord-tegel (offscreen canvas) geïnspireerd op een echte printplaat
-    const tileSize = 320;
+    const tileSize = 360;
     const pcbTile = document.createElement('canvas');
     pcbTile.width = tileSize;
     pcbTile.height = tileSize;
     const tCtx = pcbTile.getContext('2d');
 
+    // Helper die elk element op alle 9 wrap-around posities tekent zodat er NOOIT een naad of afgesneden lijn tussen tegels zit!
+    function drawSeamless(fn) {
+        for (let ox = -tileSize; ox <= tileSize; ox += tileSize) {
+            for (let oy = -tileSize; oy <= tileSize; oy += tileSize) {
+                tCtx.save();
+                tCtx.translate(ox, oy);
+                fn();
+                tCtx.restore();
+            }
+        }
+    }
+
+    function drawSolderPin(px, py, radius) {
+        tCtx.fillStyle = '#C88A3E';
+        tCtx.beginPath();
+        tCtx.arc(px, py, radius + 2.0, 0, Math.PI * 2);
+        tCtx.fill();
+
+        tCtx.fillStyle = '#18120C';
+        tCtx.beginPath();
+        tCtx.arc(px, py, radius + 0.7, 0, Math.PI * 2);
+        tCtx.fill();
+
+        const pinGrad = tCtx.createRadialGradient(px - radius * 0.35, py - radius * 0.35, 0.4, px, py, radius);
+        pinGrad.addColorStop(0, '#FFFDF8');
+        pinGrad.addColorStop(0.35, '#DCD6C8');
+        pinGrad.addColorStop(0.75, '#7C7262');
+        pinGrad.addColorStop(1, '#2A231B');
+        tCtx.fillStyle = pinGrad;
+        tCtx.beginPath();
+        tCtx.arc(px, py, radius, 0, Math.PI * 2);
+        tCtx.fill();
+    }
+
     function buildMotherboardTile() {
-        // Donkere printplaat ondergrond tussen de sporen
         tCtx.fillStyle = '#120E0A';
         tCtx.fillRect(0, 0, tileSize, tileSize);
 
-        // 1. Fijne parallelle diagonale (45-graden) gouden/koperen bus-banen (linksboven naar rechtsonder)
-        tCtx.strokeStyle = '#9E6B30';
-        tCtx.lineWidth = 2.0;
         tCtx.lineCap = 'round';
         tCtx.lineJoin = 'round';
 
-        // Bundel A: parallelle schuine moederbord-sporen met 45-graden knikken
-        for (let i = 0; i < 14; i++) {
-            const offset = i * 7;
-            tCtx.beginPath();
-            tCtx.moveTo(-20 + offset, 10);
-            tCtx.lineTo(75 + offset, 105);
-            tCtx.lineTo(75 + offset, 165);
-            tCtx.lineTo(190 + offset, 280);
-            tCtx.lineTo(250 + offset, 280);
-            tCtx.lineTo(340 + offset, 370);
-            tCtx.stroke();
-        }
-
-        // Bundel B: fijne dicht op elkaar liggende gouden data-sporen (zoals linksonder op de foto)
-        tCtx.strokeStyle = '#C4883E';
-        tCtx.lineWidth = 1.4;
-        for (let i = 0; i < 22; i++) {
-            const d = i * 4.2;
-            tCtx.beginPath();
-            tCtx.moveTo(0, 170 + d);
-            tCtx.lineTo(95 - d * 0.4, 265 + d * 0.6);
-            tCtx.lineTo(175, 345 + d * 0.6);
-            tCtx.stroke();
-        }
-
-        // Bundel C: rechter bovenhoek schuine printbanen
-        tCtx.strokeStyle = '#B37A36';
-        tCtx.lineWidth = 2.2;
-        for (let i = 0; i < 10; i++) {
-            const d = i * 8.5;
-            tCtx.beginPath();
-            tCtx.moveTo(140 + d, -10);
-            tCtx.lineTo(220 + d, 70);
-            tCtx.lineTo(265 + d, 70);
-            tCtx.lineTo(340 + d, 145);
-            tCtx.stroke();
-        }
-
-        // 2. Rijen 3D glanzende metalen soldeer-pinnen (IC pin-clusters precies zoals op de moederbord-foto)
-        function drawSolderPin(px, py, radius) {
-            // Koperen soldeer-ring (pad) op het bord
-            tCtx.fillStyle = '#C88A3E';
-            tCtx.beginPath();
-            tCtx.arc(px, py, radius + 2.2, 0, Math.PI * 2);
-            tCtx.fill();
-
-            // Donkere schaduwrand rond de soldeerdruppel
-            tCtx.fillStyle = '#1A140E';
-            tCtx.beginPath();
-            tCtx.arc(px, py, radius + 0.8, 0, Math.PI * 2);
-            tCtx.fill();
-
-            // 3D zilver/goud metallic soldeerpunt met glans-highlight
-            const pinGrad = tCtx.createRadialGradient(px - radius * 0.35, py - radius * 0.35, 0.5, px, py, radius);
-            pinGrad.addColorStop(0, '#FFFDF8');
-            pinGrad.addColorStop(0.35, '#D8D4C8');
-            pinGrad.addColorStop(0.75, '#7A7264');
-            pinGrad.addColorStop(1, '#2C261E');
-            tCtx.fillStyle = pinGrad;
-            tCtx.beginPath();
-            tCtx.arc(px, py, radius, 0, Math.PI * 2);
-            tCtx.fill();
-        }
-
-        // Cluster 1: Schuine matrix van glanzende soldeer-pinnen (4 rijen x 7 pinnen)
-        for (let row = 0; row < 4; row++) {
-            for (let col = 0; col < 7; col++) {
-                const px = 42 + col * 15 + row * 9;
-                const py = 112 + col * 11 - row * 12;
-                drawSolderPin(px, py, 4.3);
+        // 1. Doorlopende diagonale hoofd-busbanen die exact op (x + 360, y + 360) op zichzelf aansluiten!
+        drawSeamless(() => {
+            tCtx.strokeStyle = '#A67032';
+            tCtx.lineWidth = 1.9;
+            for (let i = 0; i < 12; i++) {
+                const off = i * 6.5;
+                tCtx.beginPath();
+                // Start op (off, 0) en eindig exact op (off + 360, 360) zodat elke lijn 100% naadloos doorloopt in de volgende tegel!
+                tCtx.moveTo(off, 0);
+                tCtx.lineTo(off + 90, 90);
+                tCtx.lineTo(off + 90, 150);
+                tCtx.lineTo(off + 210, 270);
+                tCtx.lineTo(off + 270, 270);
+                tCtx.lineTo(off + 360, 360);
+                tCtx.stroke();
             }
-        }
 
-        // Cluster 2: Tweede IC soldeer-pinnen rij rechtsboven/midden
-        for (let row = 0; row < 3; row++) {
-            for (let col = 0; col < 8; col++) {
-                const px = 175 + col * 14 + row * 8;
-                const py = 95 + col * 11 - row * 12;
-                drawSolderPin(px, py, 4.0);
+            // 2. Tweede parallelle bus-bundel (fijne dicht op elkaar liggende gouden sporen die ook exact op +360 aansluiten)
+            tCtx.strokeStyle = '#C4883E';
+            tCtx.lineWidth = 1.35;
+            for (let i = 0; i < 16; i++) {
+                const d = i * 4.5;
+                tCtx.beginPath();
+                tCtx.moveTo(175 + d, 0);
+                tCtx.lineTo(235 + d, 60);
+                tCtx.lineTo(235 + d, 110);
+                tCtx.lineTo(365 + d, 240);
+                tCtx.lineTo(415 + d, 240);
+                tCtx.lineTo(535 + d, 360);
+                tCtx.stroke();
             }
-        }
 
-        // Cluster 3: Kleine koperen micro-vias (gaatjes in de sporen)
-        const vias = [
-            [75, 105], [89, 105], [103, 105], [117, 105],
-            [195, 225], [210, 238], [225, 251], [240, 264],
-            [130, 42], [145, 55], [160, 68], [280, 195], [295, 210]
-        ];
-        for (let v = 0; v < vias.length; v++) {
-            tCtx.fillStyle = '#D6994A';
-            tCtx.beginPath();
-            tCtx.arc(vias[v][0], vias[v][1], 3.0, 0, Math.PI * 2);
-            tCtx.fill();
-            tCtx.fillStyle = '#120E0A';
-            tCtx.beginPath();
-            tCtx.arc(vias[v][0], vias[v][1], 1.3, 0, Math.PI * 2);
-            tCtx.fill();
-        }
+            // 3. Dwars-sporen & 45-graden aftakkingen tussen de bussen
+            tCtx.strokeStyle = '#8F5E28';
+            tCtx.lineWidth = 1.5;
+            for (let i = 0; i < 8; i++) {
+                const s = i * 7;
+                tCtx.beginPath();
+                tCtx.moveTo(15 + s, 195);
+                tCtx.lineTo(55 + s, 235);
+                tCtx.lineTo(135 + s, 235);
+                tCtx.lineTo(185 + s, 285);
+                tCtx.stroke();
+            }
+
+            // 4. Cluster A: Schuine rijen glanzende 3D soldeer-pinnen (zoals op de moederbord-foto)
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 7; col++) {
+                    const px = 58 + col * 14 + row * 9;
+                    const py = 105 + col * 11 - row * 11;
+                    drawSolderPin(px, py, 4.0);
+                }
+            }
+
+            // 5. Cluster B: Tweede IC soldeer-pinnen matrix
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const px = 212 + col * 14 + row * 9;
+                    const py = 248 + col * 11 - row * 11;
+                    drawSolderPin(px, py, 3.8);
+                }
+            }
+
+            // 6. Cluster C: Derde kleinere pin-header op de overgang
+            for (let row = 0; row < 2; row++) {
+                for (let col = 0; col < 6; col++) {
+                    const px = 310 + col * 13 + row * 8;
+                    const py = 45 + col * 10 - row * 10;
+                    drawSolderPin(px, py, 3.6);
+                }
+            }
+
+            // 7. Goud/koperen micro-vias langs de knikpunten
+            const vias = [
+                [90, 90], [103, 90], [116, 90], [129, 90],
+                [210, 270], [223, 270], [236, 270],
+                [235, 110], [248, 110], [261, 110],
+                [55, 235], [135, 235], [185, 285]
+            ];
+            for (let v = 0; v < vias.length; v++) {
+                tCtx.fillStyle = '#D6994A';
+                tCtx.beginPath();
+                tCtx.arc(vias[v][0], vias[v][1], 2.8, 0, Math.PI * 2);
+                tCtx.fill();
+                tCtx.fillStyle = '#120E0A';
+                tCtx.beginPath();
+                tCtx.arc(vias[v][0], vias[v][1], 1.2, 0, Math.PI * 2);
+                tCtx.fill();
+            }
+        });
     }
     buildMotherboardTile();
 
@@ -479,14 +500,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawPcbFlashlight() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        mouseX += (targetX - mouseX) * 0.22;
-        mouseY += (targetY - mouseY) * 0.22;
+        mouseX += (targetX - mouseX) * 0.24;
+        mouseY += (targetY - mouseY) * 0.24;
 
         if (mouseX > -500 && mouseY > -500 && pcbPattern) {
-            const flashlightRadius = 260;
+            // Kleiner, compacter zaklampje (150px straal i.p.v. 260px)
+            const flashlightRadius = 150;
 
             ctx.save();
-            // 1. Teken het moederbord-patroon binnen de zaklamp-cirkel
             ctx.beginPath();
             ctx.arc(mouseX, mouseY, flashlightRadius, 0, Math.PI * 2);
             ctx.clip();
@@ -494,11 +515,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = pcbPattern;
             ctx.fillRect(mouseX - flashlightRadius, mouseY - flashlightRadius, flashlightRadius * 2, flashlightRadius * 2);
 
-            // 2. Laat het zaklampje naar de randen toe vloeiend vervagen in het zwart (#161412)
-            const fadeGrad = ctx.createRadialGradient(mouseX, mouseY, 15, mouseX, mouseY, flashlightRadius);
-            fadeGrad.addColorStop(0, 'rgba(22, 20, 18, 0.05)');
-            fadeGrad.addColorStop(0.45, 'rgba(22, 20, 18, 0.35)');
-            fadeGrad.addColorStop(0.78, 'rgba(22, 20, 18, 0.82)');
+            const fadeGrad = ctx.createRadialGradient(mouseX, mouseY, 10, mouseX, mouseY, flashlightRadius);
+            fadeGrad.addColorStop(0, 'rgba(22, 20, 18, 0.04)');
+            fadeGrad.addColorStop(0.42, 'rgba(22, 20, 18, 0.32)');
+            fadeGrad.addColorStop(0.75, 'rgba(22, 20, 18, 0.82)');
             fadeGrad.addColorStop(1, 'rgba(22, 20, 18, 1.0)');
             ctx.fillStyle = fadeGrad;
             ctx.fillRect(mouseX - flashlightRadius, mouseY - flashlightRadius, flashlightRadius * 2, flashlightRadius * 2);

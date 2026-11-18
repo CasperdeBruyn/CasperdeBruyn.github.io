@@ -296,126 +296,345 @@ body.dark-workshop {
 
 document.addEventListener
 
-/* === CASPER CORE LOCKED STYLES (TAAK 4..10) === */
+/* === CASPER CORE LOCKED STYLES (TAAK 1..7) === */
 
-/* TAAK 5: Goud/Brons Moederbord-Patroon (onzichtbaar in rust, licht op onder de cursor!) */
-:root {
-    --cursor-x: -500px;
-    --cursor-y: -500px;
-}
-#pcb-glow-overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9998;
-    mix-blend-mode: screen;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23C87D4B' stroke-width='1.35' stroke-linecap='round' opacity='0.55'%3E%3Cpath d='M10 20h35l15 15v30M70 10v30l20 20h40M20 90h30l15-15h25l15 15v35M95 110h35M15 125h45l15-15'/%3E%3Ccircle cx='10' cy='20' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='60' cy='65' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='70' cy='10' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='130' cy='60' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='20' cy='90' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='105' cy='125' r='2.5' fill='%23C87D4B'/%3E%3Ccircle cx='95' cy='110' r='2.5' fill='%23C87D4B'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 140px 140px;
-    -webkit-mask-image: radial-gradient(240px circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);
-    mask-image: radial-gradient(240px circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 45%, transparent 100%);
+/* TAAK 4: Goud/Brons Moederbord-Patroon Canvas (boven achtergrond, onder tekst/knoppen, pointer-events: none) */
+#pcb-canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
 }
 
-/* TAAK 10: Verwijder border om het header-logo en maak er een soepele 90-graden draai/bounce van */
-.logo-wrapper, .logo-wrapper img, .logo-img, header .logo img {
+/* TAAK 2: Exact gelijke afstand in de header navigatie voor // 01, // 02, // 03, // 04 */
+.main-nav .nav-list, header nav ul {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2.4rem !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-wrap: wrap !important;
+}
+.main-nav .nav-link, header nav a.nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    color: #F4F1EA !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.1em !important;
+    transition: color 0.2s ease !important;
+    white-space: nowrap !important;
+}
+.main-nav .nav-link .nav-num {
+    color: #C87D4B !important;
+    font-weight: 700 !important;
+}
+.main-nav .nav-link:hover {
+    color: #C87D4B !important;
+}
+
+/* Logo zonder border + soepele 90-graden draai/bounce */
+.logo-wrapper, .logo-wrapper img, .logo-img {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
     background: transparent !important;
     transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
-.logo-wrapper:hover .logo-img, .logo-wrapper:hover img, .logo-img:hover {
+.logo-wrapper:hover .logo-img, .logo-wrapper:hover img {
     transform: rotate(90deg) scale(1.06) !important;
 }
 
-/* TAAK 4: Homelab & Craft Sectie Styling */
-.homelab-section {
-    padding: 5rem 0;
-    position: relative;
-    z-index: 2;
+/* TAAK 5: Koperen // TAG balk op ALLE 15 projectkaarten + geen afgesneden foto's */
+.project-card {
+    cursor: pointer !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #1C1917 !important;
+    border: 1px solid rgba(200, 125, 75, 0.22) !important;
+    transition: transform 0.25s ease, border-color 0.25s ease !important;
+    position: relative !important;
+    z-index: 6 !important;
 }
-.homelab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 1.75rem;
-    margin-top: 2.2rem;
+.project-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #C87D4B !important;
 }
-.homelab-card {
-    background: #231F1D;
-    border: 1px solid rgba(200, 125, 75, 0.25);
-    border-radius: 10px;
-    padding: 1.85rem;
-    color: #F4F1EA;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-}
-.homelab-card:hover {
-    transform: translateY(-4px);
-    border-color: #C87D4B;
-}
-.homelab-card h3 {
-    margin: 0.6rem 0 0.75rem;
-    color: #F4F1EA;
-}
-
-/* TAAK 6: Split Pop-up Modal (Tekst links, Carousel rechts) & Geen afgesneden foto's */
 .card-image {
     background: #161412 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    height: 250px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    position: relative !important;
 }
-.card-image img, .project-card img {
+.card-image img {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
     object-position: center !important;
     background: #161412 !important;
 }
-#project-modal .modal-content, .modal-container {
-    max-width: 1180px !important;
-    width: 92vw !important;
-    max-height: 88vh !important;
-    overflow-y: auto !important;
+.card-content {
+    padding: 1.35rem 1.4rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+}
+.card-tag {
+    display: inline-block !important;
+    align-self: flex-start !important;
+    color: #C87D4B !important;
+    border: 1px solid rgba(200, 125, 75, 0.55) !important;
+    background: rgba(200, 125, 75, 0.08) !important;
+    padding: 0.28rem 0.65rem !important;
+    font-size: 0.72rem !important;
+    font-family: var(--font-mono, monospace) !important;
+    letter-spacing: 0.09em !important;
+    text-transform: uppercase !important;
+    border-radius: 3px !important;
+}
+
+/* TAAK 1: Gecentreerde // 03 AI HOMELAB sectie met 3 kaarten (niet langwerpig!) & interactieve widgets */
+.homelab-section {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 5.5rem 2rem !important;
+    position: relative !important;
+    z-index: 6 !important;
+}
+.centered-header {
+    text-align: center !important;
+    max-width: 760px !important;
+    margin: 0 auto 3.2rem auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+.centered-header .section-tag {
+    color: #C87D4B !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 0.6rem !important;
+}
+.centered-header .section-title {
+    color: #F4F1EA !important;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem) !important;
+    margin: 0.2rem 0 0.9rem 0 !important;
+}
+.centered-header .section-lead {
+    color: rgba(244, 241, 234, 0.76) !important;
+    line-height: 1.65 !important;
+    font-size: 1rem !important;
+}
+.homelab-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.8rem !important;
+    align-items: stretch !important;
+}
+.hl-card {
+    background: #1C1917 !important;
+    border: 1px solid rgba(200, 125, 75, 0.28) !important;
+    padding: 1.75rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    transition: transform 0.25s ease, border-color 0.25s ease !important;
+}
+.hl-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #C87D4B !important;
+}
+.hl-card-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+}
+.hl-status-dot {
+    color: #C87D4B !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+}
+.hl-Status-dot::before, .hl-status-dot::before {
+    content: "● ";
+    color: #4CAF50;
+}
+.hl-card h3 {
+    color: #F4F1EA !important;
+    font-size: 1.25rem !important;
+    margin: 0 !important;
+}
+.hl-card p {
+    color: rgba(244, 241, 234, 0.78) !important;
+    line-height: 1.6 !important;
+    font-size: 0.93rem !important;
+    margin: 0 !important;
+}
+.hl-interactive-box {
+    background: #141210 !important;
+    border: 1px solid rgba(200, 125, 75, 0.2) !important;
+    padding: 1rem !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+    margin-top: auto !important;
+}
+.hl-metric-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    font-size: 0.84rem !important;
+    color: rgba(244, 241, 234, 0.75) !important;
+    font-family: var(--font-mono, monospace) !important;
+}
+.hl-metric-row strong {
+    color: #C87D4B !important;
+}
+.hl-action-btn, .hl-chip-btn, .hl-cmd-btn {
     background: #231F1D !important;
-    border: 1px solid rgba(200, 125, 75, 0.35) !important;
-    border-radius: 12px !important;
-    padding: 2rem !important;
+    color: #F4F1EA !important;
+    border: 1px solid rgba(200, 125, 75, 0.55) !important;
+    padding: 0.5rem 0.85rem !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.78rem !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+}
+.hl-action-btn:hover, .hl-chip-btn:hover, .hl-chip-btn.active, .hl-cmd-btn:hover {
+    background: #C87D4B !important;
+    color: #161412 !important;
+    font-weight: 700 !important;
+}
+.hl-btn-group {
+    display: flex !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+}
+.hl-terminal-window {
+    background: #100E0D !important;
+    border: 1px solid rgba(200, 125, 75, 0.28) !important;
+    padding: 0.9rem !important;
+    border-radius: 6px !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.8rem !important;
+    min-height: 115px !important;
+    max-height: 150px !important;
+    overflow-y: auto !important;
+    color: #F4F1EA !important;
+    line-height: 1.5 !important;
+}
+.term-prompt {
+    color: #C87D4B !important;
+    margin-right: 0.4rem !important;
+}
+.term-resp {
+    color: rgba(244, 241, 234, 0.85) !important;
+    margin-top: 0.3rem !important;
+}
+
+/* TAAK 3: Pop-up Modal met [X] en ESC, Tekst links, Foto-Carousel rechts */
+#project-modal.modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(12, 10, 9, 0.88) !important;
+    backdrop-filter: blur(8px) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important;
+    padding: 1.5rem !important;
+}
+#project-modal.modal-overlay.active {
+    display: flex !important;
+}
+.modal-window {
+    background: #1C1917 !important;
+    border: 1px solid #C87D4B !important;
+    border-radius: 10px !important;
+    max-width: 1180px !important;
+    width: 94vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding: 2.2rem !important;
+    position: relative !important;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85) !important;
+}
+.modal-close-btn {
+    position: sticky !important;
+    top: 0 !important;
+    float: right !important;
+    background: #231F1D !important;
+    color: #C87D4B !important;
+    border: 1px solid #C87D4B !important;
+    padding: 0.45rem 0.95rem !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    z-index: 10 !important;
+}
+.modal-close-btn:hover {
+    background: #C87D4B !important;
+    color: #161412 !important;
 }
 .modal-split-layout {
     display: grid !important;
-    grid-template-columns: 1fr 1.15fr !important;
+    grid-template-columns: 1fr 1.2fr !important;
     gap: 2.2rem !important;
     align-items: start !important;
-}
-@media (max-width: 860px) {
-    .modal-split-layout {
-        grid-template-columns: 1fr !important;
-    }
+    clear: both !important;
+    margin-top: 0.5rem !important;
 }
 .modal-left-text {
     color: #F4F1EA !important;
-    line-height: 1.7 !important;
-    max-height: 72vh !important;
+    line-height: 1.75 !important;
+    max-height: 74vh !important;
     overflow-y: auto !important;
-    padding-right: 0.75rem !important;
+    padding-right: 0.8rem !important;
+}
+.modal-left-text h2 {
+    color: #F4F1EA !important;
+    font-size: 1.85rem !important;
+    margin: 0.7rem 0 1rem 0 !important;
+}
+.modal-description p {
+    color: rgba(244, 241, 234, 0.88) !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.98rem !important;
 }
 .modal-right-carousel {
+    background: #141210 !important;
+    border: 1px solid rgba(200, 125, 75, 0.25) !important;
+    border-radius: 8px !important;
+    padding: 1.2rem !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     gap: 1rem !important;
-    background: #161412 !important;
-    padding: 1.25rem !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(244, 241, 234, 0.08) !important;
 }
 .carousel-stage {
     width: 100% !important;
-    height: 52vh !important;
-    max-height: 520px !important;
+    height: 48vh !important;
+    max-height: 480px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    background: #100E0D !important;
+    border-radius: 6px !important;
     overflow: hidden !important;
 }
 .carousel-stage img {
@@ -424,22 +643,26 @@ document.addEventListener
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
-    border-radius: 6px !important;
 }
 .carousel-controls {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    gap: 1rem !important;
+}
+.carousel-counter {
+    color: #F4F1EA !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 0.88rem !important;
 }
 .carousel-btn {
     background: #231F1D !important;
     color: #F4F1EA !important;
     border: 1px solid #C87D4B !important;
-    padding: 0.5rem 1.1rem !important;
-    border-radius: 6px !important;
+    padding: 0.5rem 1.15rem !important;
+    border-radius: 4px !important;
     cursor: pointer !important;
+    font-family: var(--font-mono, monospace) !important;
     font-weight: 600 !important;
 }
 .carousel-btn:hover {
@@ -448,179 +671,51 @@ document.addEventListener
 }
 .carousel-dots {
     display: flex !important;
-    gap: 0.4rem !important;
+    gap: 0.45rem !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
 }
 .carousel-thumb {
-    width: 48px !important;
-    height: 36px !important;
+    width: 52px !important;
+    height: 38px !important;
     object-fit: contain !important;
-    background: #161412 !important;
-    border: 1px solid rgba(244,241,234,0.2) !important;
+    background: #100E0D !important;
+    border: 1px solid rgba(244, 241, 234, 0.2) !important;
     border-radius: 4px !important;
     cursor: pointer !important;
-    opacity: 0.55 !important;
+    opacity: 0.5 !important;
 }
 .carousel-thumb.active {
     border-color: #C87D4B !important;
     opacity: 1 !important;
 }
 
+/* TAAK 7: Volledig Mobiel & Tablet Vriendelijk (Responsive) */
+@media (max-width: 1024px) {
+    .homelab-cards-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .modal-split-layout {
+        grid-template-columns: 1fr !important;
+    }
+    .modal-left-text {
+        max-height: none !important;
+    }
+}
+@media (max-width: 680px) {
+    .homelab-cards-grid, .projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .main-nav .nav-list, header nav ul {
+        gap: 1rem !important;
+    }
+    .modal-window {
+        padding: 1.2rem !important;
+        width: 96vw !important;
+    }
+    .carousel-stage {
+        height: 34vh !important;
+    }
+}
+
 /* === AI-TEAM-AUTO-MERGE-CSS === */
-/* ==============================
-   1. Basis & kleuren (Optimale Styling)
-   ============================== */
-:root {
-  --bg-dark: #161412;          /* Diep Houtskool */
-  --bg-secondary: #231F1D;     /* Gerookt Eiken */
-  --text-light: #F4F1EA;       /* Cloud Dancer / Warm Wit */
-  --accent: #C87D4B;           /* Koper / Gesmolten Amber */
-}
-
-body {
-  background: var(--bg-dark);
-  color: var(--text-light);
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* ==============================
-   2. Modal overlay & Container
-   ============================== */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal {
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  max-width: 90vw;
-  max-height: 90vh;
-  width: 1000px;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  .modal {
-    flex-direction: column;
-    max-height: 95vh;
-  }
-}
-
-/* ==============================
-   3. Carousel & image styling
-   ============================== */
-.carousel {
-  position: relative;
-  flex: 1 1 55%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  min-height: 300px;
-}
-
-.carousel img.carousel-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Zorgt dat foto's passen en niet worden afgesneden */
-  transition: opacity 0.3s ease;
-}
-
-.carousel .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: var(--text-light);
-  font-size: 1.5rem;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s ease;
-  z-index: 10;
-}
-
-.carousel .nav-btn:hover {
-  background: var(--accent);
-}
-
-.carousel .prev-btn { left: 15px; }
-.carousel .next-btn { right: 15px; }
-
-/* ==============================
-   4. Modal Content & Tekst
-   ============================== */
-.modal-content-wrapper {
-  flex: 1 1 45%;
-  padding: 30px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-title {
-  font-size: 1.8rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: var(--text-light);
-}
-
-.modal-category {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-.modal-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(244, 241, 234, 0.85);
-  white-space: pre-line;
-}
-
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 20;
-  transition: color 0.2s ease;
-}
-
-.modal-close:hover {
-  color: var(--accent);
-}
-
